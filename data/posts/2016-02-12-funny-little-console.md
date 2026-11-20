@@ -1,10 +1,10 @@
 ---
-title: Весёлая консолька
+title: Fun console
 
 tags: [js, tools]
 
 image: https://img-fotki.yandex.ru/get/64326/5091629.a4/0_8db28_39e1a15b_orig
-description: Недавно мне пришлось отлаживать капризный скрипт, в котором явно происходило что-то паранормальное. Чтобы найти проблему, понадобилось вывести в консоль браузера большое количество отладочной информации. Содержимое консоли превратилось в бесконечную колбасу однообразного текста, и с этим надо было что-то делать.
+description: Recently I had to debug a capricious script in which something paranormal was clearly happening. To find the problem, it was necessary to output a large amount of debugging information to the browser console. The contents of the console turned into an endless sausage of monotonous text, and something had to be done about it.
 
 links:
 - href: https://developers.google.com/web/tools/chrome-devtools/debug/console/console-reference
@@ -13,19 +13,19 @@ links:
   text: developer.mozilla.org/en-US/docs/Web/API/Console
 ---
 
-Недавно мне пришлось отлаживать очень капризный скрипт, в котором, по ощущениям, происходили какие-то паранормальные явления. Чтобы найти проблему, понадобилось вывести в консоль браузера большое количество отладочной информации. <!--more-->С одной стороны, так стало удобнее искать ошибку, с другой — содержимое консоли превратилось в бесконечную колбасу однообразного текста, и с этим надо было что-то делать.
+Recently I had to debug a very capricious script in which, it seemed, some paranormal phenomena were happening. To find the problem, it was necessary to output a large amount of debugging information to the browser console. <!--more-->On the one hand, it became more convenient to search for an error, on the other hand, the contents of the console turned into an endless sausage of monotonous text, and something had to be done about it.
 
-Должна сказать, что я довольно редко пишу Javascript, поэтому заинтересовавшись возможностями консоли узнала много нового.
+I must say that I rarely write Javascript, so when I became interested in the capabilities of the console, I learned a lot of new things.
 
-Чтобы просто вывести что-то в консоль, используется <code>console.log()</code>:
+To simply output something to the console, use <code>console.log()</code>:
 
 ```javascript
 console.log ( 'Что-нибудь' );
 ```
 
-<img src="/assets/img/articles/funny-console/fig1.png" alt="Что-нибудь">
+<img src="/assets/img/articles/funny-console/fig1.png" alt="Something">
 
-Таким образом можно выводить любые типы данных — строки, числа, массивы, объекты:
+This way you can output any data types - strings, numbers, arrays, objects:
 
 ```javascript
 
@@ -56,11 +56,11 @@ console.log ( fruitsList );
 console.log ( fruitsObj );
 ```
 
-<img src="/assets/img/articles/funny-console/fig2.png" alt="Вывод разных типов данных">
+<img src="/assets/img/articles/funny-console/fig2.png" alt="Output of different data types">
 
-Код подсвечен, вложенные элементы объектов свёрнуты.
+The code is highlighted, nested object elements are collapsed.
 
-Как этот вывод можно улучшить? Мы видим в консоли содержимое переменных, но не видим их названий. Самый очевидный способ — добавить название перед выводимыми данными:
+How can this conclusion be improved? We see the contents of the variables in the console, but we do not see their names. The most obvious way is to add a title before the output:
 
 ```javascript
 console.log ( 'Строка: ' + str );
@@ -69,11 +69,11 @@ console.log ( 'Массив: ' + fruitsList );
 console.log ( 'Объект: ' + fruitsObj );
 ```
 
-<img src="/assets/img/articles/funny-console/fig3.png" alt="Добавляем названия">
+<img src="/assets/img/articles/funny-console/fig3.png" alt="Add titles">
 
-При этом все значения переменных приведутся к строке. Для строк и чисел это не проблема, массив потеряет подсветку, хотя и останется читабельным, а вот объект превратится в строку [object Object], и содержимое объекта теперь нельзя ни прочитать, ни развернуть.
+In this case, all variable values ​​will be reduced to a string. For strings and numbers this is not a problem, the array will lose highlighting, although it will remain readable, but the object will turn into the string [object Object], and the contents of the object can now neither be read nor expanded.
 
-Так себе вариант, есть способ получше: можно передавать в <code>console.log()</code> список переменных, разделённых запятой, и в этом случае они будут выведены корректно:
+So-so option, there is a better way: you can pass a comma-separated list of variables to <code>console.log()</code>, in which case they will be output correctly:
 
 ```javascript
 console.log ( 'Строка:', str );
@@ -82,34 +82,34 @@ console.log ( 'Массив:', fruitsList );
 console.log ( 'Объект:', fruitsObj );
 ```
 
-<img src="/assets/img/articles/funny-console/fig4.png" alt="А теперь правильно">
+<img src="/assets/img/articles/funny-console/fig4.png" alt="Now that's right">
 
-И так тоже можно:
+And this is also possible:
 
 ```javascript
 console.log ( 'Всё сразу:', str, num, fruitsList, fruitsObj );
 ```
 
-<img src="/assets/img/articles/funny-console/fig5.png" alt="Всё сразу">
+<img src="/assets/img/articles/funny-console/fig5.png" alt="All at once">
 
-Передаваемые переменные можно выводить не только одну за другой, но и в более управляемом виде:
+The passed variables can be output not only one after another, but also in a more manageable form:
 
 ```javascript
 console.log ( 'Сначала строчка: "%s", потом число: %i', str, num );
 ```
 
-<img src="/assets/img/articles/funny-console/fig6.png" alt="Изменяем вывод">
+<img src="/assets/img/articles/funny-console/fig6.png" alt="Changing the output">
 
-Переменные точно также передаются в функцию списком, а для их вставки в конкретное место строки используются указатели, которые заодно отвечают и за формат вывода:
+Variables are also passed into the function as a list, and to insert them into a specific place in the line, pointers are used, which are also responsible for the output format:
 
-<code>%s</code> — в виде строки;
-<code>%d</code> или <code>%i</code> — в виде числа;
-<code>%f</code> — в виде числа с плавающей точкой;
-<code>%o</code> — в виде разворачиваемого DOM-элемента;
-<code>%O</code> — в виде разворачиваемого JavaScript-объекта;
-<code>%c</code> — оформляет вывод с соответствии с CSS, переданным дополнительным параметром.
+<code>%s</code> - as a string;
+<code>%d</code> or <code>%i</code> - as a number;
+<code>%f</code> - as a floating point number;
+<code>%o</code> - in the form of an expandable DOM element;
+<code>%O</code> - in the form of an expandable JavaScript object;
+<code>%c</code> - formats the output in accordance with the CSS passed as an additional parameter.
 
-Переменные перед выводом в консоль приводятся к заданному формату. При этом важно правильно выбрать подходящий указатель, потому что иначе результат может получиться некорректным или просто нечитабельным:
+Variables are converted to the specified format before being output to the console. It is important to choose the right pointer correctly, because otherwise the result may be incorrect or simply unreadable:
 
 ```javascript
 var str = 'Главный вопрос жизни вселенной и всего такого';
@@ -121,11 +121,11 @@ console.log ( 'float: %i', float );
 console.log ( 'fruitsList: %O:', fruitsList );
 ```
 
-<img src="/assets/img/articles/funny-console/fig7.png" alt="Неверные форматы">
+<img src="/assets/img/articles/funny-console/fig7.png" alt="Invalid formats">
 
-Строка не смогла привестись к числу, и получилось <code>NaN</code>, число с плавающей точкой потеряло свою десятичную часть, а массив вывелся в виде разворачиваемого объекта, и теперь придется кликнуть, чтобы увидеть его содержимое.
+The string could not be reduced to a number, and the result was <code>NaN</code>, the floating point number lost its decimal part, and the array was displayed as an expandable object, and now you have to click to see its contents.
 
-Форматы <code>%o</code> и <code>%O</code> особенно полезны для вывода элементов страницы:
+The <code>%o</code> and <code>%O</code> formats are especially useful for displaying page elements:
 
 ```javascript
 var h1Elem = document.querySelector('h1');
@@ -134,22 +134,22 @@ console.log ( '%o', h1Elem );
 console.log ( '%O', h1Elem );
 ```
 
-<img src="/assets/img/articles/funny-console/fig8.png" alt="Разный вывод DOM-элементов">
+<img src="/assets/img/articles/funny-console/fig8.png" alt="Different output of DOM elements">
 
-В первом случае выведется код элемента, во втором — Javascript-объект. При этом если нет необходимости выводить вспомогательный текст, аналогичный результат можно получить воспользовавшись просто <code>console.log()</code> и <code>console.dir()</code>:
+In the first case, the element code will be displayed, in the second - a Javascript object. Moreover, if there is no need to display auxiliary text, a similar result can be obtained by simply using <code>console.log()</code> and <code>console.dir()</code>:
 
 ```javascript
 console.log ( h1Elem ); // код элемента
 console.dir ( h1Elem ); // Javascript-объект
 ```
 
-Результат работы этого кода будет таким же, как на скрине выше.
+The result of this code will be the same as in the screenshot above.
 
-Из всех указателей мне больше всего полюбился последний: <code>%c</code> — стилизующий текст, потому что именно он помог мне привести однообразную колбасу в консоли в более-менее читабельный вид.
+Of all the pointers, I liked the last one the most: <code>%c</code> - styling text, because it was he who helped me bring the monotonous sausage in the console into a more or less readable form.
 
-Для того, чтобы задать оформление тексту, CSS-код нужно передать отдельным параметром, причем первым параметром в этом случае должна быть строка с указателями, вторым — строка с CSS, третьим — данные, которые нужно вывести.
+In order to set the design of the text, the CSS code must be passed as a separate parameter, and the first parameter in this case should be a line with pointers, the second - a line with CSS, and the third - the data that needs to be displayed.
 
-Пример:
+Example:
 
 ```javascript
 var str = 'Главный вопрос жизни вселенной и всего такого';
@@ -157,9 +157,9 @@ var str = 'Главный вопрос жизни вселенной и всег
 console.log ( '%c%s', 'color: green; font: 1.2rem/1 Tahoma;', str );
 ```
 
-<img src="/assets/img/articles/funny-console/fig9.png" alt="Зеленый текст">
+<img src="/assets/img/articles/funny-console/fig9.png" alt="Green text">
 
-Ещё удобнее будет вынести стили в отдельную переменную, тогда их можно будет использовать повторно:
+It would be even more convenient to put the styles into a separate variable, then they can be reused:
 
 ```javascript
 var str = 'Главный вопрос жизни вселенной и всего такого';
@@ -172,14 +172,14 @@ var style = ['padding: 1rem;',
 console.log ( '%c%s', style, str );
 ```
 
-<img src="/assets/img/articles/funny-console/fig10.png" alt="Оранжевый градиент">
+<img src="/assets/img/articles/funny-console/fig10.png" alt="Orange gradient">
 
-Так можно управлять отступами, фоном и оформлением текста. Какие-то штуки работать не будут, например, <code>box-shadow</code>, но и того, что есть, вполне достаточно, чтобы добавить в консоль немного красоты:
+This way you can control the indentation, background and text design. Some things will not work, for example, <code>box-shadow</code>, but what is there is quite enough to add a little beauty to the console:
 
-<img src="/assets/img/articles/funny-console/rainbow.png" alt="Радуга">
-(<a href="http://stackoverflow.com/questions/7505623/colors-in-javascript-console/21457293#21457293" target="_blank">Отсюда</a>)
+<img src="/assets/img/articles/funny-console/rainbow.png" alt="Rainbow">
+(<a href="http://stackoverflow.com/questions/7505623/colors-in-javascript-console/21457293#21457293" target="_blank">From here</a>)
 
-Для своих целей я заготовила несколько стилей:
+For my purposes, I prepared several styles:
 
  ```javascript
  var consoleStyles = {
@@ -191,7 +191,7 @@ console.log ( '%c%s', style, str );
 };
 ```
 
-и функцию, которая избавила меня от необходимости формировать руками набор параметров и форматирование строки:
+and a function that saved me from having to manually form a set of parameters and string formatting:
 
 ```javascript
 function log ( msg, style ) {
@@ -202,7 +202,7 @@ function log ( msg, style ) {
 }
 ```
 
-Пример использования:
+Usage example:
 
 ```javascript
 log ( 'Заголовок 1', 'h1' );
@@ -212,19 +212,19 @@ log ( 'Жирный текст', 'bold' );
 log ( 'Ошибка', 'warn' );
 ```
 
-<img src="/assets/img/articles/funny-console/fig11.png" alt="Заголовки">
+<img src="/assets/img/articles/funny-console/fig11.png" alt="Headings">
 
-Таким образом из вот такой колбасы скучного текста
+Thus, from such a sausage of boring text
 
-<img src="/assets/img/articles/funny-console/fig12.png" alt="Некрашеная консоль">
+<img src="/assets/img/articles/funny-console/fig12.png" alt="Unpainted console">
 
-можно получить вот такое:
+you can get this:
 
-<img src="/assets/img/articles/funny-console/fig13.png" alt="Разноцветная консоль">
+<img src="/assets/img/articles/funny-console/fig13.png" alt="Colorful console">
 
-По-моему, так гораздо лучше, особенно если отладочной информации много и в ней легко потеряться.
+In my opinion, this is much better, especially if there is a lot of debug information and it’s easy to get lost in it.
 
-Чтобы использовать в одной строке несколько стилей, надо каждый из них указать отдельным параметром, а затем с помощью <code>%c</code> задавать в тексте начало нового стиля:
+To use several styles in one line, you need to specify each of them as a separate parameter, and then use <code>%c</code> to set the beginning of a new style in the text:
 
 ```javascript
 var styles = [
@@ -244,21 +244,21 @@ console.log ( '%c R %c A %c I %c N %c B %c O %c W ',
 
 <img src="/assets/img/articles/funny-console/fig21.png" alt="Rainbow">
 
-Чтобы покрасить только часть строки, один из стилей можно задать пустым:
+To color only part of the line, one of the styles can be set to empty:
 
 ```javascript
 console.log ( '%c text1 %c text2', 'color: crimson;', '' );
 ```
 
-<img src="/assets/img/articles/funny-console/fig22.png" alt="Двухцветный текст">
+<img src="/assets/img/articles/funny-console/fig22.png" alt="Two-color text">
 
-Если не хочется заморачиваться с раскрашиванием, для вывода большого количества данных можно воспользоваться <code>console.table()</code>:
+If you don’t want to bother with coloring, you can use <code>console.table()</code> to display a large amount of data:
 
-<img src="/assets/img/articles/funny-console/fig14.png" alt="Таблицы">
+<img src="/assets/img/articles/funny-console/fig14.png" alt="Tables">
 
-Может, таблица выглядит не очень читабельно, но всё же это лучше списка свёрнутых объектов, к тому же она позволяет окинуть взглядом сразу весь массив.
+The table may not look very readable, but it’s still better than a list of collapsed objects, and it also allows you to look at the entire array at once.
 
-Также можно выделять из общего потока отдельные строчки, используя <code>console.info()</code> и <code>console.warn()</code>:
+You can also select individual lines from the general flow using <code>console.info()</code> and <code>console.warn()</code>:
 
 ```javascript
 console.info ( 'your text' );
@@ -267,9 +267,9 @@ console.warn ( 'your text' );
 
 <img src="/assets/img/articles/funny-console/fig15.png" alt="warn & info">
 
-Они работают как обычный <code>console.log()</code>, только добавляют иконки в начало строки (а <code>console.warn()</code> ещё и фон).
+They work like regular <code>console.log()</code>, they only add icons to the beginning of the line (and <code>console.warn()</code> also adds a background).
 
-Ещё можно выводить сообщения об ошибке и дополнительную отладочную информацию. Например, с помощью <code>console.error()</code>:
+You can also display error messages and additional debugging information. For example, using <code>console.error()</code>:
 
 ```javascript
 console.error ( 'Houston, we have a problem' );
@@ -277,7 +277,7 @@ console.error ( 'Houston, we have a problem' );
 
 <img src="/assets/img/articles/funny-console/fig16.png" alt="console.error()">
 
-<code>console.error()</code> ничего не проверяет, она просто выводит сообщение, оформленное определённым образом. Чтобы сообщение выводилось только при соблюдении заданных условий, можно использовать <code>console.assert()</code>:
+<code>console.error()</code> doesn't check anything, it just prints a message formatted in a certain way. To display a message only when specified conditions are met, you can use <code>console.assert()</code>:
 
 ```javascript
 var fruitsObj = {
@@ -291,11 +291,11 @@ var expression = fruitsObj.apple.color === 'blue';
 console.assert ( expression, 'There is no blue apple' );
 ```
 
-Сообщение будет выведено только если <code>expression</code> будет равно <code>false</code>:
+The message will only be printed if <code>expression</code> is equal to <code>false</code>:
 
 <img src="/assets/img/articles/funny-console/fig17.png" alt="console.assert()">
 
-Чтобы просто вывести в консоль сообщение с отладочной информацией, можно использовать <code>console.trace()</code>:
+To simply print a message with debugging information to the console, you can use <code>console.trace()</code>:
 
 ```javascript
 console.trace ( 'Hello' );
@@ -303,7 +303,7 @@ console.trace ( 'Hello' );
 
 <img src="/assets/img/articles/funny-console/fig18.png" alt="console.trace()">
 
-Для визуальной группировки сообщений можно использовать <code>console.group()</code> и <code>console.groupEnd()</code>, обозначающие начало и конец группы соответственно:
+To visually group messages, you can use <code>console.group()</code> and <code>console.groupEnd()</code>, indicating the beginning and end of the group, respectively:
 
 ```javascript
 console.group ( 'Animals' );
@@ -314,9 +314,9 @@ console.groupEnd ();
 
 <img src="/assets/img/articles/funny-console/fig19.png" alt="console.group()">
 
-Чтобы группа была по умолчанию свёрнута, вместо <code>console.group()</code> используется <code>console.groupCollapsed()</code>.
+To make the group collapsed by default, use <code>console.groupCollapsed()</code> instead of <code>console.group()</code>.
 
-А ещё можно подсчитывать вызовы функций с помощью <code>console.count()</code>:
+You can also count function calls using <code>console.count()</code>:
 
 ```javascript
 function myFunc() {
@@ -330,4 +330,4 @@ for (var i = 0; i < 3; i++) {
 
 <img src="/assets/img/articles/funny-console/fig20.png" alt="console.count()">
 
-В консоли можно делать и другие интересные вещи, вроде измерения времени выполнения кода. Также умные ребята для отладки используют <code>debugger</code> и точки остановки (breakpoints), но это уже совсем другая история.
+You can do other interesting things in the console, like measure the execution time of your code. Also, smart guys use <code>debugger</code> and breakpoints for debugging, but that's a completely different story.
