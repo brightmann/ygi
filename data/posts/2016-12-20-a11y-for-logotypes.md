@@ -1,5 +1,5 @@
 ---
-title: Logo is unreachable or temporarily unavailable
+title: The logo is not responding or temporarily unavailable
 
 image: https://img-fotki.yandex.ru/get/196548/5091629.a4/0_91fcc_76efbbf3_orig
 description: "What's the best way to mark up logos on a site? As an image or a background? How will the logo look when printed? How do you ensure accessibility for screen readers and give hints to search engines?"
