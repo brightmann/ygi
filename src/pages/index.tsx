@@ -7,7 +7,6 @@ import Layout from '../components/molecules/Layout';
 import ArticlesCardsList from '../components/molecules/ArticlesCardsList';
 import Pagination from '../components/molecules/Pagination';
 import { ArticleWithDate } from '../components/molecules/ArticleCard';
-import Link from '../components/atoms/Link';
 
 export const getStaticProps = (async () => {
   const posts = (await getAllArticles(
@@ -15,14 +14,25 @@ export const getStaticProps = (async () => {
     'post',
   )) as ArticleWithDate[];
 
+  const archivedPosts = (await getAllArticles(
+    ['title', 'slug', 'order', 'excerpt', 'date'],
+    'archive',
+  )) as ArticleWithDate[];
+
   const pages = (await getAllArticles(
     ['title', 'slug', 'order', 'excerpt', 'date'],
     'page',
   )) as ArticleWithDate[];
 
-  const totalPages = getTotalPages(posts.length);
+  const allPosts = [...posts, ...archivedPosts].sort((a, b) => {
+    const aTime = a.date ? new Date(a.date).getTime() : 0;
+    const bTime = b.date ? new Date(b.date).getTime() : 0;
+    return bTime - aTime;
+  });
 
-  return { props: { posts: posts.slice(0, POSTS_PER_PAGE), pages, totalPages } };
+  const totalPages = getTotalPages(allPosts.length);
+
+  return { props: { posts: allPosts.slice(0, POSTS_PER_PAGE), pages, totalPages } };
 }) satisfies GetStaticProps<{
   posts: ArticleWithDate[];
   pages: ArticleWithDate[];
@@ -41,10 +51,6 @@ export default function Page({ posts, pages, totalPages }: InferGetStaticPropsTy
         currentPage={1}
         totalPages={totalPages}
       />
-
-      <p>
-        <Link href="/archive">Архив</Link>
-      </p>
     </Layout>
   );
 }
