@@ -1,41 +1,41 @@
 ---
-title: 'Css-фигуры: лепесток'
+title: 'CSS shapes: petal'
 
 tags: [experiments, box-shadow, draw-on-css]
 
-description: 'Из одного div с помощью border-radius легко можно сделать лепесток.'
+description: 'You can easily make a petal out of one div using border-radius.'
 ---
-Из одного <code>div</code> с помощью <code>border-radius</code> легко можно сделать лепесток:<!--more-->
+You can easily make a petal from one <code>div</code> using <code>border-radius</code>:<!--more-->
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/css-figury-lepestok/demo_1.html?output"></iframe>
 
-С помощью <code>box-shadow</code> — ещё один:
+Using <code>box-shadow</code> - another one:
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/css-figury-lepestok/demo_2.html?output"></iframe>
 
-С помощью <code>:before</code> — ещё парочку, и получается 4 лепестка:
+Using <code>:before</code> - a couple more, and you get 4 petals:
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/css-figury-lepestok/demo_3.html?output"></iframe>
 
-А добавив <code>:after</code> и <code>transform</code> можно сделать 6 лепестков:
+And by adding <code>:after</code> and <code>transform</code> you can make 6 petals:
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/css-figury-lepestok/demo_4.html?output"></iframe>
 
-Для понятности покрасим лепестки в разные цвета. Красный — исходный <code>div</code>, зеленый — <code>:before</code>, оранжевый — <code>:after</code>,  желтые — <code>box-shadow</code> этих трех элементов.
+For clarity, let's paint the petals in different colors. Red is the original <code>div</code>, green is <code>:before</code>, orange is <code>:after</code>, yellow is the <code>box-shadow</code> of these three elements.
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/css-figury-lepestok/demo_5.html?output"></iframe>
 
-Цветок с 4 или 6-ю лепестками на основе одного элемента! : )
-Причем с помощью <code>border-radius</code> можно управлять формой лепестков.
+Flower with 4 or 6 petals based on one element! : )
+Moreover, using <code>border-radius</code> you can control the shape of the petals.
 
-Теперь сделаем лепестки овальной формы с помощью псевдо-элементов и <code>transform</code>. В основе два <code>div</code>'а:
+Now let's make the petals oval using pseudo-elements and <code>transform</code>. It is based on two <code>div</code>'s:
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/css-figury-lepestok/demo_6.html?output"></iframe>
 
-Тем же способом можно сделать лепестки в форме капелек, а также добавить к ним рамки или тени:
+Using the same method, you can make droplet-shaped petals, and also add frames or shadows to them:
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/css-figury-lepestok/demo_7.html?output"></iframe>
 
 <iframe class="live-snippet" style="height: 370px" src="../assets/demo/css-figury-lepestok/demo_8.html?output"></iframe>
 
-В этом случае нельзя обойтись одним элементом, потому что тень объекта нельзя повернуть.
+In this case, you can't get by with just one element, because the object's shadow cannot be rotated.
