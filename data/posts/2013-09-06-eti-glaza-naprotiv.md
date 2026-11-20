@@ -1,5 +1,5 @@
 ---
-title: These eyes are opposite
+title: These eyes across from me
 
 tags: [experiments, animation, draw-on-css]
 
