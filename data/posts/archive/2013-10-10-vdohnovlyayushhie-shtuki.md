@@ -1,9 +1,9 @@
 ---
-title: Вдохновляющие штуки
+title: Inspiring things
 
-description: Пара интересных демо с Codepen.io.
+description: A couple of interesting demos from Codepen.io.
 ---
-Пара интересных демо с <a href="https://codepen.io">Codepen.io</a>.<!--more-->
+A couple of interesting demos from <a href="https://codepen.io">Codepen.io</a>.<!--more-->
 
 <p class="codepen" data-height="500" data-theme-id="4974" data-default-tab="result" data-user="Xpressive_Team" data-slug-hash="ejuJA" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Sphere">
   <span>See the Pen <a href="https://codepen.io/Xpressive_Team/pen/ejuJA">
@@ -18,4 +18,3 @@ description: Пара интересных демо с Codepen.io.
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-
