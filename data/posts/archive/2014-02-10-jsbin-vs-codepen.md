@@ -1,67 +1,63 @@
 ---
-title: JsBin или Codepen?
+title: JsBin or Codepen?
 
 tags: [tools]
 
 image: //img-fotki.yandex.ru/get/4912/5091629.9b/0_7efbd_8f85404d_XL.png
-description: Я долгое время использовала для своих демо jsbin.com Похоже, слишком активно использовала. В какой-то момент в процессе редактирования кода Jsbin вообще переставал открываться. Тогда я открывала другой браузер, но через какое-то время он переставал открываться и там. Постепенно в дело шли все доступные браузеры и режимы инкогнито.
+description: For a long time I used jsbin.com for my demos. It seems I used it too actively. At some point, while editing code, Jsbin would stop opening at all. Then I'd open another browser, but after a while it would stop opening there too. Gradually all available browsers and incognito modes got involved.
 ---
 
-Я долгое время использовала для своих демо <a href="http://jsbin.com">jsbin.com</a>. Похоже, слишком активно использовала. В какой-то момент в процессе редактирования кода Jsbin вообще переставал открываться.<!--more--> Тогда я открывала другой браузер, но через какое-то время он переставал открываться и там. Постепенно в дело шли все доступные браузеры и режимы инкогнито.
+For a long time I used <a href="http://jsbin.com">jsbin.com</a> for my demos. It seems I used it too actively. At some point, while editing code, Jsbin would stop opening at all.<!--more--> Then I'd open another browser, but after a while it would stop opening there too. Gradually all available browsers and incognito modes got involved.
 
-Работать с кодом становилось очень неудобно, а иногда и попросту невозможно, и это заставило меня посмотреть в сторону других он-лайн песочниц для кода. Из них мне пока больше всего приглянулся <a href="https://codepen.io/">Codepen</a>. У него есть свои плюсы и минусы, и, в итоге так получилось, что сейчас приходится пользоваться обоими редакторами, каждым для своих целей.
+Working with code was becoming very inconvenient, and sometimes simply impossible, and that made me look toward other online code sandboxes. Of them, <a href="https://codepen.io/">Codepen</a> appealed to me the most so far. It has its pluses and minuses, and in the end it turned out that I now have to use both editors, each for its own purposes.
 
-Попробую их сравнить.
+Let me try to compare them.
 
 <h2>Jsbin</h2>
 
-<b>Плюсы:</b>
+<b>Pluses:</b>
 
-- моментально применяет изменения, сделанные в коде;
-- также моментально применяет их в любом браузере, где открыт этот сниппет (очень удобно для тестирования в разных браузерах, на разных виртуалках и мобильных устройствах);
-- показывает ошибки в JS;
-- умеет комментировать/раскрывать код под Ctrl + /;
-- есть Less.
+- instantly applies changes made in the code;
+- also instantly applies them in any browser where that snippet is open (very convenient for testing in different browsers, on different virtual machines and mobile devices);
+- shows errors in JS;
+- can comment/uncomment code with Ctrl + /;
+- has Less.
 
-<b>Минусы:</b>
+<b>Minuses:</b>
 
-- сохраняет сниппеты в виде одной ленты, где они сгрупированы по родительскоу сниппету, внутри этой группы — по времени создания. Ручной группировки нет;
-- если открыть сниппет и начать его редактировать, он сохранится под новым номером. Это приводит к неконтролируемому росту их количества: у меня уже больше 1000, и как в них искать нужное — непонятно. Кроме того, если где-то вставить сниппет на страницу — после редактирования надо будет обновить в коде фрейма номер сниппета;
-- <s>нет препроцессоров</s> нет Sass;
-- ломает кириллицу: в сниппетах внезапно можно обнаружить кракозябры вместо русского текста.
+- saves snippets as a single feed, where they're grouped by parent snippet, and within that group — by creation time. There's no manual grouping;
+- if you open a snippet and start editing it, it gets saved under a new number. This leads to uncontrolled growth of their count: I already have more than 1000, and how to search for the right one among them is unclear. Also, if you embed a snippet on a page somewhere — after editing you'll have to update the snippet number in the frame's code;
+- <s>no preprocessors</s> no Sass;
+- breaks Cyrillic: in snippets you can suddenly find mojibake instead of Russian text.
 
-Jsbin работает как личная песочница, нет взаимодействия с другими пользователями, не нужно забоиться о том, что <s>бардак</s> рабочий процесс в твоей песочнице кто-то увидит : ) Отсутствие взаимодействия с другими пользователями сервиса помогает не отвлекаться от кода, это можно считать плюсом.
+Jsbin works as a personal sandbox; there's no interaction with other users, and no need to worry that someone will see the <s>mess</s> working process in your sandbox : ) The absence of interaction with other users of the service helps you not get distracted from the code; that can be considered a plus.
 
 <h2>Codepen</h2>
 
-<b>Плюсы:</b>
+<b>Pluses:</b>
 
-- есть CSS-препроцессоры (очень существенное преимущество);
-- есть группировка сниппетов в коллекции, есть теги и поиск по сниппетам;
-- есть группировка по другим признакам, например — по популярности, а также можно посмотреть сниппеты, которые вам понравились или которые вы скопировали к себе;
-- можно открыть сниппет, отредактировать и сохранить — его адрес останется таким же, и не нужно обновлять коды фреймов с этим сниппетом. Можно открыть сниппет на другом компе (под своим аккаунтом), отредактировать и сохранить — это будет тот же сниппет, и его не нужно будет искать в истории;
-- сниппету можно добавить название и описание.
+- has CSS preprocessors (a very significant advantage);
+- has grouping of snippets into collections, has tags and snippet search;
+- has grouping by other criteria, for example by popularity, and you can also view snippets you liked or forked;
+- you can open a snippet, edit it and save it — its address stays the same, and you don't need to update the frame codes with that snippet. You can open a snippet on another computer (under your account), edit and save it — it will be the same snippet, and you won't need to look for it in the history;
+- you can add a title and description to a snippet.
 
-<b>Минусы:</b>
+<b>Minuses:</b>
 
-- добавление в коллекцию неявное. На странице сниппета непонятно в какой коллекции он находится и добавлен ли вообще в какую-то подборку. При добавлении сниппета в коллекцию этого тоже не видно. Как-то очень криво сделано, надеюсь, исправят;
-- изменения в коде применяются с небольшой задержкой и только в окне редактирования;
-- живой предпросмотр в других браузерах — привилегия PRO-аккаунта ($9/month or $75/year);
-- периодически перестает обновлять превью (что может быть понятно не сразу), тогда приходится сохранять сниппет и перегружать страницу;
-- не показывает ошибки в JS;
-- комментирование кода по Ctrl + / работает только для выделенного блока. Нельзя быстро закомментировать строчку. Чтобы раскомментировать блок, нужно выделить его ещё раз, и не факт, что он раскомментируется — может ещё раз завернуться в комментарии, что очень неудобно;
-- не запоминает раскладку страницы.
+- adding to a collection is non-obvious. On the snippet's page it's unclear which collection it's in and whether it's been added to any collection at all. When adding a snippet to a collection, that isn't visible either. It's done quite clumsily; hopefully they'll fix it;
+- code changes are applied with a slight delay and only in the editing window;
+- live preview in other browsers is a PRO account privilege ($9/month or $75/year);
+- it periodically stops updating the preview (which may not be obvious at first), and then you have to save the snippet and reload the page;
+- doesn't show errors in JS;
+- code commenting with Ctrl + / works only for the selected block. You can't quickly comment out a line. To uncomment a block, you need to select it again, and it's not certain it will be uncommented — it might get wrapped in comments again, which is very inconvenient;
+- doesn't remember the page layout.
 
-Оба редактора умеют разворачивать Emmet-комбинации и сокращения CSS-свойств.
+Both editors can expand Emmet combinations and CSS property shortcuts.
 
-Codepen работает как социальная сеть: можно смотреть работы других пользователей, лайкать их, форкать, оставлять комментарии.
-Для меня первые комментарии к моим работам и лайки были полной неожиданностью : ))
-Можно смотреть на работы других пользователей, вдохновляться и находить новые идеи. Работы на главную страницу ресурса выбираются вручную, поэтому там много интересного. Также можно посмотреть самые последние и самые популярные сниппеты.
+Codepen works like a social network: you can look at other users' work, like it, fork it, leave comments.
+For me, the first comments on my work and likes were a complete surprise : ))
+You can look at other users' work, get inspired and find new ideas. The works for the resource's main page are chosen by hand, so there's a lot of interesting stuff there. You can also view the newest and the most popular snippets.
 
-Свои сниппеты при этом представлены <a href="https://codepen.io/yoksel/">в виде удобной витрины</a> с живыми превью. Их можно посмотреть по тегам или по коллекциям.
+Your own snippets are presented <a href="https://codepen.io/yoksel/">as a convenient showcase</a> with live previews. They can be browsed by tags or by collections.
 
-В итоге мои предпочтения разделились следующим образом: для быстрых экспериментов и отладки кода в разных окружениях — Jsbin, для основательных экспериментов, для демо и сохранения находок в удобном и доступном виде — Codepen.
-
-
-
-
+In the end, my preferences split as follows: for quick experiments and debugging code in different environments — Jsbin; for thorough experiments, for demos and for saving findings in a convenient and accessible form — Codepen.
