@@ -1,8 +1,8 @@
 ---
-title: Логотип не отвечает или временно недоступен
+title: Logo is unreachable or temporarily unavailable
 
 image: https://img-fotki.yandex.ru/get/196548/5091629.a4/0_91fcc_76efbbf3_orig
-description: "Как лучше всего верстать логотипы на сайте? Картинкой или фоном? Как логотип будет выглядеть при печати? Как обеспечить доступность для скринридеров и как сделать подсказки для поисковиков?"
+description: "What's the best way to mark up logos on a site? As an image or a background? How will the logo look when printed? How do you ensure accessibility for screen readers and give hints to search engines?"
 
 tags: [a11y]
 
@@ -16,54 +16,54 @@ links:
 - href: http://www.nvaccess.org/
   text: "NVDA"
 - href: https://developers.google.com/search/docs/guides/intro-structured-data
-  text: "Руководство по микроразметке от Google"
+  text: "Google's structured data guide"
 - href: https://webmaster.yandex.ru/tools/microtest/
-  text: "Валидатор микроразметки от Яндекса"
+  text: "Yandex's structured data validator"
 - href: https://www.sitepoint.com/tips-accessible-svg/
   text: "Tips for Creating Accessible SVG (By Léonie Watson)"
 - href: https://bitsofco.de/styling-broken-images/
   text: "Styling Broken Images"
 - href: https://yoksel.github.io/ally-for-logo/
-  text: "Тестовая страница с логотипами"
+  text: "Test page with logos"
 ---
 
-Заинтересовалась вопросом: как лучше всего верстать логотипы на сайте? Как правильно и почему? Картинкой или фоном? Как логотип будет выглядеть при печати? Как обеспечить доступность для скринридеров и как сделать подсказки для поисковиков? <!--more-->
+I got curious about the question: what's the best way to mark up logos on a site? What's the right way and why? As an image or a background? How will the logo look when printed? How do you ensure accessibility for screen readers and give hints to search engines? <!--more-->
 
-Спасибо всем участникам <a href="https://twitter.com/yoksel/status/809086523891154944">дискуссии</a> за полезные комментарии : ) Я сделала несколько вариантов разметки, провела ряд тестов и узнала много интересного.
+Thanks to all participants of the <a href="https://twitter.com/yoksel/status/809086523891154944">discussion</a> for the useful comments : ) I made several markup variants, ran a bunch of tests and learned a lot of interesting things.
 
-Есть разные способы вставить логотип на страницу:
+There are different ways to put a logo on a page:
 
-* фоновой картинкой (обычно на элементе заголовка)
-* обычной картинкой
-* инлайновым SVG
+* as a background image (usually on the heading element)
+* as a plain image
+* as inline SVG
 
-Мне больше всего нравится вариант с фоновым изображением, заданным для H1. Почему именно этот? Потому что логотип обычно содержит название компании или сайта, и это название логично сделать главным заголовком на странице. Зачастую логотип — это просто красиво оформленное название, поэтому можно написать название текстом, а потом с помощью стилей оформления скрыть его и вместо него показать картинку. Помимо доступности текста для скринридеров, такой вариант разметки позволяет без проблем добавить какие-нибудь эффекты по наведению (например, менять картинку).
+My favorite is the variant with a background image set on the H1. Why this one? Because a logo usually contains the name of the company or site, and it makes sense to make that name the main heading on the page. Often a logo is simply a nicely styled name, so you can write the name as text and then hide it with styling and show an image in its place. Besides making the text accessible to screen readers, this markup variant easily lets you add hover effects (for example, swapping the image).
 
-Вроде бы отличный способ, но нет. Логотип в этом случае невозможно скопировать или сохранить, а если пользователь просматривает страницу без картинок, вместо логотипа он увидит пустое место, то есть заголовок сайта окажется для него недоступен.
+Seems like an excellent approach, but no. In this case the logo can't be copied or saved, and if the user is viewing the page without images, they'll see an empty space instead of the logo, meaning the site heading becomes unavailable to them.
 
-И тут возникает вопрос доступности. Что такое доступность? Для кого должен быть доступен логотип сайта? Обычно под доступностью подразумевается доступность веб-контента для людей с ограниченными возможностями, но я предлагаю посмотреть на вопрос немного шире, и подумать над доступностью логотипа:
+And that's where the accessibility question arises. What is accessibility? Who should the site's logo be accessible to? Usually accessibility means web content being accessible to people with disabilities, but I suggest looking at the question a bit more broadly and thinking about the logo's accessibility:
 
-* при плохом соединении с интернетом, когда на странице может не быть стилей или картинок;
-* при печати страницы;
-* для копирования;
-* для поисковиков;
-* для манипуляций с помощью CSS.
+* on a poor internet connection, when the page may have no styles or images;
+* when printing the page;
+* for copying;
+* for search engines;
+* for CSS manipulations.
 
-Мы привыкли к хорошему интернету, который есть практически везде, и можем думать, что так у всех, пока нам внезапно не потребуется срочно открыть какую-то страницу находясь в метро или, например, в отпуске, в отеле с полудохлым вайфаем. Если вы бывали в такой ситуации, наверняка отвалившиеся стили или недогрузившиеся картинки из разряда редких мифических существ для вас резко перешли в разряд острых насущных проблем. «Да кто вообще делал этот тормозной сайт?!». В общем, стили могли не доехать, а картинки могли быть отключены пользователем для экономии трафика и ускорения загрузки страниц. Такое случается.
+We're used to good internet that's practically everywhere, and may think everyone has it that way, until we suddenly need to urgently open some page while in the subway or, for example, on vacation, in a hotel with half-dead wi-fi. If you've been in that situation, missing styles or half-loaded images have surely gone for you from rare mythical creatures to pressing everyday problems. "Who even made this laggy site?!" Anyway, styles may not have arrived, and images may have been disabled by the user to save traffic and speed up page loads. It happens.
 
-С печатью всё более-менее понятно: иногда люди печатают страницы, и логотип при этом не должен превращаться в тыкву, особенно если одновременно он является названием сайта.
+With printing it's more or less clear: sometimes people print pages, and the logo shouldn't turn into a pumpkin when they do, especially if it doubles as the site name.
 
-Вопрос копирования актуален для контент-менеджеров, которым может понадобиться скопировать логотип с сайта компании. Если на сайте раздобыть не получится, можно прибегнуть к помощи поисковиков. Смогут ли поисковые роботы найти на странице ваш логотип?
+The copying question is relevant for content managers who may need to copy a logo from a company's site. If you can't grab it from the site, you can turn to search engines. Will search robots be able to find your logo on the page?
 
-Доступность для CSS может быть актуальным вопросом для разработчиков. Как сделать доступный и интерактивный логотип одновременно?
+Accessibility for CSS can be a relevant question for developers. How do you make a logo that is accessible and interactive at the same time?
 
-Ниже мы рассмотрим все способы сделать логотип и проверим как у них с доступностью в широком смысле этого слова.
+Below we'll look at every way to make a logo and check how each of them does on accessibility in the broad sense of the word.
 
-<i>Для тестов в MacOS использовался VoiceOver (встроенный скринридер) и браузеры Chrome, Firefox и Safari. На Windows 7 использовала <a href="http://www.nvaccess.org/">NVDA</a> и браузеры Chrome, Firefox и IE10.</i>
+<i>For the tests, MacOS used VoiceOver (the built-in screen reader) and the browsers Chrome, Firefox and Safari. On Windows 7 I used <a href="http://www.nvaccess.org/">NVDA</a> and the browsers Chrome, Firefox and IE10.</i>
 
-<h2 id="bg">Логотип фоном</h2>
+<h2 id="bg">Logo as a background</h2>
 
-Пример разметки:
+Markup example:
 
 ```html
 <h1 class="logo">Название сайта</h1>
@@ -82,17 +82,17 @@ links:
 }
 ```
 
-Текст можно прятать разными способами: помимо <code>text-indent</code> иногда используют <code>font-size: 0</code>. Интересно, что в обоих случаях текст остаётся доступным для скринридеров, хотя и с некоторыми оговорками. Текст будет прочитан, но при этом скринридер не сможет корректно выделить элемент, который он читает в данный момент.
+Text can be hidden in different ways: besides <code>text-indent</code>, sometimes <code>font-size: 0</code> is used. Interestingly, in both cases the text stays accessible to screen readers, though with some caveats. The text will be read, but the screen reader won't be able to correctly highlight the element it's currently reading.
 
-Обычно VoiceOver выделяет читаемый элемент заметной чёрной рамкой:
+Usually VoiceOver highlights the element being read with a noticeable black outline:
 
-<img src="../assets/img/articles/ally-for-logo/logo-outline.png" alt="VoiceOver показывает читаемый элемент">
+<img src="../assets/img/articles/ally-for-logo/logo-outline.png" alt="VoiceOver highlights the element being read">
 
-С этими способами, в зависимости от браузера, рамки может не быть вообще, или она будет указывать на другой элемент.
+With these approaches, depending on the browser, there may be no outline at all, or it will point at a different element.
 
-Это легко исправить, если добавить элементу с логотипом <code>role="img"</code>. Правда, в этом случае скринридер начнёт читать его как картинку без <code>alt</code> — текст внутри окажется недоступен. Чтобы решить эту проблему, элементу нужно добавить <code>aria-label</code>, который содержит название сайта.
+This is easy to fix by adding <code>role="img"</code> to the logo element. Though in that case the screen reader will start reading it as an image without <code>alt</code> — the text inside becomes inaccessible. To solve this problem, the element needs an <code>aria-label</code> containing the site name.
 
-Итоговая разметка будет выглядеть как-то так:
+The final markup will look something like this:
 
 ```html
 <h1
@@ -102,7 +102,7 @@ links:
 >Название сайта</h1>
 ```
 
-Ещё можно скрывать текст с помощью <code>.visuallyhidden</code> (<a href="https://allyjs.io/tutorials/hiding-elements.html#how-to-hide-elements-visually">про него можно почитать тут</a>). В этом случае для обеспечения доступности не нужны вспомогательные атрибуты, но для текста потребуется дополнительная обёртка с классом <code>.visuallyhidden</code>:
+You can also hide text with <code>.visuallyhidden</code> (<a href="https://allyjs.io/tutorials/hiding-elements.html#how-to-hide-elements-visually">you can read about it here</a>). In that case no auxiliary attributes are needed for accessibility, but the text requires an additional wrapper with the <code>.visuallyhidden</code> class:
 
 ```html
 <h1 class="logo">
@@ -110,147 +110,147 @@ links:
 </h1>
 ```
 
-В этом случае VoiceOver также выделит элемент чёрной рамкой, но по форме и размеру она будет соответствовать скрытому тексту:
+In this case VoiceOver will also highlight the element with a black outline, but its shape and size will match the hidden text:
 
-<img src="../assets/img/articles/ally-for-logo/logo-outline--vis-hidden.png" alt="VoiceOver показывает читаемый элемент">
+<img src="../assets/img/articles/ally-for-logo/logo-outline--vis-hidden.png" alt="VoiceOver highlights the element being read">
 
-VoiceOver во всех браузерах ведёт себя более-менее одинаково: чтобы он корректно воспринимал элемент, ему достаточно задать <code>role</code> с <code>aria-label</code> или использовать <code>.visuallyhidden</code>.
+VoiceOver behaves more or less the same in all browsers: for it to correctly perceive the element, a <code>role</code> with an <code>aria-label</code> is enough, or using <code>.visuallyhidden</code>.
 
-В NVDA на Windows всё не так радужно:
+In NVDA on Windows things aren't so rosy:
 
-* в Chrome вообще не читается элемент с <code>.visuallyhidden</code>
-* в Firefox у элемента с <code>.visuallyhidden</code> обрезается текст
+* in Chrome the element with <code>.visuallyhidden</code> isn't read at all
+* in Firefox the text of the element with <code>.visuallyhidden</code> gets truncated
 
-Интересно, что при этом в IE10 прочитался вообще весь возможный текст, игнорируя даже <code>role="img"</code>.
+Interestingly, IE10 read out all the possible text, ignoring even <code>role="img"</code>.
 
-<h3>Доступность: 3/6</h3>
+<h3>Accessibility: 3/6</h3>
 
 <ul class="ally-list">
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">без стилей</span>
-   <span class="ally-list__text">да</span>
+   <span class="ally-list__text">without styles</span>
+   <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--no">
-   <span class="ally-list__text">без картинок</span>
-   <span class="ally-list__text">нет</span>
+   <span class="ally-list__text">without images</span>
+   <span class="ally-list__text">no</span>
  </li>
  <li class="ally-list__item ally-list__item--bad">
-   <span class="ally-list__text">для печати</span>
-  <span class="ally-list__text">плохо</span>
+   <span class="ally-list__text">for printing</span>
+  <span class="ally-list__text">poor</span>
  </li>
  <li class="ally-list__item ally-list__item--no">
-   <span class="ally-list__text">для копирования</span>
-   <span class="ally-list__text">нет</span>
+   <span class="ally-list__text">for copying</span>
+   <span class="ally-list__text">no</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">для скринридеров</span>
-   <span class="ally-list__text">да</span>
+   <span class="ally-list__text">for screen readers</span>
+   <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-     <span class="ally-list__text">эффекты по наведению</span>
-     <span class="ally-list__text">да</span>
+     <span class="ally-list__text">hover effects</span>
+     <span class="ally-list__text">yes</span>
  </li>
 </ul>
 
-Без картинок на странице вместо логотипа будет пустое место. Сохранить как картинку такой логотип не получится, если только продвинутый пользователь не воспользуется веб-инспектором.
+Without images there will be an empty space on the page instead of the logo. You won't be able to save such a logo as an image, unless an advanced user resorts to the web inspector.
 
-По умолчанию фоны, заданные в стилях, не печатаются. Печать фоновых изображений можно включить в параметрах печати, но если пользователь не сделает это руками, вместо логотипа опять-таки будет пустое место.
+By default, backgrounds set in styles are not printed. Printing background images can be enabled in the print settings, but if the user doesn't do it by hand, there will again be an empty space instead of the logo.
 
-Проблему можно решить разделением стилей для печатной и для экранной версий: для этого можно использовать <code>@media screen</code> (стили только для экранов) и <code>@media print</code> (стили для печатной версии). Таким образом, печать логотипа не будет проблемой, если позаботиться об этом заранее.
+The problem can be solved by separating styles for the print and screen versions: for this you can use <code>@media screen</code> (styles only for screens) and <code>@media print</code> (styles for the print version). That way, printing the logo won't be a problem if you take care of it in advance.
 
-На самом деле, при таком способе не обязательно скрывать текст — он может быть частью логотипа, как это сделано на <a href="http://lea.verou.me/">сайте Лии Веру</a>:
+Actually, with this approach you don't have to hide the text — it can be part of the logo, as is done on <a href="http://lea.verou.me/">Lea Verou's site</a>:
 
-<img src="../assets/img/articles/ally-for-logo/lea-verou-me.png" alt="Лого на сайте Лии Веру">
+<img src="../assets/img/articles/ally-for-logo/lea-verou-me.png" alt="Logo on Lea Verou's site">
 
-и на сайте <a href="http://html5doctor.com/">HTML5 Doctor</a>:
+and on the <a href="http://html5doctor.com/">HTML5 Doctor</a> site:
 
-<img src="../assets/img/articles/ally-for-logo/html5doctor-com.png" alt="Лого на сайте HTML5 Doctor">
+<img src="../assets/img/articles/ally-for-logo/html5doctor-com.png" alt="Logo on the HTML5 Doctor site">
 
-<i>Можно спорить являются ли эти примеры логотипами либо это логотип + заголовок страницы, но по-моему, в данных случаях пары картинка + текст воспринимаются как одно целое, поэтому я бы считала их логотипами.</i>
+<i>One could argue whether these examples are logos or a logo plus page heading, but in my opinion, in these cases the image + text pairs are perceived as a single whole, so I'd consider them logos.</i>
 
-<h3>Доступность: 5/6</h3>
+<h3>Accessibility: 5/6</h3>
 
 <ul class="ally-list">
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">без стилей</span>
-   <span class="ally-list__text">да</span>
+   <span class="ally-list__text">without styles</span>
+   <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">без картинок</span>
-   <span class="ally-list__text">да</span>
+   <span class="ally-list__text">without images</span>
+   <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">для печати</span>
-  <span class="ally-list__text">да</span>
+   <span class="ally-list__text">for printing</span>
+  <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--no">
-   <span class="ally-list__text">для копирования</span>
-   <span class="ally-list__text">нет</span>
+   <span class="ally-list__text">for copying</span>
+   <span class="ally-list__text">no</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">для скринридеров</span>
-   <span class="ally-list__text">да</span>
+   <span class="ally-list__text">for screen readers</span>
+   <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-     <span class="ally-list__text">эффекты по наведению</span>
-     <span class="ally-list__text">да</span>
+     <span class="ally-list__text">hover effects</span>
+     <span class="ally-list__text">yes</span>
  </li>
 </ul>
 
-Логотип всё ещё нельзя скопировать, но с остальным проблем не будет: при отключенных картинках и при печати пользователь хотя бы увидит текст.
+The logo still can't be copied, but the rest is fine: with images disabled and when printing, the user will at least see the text.
 
-Правда, есть один нюанс: если текст белый, при печати страницы с настройками по умолчанию он может получиться белым на белом, так что в этом случае о стилях для печати также нужно позаботиться заранее.
+Though there's one nuance: if the text is white, when the page is printed with default settings it may end up white on white, so in that case you also need to take care of print styles in advance.
 
-<h2 id="img">Логотип картинкой</h2>
+<h2 id="img">Logo as an image</h2>
 
-Пример разметки:
+Markup example:
 
 ```html
 <img src="logo.png" alt="Название сайта">
 ```
 
-<h3>Доступность: 5/6</h3>
+<h3>Accessibility: 5/6</h3>
 
 <ul class="ally-list">
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">без стилей</span>
-   <span class="ally-list__text">да</span>
+   <span class="ally-list__text">without styles</span>
+   <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">без картинок</span>
-   <span class="ally-list__text">да</span>
+   <span class="ally-list__text">without images</span>
+   <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">для печати</span>
-  <span class="ally-list__text">да</span>
+   <span class="ally-list__text">for printing</span>
+  <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">для копирования</span>
-   <span class="ally-list__text">да</span>
+   <span class="ally-list__text">for copying</span>
+   <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">для скринридеров</span>
-   <span class="ally-list__text">да</span>
+   <span class="ally-list__text">for screen readers</span>
+   <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--no">
-     <span class="ally-list__text">эффекты по наведению</span>
-     <span class="ally-list__text">нет</span>
+     <span class="ally-list__text">hover effects</span>
+     <span class="ally-list__text">no</span>
  </li>
 </ul>
 
-В этом варианте при незагрузившихся картинках отобразится содержимое атрибута <code>alt</code>. Возможно, это будет не очень красиво выглядеть, но текст всё ещё можно будет прочитать.
+In this variant, when images fail to load, the content of the <code>alt</code> attribute is displayed. It may not look very pretty, but the text can still be read.
 
-Преимущество этого способа в том, что он не сломается при отсутствии стилей и при печати, логотип легко можно сохранить со страницы, и всё это без каких-либо усилий с вашей стороны.
+The advantage of this approach is that it won't break without styles or when printing, and the logo can easily be saved from the page — all without any effort on your part.
 
-Недостаток — недоступность содержимого для CSS, если нужно менять картинку по наведению или добавить CSS-анимации.
+The drawback is that the content is inaccessible to CSS if you need to swap the image on hover or add CSS animations.
 
-Например, если это SVG-изображение, при инлайновом SVG можно было бы менять цвета заливки или скрывать части логотипа. Если вставить его через <code>img</code>, внутренее содержимое картинки по наведению менять не получится, хотя стилизация с помощью CSS-фильтров или трансформаций самого <code>img</code> всё ещё будет доступна.
+For example, if it's an SVG image, with inline SVG you could change fill colors or hide parts of the logo. If you insert it via <code>img</code>, the image's internal content can't be changed on hover, though styling the <code>img</code> itself with CSS filters or transforms will still be available.
 
-Во всех браузерах читалки корректно читают картинку с <code>alt</code>. NVDA В IE10 прочитала не только <code>alt</code>, но и урлы картинок.
+In all browsers, readers correctly read an image with <code>alt</code>. NVDA in IE10 read not only the <code>alt</code> but also the image URLs.
 
-<h2 id="inline-svg">Инлайновый SVG</h2>
+<h2 id="inline-svg">Inline SVG</h2>
 
-Пример разметки:
+Markup example:
 
 ```html
 <svg width="100" height="50" viewBox="0 0 100 50"
@@ -259,44 +259,44 @@ VoiceOver во всех браузерах ведёт себя более-мен
 </svg>
 ```
 
-<h3>Доступность: 4/6</h3>
+<h3>Accessibility: 4/6</h3>
 
 <ul class="ally-list">
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">без стилей</span>
-   <span class="ally-list__text">да</span>
+   <span class="ally-list__text">without styles</span>
+   <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">без картинок</span>
-   <span class="ally-list__text">да</span>
+   <span class="ally-list__text">without images</span>
+   <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-   <span class="ally-list__text">для печати</span>
-  <span class="ally-list__text">да</span>
+   <span class="ally-list__text">for printing</span>
+  <span class="ally-list__text">yes</span>
  </li>
  <li class="ally-list__item ally-list__item--no">
-   <span class="ally-list__text">для копирования</span>
-   <span class="ally-list__text">нет</span>
+   <span class="ally-list__text">for copying</span>
+   <span class="ally-list__text">no</span>
  </li>
  <li class="ally-list__item ally-list__item--bad">
-   <span class="ally-list__text">для скринридеров</span>
-   <span class="ally-list__text">плохо</span>
+   <span class="ally-list__text">for screen readers</span>
+   <span class="ally-list__text">poor</span>
  </li>
  <li class="ally-list__item ally-list__item--yes">
-     <span class="ally-list__text">эффекты по наведению</span>
-     <span class="ally-list__text">да</span>
+     <span class="ally-list__text">hover effects</span>
+     <span class="ally-list__text">yes</span>
  </li>
 </ul>
 
-Код такого логотипа, скорее всего, будет довольно развесистым и с ним будет не очень удобно работать, но по сравнению с предыдущими способами у него есть несколько преимуществ: логотип не сломается при отвалившихся стилях, на него никак не повлияют выключенные картинки и он не потеряется при печати.
+The code of such a logo will most likely be quite sprawling and not very convenient to work with, but compared to the previous approaches it has several advantages: the logo won't break when styles fail, disabled images won't affect it in any way, and it won't be lost when printing.
 
-Правда, если оформление логотипа задано в CSS, без стилей он может стать просто чёрным, но его всё ещё можно будет прочитать.
+Though if the logo's styling is set in CSS, without styles it may become plain black, but it will still be readable.
 
-Также векторному логотипу обязательно нужно задавать в атрибутах ширину и высоту, даже если вы потом планируете переопределить их стилями. Дело в том, что SVG-изображение, у которого задан <code>viewBox</code>, но не заданы размеры, постарается занять <a href="https://codepen.io/yoksel/full/GNPLoB/">всё доступное пространство</a>. Чтобы без стилей страница не превращалась в парад гигантских иконок, достаточно всем SVG на странице указать ширину и высоту, потом вы легко сможете задать в CSS нужные размеры (приоритет в данному случае будет у CSS).
+Also, a vector logo must have width and height set in the attributes, even if you later plan to override them with styles. The thing is, an SVG image that has a <code>viewBox</code> but no sizes will try to take up <a href="https://codepen.io/yoksel/full/GNPLoB/">all available space</a>. To keep the page from turning into a parade of giant icons without styles, it's enough to specify width and height on every SVG on the page; later you can easily set the sizes you need in CSS (CSS has priority in this case).
 
-С доступностью для скринридеров всё не так просто. В SVG есть специальные элементы для описания содержимого: <code>title</code> и <code>desc</code>, но они читаются не всеми читалками и не во всех браузерах. Например, Firefox и Safari их читают, а Chrome — нет. Я рассматриваю вариант последовательного чтения страницы сверху вниз, поведение по наведению на элемент может отличаться. Также в SVG можно вставить текст, но он прочитается только в Хроме. Если указать в SVG заголовок, описание и текст одновременно, такой элемент может быть прочитан в большинстве браузеров.
+With screen reader accessibility it's not that simple. SVG has special elements for describing content: <code>title</code> and <code>desc</code>, but they aren't read by all readers in all browsers. For example, Firefox and Safari read them, but Chrome doesn't. I'm considering the case of sequentially reading the page top to bottom; behavior on hovering an element may differ. You can also insert text into SVG, but it will only be read in Chrome. If you put a title, a description and text in an SVG at the same time, such an element can be read in most browsers.
 
-Также Леони Уотсон <a href="https://www.sitepoint.com/tips-accessible-svg/">рекомендует</a> добавить атрибут <code>aria-labelledby</code>, указав в нём <code>id</code> заголовка и описания. Получится примерно такое:
+Léonie Watson also <a href="https://www.sitepoint.com/tips-accessible-svg/">recommends</a> adding the <code>aria-labelledby</code> attribute, pointing it at the <code>id</code>s of the title and description. You'll get something like this:
 
 ```html
 <svg width="100" height="50" viewBox="0 0 100 50"
@@ -309,46 +309,46 @@ VoiceOver во всех браузерах ведёт себя более-мен
 </svg>
 ```
 
-Таким образом можно сделать SVG максимально доступным для скринридеров, но следует помнить, что поведение разных скринридеров может отличаться, также как и доступность элементов в разных браузерах и на разных операционных системах. Перед использованием кода на реальных сайтах всё обязательно нужно тестировать.
+This way you can make SVG as accessible as possible for screen readers, but keep in mind that different screen readers may behave differently, as may element accessibility in different browsers and on different operating systems. Everything must be tested before the code is used on real sites.
 
-<h2 id="choice">Что лучше выбрать?</h2>
+<h2 id="choice">What should you choose?</h2>
 
 <ul>
     <li>
-        <b>логотип картинкой</b> — cамый надёжный способ, но он может оказаться неподходящим, если нужна интерактивность;
+        <b>logo as an image</b> — the most reliable approach, but it may be unsuitable if you need interactivity;
     </li>
     <li>
-        <b>логотип фоном</b> позволит добавить эффекты вроде замены картинки по наведению. В случае использования SVG-изображения, код не будет загромождать разметку, доступность можно обеспечить вспомогательными атрибутами, а проблема печати фонов решается стилями для печати;
+        <b>logo as a background</b> lets you add effects like swapping the image on hover. When using an SVG image, the code won't clutter the markup, accessibility can be provided with auxiliary attributes, and the background printing problem is solved with print styles;
     </li>
     <li>
-        <b>инлайновый SVG</b> даёт более широкие возможности взаимодействия с помощью CSS или JS, но код будет загромождать разметку, а о доступности для скринридеров нужно позаботиться отдельно.
+        <b>inline SVG</b> gives wider possibilities for interaction via CSS or JS, but the code will clutter the markup, and screen reader accessibility needs separate care.
     </li>
 </ul>
 
-Вообще если логотип одновременно выполняет обязанности названия сайта, возможно, для надёжности имеет смысл переложить эти обязанности на какой-нибудь заголовок с <code>.visuallyhidden</code>, а логотип оставить только для визуального отображения. Чтобы для скринридеров объявить логотип картинкой (если он не картинка, конечно), ему можно добавить <code>role="img"</code> + <code>aria-label</code>, после этого скринридеры перестают читать содержимое элемента как конент и начинают воспринимать его как изображение.
+Generally, if the logo doubles as the site name, it may make sense for reliability to shift those duties onto some heading with <code>.visuallyhidden</code> and leave the logo for visual display only. To declare the logo an image for screen readers (if it isn't one, of course), you can add <code>role="img"</code> + <code>aria-label</code> to it; after that, screen readers stop reading the element's content as content and start perceiving it as an image.
 
-<h2 id="accessibility-for-search">Доступность для поисковиков</h2>
+<h2 id="accessibility-for-search">Accessibility for search engines</h2>
 
-Изначально это вид доступности я рассматривала вместе с остальными, но потом пришла в выводу, что он никак не зависит от разметки самого логотипа.
+Initially I considered this type of accessibility along with the others, but then came to the conclusion that it doesn't depend on the logo's markup at all.
 
-Как я проверяла: в гугле и яндексе делала запросы вроде «&lt;COMPANY NAME> logo», ожидая увидеть логотипы с сайта компании в начале поисковой выдачи поиска по картинкам. Яндекс почему-то редко находил то, что нужно, зато гугл всегда первыми результатами показывал искомые логотипы, если только мог их найти.
+How I checked: in Google and Yandex I made queries like "&lt;COMPANY NAME> logo", expecting to see logos from the company's site at the top of image search results. Yandex for some reason rarely found the right thing, while Google always showed the wanted logos as the first results, as long as it could find them.
 
-Так вот: на Яндексе, Youtube и Facebook логотип сделан фоном, но при этом логотипы всех этих компаний легко находятся гуглом. У всех трёх компаний есть страницы с логотипами и у всех логотип указан в микроразметке.
+So: on Yandex, Youtube and Facebook the logo is made as a background, yet all these companies' logos are easily found by Google. All three companies have pages with logos, and all of them have the logo specified in structured data.
 
-У Гитхаба логотип сделан инлайновым SVG, но PNG-версия указана в микроразметке, а также есть страница с логотипами. Логотипы Гитхаба гугл находит без проблем.
+GitHub's logo is inline SVG, but a PNG version is specified in structured data, and there's also a page with logos. Google finds GitHub's logos without problems.
 
-По моим наблюдениям, гугл изначально показывает картинку из микроразметки, но если есть страница с логотипами, предпочтёт показывать картинки оттуда. Если логотип сделан картинкой, но на сайте есть микроразметка, содержащая ссылку на логотип, гугл выберет картинку из микроразметки. Например, так сделано на сайте <a href="http://www.zeldman.com/">Джеффри Зельдмана</a>, и гугл показывает картинку из микроразметки, картинка с названием сайта при этом в поиске не обнаруживается.
+From my observations, Google initially shows the image from structured data, but if there's a page with logos, it will prefer to show images from there. If the logo is an image but the site has structured data containing a link to a logo, Google will pick the image from the structured data. For example, that's how it's done on <a href="http://www.zeldman.com/">Jeffrey Zeldman's site</a>, and Google shows the image from the structured data, while the image with the site name is nowhere to be found in search.
 
-Из этого я делаю вывод, что гуглу совершенно всё равно как выглядит разметка вашего логотипа, потому что он никак её не использует. Так что если вы хотите помочь поисковым роботам, укажите ссылку на логотип в микроразметке. Если вы хотите помочь людям, которые будут искать логотип компании, сделайте страницу с логотипами. Разметка логотипа на странице не решает такие задачи.
+From this I conclude that Google doesn't care at all what your logo's markup looks like, because it doesn't use it in any way. So if you want to help search robots, specify a link to the logo in structured data. If you want to help people who will be looking for the company's logo, make a page with logos. The logo's markup on the page doesn't solve these tasks.
 
-В заключение (этой кошмарно длинной статьи) следует сказать, что я ни разу не эксперт по доступности и могла допустить ошибки и неточности. Сообщите мне о них, пожалуйста, если встретятся. Также буду рада дополнениям и хорошим ссылкам по теме.
+In conclusion (of this horrendously long article) I should say that I'm by no means an accessibility expert and may have made mistakes and inaccuracies. Please let me know about them if you come across any. I'd also be glad to hear additions and good links on the topic.
 
-<h2 id="screenreaders">Комментарии по работе с читалками</h2>
+<h2 id="screenreaders">Comments on working with screen readers</h2>
 
 <ul>
-    <li>VoiceOver удобный, показывает читаемый элемент и показывает текст, который читает в данный момент, это очень удобно для тестирования;</li>
-    <li>NVDA свободно распространяется, быстро устанавливается и готов к работе сразу. Читаемый элемент не показывает, но может показывать читаемый текст в отдельном окне;</li>
-    <li>Jaws платный, но есть версия для тестирования, которую нужно перезапускать раз в 40 минут вместе с перезагрузкой компа. У меня очень долго скачивался и ставился, потребовав в процессе несколько раз перегрузить комп. Текущий элемент не подсвечивает, читаемый текст не показывает. Возможно, он всё это умеет, но я в настройках не нашла, и воспользоваться им как следует у меня не получилось.</li>
+    <li>VoiceOver is convenient: it highlights the element being read and shows the text it's currently reading, which is very handy for testing;</li>
+    <li>NVDA is freely distributed, installs quickly and is ready to work right away. It doesn't highlight the element being read, but it can show the read text in a separate window;</li>
+    <li>Jaws is paid, but there's a trial version that must be restarted every 40 minutes along with rebooting the computer. It took me a very long time to download and install, requiring several computer reboots in the process. It doesn't highlight the current element and doesn't show the text being read. Maybe it can do all that, but I didn't find it in the settings and couldn't make proper use of it.</li>
 </ul>
 
-Спасибо <a href="https://twitter.com/ki_zu">Роме Комарову</a> за помощь с текстом.
+Thanks to <a href="https://twitter.com/ki_zu">Roma Komarov</a> for help with the text.
