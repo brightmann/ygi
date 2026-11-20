@@ -1,9 +1,9 @@
 ---
-title: Цветовой круг на CSS
+title: Color wheel in CSS
 
 tags: [experiments]
 
-description: На css-tricks.com опубликовали интересный способ получить цветовой круг с помощью Css. В уроке код для SASS, я попробовала сделать это простым CSS и используя меньшее количество элементов.
+description: css-tricks.com published an interesting way to get a color wheel with CSS. The tutorial has code for SASS; I tried doing it with plain CSS and using fewer elements.
 
 links:
 - href: http://docs.webplatform.org/wiki/svg/tutorials/smarter_svg_filters
@@ -18,13 +18,13 @@ links:
   text: codepen.io/indigane/pen/lbLjs
 ---
 
-На  <a href="http://css-tricks.com/">css-tricks.com</a> опубликовали интересный способ получить цветовой круг с помощью Css: <a href="http://css-tricks.com/conical-gradients-css/">css-tricks.com/conical-gradients-css</a>.
+<a href="http://css-tricks.com/">css-tricks.com</a> published an interesting way to get a color wheel with CSS: <a href="http://css-tricks.com/conical-gradients-css/">css-tricks.com/conical-gradients-css</a>.
 
-В уроке код для SASS, я попробовала сделать это простым CSS и используя меньшее количество элементов:<!--more-->
+The tutorial has code for SASS; I tried doing it with plain CSS and using fewer elements:<!--more-->
 
 <iframe class="live-snippet" style="height: 420px" src="../assets/demo/tsvetovoj-krug-na-css/demo_1.html?output"></iframe>
 
-Размытие в исходном примере сделано с помощью <code>-webkit-filter: blur(1.7em);</code>, следовательно, будет работать только в браузерах на основе Webkit.
-Но можно воспользоваться svg-фильтрами и получить размытие и в других браузерах:
+The blur in the original example is done with <code>-webkit-filter: blur(1.7em);</code>, so it will only work in Webkit-based browsers.
+But you can use SVG filters and get the blur in other browsers too:
 
 <iframe class="live-snippet" style="height: 420px" src="../assets/demo/tsvetovoj-krug-na-css/demo_2.html?output"></iframe>
