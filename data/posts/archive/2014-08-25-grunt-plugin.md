@@ -1,10 +1,10 @@
 ---
-title: Зачем я написала плагин для Grunt
+title: Why I wrote a Grunt plugin
 
 tags: [svg, js]
 
 image: //img-fotki.yandex.ru/get/6820/5091629.a1/0_84c51_1bb64b9_orig
-description: "Исходные данные: три десятка бесцветных SVG-изображений (их цвета задаются потом через CSS) и задача сделать из них PNG+CSS фолбек для старых браузеров."
+description: "Initial data: three dozen colorless SVG images (their colors are set later via CSS) and the task of making a PNG+CSS fallback for old browsers out of them."
 
 links:
 - href: https://www.npmjs.org/package/svg_fallback
@@ -14,50 +14,50 @@ links:
 - href: http://gruntjs.com/
   text: gruntjs.com
 - href: /svg-in-ie8
-  text: Грабли на чистом SVG
+  text: Rakes on pure SVG
 ---
 
-В один прекрасный день перед нами (мной и моими коллегами) встала задача обработать большое количество SVG-иконок.
-Исходные данные: три десятка бесцветных SVG-изображений (их цвета задаются потом через CSS) и задача сделать из них PNG+CSS фолбек для старых браузеров.<!--more-->
+One fine day we (my colleagues and I) faced the task of processing a large number of SVG icons.
+Initial data: three dozen colorless SVG images (their colors are set later via CSS) and the task of making a PNG+CSS fallback for old browsers out of them.<!--more-->
 
-Примерные шаги:
+Approximate steps:
 
-1. Покрасить каждую иконку в нужный цвет.
-2. Для некоторых иконок сделать вариации другого цвета и размера.
-3. Собрать в PNG-спрайт.
-4. Написать CSS.
+1. Color each icon the needed color.
+2. For some icons, make variations of another color and size.
+3. Assemble into a PNG sprite.
+4. Write CSS.
 
-При этом получается две версии картинок: прозрачные исходники и те, что в спрайте. Обе версии всегда должны синхронизироваться между собой, а в идеале — иметь общий CSS c общими размерами и заливками для SVG.
+This produces two versions of the images: transparent originals and the ones in the sprite. Both versions must always be in sync with each other, and ideally have shared CSS with shared sizes and fills for SVG.
 
-Очевидно, что делать сборку руками долго, и процесс нужно автоматизировать, особенно если иметь в виду необходимость синхронизации изменений.
+Obviously, doing the assembly by hand takes a long time, and the process needs to be automated, especially keeping in mind the need to sync changes.
 
-Если опустить второй шаг, первоначальную версию можно собрать из существующих плагинов для гранта. Правда, получается нечто странное, но конструкция работает.
+If you skip the second step, the initial version can be assembled from existing Grunt plugins. Though it comes out somewhat strange, the construction works.
 
-Первая сборка выглядела примерно так:
+The first build looked roughly like this:
 
-1. <a href="https://www.npmjs.org/package/grunt-grunticon">grunt-grunticon</a> — красит и создает PNG-версии.
-2. <a href="https://www.npmjs.org/package/grunt-spritesmith">grunt-spritesmith</a> — генерит спрайт и CSS.
+1. <a href="https://www.npmjs.org/package/grunt-grunticon">grunt-grunticon</a> — colors and creates PNG versions.
+2. <a href="https://www.npmjs.org/package/grunt-spritesmith">grunt-spritesmith</a> — generates the sprite and CSS.
 
-Это позволило быстро получить некий промежуточный результат, но меня не устроил CSS, получаемый на выходе. Например, он не содержал цвета заливки для SVG, и их потребовалось бы задавать где-то отдельно. Кроме того, чтобы получить в спрайте вариации иконок другого цвета и размера, пришлось бы дублировать SVG-исходники, а чтобы <b>grunticon</b> покрасил SVG-файлы в нужные цвета, их все нужно переназвать специальным образом (а перед генерацией спрайта переназвать обратно, ага).
+This let me quickly get some intermediate result, but I wasn't satisfied with the CSS produced at the output. For example, it didn't contain fill colors for SVG, and they'd have to be set separately somewhere. Besides, to get icon variations of another color and size in the sprite, the SVG originals would have to be duplicated, and for <b>grunticon</b> to color the SVG files the needed colors, they all have to be renamed in a special way (and renamed back before the sprite generation, yep).
 
-Таким образом я пришла к необходимости сделать свой плагин для гранта, главными задачами которого были бы покраска изображений и создание вариаций нескольких цветов и размеров. Ну и генерация библиотеки SVG-символов + спрайт + CSS, чтобы два раза не вставать.
+That's how I arrived at the need to make my own Grunt plugin, whose main tasks would be coloring images and creating variations of several colors and sizes. And also generating a library of SVG symbols + sprite + CSS, so as not to get up twice.
 
-Мой плагин: <b><a href="https://www.npmjs.org/package/svg_fallback">svg_fallback</a></b>.
+My plugin: <b><a href="https://www.npmjs.org/package/svg_fallback">svg_fallback</a></b>.
 
-<i>(Да, я знаю что лучше использовать дефис, а ещё в названии не хватает префикса grunt, но это мой первый плагин : )</i>
+<i>(Yes, I know it's better to use a hyphen, and the name is also missing the grunt prefix, but this is my first plugin : )</i>
 
-Что он делает:
+What it does:
 
-1. Берет папку SVG-изображений и делает из неё библиотеку символов.
-2. Берет ещё раз ту же папку, собирает из картинок спрайт и генерит CSS с заливками, размерами и фоновой картинкой для старых браузеров.
+1. Takes a folder of SVG images and makes a symbol library out of it.
+2. Takes that same folder again, assembles a sprite from the images and generates CSS with fills, sizes and a background image for old browsers.
 
-Название папки используется как префикс в классах и названиях файлов. Это нужно, чтобы не возникало конфликтов между разными наборами иконок, если они встретились на одной странице.
+The folder name is used as a prefix in classes and file names. This is needed so that no conflicts arise between different icon sets if they meet on one page.
 
-По окончании работы открывается демо-страница с результатами работы плагина (можно проверить работу и SVG, и PNG).
+When the work finishes, a demo page with the plugin's results opens (you can check both the SVG and the PNG).
 
-Выше описан самый простой сценарий, при котором исходные файлы никак не модифицируются в процессе, но самое интересное начинается, если в папку с исходниками положить файл <b>config.json</b>, в котором описаны желаемые изменения.
+The simplest scenario is described above, where the source files aren't modified in the process, but the most interesting part begins if you put a <b>config.json</b> file with the desired changes into the folder with the sources.
 
-Например, можно задать цвет, который получат все иконки по умолчанию:
+For example, you can set the color all icons will get by default:
 
 ```javascript
 {
@@ -65,9 +65,9 @@ links:
 }
 ```
 
-Сейчас плагин умеет красить только прозрачные иконки.
+Right now the plugin can only color transparent icons.
 
-Другая задача: исходные SVG имеют не тот размер, который планируется использовать. Нужные размеры можно задать таким образом:
+Another task: the source SVGs are not the size you plan to use. The needed sizes can be set like this:
 
 ```javascript
 {
@@ -82,9 +82,9 @@ links:
 }
 ```
 
-Сами SVG на странице могут быть любого размера, но для генерации PNG+CSS нужно привести исходники к конкретным размерам, которыми потом планируется пользоваться.
+The SVGs themselves on the page can be any size, but for generating PNG+CSS the sources must be brought to the concrete sizes you plan to use later.
 
-А вот так можно сделать несколько вариаций одного файла:
+And here's how you can make several variations of one file:
 
 ```javascript
 {
@@ -110,13 +110,13 @@ links:
 }
 ```
 
-В этом случае на выходе будет, например, исходный файл <b>heart.svg</b> и его вариации:
+In this case the output will be, for example, the source file <b>heart.svg</b> and its variations:
 
 <pre><b>heart--w50.svg
 heart--green.svg
 heart--w150--steelblue.svg</b></pre>
 
-Можно задавать конфигурацию по частям, а можно написать всё сразу:
+You can set the configuration in parts, or write everything at once:
 
 ```javascript
 {
@@ -130,17 +130,17 @@ heart--w150--steelblue.svg</b></pre>
 }
 ```
 
-Результатом работы плагина будут три файла, названные по имени родительской папки. Например, содержимое папки <b>myicons/</b> превратится в:
+The result of the plugin's work will be three files named after the parent folder. For example, the contents of the <b>myicons/</b> folder will turn into:
 
-- <b>myicons.svg</b> — библиотека символов
-- <b>myicons.png</b> — спрайт
-- <b>myicons.css</b> — CSS с размерами иконок и заливкой для SVG.
+- <b>myicons.svg</b> — symbol library
+- <b>myicons.png</b> — sprite
+- <b>myicons.css</b> — CSS with icon sizes and a fill for SVG.
 
-Для использования получившихся иконок на странице нужно:
+To use the resulting icons on a page you need to:
 
-1. Подключить на страницу <b>myicons.css</b>.
-2. В начале документа (после открывающего <code>&lt;body></code>) разместить библиотеку иконок (содержимое файла <b>myicons.svg</b>).
-3. Отдельные иконки на страницу вставляются вот таким образом:
+1. Include <b>myicons.css</b> on the page.
+2. Place the icon library (the contents of the <b>myicons.svg</b> file) at the beginning of the document (after the opening <code>&lt;body></code>).
+3. Individual icons are inserted into the page like this:
 
  ```html
 <svg xmlns="http://www.w3.org/2000/svg" class="myicons myicons--heart">
@@ -148,11 +148,11 @@ heart--w150--steelblue.svg</b></pre>
 </svg>
 ```
 
-<b>Upd:</b> если в SVG опустить закрывающие теги (написать <code>&lt;use/></code>, a не <code>&lt;use>...&lt;/use></code>), в старых браузерах перестаёт работать HTML5-разметка.
-Всем SVG-тегам на странице обязательно нужен закрывающий парный тег.
-За уточнение спасибо <a href="https://twitter.com/mista_k">mista_k</a>.
+<b>Upd:</b> if you omit the closing tags in SVG (write <code>&lt;use/></code> instead of <code>&lt;use>...&lt;/use></code>), HTML5 markup stops working in old browsers.
+All SVG tags on the page must have a paired closing tag.
+Thanks to <a href="https://twitter.com/mista_k">mista_k</a> for the clarification.
 
-Отображение иконки в старых браузерах обеспечивается вот таким кодом:
+Displaying the icon in old browsers is provided by this code:
 
 
 ```css
@@ -161,20 +161,18 @@ heart--w150--steelblue.svg</b></pre>
 }
 ```
 
-Подразумевается, что на странице есть класс <code>.ie8</code>, по которому можно определить нужную версию IE.
+It assumes the page has an <code>.ie8</code> class by which the needed IE version can be detected.
 
-Чтобы лучше понять как всё работает, можете установить пакет и заглянуть в папку <b>svg_fallback/test/</b>.
+To better understand how it all works, you can install the package and look into the <b>svg_fallback/test/</b> folder.
 
-В процессе написания этого плагина было принято решение вынести код, отвечающий за изменение файлов, в отдельный пакет: <a href="https://www.npmjs.org/package/svg-modify">svg-modify</a>, который, при желании, можно использовать в виде плагина для гранта: <a href="https://www.npmjs.org/package/grunt-svg-modify">grunt-svg-modify</a>.
+While writing this plugin, a decision was made to move the code responsible for modifying files into a separate package: <a href="https://www.npmjs.org/package/svg-modify">svg-modify</a>, which, if desired, can be used as a Grunt plugin: <a href="https://www.npmjs.org/package/grunt-svg-modify">grunt-svg-modify</a>.
 
-Теперь у меня есть целых два плагина : ) Правда, они решают довольно специфические задачи и врядли найдут широкое применение, но если вам нужно нужно проделать с SVG-иконками что-то подобное, они могут сэкономить вам время.
+Now I have a whole two plugins : ) True, they solve rather specific tasks and are unlikely to find wide application, but if you need to do something similar with SVG icons, they can save you time.
 
-Если вы захотите их использовать, следует иметь в виду, что <a href="https://www.npmjs.org/package/svg-modify">svg-modify</a>, скорее всего, ещё будет дорабатываться (хочется более разумной работы с цветами), да и вообще я всё ещё изредка нахожу в плагинах баги разного размера, так что их стабильную работу обещать пока не могу (хотя и постараюсь).
+If you want to use them, keep in mind that <a href="https://www.npmjs.org/package/svg-modify">svg-modify</a> will most likely still be refined (I'd like more sensible color handling), and in general I still occasionally find bugs of various sizes in the plugins, so I can't promise their stable work yet (though I'll try).
 
-Кроме того, <a href="https://www.npmjs.org/package/svg_fallback">svg_fallback</a> писался для конкретной задачи, и, возможно, для ваших целей вам захочется изменить именование файлов или формат вывода CSS. В плагине нет таких опций, но вы можете форкнуть его и переписать на свой вкус.
+Also, <a href="https://www.npmjs.org/package/svg_fallback">svg_fallback</a> was written for a specific task, and for your purposes you may want to change the file naming or the CSS output format. The plugin has no such options, but you can fork it and rewrite it to your taste.
 
-Также следует уточнить, что мои познания в Js оставляют желать лучшего, и мой код может показаться вам странным. Кстати, буду признательна за советы как его улучшить.
+It should also be noted that my knowledge of JS leaves much to be desired, and my code may seem strange to you. By the way, I'd be grateful for advice on how to improve it.
 
-<b>Upd:</b> за помощь и ценные советы спасибо <a href="https://twitter.com/mista_k">mista_k</a> и <a href="https://twitter.com/alexeyten">alexeyten</a>.
-
-
+<b>Upd:</b> thanks to <a href="https://twitter.com/mista_k">mista_k</a> and <a href="https://twitter.com/alexeyten">alexeyten</a> for help and valuable advice.
