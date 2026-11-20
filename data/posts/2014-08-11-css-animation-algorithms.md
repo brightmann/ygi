@@ -1,38 +1,38 @@
 ---
-title: CSS-анимации для ротации изображений
+title: CSS Animations for Image Rotation
 
 tags: [animation]
 
 image: //img-fotki.yandex.ru/get/6737/5091629.a1/0_848b9_3d07c8ba_orig
-description: 'В процессе создания демо с анимированными SVG-масками, мне пришлось как следует разобраться с алгоритмами CSS-анимаций. В таких демо используется две анимации: одна для маски, другая для последовательного показа изображений. Меня интересовали варианты алгоритмов для второй анимации.'
+description: 'In the process of creating a demo with animated SVG masks, I had to really understand the algorithms for CSS animations. These demos use two animations: one for the mask, the other for showing the images sequentially. I was interested in the algorithm options for the second animation.'
 
 links:
 - href: /css-animation/
   text: Css Animation
 - href: /animated-svg-mask/
-  text: Анимированные SVG-маски
+  text: Animated SVG masks
 ---
 
-В процессе экспериментов с <a href="/animated-svg-mask/">анимированными SVG-масками</a>, мне пришлось как следует разобраться с алгоритмами CSS-анимаций. <!--more-->
+In the process of experimenting with <a href="/animated-svg-mask/">animated SVG masks</a>, I had to really understand the CSS animation algorithms. <!--more-->
 
-Например, в <a href="https://codepen.io/yoksel/pen/eIxmr">этом демо</a> используется две анимации: одна для маски, вторая — для смены изображений. Сейчас речь пойдет о второй (и её вариантах).
+For example, <a href="https://codepen.io/yoksel/pen/eIxmr">this demo</a> uses two animations: one for the mask, the other for changing images. Now we will talk about the second (and its variants).
 
-Такая анимация нужна, чтобы последовательно показывать и скрывать картинки, в то время, когда эффект их появления обеспечивается другой анимацией.
+Such animation is needed to sequentially show and hide pictures, while the effect of their appearance is provided by another animation.
 
-При использовании HTML-элементов это можно было бы сделать одной анимацией, но при использовании SVG-масок для всех элементов ротации используется одна маска, и ей нельзя задать задержку воспроизведения в зависимости от позиции элемента, к которому она применилась. Есть два решения: создавать для каждого шага по маске с нужной задержкой воспроизведения или просто скрывать элементы, которые не нужны в данный момент. Я выбрала второй вариант.
+With HTML elements this could be done with a single animation, but with SVG masks the same mask is used for all rotation elements and cannot be set to delay playback based on the position of the element it is applied to. There are two solutions: create a mask for each step with the required playback delay, or simply hide elements that are not needed at the moment. I chose the second option.
 
-Мне не хотелось использовать JS, потому что простую анимацию можно сделать средствами CSS. Кроме того, использование переменных в SCSS позволяет легко синхронизировать между собой анимации масок и смены изображений.
+I didn't want to use JS because simple animation can be done using CSS. In addition, the use of variables in SCSS makes it easy to synchronize the animations of masks and image changes with each other.
 
-Итак, <b>первый вариант анимации</b>.
+So, <b>the first version of the animation</b>.
 
-<b>Задача:</b> сделать алгоритм последовательной смены произвольного количества изображений. Одно изображение должно сменять другое без плавных переходов. В один момент времени показывается одна картинка.
+<b>Task:</b> create an algorithm for sequentially changing an arbitrary number of images. One image should replace another without smooth transitions. One picture is shown at a time.
 
-Вот как это должно работать:
+Here's how it should work:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="kDpsG" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/kDpsG/'>kDpsG</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Делаем разметку галереи:
+Let's mark up the gallery:
 
 ```html
 <ul class="rotation">
@@ -43,9 +43,9 @@ links:
 </ul>
 ```
 
-В демо я добавила картинки фоном, но внутри элементов галереи может быть любое содержимое. Для демонстрации SVG-масок структура галереи переносится, соответственно, в SVG.
+In the demo I added pictures as a background, but inside the gallery elements there can be any content. To demonstrate SVG masks, the gallery structure is transferred, accordingly, to SVG.
 
-Добавляем SCSS:
+Add SCSS:
 
 ```css
 $rotation-height: 270px;
@@ -62,7 +62,7 @@ $rotation-height: 270px;
 }
 ```
 
-Теперь самое интересное: анимация. Создаем конфиг:
+Now comes the fun part: the animation. Create the config:
 
 ```css
 /* количество элементов в галерее */
@@ -75,7 +75,7 @@ $step: $duration/$max;
 $step-perc: percentage(1/$max);
 ```
 
-Нужно понимать как работает последний параметр. Для всех элементов задается одна и та же анимация: картинка показывается на короткий промежуток времени, и затем скрывается. Переменная <code>$step-perc</code> используется в коде анимации, и определяет как долго будет отображаться каждая картинка:
+You need to understand how the last parameter works. The same animation is set for all elements: the picture is shown for a short period of time and then hidden. The <code>$step-perc</code> variable is used in the animation code and determines how long each image will be displayed:
 
 ```css
 @keyframes hide {
@@ -88,9 +88,9 @@ $step-perc: percentage(1/$max);
 }
 ```
 
-Например, в галерее из четырех элементов каждая картинка будет показываться 25% времени, а в остальное время будет скрыта.
+For example, in a gallery of four items, each image will be shown 25% of the time and hidden the rest of the time.
 
-Задаем анимацию элементам галереи:
+Set animation for gallery elements:
 
 ```css
 .rotation__item {
@@ -99,7 +99,7 @@ $step-perc: percentage(1/$max);
 }
 ```
 
-Элементы исчезают и появляются одновременно, нужно добавить каждому из них задержку воспроизведения:
+Elements disappear and appear at the same time, you need to add a playback delay to each of them:
 
 ```css
 .rotation__item {
@@ -122,9 +122,9 @@ $step-perc: percentage(1/$max);
 }
 ```
 
-Первому элементу задержка не нужна, для остальных рассчитываем задержку, умножая длительность одного шага на позицию элемента минус 1. То есть второй элемент начнет воспроизводиться на шаг позже, третий — на два шага позже, и так далее.
+The first element does not need a delay, for the rest we calculate the delay by multiplying the duration of one step by the position of the element minus 1. That is, the second element will start playing one step later, the third - two steps later, and so on.
 
-Очевидно, что <code>animation-delay</code> будет удобнее рассчитывать в цикле:
+Obviously, it will be more convenient to calculate <code>animation-delay</code> in a loop:
 
 ```css
 .rotation__item {
@@ -140,37 +140,37 @@ $step-perc: percentage(1/$max);
   }
 ```
 
-Кроме того, так не придется каждый раз дописывать или убирать задержку шагов, если их число изменится.
+In addition, this way you won’t have to add or remove the delay of steps every time if their number changes.
 
-Вот что получается в итоге:
+This is what we end up with:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="hzlnj" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/hzlnj/'>hzlnj</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Можно отредактировать заготовку, сделав простую ротацию:
+You can edit the workpiece by doing a simple rotation:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="kpoiq" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/kpoiq/'>kpoiq</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-А можно добавить спецэффектов с помощью анимированных SVG-масок, например:
+You can also add special effects using animated SVG masks, for example:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="kJwCb" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/kJwCb/'>kJwCb</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Для этого демо структура галереи была перенесена в SVG.
+For this demo, the gallery structure was transferred to SVG.
 
-<b>Второй вариант анимации.</b>
+<b>Second animation option.</b>
 
-<b>Задача:</b> картинки появляются по очереди от нижних слоев к верхним, при этом одновременно видны две картинки: текущая и предыдущая под ней, это позволит используя маски сделать "перетекание" из одной картинки в другую.
+<b>Task:</b> pictures appear in turn from the lower layers to the upper ones, while two pictures are visible at the same time: the current one and the previous one below it, this will allow using masks to “flow” from one picture to another.
 
-Как это должно работать:
+How it should work:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="KrqHC" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/KrqHC/'>KrqHC</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Анимация делается по тем же принципам, что и предыдущая, но имеет свои особенности.
+Animation is done according to the same principles as the previous one, but has its own characteristics.
 
-Во-первых, под самым первым слоем тоже должно что-то быть, для этого немного меняем разметку и добавляем "дно":
+Firstly, there should also be something under the very first layer, for this we change the marking a little and add a “bottom”:
 
 ```html
 <dl class="rotation">
@@ -182,9 +182,9 @@ $step-perc: percentage(1/$max);
 </dl>
 ```
 
-Оно не участвует в ротации, а просто всегда там лежит. Изображение в этом слое должно быть таким же как в последнем слое, это позволит зациклить анимацию.
+It does not participate in rotation, but simply always lies there. The image in this layer should be the same as in the last layer, this will allow the animation to loop.
 
-Во-вторых, чтобы каждый слой успевал послужить подложкой для следующего, удлиняем время показа каждого слоя, теперь оно равно двум шагам:
+Secondly, so that each layer has time to serve as a substrate for the next one, we lengthen the display time of each layer, now it is equal to two steps:
 
 ```css
 /* было */
@@ -193,24 +193,24 @@ $step-perc: percentage(1/$max);
 $step-perc: percentage(1/$max*2);
 ```
 
-В течение первого шага слой появляется сам, а в течение второго служит фоном для следующего слоя.
+During the first step, the layer appears itself, and during the second it serves as a background for the next layer.
 
-Во-третьих, самому верхнему слою потребуется своя отдельная анимация.
+Thirdly, the topmost layer will need its own separate animation.
 
-Почему?
+Why?
 
-Как уже говорилось выше, в этом варианте анимации каждый слой показывается по времени два шага.
+As mentioned above, in this animation option, each layer is shown in two time steps.
 
-Последний слой изначально тоже показывается два шага, но он самый верхний, и не может служить подложкой другим слоям (над ним ничего нет). Следовательно, его нужно показывать по времени один шаг, а затем скрыть. При этом самый нижний слой является копией верхнего, так что если по прошествии одного шага скрыть самый верхний слой, под ним покажется точно такой же нижний, и анимация аккуратно зациклится.
+The last layer is also initially shown in two steps, but it is the topmost one and cannot serve as a base for other layers (there is nothing above it). Therefore, it needs to be shown one time step and then hidden. In this case, the bottommost layer is a copy of the top one, so if after one step you hide the topmost layer, the exact same bottom one will appear underneath it, and the animation will neatly loop.
 
-Делаем переменную с половинной длительностью анимации:
+Let's make a variable with half the animation duration:
 
 
 ```css
 $half-step-perc: percentage(1/$max);
 ```
 
-Дублируем анимацию с новой длительностью:
+Duplicate the animation with a new duration:
 
 ```css
 @keyframes hide-half-step {
@@ -223,7 +223,7 @@ $half-step-perc: percentage(1/$max);
 }
 ```
 
-Переопределяем анимацию для последнего шага:
+We redefine the animation for the last step:
 
 ```css
 .rotation__item {
@@ -244,16 +244,16 @@ $half-step-perc: percentage(1/$max);
 }
 ```
 
-Визуально результат практически не отличается от предыдущего варианта:
+Visually, the result is practically no different from the previous version:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="rJogH" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/rJogH/'>rJogH</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Но если к элементам галереи применить SVG-маски, получается интересное:
+But if you apply SVG masks to the gallery elements, you get something interesting:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="zcmki" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/zcmki/'>Simple animated mask in SVG (rhomb)</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Синхронизация слоёных анимаций не самая простая задача, но результат того стоит.
+Synchronizing layered animations is not the easiest task, but the result is worth it.
 
-Уверена, что на основе таких анимаций можно придумать интересные визуальные эффекты, а понимание принципа их работы может сэкономить временя при необходимости сделать что-то подобное.
+I am sure that based on such animations you can come up with interesting visual effects, and understanding how they work can save time if you need to do something similar.
