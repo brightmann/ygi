@@ -1,20 +1,20 @@
 ---
-title: CSS-паттерны
+title: CSS patterns
 
 tags: [gradients, experiments, patterns, draw-on-css]
 
 image: //img-fotki.yandex.ru/get/9833/5091629.9b/0_7ef0c_63d54a5d_L.png
-description: Возможности управления фонами через CSS в cочетании с градиентами дают совершенно невероятные возможности. Градиентами можно нарисовать почти всё что угодно от простых клеточек, полосочек и кружочков до достаточно сложных узоров. Играться можно до бесконечности.
+description: The ability to control backgrounds through CSS, combined with gradients, gives absolutely incredible possibilities. You can use gradients to draw almost anything from simple cells, stripes and circles to quite complex patterns. You can play endlessly.
 ---
 
-Возможности управления фонами через CSS в cочетании с градиентами дают совершенно невероятные возможности. Градиентами можно нарисовать почти всё что угодно от простых клеточек, полосочек и кружочков до достаточно сложных узоров. Играться можно до бесконечности.
+The ability to control backgrounds through CSS, combined with gradients, gives absolutely incredible possibilities. You can use gradients to draw almost anything from simple cells, stripes and circles to quite complex patterns. You can play endlessly.
 
 <!--more-->
 
-Общий принцип такой: создается градиент, который нужно повторить. По умолчанию он займет всю доступную площадь, но если задать размер фону — получится картинка желаемого размера, которая замостит собой весь фон элемента.
-Если значения градиента задавать в процентах или <code>em</code>, потом можно будет легко управлять размером узора редактируя размер шрифта и/или <code>background-size</code>.
+The general principle is this: a gradient is created that needs to be repeated. By default, it will occupy the entire available area, but if you set the size of the background, you will get an image of the desired size that will cover the entire background of the element.
+If you set the gradient values ​​as percentages or <code>em</code>, then you can easily control the size of the pattern by editing the font size and/or <code>background-size</code>.
 
-Например, можно сделать простые полоски:
+For example, you can make simple stripes:
 
 ```css
 background: linear-gradient(
@@ -28,67 +28,67 @@ background-color: black;
 <p data-height="300" data-theme-id="0" data-slug-hash="lcbAa" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/lcbAa'>lcbAa</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Белые полоски чередуются с прозрачностью, и могут быть положены на любой фон. Управляя границей между цветом и прозрачностью можно регулировать ширину полос.
+White stripes alternate with transparency and can be placed on any background. By controlling the boundary between color and transparency, you can adjust the width of the stripes.
 
-Если вместо белого цвета задать полупрозрачный белый или черный, можно получить универсальный паттерн, который будет хорошо выглядеть на любом фоне:
+If you specify translucent white or black instead of white, you can get a universal pattern that will look good on any background:
 
 <p data-height="300" data-theme-id="0" data-slug-hash="IeDAp" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/IeDAp'>IeDAp</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Используя два градиента с цветными полупрозрачными линиями можно сделать клетчатую скатерть:
+Using two gradients with colored translucent lines you can make a checkered tablecloth:
 
 <p data-height="320" data-theme-id="0" data-slug-hash="qclad" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/qclad'>Diagonal stripes</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-С помощью разноцветных полосок можно делать небольшие декоративные элементы:
+Using multi-colored stripes you can make small decorative elements:
 
 <p data-height="300" data-theme-id="0" data-slug-hash="zfcjm" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/zfcjm'>zfcjm</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Если нужен полосатый фон посложнее, имеет смысл обратить внимание на принцип цикады:
+If you need a more complex striped background, it makes sense to pay attention to the cicada principle:
 
 - <a href="http://www.sitepoint.com/the-cicada-principle-and-why-it-matters-to-web-designers/">The Cicada Principle and Why It Matters to Web Designers</a>
-- <a href="http://habrahabr.ru/post/117160/">Принцип цикады и почему он важен для веб-дизайнеров</a> (перевод предыдущей статьи)
-- <a href="http://habrahabr.ru/post/148639/">Принцип цикады на чистом CSS</a>
+- <a href="http://habrahabr.ru/post/117160/">The cicada principle and why it is important for web designers</a> (translation of the previous article)
+- <a href="http://habrahabr.ru/post/148639/">The cicada principle in pure CSS</a>
 
-Принцип заключается в использовании нескольких фонов разного размера. Это означает, что стыковаться они тоже будут в разных местах, таким образом на фоне невозможно будет найти повторяющиеся участки или места стыковки. По-моему, гениально придумано.
+The principle is to use several backgrounds of different sizes. This means that they will also dock in different places, so it will be impossible to find repeating areas or docking points in the background. In my opinion, it was a brilliant idea.
 
-Фоны накладываются друг на друга от самого крупного (сверху) до самого мелкого (в самой глубине). В итоге стыки самого мелкого и повторяющегося будут перекрыты вышележащими слоями.
+Backgrounds overlap each other from the largest (at the top) to the smallest (at the very bottom). As a result, the joints of the smallest and most repetitive will be covered by the overlying layers.
 
-Я сделала 4 полосатых фона разного цвета и задала им разный размер:
+I made 4 striped backgrounds of different colors and gave them different sizes:
 
 ```css
 background-size: 7em 7em, 5em 5em, 3em 3em, 1em 1em;
 ```
 
-Это простые числа, то есть те, которые не делятся ни на что кроме себя.
+These are prime numbers, that is, those that are not divisible by anything other than themselves.
 
-Вот как выглядит результат (<a href="http://cdpn.io/khprw">ссылка на полный размер</a>):
+This is what the result looks like (<a href="http://cdpn.io/khprw">link to full size</a>):
 
 <p data-height="350" data-theme-id="0" data-slug-hash="khprw" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/khprw'>khprw</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Похоже на волшебство : )
+Looks like magic :)
 
-Также из полосатых градиентов легко получить, например, тетрадный лист в линейку:
+It’s also easy to get, for example, a lined notebook sheet from striped gradients:
 
 <p data-height="350" data-theme-id="0" data-slug-hash="jBobD" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/jBobD'>jBobD</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Или в клетку:
+Or in a cage:
 
 <p data-height="350" data-theme-id="0" data-slug-hash="zkImJ" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/zkImJ'>zkImJ</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-С простыми линиями всё довольно понятно, но что если нужен паттерн из косых линий?
+With simple lines everything is pretty clear, but what if you need a pattern of oblique lines?
 
-<code>repeating-linear-gradient</code> должен бы помочь, но на практике градиент ведет себя <a href="http://cdpn.io/IBCJD">как попало</a> (порастягивайте окно браузера).
+<code>repeating-linear-gradient</code> should help, but in practice the gradient behaves <a href="http://cdpn.io/IBCJD">at random</a> (stretch the browser window).
 
-<b>Upd. от 3.07.20:</b> в данный момент повторяющиеся градиенты корректно отрисоваются большинством браузеров.
+<b>Upd. from 07/03/20:</b>At the moment, repeating gradients are drawn correctly in most browsers.
 
-Попробуем сделать простыми полосками, повернутыми на 45&deg;.
+Let's try to make it with simple stripes rotated by 45°.
 
-Примерный код:
+Example code:
 
 ```css
 background: linear-gradient(-45deg,
@@ -98,14 +98,14 @@ background: linear-gradient(-45deg,
 );
 ```
 
-Результат:
+Result:
 
 <p data-height="320" data-theme-id="0" data-slug-hash="uBdhC" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/uBdhC'>uBdhC</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-В примере хорошо видно, что паттерн состоит из повторяющихся квадратиков, градиент идет из нижнего левого угла в верхний правый, но в противоположных углах ничего нет, и линия получается прерывистой.
+In the example you can clearly see that the pattern consists of repeating squares, the gradient goes from the lower left corner to the upper right, but there is nothing in the opposite corners, and the line turns out to be broken.
 
-Чтобы закрыть пробелы, добавим ещё один градиент:
+To close the gaps, let's add another gradient:
 
 
 ```css
@@ -120,21 +120,21 @@ background: linear-gradient(-45deg,
       );
 ```
 
-Я сделала уголок ярким, чтобы было видно куда он попал:
+I made the corner bright so that you could see where it went:
 
 <p data-height="320" data-theme-id="0" data-slug-hash="jmeEd" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/jmeEd'>Diagonal stripes</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Красим уголок в нужный цвет и получаем аккуратные косые линии:
+We paint the corner in the desired color and get neat oblique lines:
 
 <p data-height="320" data-theme-id="0" data-slug-hash="ExBcC" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/ExBcC'>Diagonal stripes</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Правда, пришлось немного подрегулировать точки остановки цветов в первом градиенте (<code>50%</code> &rarr; <code>49.9%</code>), но зато теперь стыков вообще не видно.
+True, I had to slightly adjust the stopping points of the colors in the first gradient (<code>50%</code> → <code>49.9%</code>), but now the joints are not visible at all.
 
-Если вместо угла указать направление ключевыми словами, например <code>to left top</code>, это позволит изменять угол градиента через изменение его размера, потому что в этом случае градиент будет всегда направлен из одного угла в другой независимо от <code>background-size</code>.
+If instead of an angle you specify a direction with keywords, for example <code>to left top</code>, this will allow you to change the angle of the gradient by changing its size, because in this case the gradient will always be directed from one corner to another regardless of <code>background-size</code>.
 
-Примерный код:
+Example code:
 
 
 ```css
@@ -150,16 +150,16 @@ background: linear-gradient(to left top,
   background-size: 2em 6em;
 ```
 
-В последней строчке задан градиент прямоугольной формы. Благодаря направлению и значениям остановок в процентах можно сколько угодно менять его размеры — изменится угол наклона линий, но сам паттерн от этого не пострадает:
+The last line specifies a rectangular gradient. Thanks to the direction and percentage values ​​of the stops, you can change its size as much as you like - the angle of the lines will change, but the pattern itself will not suffer from this:
 
 <p data-height="350" data-theme-id="0" data-slug-hash="qlCjz" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/qlCjz'>Diagonal stripes</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-В некоторых случаях края линий становятся зубчатыми, причем их отрисовка зависит от браузера: Chrome справляется лучше, в Firefox видны ступеньки.
-Чтобы сделать край плавным, можно сделать стык между цветами не четкий, а размытый, шириной 1-2%.
-Также следует помнить о проблеме с прозрачными цветами в Firefox — это решается использованием нужного оттенка с полной прозрачностью.
+In some cases, the edges of the lines become jagged, and their drawing depends on the browser: Chrome copes better, in Firefox steps are visible.
+To make the edge smooth, you can make the junction between the colors not clear, but blurry, 1-2% wide.
+You should also be aware of the problem with transparent colors in Firefox - this can be solved by using the desired shade with full transparency.
 
-Экспериментируя с линиями можно получить другие интересные узоры:
+By experimenting with lines you can get other interesting patterns:
 
 <p data-height="320" data-theme-id="0" data-slug-hash="brosh" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/brosh'>Diagonal stripes</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
@@ -182,20 +182,20 @@ background: linear-gradient(to left top,
 <p data-height="320" data-theme-id="0" data-slug-hash="Etomx" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/Etomx'>Corners</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Впрочем, я увлеклась. С радиальными градиентами тоже можно делать интересное. Вот, например, обычный горох:
+However, I got carried away. You can also do interesting things with radial gradients. Here, for example, are ordinary peas:
 
 <p data-height="320" data-theme-id="0" data-slug-hash="eolqw" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/eolqw'>Corners</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Чтобы граница градиента была ровной, без зубчиков, границу прозрачности нужно делать чуть дальше, чем точка остановки цвета.
-Вебкиты, как обычно, лучше справляются со сглаживанием.
+In order for the gradient border to be smooth, without jagged edges, the transparency border should be made a little further than the color stopping point.
+Webkit, as usual, does a better job of anti-aliasing.
 
-Вот ещё пример:
+Here's another example:
 
 <p data-height="320" data-theme-id="0" data-slug-hash="muxnF" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/muxnF'>Circles and dottes</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Принцип создания узоров тот же, что и для линейных градиентов. Причем сочетая линейные и радиальные градиенты можно получить из простых геометрических форм более сложные:
+The principle of creating patterns is the same as for linear gradients. Moreover, by combining linear and radial gradients, you can get more complex ones from simple geometric shapes:
 
 <p data-height="320" data-theme-id="0" data-slug-hash="jufvg" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/jufvg'>Hearts</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
@@ -203,7 +203,7 @@ background: linear-gradient(to left top,
 <p data-height="320" data-theme-id="0" data-slug-hash="oeksa" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/oeksa'>Drops</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Можно делать довольно сложные узоры, для этого лучше всего использовать возможности препроцессоров:
+You can make quite complex patterns; for this it is best to use the capabilities of preprocessors:
 
 <p data-height="320" data-theme-id="0" data-slug-hash="DiIBm" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/DiIBm'>Waves</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
@@ -211,9 +211,9 @@ background: linear-gradient(to left top,
 <p data-height="320" data-theme-id="0" data-slug-hash="ijxKy" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/ijxKy'>Circles</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Минусы таких паттернов обычно в длине и сложности кода, а также в недостаточной поддержке старыми браузерами. Для них может потребоваться картинка.
-Плюсы — градиенты ничего не весят, их не надо запрашивать с сервера, и можно легко менять цвета и размер узора.
+The disadvantages of such patterns are usually the length and complexity of the code, as well as insufficient support by older browsers. They may require a picture.
+Pros: Gradients weigh nothing, you don’t need to request them from the server, and you can easily change the colors and size of the pattern.
 
-Больше паттернов можно увидеть во вдохновляющей галерее от Lea Verou: <a href="http://lea.verou.me/css3patterns/">lea.verou.me/css3patterns/</a>.
+More patterns can be seen in the inspiring gallery from Lea Verou: <a href="http://lea.verou.me/css3patterns/">lea.verou.me/css3patterns/</a>.
 
-Урок по паттернам от Lea Verou: <a href="http://24ways.org/2011/css3-patterns-explained/">CSS3 Patterns, Explained</a>
+Patterns tutorial from Lea Verou: <a href="http://24ways.org/2011/css3-patterns-explained/">CSS3 Patterns, Explained</a>
