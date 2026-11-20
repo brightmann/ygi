@@ -1,12 +1,12 @@
 ---
-title: Гипноштуки
+title: Hypno-things
 
 tags: [experiments]
 ---
 
-Пробую сочетания анимации, теней и рамок.
+I'm trying out combinations of animations, shadows, and borders.
 
-<i>В сафари примеры отображаются некорректно, для просмотра воспользуйтесь другими браузерами</i>.<!--more-->
+<i>Examples are displayed incorrectly in Safari. Please use other browsers to view them</i>.<!--more-->
 
 <iframe class="live-snippet" style="height: 380px" src="../assets/demo/gipnoshtuki/demo_1.html?output"></iframe>
 
