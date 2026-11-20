@@ -152,7 +152,16 @@ export async function getArticleBySlug({
       }
     }
 
-    if (articlesData.date) {
+    // A date in the frontmatter (optionally with time) wins over the
+    // YYYY-MM-DD date derived from the file name.
+    const frontmatterDate = dataTyped['date'];
+
+    if (frontmatterDate) {
+      filteredFields.date =
+        frontmatterDate instanceof Date
+          ? frontmatterDate.toISOString()
+          : String(frontmatterDate);
+    } else if (articlesData.date) {
       filteredFields.date = articlesData.date;
     }
 
