@@ -14,7 +14,7 @@ links:
 - href: http://gruntjs.com/
   text: gruntjs.com
 - href: /svg-in-ie8
-  text: Rakes on pure SVG
+  text: Pitfalls of pure SVG
 ---
 
 One fine day we (my colleagues and I) faced the task of processing a large number of SVG icons.
