@@ -1,10 +1,10 @@
 ---
-title: Режимы наложения и их фоллбеки
+title: Blend modes and their fallbacks
 
 tags: [blend-modes]
 
 image: //img-fotki.yandex.ru/get/4805/5091629.a1/0_855c2_8fe321a9_M.jpg
-description: Не так давно в Firefox 32 включили поддержку mix-blend-mode, a в Chrome 37 — CSS shapes. Обе технологии выглядят очень интересно, так что я решила попробовать их в действии, заодно выяснив как будет выглядеть страница в браузерах, где они не поддерживаются.
+description: "Not long ago Firefox 32 enabled support for mix-blend-mode, and Chrome 37 got CSS shapes. Both technologies look very interesting, so I decided to try them in action, and find out how the page will look in browsers where they are not supported."
 
 links:
 - href: http://dev.w3.org/fxtf/compositing-1
@@ -24,18 +24,18 @@ links:
 - href: /background-blend-mode/
   text: Background-blend-mode
 - href: /css-and-svg-masks
-  text: CSS и SVG маски
+  text: CSS and SVG masks
 - href: /svg-in-ie8
-  text: Грабли на чистом SVG
+  text: Rakes on pure SVG
 
 ---
-Не так давно в <a href="https://developer.mozilla.org/en-US/Firefox/Releases/32">Firefox 32</a> включили поддержку <code>mix-blend-mode</code>, a в <a href="http://www.chromestatus.com/features/5163890719588352">Chrome 37</a> — <a href="http://dev.w3.org/csswg/css-shapes/">CSS shapes</a>, то есть возможность управлять формой, по которой текст будет обтекать элемент. Обе технологии выглядят очень интересно, так что я решила попробовать их в действии, заодно выяснив как будет выглядеть страница в браузерах, где они не поддерживаются.
+Not long ago <a href="https://developer.mozilla.org/en-US/Firefox/Releases/32">Firefox 32</a> enabled support for <code>mix-blend-mode</code>, and <a href="http://www.chromestatus.com/features/5163890719588352">Chrome 37</a> got <a href="http://dev.w3.org/csswg/css-shapes/">CSS shapes</a> — the ability to control the shape along which text wraps around an element. Both technologies look very interesting, so I decided to try them in action, and find out how the page will look in browsers where they are not supported.
 
 <!--more-->
-В процессе написания статьи Safari обновился до версии 7.1, и в нем тоже появилась поддержка режимов наложения. Таким образом, режим наложения слоев фона имеет уже <a href="http://caniuse.com/#feat=css-backgroundblendmode">довольно неплохую поддержку браузерами</a>, с наложением друг на друга элементов страницы дела пока обстоят <a href="http://caniuse.com/#feat=css-mixblendmode">похуже</a>, но я уверена, что у них всё впереди.
-Также в Safari 7.1 стали доступны CSS shapes, хотя и с префиксом <code>-webkit-</code>.
+While this article was being written, Safari updated to version 7.1, and it also gained support for blend modes. Thus, the background layer blend mode already has <a href="http://caniuse.com/#feat=css-backgroundblendmode">quite decent browser support</a>; things are <a href="http://caniuse.com/#feat=css-mixblendmode">somewhat worse</a> with blending page elements on top of each other, but I'm sure it's all ahead of them.
+Also, CSS shapes became available in Safari 7.1, albeit with the <code>-webkit-</code> prefix.
 
-По обеим темам уже были хорошие статьи на английском языке, например:
+Good articles in English have already been published on both topics, for example:
 
 <ul>
   <li><a href="http://alistapart.com/article/css-shapes-101">CSS Shapes 101</a></li>
@@ -44,48 +44,48 @@ links:
   <li><a href="https://dev.opera.com/articles/getting-to-know-css-blend-modes/">Getting to Know CSS Blend Modes</a></li>
 </ul>
 
-Для более глубокого изучения есть спецификации:
+For deeper study there are the specifications:
 <ul>
   <li><a href="http://dev.w3.org/fxtf/compositing-1/">Compositing and Blending Level 1</a></li>
   <li><a href="http://dev.w3.org/csswg/css-shapes/">CSS Shapes Module Level 1</a></li>
 </ul>
 
-Сейчас я не буду подробно рассматривать обе технологии (потому что это отдельные большие темы), а расскажу только про небольшой эксперимент и про то, что можно сделать для изящной деградации в старых браузерах.
+Right now I won't examine both technologies in detail (because those are separate big topics), and will only talk about a small experiment and about what can be done for graceful degradation in old browsers.
 
-Для начала я открыла новый Хром и сделала такое:
+To start with, I opened a new Chrome and made this:
 
 <p data-height="500" data-theme-id="4974" data-slug-hash="KCibG" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/KCibG/'>KCibG</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-<a href="https://codepen.io/yoksel/full/KCibG/">Посмотреть в полный рост</a>.
+<a href="https://codepen.io/yoksel/full/KCibG/">View full size</a>.
 
-В демо используются <code>mix-blend-mode</code> и <code>shape-outside</code>. Режим наложения <code>mix-blend-mode: multiply;</code> задан всему контейнеру с текстом и картинками, а <code>shape-outside</code> для каждой картинки свой.
+The demo uses <code>mix-blend-mode</code> and <code>shape-outside</code>. The blend mode <code>mix-blend-mode: multiply;</code> is set on the whole container with text and images, and each image has its own <code>shape-outside</code>.
 
-Полноценно оно отображается только в Safari 7.1, он умеет и режимы смешивания, и CSS shapes, но формы пока работают с префиксом <code>-webkit-</code>.
+It displays fully only in Safari 7.1, which supports both blend modes and CSS shapes, but shapes work with the <code>-webkit-</code> prefix for now.
 
-Также оно будет работать в последних Хроме/Опере со включенными экспериментальными возможностями (они умеют CSS shapes, но <code>mix-blend-mode</code> пока что за флагом, и их надо включать отдельно).
+It will also work in the latest Chrome/Opera with experimental features enabled (they support CSS shapes, but <code>mix-blend-mode</code> is still behind a flag and has to be enabled separately).
 
-Включить в Хроме:
+To enable in Chrome:
 <code>chrome://flags/#enable-experimental-web-platform-features</code>
 
-В Опере:
+In Opera:
 <code>opera://flags/#enable-experimental-web-platform-features</code>
 
-В Safari и Chrome/Opera с флагами демо выглядит вот так:
+In Safari and Chrome/Opera with the flags the demo looks like this:
 
 <img src="//img-fotki.yandex.ru/get/4805/5091629.a1/0_855c2_8fe321a9_M.jpg"/>
 
- Чтобы увидеть неработающие формы, достаточно открыть демо в Firefox:
+ To see the shapes not working, it's enough to open the demo in Firefox:
 
 <img src="//img-fotki.yandex.ru/get/6836/5091629.a1/0_855c4_79b5ff4_M.jpg"/>
 
- а неработающие режимы смешивания — Internet Explorer:
+ and to see the blend modes not working — Internet Explorer:
 
 <img src="//img-fotki.yandex.ru/get/4803/5091629.a1/0_855c3_f9ded859_M.jpg"/>
 
-Если нужно, чтобы формы работали везде, можно воспользоваться полифилом: <a href="https://github.com/adobe-webplatform/css-shapes-polyfill">css-shapes-polyfill</a>, но следует иметь в виду, что это может создать дополнительную нагрузку для браузера. При этом в браузерах без поддержки CSS-форм ничего особо не ломается — картинки просто обтекаются текстом не по кривой, а по прямоугольному контуру.
+If you need the shapes to work everywhere, you can use a polyfill: <a href="https://github.com/adobe-webplatform/css-shapes-polyfill">css-shapes-polyfill</a>, but keep in mind that it may put additional load on the browser. At the same time, in browsers without CSS shape support nothing really breaks — the text just wraps around the images along a rectangular contour instead of a curve.
 
-Firefox можно оставить как есть, но с IE надо что-то делать: белый фон у картинок и белый в тенях заголовка выглядят не очень. Самый простой вариант — добавить блоку с текстом белую подложку:
+Firefox can be left as is, but something has to be done about IE: the white background of the images and the white in the heading shadows don't look great. The simplest option is to add a white backdrop to the text block:
 
 
 ```css
@@ -97,9 +97,9 @@ Firefox можно оставить как есть, но с IE надо что-
 }
 ```
 
-Очень хотелось воспользоваться <code>@supports</code>, чтобы убрать отступы в браузерах с поддержкой режимов наложения, но <code>@supports</code> <a href="http://caniuse.com/#feat=css-featurequeries">не работает в Сафари</a>.
+I really wanted to use <code>@supports</code> to remove the padding in browsers with blend mode support, but <code>@supports</code> <a href="http://caniuse.com/#feat=css-featurequeries">doesn't work in Safari</a>.
 
-Тогда мне пришло в голову, что можно сделать белые поля не создавая отступы, например, так:
+Then it occurred to me that white margins can be made without creating padding, for example like this:
 
 
 ```css
@@ -111,19 +111,19 @@ Firefox можно оставить как есть, но с IE надо что-
 }
 ```
 
-Результат: <a href="https://codepen.io/yoksel/full/AJKEh/">codepen.io/yoksel/full/AJKEh/</a>
+Result: <a href="https://codepen.io/yoksel/full/AJKEh/">codepen.io/yoksel/full/AJKEh/</a>
 
-В браузерах с поддержкой режимов наложения ничего не изменилось, а в IE появился белый фон:
+In browsers with blend mode support nothing changed, and in IE a white background appeared:
 
 <img src="//img-fotki.yandex.ru/get/4800/5091629.a1/0_855cb_3998ac74_M.jpg"/>
 
-В продвинутых браузерах фона под текстом не будет, потому что при режиме смешивания <code>multiply</code> белый цвет исчезает.
+In advanced browsers there will be no background under the text, because with the <code>multiply</code> blend mode white disappears.
 
-Мне нравится способ с фоном, но сейчас получается, что демо в разных браузерах может выглядеть по-разному, и можно попробовать сделать лучше, например, с помощью SVG.
+I like the background approach, but right now it turns out the demo may look different in different browsers, and we can try to do better, for example using SVG.
 
-В SVG-фильтрах есть режимы смешивания. Их меньше, чем в CSS, но среди них есть нужный нам <code>multiply</code>.
+SVG filters have blend modes. There are fewer of them than in CSS, but among them is the <code>multiply</code> we need.
 
-Создаем фильтр:
+Creating the filter:
 
 ```html
 <svg class="svg-defs">
@@ -139,7 +139,7 @@ Firefox можно оставить как есть, но с IE надо что-
 </svg>
 ```
 
-<i>Было бы куда удобнее задавать режим наложения исходной картинки на нижележащие слои страницы, а не на картинку, заданную в фильтре (здесь это <code>feImage</code>). Для этого в SVG предусмотрена возможность в качестве одного из источников фильтра задавать <code>BackgroundImage</code> — по смыслу это снимок экрана под областью действия фильтра. <code>BackgroundImage</code> позволил бы сделать фильтр гораздо короче:</i>
+<i>It would be much more convenient to set the blend mode of the source image onto the underlying page layers, rather than onto an image specified in the filter (here it's <code>feImage</code>). For this, SVG provides the ability to specify <code>BackgroundImage</code> as one of a filter's sources — in essence, it's a screenshot of the screen under the filter's area of effect. <code>BackgroundImage</code> would let us make the filter much shorter:</i>
 
 ```html
 <svg class="svg-defs">
@@ -149,9 +149,9 @@ Firefox можно оставить как есть, но с IE надо что-
 </svg>
 ```
 
-<i>К сожалению, на момент написания статьи <code>BackgroundImage</code> в фильтрах не работает.</i>
+<i>Unfortunately, at the time of writing <code>BackgroundImage</code> doesn't work in filters.</i>
 
-Чтобы фильтры работали везде, картинки, к которым они применяются, тоже надо завернуть в SVG. Примерный код:
+For filters to work everywhere, the images they apply to also have to be wrapped in SVG. Approximate code:
 
 ```html
 <svg class="pic pic--dragon" viewBox="0 0 300 161">
@@ -160,34 +160,34 @@ Firefox можно оставить как есть, но с IE надо что-
 </svg>
 ```
 
-Для SVG-элементов обязательно надо задавать размеры, можно с помощью CSS.
+SVG elements absolutely need dimensions set, which can be done with CSS.
 
-В тенях заголовка остался белый цвет. В случае с относительно однородным фоном (как в этом примере) можно заменить белый на более подходящий оттенок, с пестрым это не сработает, и придется придумывать что-то ещё.
+White remained in the heading's shadows. With a fairly uniform background (as in this example) you can replace white with a more suitable shade; with a colorful one that won't work, and you'll have to invent something else.
 
-Результат:
+The result:
 
 <p data-height="500" data-theme-id="4974" data-slug-hash="wavqm" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/wavqm/'>Blend and shapes</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-SVG-фильтры для SVG элементов работают во всех современных браузерах, в IE начиная  с <nobr>10-й</nobr> версии. Фильтры были бы отличным решением, если бы не некоторые нюансы:
+SVG filters for SVG elements work in all modern browsers, in IE starting with version <nobr>10</nobr>. Filters would be a great solution if not for some nuances:
 
-1. Некоторые браузеры вообще не понимают SVG (IE8 и старше, например). Для них SVG-элементам нужно будет задать  фоном растровые изображения.
-2. SVG-фильтры <a href="http://caniuse.com/#feat=svg-filters">не работают в IE9</a>. Его нужно будет как-то определить, чтобы задавать белую подложку для него и для более старых версий IE.
-3. При использовании фильтров фон под картинкой ресайзится вместе с картинкой. То есть картинка приклеивается к фону с применением заданного режима наложения, и дальнейшие манипуляции делаются уже с этой новой склейкой.
-4. При значительном изменении размеров картинки с фильтром между "плитками" фона могут появляться однопиксельные полосы.
+1. Some browsers don't understand SVG at all (IE8 and older, for example). For them, the SVG elements will need raster images set as backgrounds.
+2. SVG filters <a href="http://caniuse.com/#feat=svg-filters">don't work in IE9</a>. It will need to be detected somehow so that a white backdrop can be set for it and for older IE versions.
+3. When filters are used, the background under the image resizes together with the image. That is, the image is glued to the background with the given blend mode applied, and further manipulations are done with this new composite.
+4. With significant resizing of a filtered image, one-pixel stripes may appear between the background "tiles".
 
-Пример для проблем №3 и №4 (порастягивайте окно браузера):
+An example for problems #3 and #4 (try stretching the browser window):
 
 <p data-height="500" data-theme-id="4974" data-slug-hash="gocDK" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/gocDK/'>Resizing image with SVG-filter</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-На фонах с четким рисунком несовпадение и "размыливание" фона будет очень заметно.
+On backgrounds with a sharp pattern the mismatch and "smearing" of the background will be very noticeable.
 
-Если исходное изображение имеет белые поля, можно попробовать использовать SVG-маску. Для этого делается копия картинки, где белые поля сделаны прозрачными или залиты черным, а часть картинки, которая должна быть показана — полностью белая. Картинка для рыцаря выглядит вот так:
+If the source image has white margins, you can try using an SVG mask. For this, a copy of the image is made where the white margins are made transparent or filled black, while the part of the image that should be shown is fully white. The image for the knight looks like this:
 
 <img src="//img-fotki.yandex.ru/get/4509/5091629.a2/0_85a64_94d6d625_M">
 
-Код маски:
+The mask code:
 
 ```html
 <mask id="mask">
@@ -195,11 +195,11 @@ SVG-фильтры для SVG элементов работают во всех 
 </mask>
 ```
 
-Результат применения:
+The result of applying it:
 
 <p data-height="500" data-theme-id="4974" data-slug-hash="AblID" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/AblID/'>Resizing image with SVG-filter</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Приклееный фон остался только под рыцарем, пространство вокруг фигуры полностью прозрачное, и под ним виден фон страницы. Допускаю, что для некоторых фонов способ с маской вполне подойдет.
+The glued-on background remains only under the knight, the space around the figure is fully transparent, and the page background shows through it. I admit that for some backgrounds the mask approach will do quite well.
 
-Способ с маской и фильтрами позволяет получить режимы смешивания в IE10+ и может сработать, если нужный режим наложения есть в SVG. Правда, этот способ отличают довольно громоздкие конструкции. Я бы предпочла вариант на чистом CSS, но не исключено, что способ с SVG окажется в каких-то ситуациях более подходящим.
+The mask-and-filters approach lets you get blend modes in IE10+ and may work if the blend mode you need exists in SVG. True, this approach is notable for rather cumbersome constructs. I would prefer a pure CSS option, but it's possible that the SVG approach will turn out more suitable in some situations.
