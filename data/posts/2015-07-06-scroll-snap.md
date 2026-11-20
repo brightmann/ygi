@@ -1,10 +1,10 @@
 ---
-title: Умная прокрутка со Scroll Snap Points
+title: Smart scrolling with Scroll Snap Points
 
 tags: [firefox]
 
 image: https://img-fotki.yandex.ru/get/3006/5091629.a4/0_8b19d_a6284f4f_orig
-description: "В Firefox начиная с 39-й версии появились интересные CSS-свойства, которые позволяют управлять поведением прокручиваемого контента."
+description: "Since version 39 of Firefox, interesting CSS properties have appeared that allow you to control the behavior of scrolling content."
 
 links:
 - href: http://www.w3.org/TR/css-snappoints-1/
@@ -15,33 +15,33 @@ links:
   text: Native CSS Scroll Snap Points
 ---
 
-В Firefox начиная с 39-й версии появились интересные CSS-свойства, которые позволяют управлять поведением прокручиваемого контента.<!--more-->
+Since version 39 of Firefox, interesting CSS properties have appeared that allow you to control the behavior of scrolling content.<!--more-->
 
-Cпецификация: <a href="http://www.w3.org/TR/css-snappoints-1/">Scroll Snap Points</a>.
+Specification: <a href="http://www.w3.org/TR/css-snappoints-1/">Scroll Snap Points</a>.
 
-Возьмем для примера такую галерею:
+Let's take this gallery as an example:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="zGWGzo" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/zGWGzo/'>Scroll Snap Points</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-Попробуйте скроллить картинки, и вы увидите, что прокрутка никак не учитывает содержимое прокручиваемой области. Прокрутка может остановиться где угодно, откусив полкартинки и не заморачиваясь выравниванием.
+Try scrolling through pictures, and you will see that scrolling does not take into account the contents of the scrolled area. Scrolling can stop anywhere, biting off half a picture and without bothering with alignment.
 
-Обычная прокрутка не позволяет пошагово пролистывать контент, использующий разделение на страницы или на смысловые секции, и здесь лучше подошла бы прокрутка с более разумным поведением.
+Regular scrolling doesn't allow you to step through content that uses pagination or meaningful sections, so scrolling with smarter behavior would be better suited here.
 
-Умная прокрутка также очень пригодилась бы для фотогалереи, чтобы в полноэкранном режиме большие изображения всегда проматывались ровно по шагам независимо от реального скролла - не обрезаясь и всегда точно заполняя собой область просмотра.
+Smart scrolling would also be very useful for a photo gallery, so that in full-screen mode, large images always scroll smoothly one step at a time, regardless of the actual scrolling - without being cut off and always accurately filling the viewing area.
 
-Обычно проблема решается с помощью Js, но теперь есть решение на CSS.
+Usually the problem is solved using Js, but now there is a solution in CSS.
 
-<div class="post__warning"><b>Внимание:</b> на момент написания статьи все следующие демо работают только в <b>Firefox 39+</b>.</div>
+<div class="post__warning"><b>Attention:</b> at the time of writing, all the following demos only work in <b>Firefox 39+</b>.</div>
 
-Посмотрите на это демо в последнем Firefox:
+Take a look at this demo in the latest Firefox:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="RPMPOv" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/RPMPOv/'>Scroll Snap Points</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-Попробуйте скроллить и увидите, что в этом примере картинки всегда аккуратно заполняют собой область просмотра. Как это сделано?
+Try scrolling and you will see that in this example the pictures always neatly fill the viewing area. How is this done?
 
-Для начала создадим галерею, для неё нужен совсем простой код.
+First, let's create a gallery; it requires a very simple code.
 
 HTML:
 
@@ -67,9 +67,9 @@ CSS:
 }
 ```
 
-Размер галереи в данном случае соответствует размеру картинок в ней. Код в демо немного длинее, здесь я оставила только важное.
+The size of the gallery in this case corresponds to the size of the pictures in it. The code in the demo is a little longer, I only left the important ones here.
 
-Это был код галереи с обычной прокруткой, добавим немного магии:
+This was the code for a gallery with normal scrolling, let's add a little magic:
 
 
 ```css
@@ -81,19 +81,19 @@ CSS:
 }
 ```
 
-Всего пара строчек кода, и галерея прокручивается по шагам, показывая только одну картинку в один момент времени. Красота!
+With just a couple of lines of code, the gallery scrolls step by step, showing only one picture at a time. Beauty!
 
-Посмотрим на свойства, которые позволяют это сделать:
+Let's look at the properties that allow us to do this:
 
 
 <section id="scroll-snap-type" data-name="scroll-snap-type"><h2>scroll-snap-type</h2>
 
-Определяет насколько точно проматываемый контент должен выравниваться относительно родительского элемента.
-Задаётся контейнеру с прокруткой.
+Determines how closely scrollable content should be aligned relative to the parent element.
+Set to a scrollable container.
 
-<code>none</code> — "прилипание" отключено, прокрутка ведет себя как обычно. Значение по умолчанию.
-<code>mandatory</code> — точное "прилипание": при прокрутке элементы выравниваются точно по родителю.
-<code>proximity</code> — приблизительное "прилипание": в зависимости от скорости проматывания элементы могут показываться по частям или выравниваться по родителю.
+<code>none</code> - “snapping” is disabled, scrolling behaves as usual. Default value.
+<code>mandatory</code> - precise “snapping”: when scrolling, elements are aligned exactly to their parent.
+<code>proximity</code> - approximate "snapping": depending on the speed of scrolling, elements can be shown in parts or aligned to their parent.
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="RPMWeP" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/RPMWeP/'>Scroll Snap Points</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
@@ -104,15 +104,15 @@ CSS:
 
 <section id="scroll-snap-points-x" data-name="scroll-snap-points-x"><h2>scroll-snap-points-x, scroll-snap-points-y</h2>
 
-Определяет шаг скролла, задаётся контейнеру с прокруткой.
+Defines the scroll step, set to the scroll container.
 
-<code>none</code> — шаг не задан, содержимое прокручивается рывками. Значение по умолчанию.
-<code>repeat(&lt;length>)</code> — определяет размер шага при прокрутке, значение может быть задано в процентах. <code>scroll-snap-points-x: repeat(100%);</code> означает, что длина шага равна ширине контейнера.
+<code>none</code> - the step is not specified, the content scrolls jerkily. Default value.
+<code>repeat(<length>)</code> - determines the step size when scrolling, the value can be set as a percentage. <code>scroll-snap-points-x: repeat(100%);</code> means that the step length is equal to the width of the container.
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="XbEXro" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/XbEXro/'>Scroll Snap Points</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-<code>scroll-snap-points-x: repeat(50%);</code> в сочетании с <code>scroll-snap-type: mandatory;</code> ведет себя похоже на <code>scroll-snap-type: proximity;</code>: прокрутка получается нестрогой и при этом с управляемым размером шага.
+<code>scroll-snap-points-x: repeat(50%);</code> in combination with <code>scroll-snap-type: mandatory;</code> behaves similar to <code>scroll-snap-type: proximity;</code>: scrolling is relaxed and at the same time with a manageable step size.
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="Qbmywa" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/Qbmywa/'>Scroll Snap Points</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
@@ -120,13 +120,13 @@ CSS:
 
 <section id="scroll-snap-destination" data-name="scroll-snap-destination"><h2>scroll-snap-destination</h2>
 
-Определяет точку "прилипания" внутри контейнера с прокруткой. Первое значение задаёт координату по X, второе — по Y.
-Можно задавать в процентах.
-Задаётся контейнеру с прокруткой.
+Defines the "stick" point within a scrollable container. The first value specifies the X coordinate, the second – the Y coordinate.
+Can be set as a percentage.
+Set to a scrollable container.
 
-Значение по умолчанию: <code>0px 0px</code>.
+Default value: <code>0px 0px</code>.
 
-Обычно контент "прилипает" к левому краю, но при <code>scroll-snap-destination: 100% 0;</code> он будет прилипать к правому. Я увеличила ширину контейнера, чтобы было лучше видно.
+Normally content "snaps" to the left edge, but with <code>scroll-snap-destination: 100% 0;</code> it will stick to the right. I increased the width of the container to make it easier to see.
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="mJxVer" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/mJxVer/'>Scroll Snap Points</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
@@ -134,28 +134,28 @@ CSS:
 
 <section id="scroll-snap-coordinate" data-name="scroll-snap-coordinate"><h2>scroll-snap-coordinate</h2>
 
-Определяет для прокручиваемых элементов координаты точки "прилипания".
+Defines the coordinates of the "snap" point for scrollable elements.
 
-<code>none</code> — у элемента нет точки "прилипания". Значение по умолчанию.
-<code>&lt;position></code> — задаёт точку "прилипания" относительно прокручиваемого элемента. Первое значение задаёт координату по X, второе — по Y.
-Можно задавать в процентах.
+<code>none</code> - the element does not have a sticking point. Default value.
+<code><position></code> - sets the “snap” point relative to the scrollable element. The first value specifies the X coordinate, the second – the Y coordinate.
+Can be set as a percentage.
 
-Удобная штука, если прокручиваемый контейнер больше содержащихся в нём элементов: благодаря сочетанию <code>scroll-snap-coordinate: 50% 0;</code> для дочерних элементов и <code>scroll-snap-destination: 50% 0;</code> для родителя прокручиваемые элементы всегда будут выравниваться точно по центру области прокрутки:
+A handy feature if the scrollable container is larger than the elements it contains: thanks to the combination of <code>scroll-snap-coordinate: 50% 0;</code> for child elements and <code>scroll-snap-destination: 50% 0;</code> for the parent, scrollable elements will always be aligned exactly in the center of the scroll area:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="LVdGZE" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/LVdGZE/'>Scroll Snap Points</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-При этом "прилипание" прекрасно работает для элементов разной ширины:
+At the same time, “snapping” works great for elements of different widths:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="oXqbWb" data-default-tab="result" data-user="yoksel" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/oXqbWb/'>Scroll Snap Points</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 </section>
 
-<section><h2>Поддержка браузерами</h2>
+<section><h2>Browser support</h2>
 
-К сожалению, умная прокрутка в данный момент <a href="http://caniuse.com/#search=snap">поддерживается далеко не везде</a>: полная поддержка есть только в Firefox 39+, также она частично поддерживается с префиксом <code>-ms-</code> в IE10+, а в Safari поддержка появится начиная со следующей версии.
+Unfortunately, smart scrolling is currently <a href="http://caniuse.com/#search=snap">not supported everywhere</a>: full support is only in Firefox 39+, it is also partially supported with the <code>-ms-</code> prefix in IE10+, and support will appear in Safari starting with the next version.
 
-Кроме того, спецификация ещё находится в стадии черновика, и может быть изменена в будущем, а сама прокрутка в текущей реализации не всегда ведет себя предсказуемым образом.
+In addition, the specification is still in draft stage and may change in the future, and scrolling itself in the current implementation does not always behave in a predictable way.
 
-В данный момент умную прокрутку нельзя полноценно использовать, но возможность контролировать прокрутку не используя Js выглядит многообещающе, так что хочется верить, что однажды она таки получит поддержку всеми современными браузерами.
+At the moment, smart scrolling cannot be fully used, but the ability to control scrolling without using Js looks promising, so I want to believe that one day it will be supported by all modern browsers.
 </section>
