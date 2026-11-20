@@ -1,12 +1,12 @@
 ---
-title: CSS и SVG маски
+title: CSS and SVG masks
 
 tags: [svg, masks]
 
 image: //img-fotki.yandex.ru/get/9802/5091629.9d/0_80ea0_df30236f_L.png
-description: Есть несколько способов обрезать элемент по маске. Одни поддерживаются всеми современными браузерами, другие поддерживаются очень плохо, и пользоваться ими ещё нельзя. В некоторых способах маской может быть текст. Используемые технологии — CSS, SVG + CSS, чистый SVG.
+description: 'There are several ways to clip an element to a mask. Some are supported by all modern browsers, others are supported very poorly and cannot yet be used. In some methods, the mask can be text. Technologies used: CSS, SVG + CSS, pure SVG.'
 
-excerpt: <p>Есть несколько способов обрезать элемент по маске. Одни поддерживаются всеми современными браузерами, другие поддерживаются очень плохо, и пользоваться ими ещё нельзя. В некоторых способах маской может быть текст.</p>
+excerpt: <p>There are several ways to crop an element using a mask. Some are supported by all modern browsers, while others are poorly supported and cannot yet be used. In some methods, the mask can be text.</p>
 
 customCSS: css-and-svg-masks.css
 include: /assets/img/svg/css-and-svg-masks.svg
@@ -24,47 +24,47 @@ links:
   text: Text masking — The standards way
 ---
 
-Разбираясь с возможностями оформления SVG, заинтересовалась темой масок.
+While understanding the design possibilities of SVG, I became interested in the theme of masks.
 
-Всё началось вот с этого эксперимента:<!--more-->
+It all started with this experiment:<!--more-->
 
 <p data-height="450" data-theme-id="4974" data-slug-hash="xmshn" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/xmshn/'>SVG gradients for text</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Для надписи подключен гуглошрифт, заливка сделана паттерном с градиентами, при этом надпись не перестала быть текстом — её можно выделить и скопировать!
+Google font is used for the inscription, the fill is made with a pattern with gradients, and the inscription does not cease to be text - it can be selected and copied!
 
-<i>Тут следует отметить, что гораздо проще было бы в качестве заливки использовать просто градиент, не заворачивая его в паттерн, но для этого нужно было задать градиенту свойство <code>spreadMethod="repeat"</code>, чтобы он повторялся, а в Firefox в этом случае градиент почему-то ломался.</i>
+<i>It should be noted here that it would be much easier to use just a gradient as a fill, without wrapping it in a pattern, but for this it was necessary to set the <code>spreadMethod="repeat"</code> property to the gradient so that it would repeat, and in Firefox in this case the gradient would break for some reason.</i>
 
-Я посмотрела на поддержку этого демо в разных браузерах, вспомнила про <code>-webkit-background-clip: text</code>, который поддерживается только в вебкитах, и решила посмотреть что ещё есть интересного в этом направлении.
+I looked at the support for this demo in different browsers, remembered about <code>-webkit-background-clip: text</code>, which is only supported in webkits, and decided to see what else was interesting in this direction.
 
-Есть несколько способов обрезать элемент по маске. Одни поддерживаются всеми современными браузерами, другие поддерживаются очень плохо, и пользоваться ими ещё нельзя. В некоторых способах маской может быть текст.
+There are several ways to clip an element to a mask. Some are supported by all modern browsers, others are supported very poorly and cannot yet be used. In some methods, the mask can be text.
 
-Используемые технологии:
+Technologies used:
 
-* <b>CSS</b> — маска создается в CSS и применяется к HTML-элементам;
-* <b>SVG + CSS</b> — SVG-маска применяется к HTML-элементам с помощью CSS;
-* <b>SVG</b> — SVG-маска применяется к SVG-элементам. С помощью CSS, но главное здесь то, что и маска, и маскируемый элемент являются SVG.
+* <b>CSS</b> - the mask is created in CSS and applied to HTML elements;
+* <b>SVG + CSS</b> - SVG mask is applied to HTML elements using CSS;
+* <b>SVG</b> - The SVG mask is applied to SVG elements. Using CSS, but the key here is that both the mask and the masked element are SVG.
 
-Лучшая поддержка браузерами — у масок, сделанных полностью на SVG.
+The best browser support is for masks made entirely in SVG.
 
-Не то, чтобы я глубоко изучала вопрос — мне хотелось увидеть все способы в одном месте и с информацией о браузерной поддержке, так что я сделала <a href="https://codepen.io/yoksel/full/fsdbu/">это демо</a> — с примерами кода и ссылками на спецификации.
+It's not that I studied the issue in depth - I wanted to see all the methods in one place and with information about browser support, so I made <a href="https://codepen.io/yoksel/full/fsdbu/">this demo</a> - with code examples and links to the specifications.
 
-Все способы в нем представлены как есть — без фоллбеков, так что вы можете открыть страницу в интересующем браузере и посмотреть как в нем поддерживается нужный вам способ. Очень надеюсь, что однажды мы увидим все маски работающими во всех современных браузерах.
+All methods are presented in it as is - without fallbacks, so you can open the page in the browser you are interested in and see how it supports the method you need. I really hope that one day we will see all masks working in all modern browsers.
 
-Маски бывают разных типов: одни позволяют обрезать элемент по векторной фигуре (пути) — <code>clip</code>, <code>clip-path</code>, другие ориентируются на яркость цветов или альфа-канал изображения — <code>mask</code> и <code>mask-image</code> — эти способы позволяют получить маску с размытыми краями.
-Использовать текст в качестве маски можно в SVG <code>clip-path</code>, SVG <code>mask</code>, <code>-webkit-background-clip</code> и SVG <code>fill</code>. Последнее не является маской в прямом смысле слова, но результат выглядит как <code>-webkit-background-clip</code>, и при этом поддерживается всеми современными браузерами.
+Masks come in different types: some allow you to clip an element along a vector shape (path) - <code>clip</code>, <code>clip-path</code>, others focus on the brightness of colors or the alpha channel of the image - <code>mask</code> and <code>mask-image</code> - these methods allow you to get a mask with blurred edges.
+You can use text as a mask in SVG <code>clip-path</code>, SVG <code>mask</code>, <code>-webkit-background-clip</code> and SVG <code>fill</code>. The latter is not a mask in the literal sense of the word, but the result looks like <code>-webkit-background-clip</code>, and is supported by all modern browsers.
 
-Все маски вы можете найти на <a href="https://codepen.io/yoksel/full/fsdbu/">демо-странице</a>, я же расскажу только про самые хорошо поддерживаемые — конечно же, все они на SVG.
-Все примеры в посте — живые демо, не скриншоты.
+You can find all the masks on <a href="https://codepen.io/yoksel/full/fsdbu/">demo page</a>, but I will only talk about the most well-supported ones - of course, they are all in SVG.
+All examples in the post are live demos, not screenshots.
 
-<h2 id="svg-clip-path">SVG clip-path для SVG элементов</h2>
+<h2 id="svg-clip-path">SVG clip-path for SVG elements</h2>
 
-<a href="http://www.w3.org/TR/SVG11/masking.html#EstablishingANewClippingPath">Спецификация</a>
+<a href="http://www.w3.org/TR/SVG11/masking.html#EstablishingANewClippingPath">Specification</a>
 
-<code>clipPath</code> позволяет использовать векторную маску любой формы.
-Применение SVG <code>clipPath</code> для HTML-элементов поддерживается только в Firefox, но если перенести разметку в SVG — маска заработает во всех современных браузерах.
+<code>clipPath</code> allows you to use a vector mask of any shape.
+Using SVG <code>clipPath</code> for HTML elements is only supported in Firefox, but if you transfer the markup to SVG, the mask will work in all modern browsers.
 
-Фигуры внутри <code>clipPath</code> можно комбинировать, чтобы получить более сложные, также в <code>clipPath</code> может использоваться текст. Текст, использующийся в <code>clipPath</code>, нельзя выделить и скопировать, при этом текст обрезаемого элемента — можно, правда, копируется он как-то странно.
+Shapes within <code>clipPath</code> can be combined to create more complex ones, and <code>clipPath</code> can also use text. The text used in <code>clipPath</code> cannot be selected and copied, while the text of the element being clipped can be, however, it is copied in a strange way.
 
 <svg width="200" height="190">
   <g class="g--clip-path-img">
@@ -108,16 +108,16 @@ links:
 }
 ```
 
-<h2 id="svg-mask-in-svg">SVG mask для SVG элементов</h2>
+<h2 id="svg-mask-in-svg">SVG mask for SVG elements</h2>
 
-<a href="http://www.w3.org/TR/SVG11/masking.html#Masking">Спецификация</a>
+<a href="http://www.w3.org/TR/SVG11/masking.html#Masking">Specification</a>
 
-SVG <code>mask</code> позволяет задать элемент или сочетание элементов, которые будут работать маской по альфа-каналу или по яркости. SVG <code>mask</code> для HTML-элементов также поддерживается только в Firefox, но при переносе разметки в SVG работает везде.
+SVG <code>mask</code> allows you to specify an element or combination of elements that will act as an alpha or brightness mask. SVG <code>mask</code> for HTML elements is also only supported in Firefox, but works everywhere when you transfer the markup to SVG.
 
-Маской могут служить фигуры, при этом степень прозрачности зависит от яркости цвета заливки (светлые цвета — прозрачность, темные — непрозрачность). Фигуры, объявленные ниже в коде, обрезают слои, расположенные выше.
-Также в качестве маски можно использовать изображения.
+Shapes can serve as a mask, and the degree of transparency depends on the brightness of the fill color (light colors are transparency, dark colors are opacity). The shapes declared below in the code clip the layers above them.
+You can also use images as a mask.
 
-SVG <code>mask</code> (в отличие от <code>clipPath</code>) позволяет сделать маску с размытыми краями.
+SVG <code>mask</code> (as opposed to <code>clipPath</code>) allows you to make a mask with blurred edges.
 
 <svg width="200" height="300">
   <g class="g--svg-mask-svg">
@@ -167,23 +167,23 @@ SVG <code>mask</code> (в отличие от <code>clipPath</code>) позво�
 
 <h2 id="svg-fill">SVG fill</h2>
 
-<a href="http://www.w3.org/TR/SVG/painting.html#FillProperties">Спецификация</a>
+<a href="http://www.w3.org/TR/SVG/painting.html#FillProperties">Specification</a>
 
-<code>fill</code> — заливка, а не маска, но позволяет довольно неплохо имитировать маски. Заливкой может цвет, градиент или паттерн.
+<code>fill</code> is a fill, not a mask, but it allows you to simulate masks quite well. The fill can be a color, gradient or pattern.
 
-Паттерн (<code>pattern</code>) — это элемент SVG. В него можно положить всё что угодно, чтобы потом использовать содержимое контейнера как повторяющийся фон. В нем можно создать узор <a href="https://codepen.io/yoksel/full/bwDzx">из других элементов SVG</a>, а также завернуть в него картинку или текст.
+A pattern (<code>pattern</code>) is an SVG element. You can put anything in it and then use the contents of the container as a repeating background. In it you can create a pattern <a href="https://codepen.io/yoksel/full/bwDzx">from other SVG elements</a>, and also wrap a picture or text in it.
 
-Правда, с текстом есть некоторые трудности: в SVG текст не умеет переноситься сам по себе. Чтобы сделать текст с переносами, как в обычном HTML, его нужно завернуть в <code>foreignObject</code>, но заливка с таким паттерном <a href="https://codepen.io/yoksel/full/BidHq">не работает</a>, хотя в <a href="http://www.w3.org/TR/SVG11/pservers.html#Patterns">спеке для паттерна</a> написано, что <code>foreignObject</code> в паттерн вставлять можно.
+True, there are some difficulties with the text: in SVG, the text cannot be transferred by itself. To make text with hyphens, as in regular HTML, it needs to be wrapped in <code>foreignObject</code>, but filling with such a pattern <a href="https://codepen.io/yoksel/full/BidHq">does not work</a>, although in <a href="http://www.w3.org/TR/SVG11/pservers.html#Patterns">the spec for the pattern</a> it is written that <code>foreignObject</code> can be inserted into a pattern.
 
-Так что, чтобы сделать заливку текстом, надо вставить его через тег <code>text</code>, а каждую строку завернуть в <code>tspan</code> и задать ей нужное положение. Способ громоздкий, но работает.
+So, to fill with text, you need to insert it through the <code>text</code> tag, and wrap each line in <code>tspan</code> and set it to the desired position. The method is cumbersome, but it works.
 
-Используя в качестве паттерна картинки, можно получить надписи с любой текстурой, которую подскажет ваша фантазия. При этом способ сработает во всех современных браузерах, в отличе от <code>-webkit-background-clip: text</code>, так что фоллбеков потребуется сильно меньше.
+Using pictures as a pattern, you can get inscriptions with any texture that your imagination suggests. Moreover, the method will work in all modern browsers, unlike <code>-webkit-background-clip: text</code>, so much less fallbacks will be required.
 
-Собственно, текст без заливки, но с текстурной обводкой тоже можно сделать: в этом случае паттерн следует задать свойству <code>stroke</code>.
+Actually, text without a fill, but with a textured stroke, can also be created: in this case, the pattern should be set to the <code>stroke</code> property.
 
-Примеры сделаны для текста, но <code>fill</code> и <code>stroke</code> точно также работают для фигур.
+The examples are made for text, but <code>fill</code> and <code>stroke</code> work exactly the same for shapes.
 
-При использовании заливки для текста, текст всё ещё остается текстом: его можно выделить и скопировать (попробуйте на примерах ниже), ему можно задать размер и шрифт.
+When you use a text fill, the text is still text: it can be selected and copied (try the examples below), and you can set the size and font.
 
 <svg width="380" height="140">
 <g class="g--svg-fill">
@@ -239,7 +239,7 @@ text {
 }
 ```
 
-<b>Важное уточнение:</b> в Firefox и старой Опере ссылки вида <code>mask: url(#masking);</code> не работают, если страница с SVG градиентами, паттернами и масками находится в одной директории, а CSS — в другой. Это лечится полным указанием пути от корня сайта, например <code>mask: url(/page-url/#masking);</code>, чтобы браузеры знали где именно искать элемент с таким ID.
-За указание на проблему спасибо <a href="https://twitter.com/legomushroom">legomushroom</a>.
+<b>Important clarification:</b> in Firefox and old Opera, links like <code>mask: url(#masking);</code> do not work if the page with SVG gradients, patterns and masks is in one directory, and CSS is in another. This can be treated by specifying the full path from the root of the site, for example <code>mask: url(/page-url/#masking);</code>, so that browsers know where exactly to look for an element with this ID.
+Thanks to <a href="https://twitter.com/legomushroom">legomushroom</a> for pointing out the problem.
 
-Возможности SVG позволяют делать самые разные маски и использовать их самыми разными способами, при этом они имеют очень неплохую поддержу браузерами. Если учесть, что многие свойства SVG можно анимировать с помощью JS, перспективы открываются очень интересные.
+SVG capabilities allow you to make a wide variety of masks and use them in a variety of ways, and they have very good browser support. When you consider that many SVG properties can be animated using JS, the prospects open up very interesting.
