@@ -4,7 +4,7 @@ title: Jekyll → Gatsby
 image: //yoksel.github.io/assets/img/articles/jekyll-gatsby/preview.png
 tags: [tools]
 
-description: На днях сайт обновил движок. Последний раз это случалось в 2013-м, и тогда сайт переехал с Wordpress на Jekyll, сейчас — с Jekyll на Gatsby. Мои вопросы про Gatsby вызвали довольно оживленную дискуссию в твиттере, поэтому я решила отдельно рассказать про смену движка и опыт с Gatsby.
+description: The site recently changed its engine. The last time that happened was in 2013, when the site moved from Wordpress to Jekyll; this time it's from Jekyll to Gatsby. My questions about Gatsby sparked quite a lively discussion on Twitter, so I decided to write separately about the engine change and my experience with Gatsby.
 
 links:
 - href: https://www.gatsbyjs.org/
@@ -23,19 +23,19 @@ links:
   text: Your blog doesn’t need a JavaScript framework
 ---
 
-На днях сайт обновил движок. Последний раз это случалось в [2013-м](/jekyll-vagrant) — тогда сайт переехал с Wordpress на [Jekyll](https://jekyllrb.com/), сейчас — с Jekyll на [Gatsby](https://www.gatsbyjs.org/).
+The site recently changed its engine. The last time that happened was in [2013](/jekyll-vagrant) — back then the site moved from Wordpress to [Jekyll](https://jekyllrb.com/); this time it's from Jekyll to [Gatsby](https://www.gatsbyjs.org/).
 
-Мои вопросы про Gatsby вызвали довольно оживленную дискуссию в твиттере ([1](https://twitter.com/yoksel/status/1285960534261739526), [2](https://twitter.com/pepelsbey/status/1286232509915725824)), поэтому я решила отдельно рассказать про смену движка и опыт с Gatsby.<!--more-->
+My questions about Gatsby sparked quite a lively discussion on Twitter ([1](https://twitter.com/yoksel/status/1285960534261739526), [2](https://twitter.com/pepelsbey/status/1286232509915725824)), so I decided to write separately about the engine change and my experience with Gatsby.<!--more-->
 
-Поначалу Jekyll был довольно удобным, но со временем стал тесноват. Во-первых, сборка страниц и стилей мееедлееенная, во-вторых, он на Ruby, и если какие-то пакеты устаревали и сайт превращался в тыкву, приходилось срочно вспоминать/гуглить команды для обновления Ruby-пакетов. Когда сборка сайта запускается нечасто, и он на непривычной экосистеме, обновление может занять значительное время, а это не совсем то, чем хотелось бы заниматься, если изначально зашел просто поправить пару абзацев.
+At first Jekyll was quite convenient, but over time it got cramped. First, page and style builds are sloooow; second, it's on Ruby, and if some packages went stale and the site turned into a pumpkin, I had to urgently remember/google the commands for updating Ruby packages. When the site build runs infrequently and it's on an unfamiliar ecosystem, an update can take considerable time, which isn't quite what you'd like to be doing when you originally just came in to fix a couple of paragraphs.
 
-Со старыми проектами такое случается: иногда нужно обновить кучу пакетов, прежде чем он в принципе запустится. Устаревающие внешние зависимости [могут усложнить жизнь](https://twitter.com/andrey_sitnik/status/1286029327742582784) независимо от экосистемы, к которой они принадлежат. Они могут оказаться несовместимы со свежей версией ноды, обновленной операционной системой или просто пакет перестаёт поддерживаться и вы больше не можете его установить — и проект двух-трёхлетней давности уже не запустить (было и такое). Будете ли вы тратить время на попытки его оживить, перепишете полностью или похороните навсегда? Внешние пакеты, которые делают что-то за вас, облегчают разработку, но делают финальный результат хрупким.
+This happens with old projects: sometimes you need to update a heap of packages before it will run at all. Aging external dependencies [can complicate your life](https://twitter.com/andrey_sitnik/status/1286029327742582784) regardless of the ecosystem they belong to. They may turn out incompatible with a fresh version of Node, with an updated operating system, or a package simply stops being maintained and you can no longer install it — and a project from two or three years ago can't be launched anymore (that happened too). Will you spend time trying to revive it, rewrite it completely, or bury it forever? External packages that do things for you ease development, but make the final result fragile.
 
-Так что идея иметь как можно меньше зависимостей — хорошая и правильная, но выбирая новый движок я, честно говоря, не особо озадачивалась этим вопросом. Персональный сайт, на мой взгляд, — это не только блог, но и песочница, где можно поиграться с чем-то новым, выбирая движок не столько по практическим характеристикам, сколько по интересующим технологиям, поэтому в этот раз в качестве движка был выбран Gatsby: меня интересовали [GraphQL](https://graphql.org/) и [React](https://reactjs.org/), которые нём используются.
+So the idea of having as few dependencies as possible is a good and right one, but when choosing a new engine I honestly didn't think too much about this question. A personal site, in my view, is not only a blog but also a sandbox where you can play with something new, choosing an engine not so much by practical characteristics as by the technologies you're interested in, so this time Gatsby was chosen as the engine: I was interested in [GraphQL](https://graphql.org/) and [React](https://reactjs.org/), which it uses.
 
-Мне удалось сделать желаемый сайт, и сам процесс разработки был достаточно комфортным, но Gatsby, скорее всего, не самый лучший выбор для генерации простого статического сайта, и если вы планируете сделать подобное, попробуйте рассмотреть другие варианты. Можно воспользоваться [Eleventy](https://www.11ty.dev/), который [рекомендует Вадим Макеев](https://twitter.com/pepelsbey/status/1286272737523249152) или подобрать другой движок на сайте [StaticGen](https://www.staticgen.com/).
+I managed to build the site I wanted, and the development process itself was comfortable enough, but Gatsby is most likely not the best choice for generating a simple static site, and if you're planning to do something like this, try considering other options. You can use [Eleventy](https://www.11ty.dev/), which [Vadim Makeev recommends](https://twitter.com/pepelsbey/status/1286272737523249152), or pick another engine on the [StaticGen](https://www.staticgen.com/) site.
 
-Из плюсов Gatsby — мне понравилось с помощью GraphQL запрашивать данные из постов. В визуальном интерфейсе можно накликать нужное, а потом выполнить запрос и проверить что он вернул:
+Among Gatsby's pluses — I liked using GraphQL to query data from posts. In the visual interface you can click together what you need, then run the query and check what it returned:
 
 <img
   src="/assets/img/articles/jekyll-gatsby/graphql.png"
@@ -43,62 +43,62 @@ links:
   loading="lazy"
 />
 
-Минусов у Gatsby довольно много.
+Gatsby has quite a lot of minuses.
 
-Первое, с чем я столкнулась — в пост невозможно вставить демки с <a href="https://codepen.io/">Codepen</a>. Обычный код для встраивания просто не работает, я так понимаю, это общая проблема проектов на React. В статьях используется более двухсот демок с кодепена, так что это стало серьёзной проблемой. Для её решения мне пришлось написать <a href="https://github.com/yoksel/yoksel.github.io/blob/new-engine/plugins/gatsby-codepen-markup-converter/index.js">небольшой плагин</a>, который во всех статьях при генерации страницы меняет обычный код для встраивания на код с `iframe`.
+The first thing I ran into — you can't embed demos from <a href="https://codepen.io/">Codepen</a> in a post. The ordinary embed code simply doesn't work; as I understand it, this is a general problem of React projects. The articles use more than two hundred Codepen demos, so this became a serious problem. To solve it I had to write <a href="https://github.com/yoksel/yoksel.github.io/blob/new-engine/plugins/gatsby-codepen-markup-converter/index.js">a small plugin</a> that, in every article, changes the ordinary embed code to code with an `iframe` during page generation.
 
-Следующая проблема: при локальной разработке не отображаются фреймы, лежащие в папке со статикой, и таких демок на сайте тоже довольно много. Чтобы это заработало, в папке `public/` нужно запускать [отдельный сервер](https://github.com/gatsbyjs/gatsby/issues/17761#issuecomment-533816520).
+The next problem: in local development, frames that live in the static folder are not displayed, and there are quite a lot of such demos on the site too. To make this work, you need to run a [separate server](https://github.com/gatsbyjs/gatsby/issues/17761#issuecomment-533816520) in the `public/` folder.
 
-В принципе, уже на этом моменте можно было остановиться и подумать, а действительно ли мне нужен именно Gatsby или лучше пойти поискать другой генератор статики. Движок не должен за меня решать что и как я буду вставлять в свои посты. <s>Ёжики плакали, кололись,</s> но я решила довести дело до конца и доделать сайт на выбранном движке.
+In principle, at that point I could have stopped and thought about whether I really needed Gatsby specifically or should go look for another static generator. An engine shouldn't decide for me what and how I'll embed in my posts. <s>The hedgehogs cried and pricked themselves,</s> but I decided to see it through and finish the site on the chosen engine.
 
-Следом передо мной встал вопрос лишнего веса: дефолтная сборка делает для всех страниц статическую версию, но сайт ведёт себя как одностраничное приложение: переходы между страницами происходят с помощью замены контента без перегрузки страниц. Чтобы это происходило максимально быстро, приложение в фоне подгружает контент страниц, куда теоретически может перейти пользователь. Если просто открыть главную страницу, загрузится основной контент страницы и содержимое ссылок, попавших в первый экран.
+Next I faced the question of extra weight: the default build makes a static version for all pages, but the site behaves like a single-page application: transitions between pages happen by replacing content without reloading pages. To make this as fast as possible, the app preloads in the background the content of pages the user could theoretically navigate to. If you simply open the main page, the page's main content and the content of the links that landed in the first screen will load.
 
 <img
   src="/assets/img/articles/jekyll-gatsby/main-page-spa.png"
-  alt="Главная страница как SPA"
+  alt="Main page as an SPA"
   loading="lazy"
 />
 
-Вес разметки — около 60kB, + какой-то минимальный JS весом до 10kB, из картинок только мелкие иконки, но в итоге страница весит полмегабайта, всё остальное добавил Gatsby.
+The markup weighs about 60kB, plus some minimal JS weighing up to 10kB; of the images, only small icons — but in the end the page weighs half a megabyte; everything else was added by Gatsby.
 
-Мотаем вниз, приложение обнаруживает новые ссылки и подгружает их тоже. Теперь страница весит 1.7 мегабайт, и ещё 3 мегабайта загружено по сети:
+Scroll down, the app discovers new links and preloads them too. Now the page weighs 1.7 megabytes, and another 3 megabytes have been downloaded over the network:
 
 <img
   src="/assets/img/articles/jekyll-gatsby/main-page-spa-after-scroll.png"
-  alt="Главная страница после прокрутки до конца страницы"
+  alt="Main page after scrolling to the bottom"
   loading="lazy"
 />
 
-А я просто промотала страницу вниз.
+And I just scrolled the page down.
 
-Цель этих подгрузок — максимально быстро показать следующую страницу, но если точно известно, что на страницах нет ничего тяжёлого, может, и не нужно как-то специально ускорять переход между ними?
+The goal of these preloads is to show the next page as fast as possible, but if it's known for sure that there's nothing heavy on the pages, maybe there's no need to specially speed up the transition between them?
 
-Я воспользовалась плагином [gatsby-plugin-no-javascript](https://www.gatsbyjs.org/packages/gatsby-plugin-no-javascript/), который удаляет из разметки все скрипты, которые добавляет туда движок, и это значительно уменьшило количество запросов и вес загружаемых ресурсов:
+I used the [gatsby-plugin-no-javascript](https://www.gatsbyjs.org/packages/gatsby-plugin-no-javascript/) plugin, which removes from the markup all the scripts the engine adds there, and this significantly reduced the number of requests and the weight of loaded resources:
 
 <img
   src="/assets/img/articles/jekyll-gatsby/main-page-no-spa.png"
-  alt="Главная страница без SPA"
+  alt="Main page without SPA"
   loading="lazy"
 />
 
-Предзагрузка соседних страниц, на мой взгляд, хорошая идея для интернет-магазина или новостного сайта, где попав на одну страницу, посетитель с высокой степенью вероятности пойдёт гулять по соседним, но для небольшого редко обновляемого сайта это не очень нужно.
+Preloading neighboring pages is, in my opinion, a good idea for an online store or a news site, where a visitor landing on one page will very likely wander around the neighboring ones, but for a small, rarely updated site it's not really needed.
 
-На мой сайт часто заходят посетители из поиска за каким-то конкретным вопросом, и здесь нет необходимости подгружать фоном соседние страницы, потому что они могут никогда не понадобиться. Кроме того, страницы со статьями сами по себе весят немного и ускорять их загрузку подгружая контент заранее, по-моему, просто незачем.
+Visitors often come to my site from search with some specific question, and there's no need to preload neighboring pages in the background here, because they may never be needed. Besides, article pages themselves weigh little, and speeding up their loading by preloading content in advance is, in my opinion, simply pointless.
 
-Статьи с картинками, демками и счётчиками, конечно, будут весить больше чем главная, на которой только текст, но в любом случае теперь к их весу не будет добавляться вес скриптов, которые загружаются на всякий случай и, чаще всего, будут просто не нужны, потому что пользователь нашёл нужное и закрыл страницу.
+Articles with images, demos and counters will of course weigh more than the main page, which has only text, but in any case their weight won't be increased by the weight of scripts that load just in case and will most often simply not be needed, because the user found what they needed and closed the page.
 
-Если бы мне не удалось снизить вес страниц до приемлемого, возможно, мне пришлось бы всё-таки переписать сайт ещё раз.
+If I hadn't managed to reduce the page weight to acceptable levels, I might have had to rewrite the site once more after all.
 
-Про [gatsby-plugin-no-javascript](https://www.gatsbyjs.org/packages/gatsby-plugin-no-javascript/) ещё нужно помнить следующее: он хорошо убирает лишнее, но вместе с лишним удаляются и все события и хуки из реакт-компонентов. При использовании плагина всю интерактивность нужно вынести во внешние скрипты, так что тут придется выбирать: или реакт, или лёгкий сайт — одновременно не получится.
+About [gatsby-plugin-no-javascript](https://www.gatsbyjs.org/packages/gatsby-plugin-no-javascript/) you also need to remember the following: it removes the excess well, but along with the excess, all events and hooks from React components are removed too. When using the plugin, all interactivity must be moved into external scripts, so you'll have to choose: either React or a light site — both at once won't work.
 
-Осталась ещё пара небольших проблем. Первая: для управления содержимым тега `head` предлагается использовать <a href="https://www.gatsbyjs.org/tutorial/seo-and-social-sharing-cards-tutorial/">react-helmet</a>, а он оставляет в коде много лишнего: у каждого тега в шапке будет атрибут `data-react-helmet="true"`. Я так понимаю, при использовании с реактом он нужен, чтобы метатеги не двоились, но в статической версии сайта атрибут совершенно ни к чему.
+A couple of small problems remained. First: for managing the contents of the `head` tag it's suggested to use <a href="https://www.gatsbyjs.org/tutorial/seo-and-social-sharing-cards-tutorial/">react-helmet</a>, and it leaves a lot of excess in the code: every tag in the head will have a `data-react-helmet="true"` attribute. As I understand it, when used with React it's needed so the meta tags don't duplicate, but in the site's static version the attribute is completely useless.
 
-Решить эту задачу помогла <a href="https://twitter.com/mista_k/status/1286182532258697218">подсказка от Владимира Кузнецова</a>. В [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) есть метод `onPostBuild`, который позволяет изменять HTML-файлы после сборки. С его помощью я удалила из кода `data-react-helmet="true"` и некоторые другие хвосты, которые туда добавил Gatsby.
+<a href="https://twitter.com/mista_k/status/1286182532258697218">A tip from Vladimir Kuznetsov</a> helped solve this task. In the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) there's an `onPostBuild` method that lets you modify HTML files after the build. With it I removed `data-react-helmet="true"` and some other tails Gatsby added to the code.
 
-Вторая проблема — куча лишних файлов, которые по-прежнему попадают в сборку, хотя уже нигде не используются: для них я добавила скрипт в `package.json`, он запускается при деплое и удаляет ненужное.
+The second problem is a heap of extra files that still make it into the build even though they're no longer used anywhere: for them I added a script to `package.json` that runs on deploy and deletes the unnecessary ones.
 
-**Upd от 31.07.2020**: удаление файлов может вызывать проблемы при последующем локальном запуске проекта, поэтому было найдено другое решение. В `static/` кладется файл `.gitignore` и в него добавляются все пути, которые нужно игнорировать. После этого в команду для плагина `gh-pages` нужно добавить [параметр](https://www.npmjs.com/package/gh-pages#optionsdotfiles) `--dotfiles true`, чтобы `.gitignore` не игнорировался при отправке содержимого в ветку.
+**Upd from 31.07.2020**: deleting files can cause problems when the project is later launched locally, so another solution was found. A `.gitignore` file is placed in `static/` and all the paths that need to be ignored are added to it. After that, the [parameter](https://www.npmjs.com/package/gh-pages#optionsdotfiles) `--dotfiles true` must be added to the `gh-pages` plugin command so that `.gitignore` isn't ignored when the content is pushed to the branch.
 
-Вот так с помощью напильника <s>и такой-то матери</s> мне удалось довести сайт до желаемого состояния и приемлемого веса. Gatsby может использоваться для генерации простых статических сайтов, но придется приложить некоторые усилия, чтобы сайт на выходе действительно был лёгким и простым, дефолтная сборка этого не делает.
+That's how, with the help of a file tool <s>and you-know-what language</s>, I managed to bring the site to the desired state and acceptable weight. Gatsby can be used to generate simple static sites, but you'll have to make some effort for the resulting site to actually be light and simple; the default build doesn't do that.
 
-Возиться с Gatsby было забавно, но когда я в следующий раз захочу переписать сайт, скорее всего, выберу что-то другое.
+Tinkering with Gatsby was fun, but next time I want to rewrite the site, I'll most likely choose something else.
