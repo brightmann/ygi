@@ -1,11 +1,11 @@
 ---
-title: Недоступность в картинках
+title: Inaccessibility in pictures
 
 image: //yoksel.github.io/assets/img/articles/inaccessibility/preview.png
 
 tags: [a11y]
 
-description: Как скринридеры видят сайты и что они могут там не найти, если страница свёрстана плохо
+description: How screen readers see websites and what they may fail to find there if the page is marked up badly
 
 links:
 - href: https://www.nvaccess.org/
@@ -13,176 +13,176 @@ links:
 - href: https://www.freedomscientific.com/products/software/jaws/
   text: JAWS
 - href: https://support.microsoft.com/ru-ru/help/22798/windows-10-complete-guide-to-narrator
-  text: Полное руководство по использованию экранного диктора (Narrator)
+  text: Complete guide to using Narrator
 - href: https://help.apple.com/voiceover/info/guide/10.12/?lang=ru#/
-  text: 'Универсальный доступ Apple: краткое руководство по VoiceOver'
+  text: 'Apple Accessibility: a quick guide to VoiceOver'
 - href: https://developer.paciellogroup.com/blog/2016/06/using-the-html-lang-attribute/
   text: Using the HTML lang attribute
 - href: https://yoksel.github.io/a11y-demo/
-  text: A11y демо
+  text: A11y demo
 - href: https://allyjs.io/tutorials/hiding-elements.html#how-to-hide-elements-visually
   text: How to hide elements visually
 - href: https://validator.w3.org/nu/
   text: W3C HTML Validator
 - href: https://yoksel.github.io/html-tree/
-  text: Генератор HTML-дерева
+  text: HTML tree generator
 - href: https://weblind.ru/
-  text: Веблайнд
-  description: Рекомендации по разработке сайтов для людей с нарушениями зрения
+  text: Weblind
+  description: Recommendations on developing websites for people with visual impairments
 - href: https://web-standards.ru/articles/tags/a11y/
-  text: Статьи про доступность в блоге Веб-стандартов
+  text: Articles about accessibility in the Web Standards blog
 - href: https://habr.com/ru/company/yandex/blog/515460/
-  text: Технические предпочтения пользователей с нарушениями зрения в 2020 году. Исследование Яндекса
+  text: Technology preferences of users with visual impairments in 2020. Research by Yandex
 - href: https://medium.com/web-standards/pragmatic-a11y-rules-b16dd2f77685
-  text: Полезные правила доступности, которые останутся в памяти
+  text: Useful accessibility rules that will stick in your memory
 - href: https://yoksel.github.io/bad-practices/forms-markup/
-  text: 'HTML & CSS: как не надо. Верстка форм'
+  text: 'HTML & CSS: how not to do it. Form markup'
 ---
 
-Когда мы говорим про доступность, мне часто не хватает визуальной составляющей. «Недоступно для скринридера» — как это выглядит?
+When we talk about accessibility, I often miss the visual side of it. "Inaccessible to a screen reader" — what does that look like?
 
-Когда есть возможность запустить программу экранного доступа и увидеть всё своими глазами, это достаточно освежающий опыт, после которого начинаешь гораздо аккуратнее выбирать теги. Мне хотелось бы, чтобы это попробовал каждый, кто имеет дело с вёрсткой, но я подозреваю, что, хотя многие слышали о доступности и скринридерах, запускать читалку пробовали далеко не все — потому что надо не только найти где включается скринридер, но и разобраться в непривычном и достаточно неинтуитивном интерфейсе.<!--more-->
+When you have the chance to launch a screen reader and see everything with your own eyes, it's quite an eye-opening experience, after which you start choosing tags much more carefully. I would like everyone who deals with markup to try it, but I suspect that although many have heard about accessibility and screen readers, far from everyone has actually tried launching one — because you not only have to find where the screen reader is turned on, but also figure out its unfamiliar and rather unintuitive interface.<!--more-->
 
-Я не так часто запускаю скринридер, и каждый раз приходится вспоминать команды и привыкать заново. Вообще попытка разобраться в настройках скринридера даже для зрячего требует усилий, а как с ними разбирается слабовидящий пользователь — страшно представить (а после этого человек заходит в интернет и попадает на сайты, где его никто не ждёт).
+I don't launch a screen reader that often, and every time I have to recall the commands and get used to it again. In general, even for a sighted person, trying to figure out a screen reader's settings takes effort, and how a visually impaired user manages them is scary to imagine (and after that the person goes online and lands on websites where nobody expected them).
 
-Я думаю, что каждому, кто имеет дело с вёрсткой, стоит попробовать читать страницы скринридером, потому что недоступность страниц лучше один раз увидеть, чем сто раз услышать. Ниже мы посмотрим как можно можно проверить веб-страницы с помощью скринридеров и узнаем на что обратить внимание при тестировании.
+I think everyone who deals with markup should try reading pages with a screen reader, because it's better to see page inaccessibility once than to hear about it a hundred times. Below we will look at how you can test web pages with screen readers and learn what to pay attention to when testing.
 
-В данный момент встроенные программы экранного доступа есть и в MacOS (VoiceOver), и в Windows (Narrator). Есть и другие приложения, например, [NVDA](https://www.nvaccess.org/) и [JAWS](https://www.freedomscientific.com/products/software/jaws/), но для первого знакомства со скринридером проще воспользоваться тем, что у же есть в вашей операционной системе.
+At the moment, built-in screen readers exist both in MacOS (VoiceOver) and in Windows (Narrator). There are other applications too, for example [NVDA](https://www.nvaccess.org/) and [JAWS](https://www.freedomscientific.com/products/software/jaws/), but for a first acquaintance with a screen reader it's easier to use the one already built into your operating system.
 
-По VoiceOver и Narrator есть официальная документация:
+There is official documentation for VoiceOver and Narrator:
 
-* [Полное руководство по использованию экранного диктора (Narrator)](https://support.microsoft.com/ru-ru/help/22798/windows-10-complete-guide-to-narrator)
-* [Универсальный доступ Apple: краткое руководство по VoiceOver](https://help.apple.com/voiceover/info/guide/10.12/?lang=ru#/)
+* [Complete guide to using Narrator](https://support.microsoft.com/ru-ru/help/22798/windows-10-complete-guide-to-narrator)
+* [Apple Accessibility: a quick guide to VoiceOver](https://help.apple.com/voiceover/info/guide/10.12/?lang=ru#/)
 
-По ссылкам очень много текста, но нам достаточно небольшого количества команд.
+Those links contain a lot of text, but we only need a small number of commands.
 
-<h2 id="voiceOver">Команды VoiceOver (MacOS)</h2>
+<h2 id="voiceOver">VoiceOver commands (MacOS)</h2>
 
-**Запуск и настройка**
+**Launching and settings**
 
-Для запуска VoiceOver нажмите `Cmd + F5`. После этого можно переключиться на окно браузера и попробовать прочитать страницу.
+To launch VoiceOver press `Cmd + F5`. After that you can switch to the browser window and try reading the page.
 
-Если требуются дополнительные настройки, это можно сделать в **Системные настройки/Универсальный доступ**, и ещё больше настроек там же в подразделе **Утилита VoiceOver**.
+If you need additional settings, you can find them in **System Preferences/Accessibility**, and even more settings there in the **VoiceOver Utility** subsection.
 
-Все команды для VoiceOver вводятся с сочетанием клавиш **VO**: `Control + Option` или `Caps Lock`.
+All VoiceOver commands are entered together with the **VO** key combination: `Control + Option` or `Caps Lock`.
 
-**Последовательный переход между элементами страницы:**
+**Moving sequentially between page elements:**
 
-* <code>VO + &larr;</code> — перейти к предыдущем элементу
-* <code>VO + &rarr;</code> — перейти к следующему элементу
+* <code>VO + &larr;</code> — go to the previous element
+* <code>VO + &rarr;</code> — go to the next element
 
-**Запуск чтения сверху вниз:**
+**Starting top-to-bottom reading:**
 
-* <code>VO + A</code> — чтение текста начиная с текущего положения на странице
+* <code>VO + A</code> — start reading text from the current position on the page
 
-**Взаимодействие с DOM-элементами:**
+**Interacting with DOM elements:**
 
-* <code>VO + Shift + &darr;</code> — начать взаимодействовать с элементом («провалиться» в него)
-* <code>VO + Shift + &uarr;</code> — закончить взаимодействовать с элементом («вынырнуть»)
+* <code>VO + Shift + &darr;</code> — start interacting with an element ("dive into" it)
+* <code>VO + Shift + &uarr;</code> — stop interacting with an element ("dive out")
 
-**«Взгляд сверху»:**
+**"Bird's-eye view":**
 
-* <code>VO + U</code> — открыть ротор
+* <code>VO + U</code> — open the rotor
 
-Последняя команда — самая интересная: она показывает все ориентиры и заголовки страницы, все ссылки и инпуты. Можно сразу перейти в нужный раздел, как по содержанию бумажной книги, пройтись по ссылками или перемещаться по элементам формы.
+The last command is the most interesting one: it shows all the landmarks and headings of the page, all links and inputs. You can jump straight to the section you need, like using the table of contents of a paper book, walk through the links, or move between form elements.
 
-<h2 id="narrator">Команды Narrator (Windows)</h2>
+<h2 id="narrator">Narrator commands (Windows)</h2>
 
-**Запуск и настройка**
+**Launching and settings**
 
-Чтобы запустить экранный диктор, одновременно нажмите <code><span class="win-logo"><span class="visually-hidden">Windows</span></span> + Ctrl + Enter</code>.
+To launch Narrator, press <code><span class="win-logo"><span class="visually-hidden">Windows</span></span> + Ctrl + Enter</code> at the same time.
 
-Панель настроек: <code><span class="win-logo"><span class="visually-hidden">Windows</span></span> + Ctrl + N</code>
+Settings panel: <code><span class="win-logo"><span class="visually-hidden">Windows</span></span> + Ctrl + N</code>
 
-По умолчанию клавишами экранного диктора назначены клавиши `Caps Lock` и `Insert` (далее `ЭД`).
+By default the Narrator keys are assigned to `Caps Lock` and `Insert` (hereinafter `NR`).
 
-* <code>ЭД + F1</code> — справка по командам скринридера
+* <code>NR + F1</code> — screen reader command reference
 
-**Последовательный переход между элементами страницы:**
+**Moving sequentially between page elements:**
 
-* <code>ЭД + &larr;</code> — перейти к предыдущем элементу
-* <code>ЭД + &rarr;</code> — перейти к следующему элементу
-* <code>ЭД + Page Up</code>/<code>ЭД + Page Down</code> — переключение режима перехода между элементами: переходить между словами, предложениями, ссылками, ориентирами или элементами формы.
+* <code>NR + &larr;</code> — go to the previous element
+* <code>NR + &rarr;</code> — go to the next element
+* <code>NR + Page Up</code>/<code>NR + Page Down</code> — switch the element navigation mode: move between words, sentences, links, landmarks or form elements.
 
-**Запуск чтения сверху вниз:**
+**Starting top-to-bottom reading:**
 
-* <code>ЭД + &darr;</code> — начать чтение с текущего места
-* <code>ЭД + &uarr;</code> или <code>Ctrl</code> — остановить чтение
+* <code>NR + &darr;</code> — start reading from the current position
+* <code>NR + &uarr;</code> or <code>Ctrl</code> — stop reading
 
-**«Взгляд сверху»:**
+**"Bird's-eye view":**
 
-* `ЭД + S` — прослушать сводку по странице  (количество ссылок, ориентиров и заголовков)
-* двойное нажание `ЭД + S` откроет диалоговое окно с этими данными
+* `NR + S` — hear a page summary (number of links, landmarks and headings)
+* pressing `NR + S` twice opens a dialog with this data
 
-* `ЭД + F5` — посмотреть список ориентиров
-* `ЭД + F6` — посмотреть список всех заголовков на странице
-* `ЭД + F7` — посмотреть список всех ссылок
+* `NR + F5` — view the list of landmarks
+* `NR + F6` — view the list of all headings on the page
+* `NR + F7` — view the list of all links
 
-Эти команды — примерный аналог ротора в VoiceOver. Хоткеи есть только для этих разделов, но из них можно попасть в другие.
+These commands are a rough equivalent of the rotor in VoiceOver. Hotkeys exist only for these sections, but from them you can get to others.
 
-Имея по рукой читалку и команды, можно отважно запустить скринридер и попробовать читать сайты.
+With a reader and its commands at hand, you can bravely launch a screen reader and try reading websites.
 
-**Важно:** перед запуском скринридеров убедитесь, что у интересующих вас страниц [корректно указан язык](https://developer.paciellogroup.com/blog/2016/06/using-the-html-lang-attribute/) (например, `<html lang="ru">`), и что язык, на котором вы планируете читать текст, есть в системе. Например, если вы хотите прочитать текст на русском, но его нет в операционной системе, скринридер может начать читать русский текст по одной букве, озвучивая перед каждой что это `cyrillic letter`. Возможно, перед использованием читалки потребуется немного покрутить настройки.
+**Important:** before launching screen readers, make sure the pages you are interested in have the [correct language specified](https://developer.paciellogroup.com/blog/2016/06/using-the-html-lang-attribute/) (for example, `<html lang="ru">`), and that the language in which you plan to read text is installed in the system. For example, if you want to read text in Russian but it is missing from the operating system, the screen reader may start reading Russian text letter by letter, announcing before each one that it is a `cyrillic letter`. You may need to tweak the settings before using the reader.
 
-Можно начать читать прямо эту страницу или любую другую, но для более глубокого понимания в чём состоит разница между плохой и хорошей разметкой я создала проект, в котором есть оба этих варианта: [A11y демо](https://yoksel.github.io/a11y-demo/).
+You can start reading this very page or any other, but for a deeper understanding of the difference between bad and good markup I created a project that has both variants: [A11y demo](https://yoksel.github.io/a11y-demo/).
 
-[Доступная](https://yoksel.github.io/a11y-demo/good.html) и [недоступная](https://yoksel.github.io/a11y-demo/bad.html) страницы визуально ничем не отличаются:
+The [accessible](https://yoksel.github.io/a11y-demo/good.html) and [inaccessible](https://yoksel.github.io/a11y-demo/bad.html) pages look visually identical:
 
 <img
   src="/assets/img/articles/inaccessibility/a11y-demo.png"
-  alt="A11y демо: скриншот страницы"
+  alt="A11y demo: screenshot of the page"
   loading="lazy"
   width="500"
 />
 
-Разница видна только в коде страницы, но для скринридеров эта разница значительна.
+The difference is visible only in the page code, but for screen readers this difference is significant.
 
-Недоступная версия свёрстана так, как если бы разработчик подумал «Какая разница какие теги? Добавлю CSS, и будет выглядеть как надо». Дивы вместо заголовков, вместо списков, кнопок — вместо всего. Зрячему пользователю практически без разницы что там в коде, но для слабовидящих воспользоваться такой страницей будет проблематично.
+The inaccessible version is marked up as if the developer thought "What difference do tags make? I'll add CSS and it will look right". Divs instead of headings, instead of lists, buttons — instead of everything. A sighted user hardly cares what is in the code, but for visually impaired users such a page will be problematic to use.
 
-Ниже будут показаны примеры как именно скринридер видит (или не видит) разные варианты разметки. При чтении страницы VoiceOver дублирует произносимый текст в отдельном попапе, и именно он будет на скриншотах.
+Below you will see examples of exactly how a screen reader sees (or does not see) different markup variants. While reading a page, VoiceOver mirrors the spoken text in a separate popup, and that is what you will see in the screenshots.
 
-Скриншоты помогут понять что и как скринидер может не найти на странице, если полениться сверстать правильно, и подскажут на что обратить внимание, если вы отважились запустить скринридер и почитать страницы самостоятельно.
+The screenshots will help you understand what a screen reader may fail to find on a page if you are too lazy to mark it up properly, and will suggest what to pay attention to if you decide to launch a screen reader and read pages yourself.
 
-В примерах ниже все скриншоты будут с VoiceOver. Интерфейс Narrator, конечно, отличается, но структуру страницы они показывают примерно одинаково.
+In the examples below, all screenshots will be from VoiceOver. Narrator's interface is different, of course, but they show the page structure in roughly the same way.
 
-<h2 id="where-to-look">Куда смотреть?</h2>
+<h2 id="where-to-look">Where to look?</h2>
 
-Как мы обычно ориентируемся на веб-страницах? Сканируем глазами крупные элементы и заголовки, обращаем внимание на формы и ссылки. Скринридеры тоже так умеют: и VoiceOver, и Narrator умеют показывать заголовки, ссылки и интерактивные элементы.
+How do we usually orient ourselves on web pages? We scan large elements and headings with our eyes, and pay attention to forms and links. Screen readers can do that too: both VoiceOver and Narrator can show headings, links and interactive elements.
 
-<h3 id="headers">Заголовки</h3>
+<h3 id="headers">Headings</h3>
 
-Чтобы увидеть какие заголовки доступны читалке, выполните команды:
+To see which headings are available to the reader, run the commands:
 
-* Narrator: `ЭД + F6`
-* VoiceOver: откройте ротор `VO + U` и стрелками пролистайте до раздела с заголовками
+* Narrator: `NR + F6`
+* VoiceOver: open the rotor `VO + U` and scroll with the arrows to the headings section
 
-Если на странице нет тегов `H1-H6`, в разделе может быть пусто или его может не быть вовсе.
+If the page has no `H1-H6` tags, the section may be empty or missing altogether.
 
-Для [версии с плохой разметкой](https://yoksel.github.io/a11y-demo/bad.html) список заголовков будет выглядеть вот так:
+For the [badly marked up version](https://yoksel.github.io/a11y-demo/bad.html) the heading list will look like this:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-rotor-headers.png"
-  alt="Плохая версия: в роторе виден только H1"
+  alt="Bad version: only H1 is visible in the rotor"
   loading="lazy"
   width="500"
 />
 
-На странице есть только один настоящий заголовок (`H1`), все прочие заголовки — просто дивы с соответствующими стилями.
+The page has only one real heading (`H1`); all other headings are just divs with corresponding styles.
 
-С такого заголовка можно попасть только в шапку сайта. На странице есть много других разделов, но для быстрой навигации они недоступны.
+From such a heading you can only get to the site header. The page has many other sections, but they are not available for quick navigation.
 
-На [странице с хорошей разметкой](https://yoksel.github.io/a11y-demo/good.html) в роторе будут представлены все заголовки:
+On the [well-marked-up page](https://yoksel.github.io/a11y-demo/good.html) the rotor will show all the headings:
 
 <img
   src="/assets/img/articles/inaccessibility/good-rotor-headers.png"
-  alt="Хорошая версия: в роторе видны все заголовки документа"
+  alt="Good version: all document headings are visible in the rotor"
   loading="lazy"
   width="500"
 />
 
-Можно выбрать нужный заголовок и сразу перейти в соответствующий раздел — это как в содержании книги найти нужную главу. Без оглавления пришлось бы листать всю книгу, а в случае с сайтом — прослушать весь сайт сверху вниз.
+You can choose the heading you need and jump straight to the corresponding section — it's like finding the right chapter in a book's table of contents. Without a table of contents you would have to flip through the whole book, and in the case of a website — listen to the whole site from top to bottom.
 
-Если структура страницы подразумевает заголовок, но по макету его нет, добавьте его в разметку и скройте с помощью `.visually-hidden`:
+If the page structure implies a heading but the design doesn't have one, add it to the markup and hide it with `.visually-hidden`:
 
 ```css
 .visually-hidden {
@@ -198,135 +198,135 @@ links:
 }
 ```
 
-Почитать про этот способ можно [здесь](https://allyjs.io/tutorials/hiding-elements.html#how-to-hide-elements-visually).
+You can read about this method [here](https://allyjs.io/tutorials/hiding-elements.html#how-to-hide-elements-visually).
 
-Обычные посетители не заметят разницы, а пользователи скринридеров получат возможность быстро попадать в любой раздел страницы.
+Regular visitors won't notice the difference, while screen reader users get the ability to quickly jump to any section of the page.
 
-Важно не только использовать `H1-H6`, но и формировать с их помощью иерархическую структуру документа. Это позволит даже на слух понять что во что вложено и как разделы страницы соотносятся друг с другом.
+It's important not only to use `H1-H6`, but also to build a hierarchical document structure with them. This makes it possible to understand even by ear what is nested inside what, and how the page sections relate to each other.
 
-Уровни заголовков не про дизайн, не про размер шрифта — они про иерархию документа. Не важно какого размера шрифты на макете — с помощью CSS можно сделать любому элементу любой шрифт. Поэтому если вы видите на макете мелкий шрифт там, где по логике документа должен быть `H1` или крупный там, где по уровню получается `H4`, выбирайте уровень заголовка исходя из иерархической структуры документа, а нужный размер шрифта задаётся стилями.
+Heading levels are not about design, not about font size — they are about document hierarchy. It doesn't matter what size the fonts are in the design — with CSS you can give any element any font. So if you see small text in the design where the document logic calls for an `H1`, or large text where the level works out to `H4`, choose the heading level based on the hierarchical structure of the document, and set the font size you need with styles.
 
-Проверить иерархию заголовков можно на [validator.w3.org/nu/](https://validator.w3.org/nu/), поставив галочку **Outline**, отчёт появится внизу страницы:
+You can check the heading hierarchy at [validator.w3.org/nu/](https://validator.w3.org/nu/) by ticking the **Outline** checkbox; the report appears at the bottom of the page:
 
 <img
   src="/assets/img/articles/inaccessibility/validator-headers.png"
-  alt="Дерево заголовков в валидаторе HTML-разметки"
+  alt="Heading tree in the HTML markup validator"
   loading="lazy"
   width="500"
 />
 
-Также проверить заголовки можно в [генераторе HTML-дерева](https://yoksel.github.io/html-tree/):
+You can also check headings in the [HTML tree generator](https://yoksel.github.io/html-tree/):
 
 <img
   src="/assets/img/articles/inaccessibility/html-tree-headers.png"
-  alt="Дерево заголовков в валидаторе BEM-разметки"
+  alt="Heading tree in the BEM markup validator"
   loading="lazy"
   width="500"
 />
 
-Правильное использование уровней заголовков, помимо всего прочего, облегчает выбор нужного тега `H1-H6`: когда у вас есть чёткое представление о структуре документа, вы сразу будете знать где какой тег должен быть. Это очень удобно.
+Proper use of heading levels, among other things, makes it easier to pick the right `H1-H6` tag: when you have a clear picture of the document structure, you immediately know which tag belongs where. It's very convenient.
 
-<h3 id="landmarks">Ориентиры</h3>
+<h3 id="landmarks">Landmarks</h3>
 
-Ориентиры с точки зрения скринридера — это элементы `main`, `aside`, `nav` и `article` — главное содержимое страницы, дополнительное, навигация и статьи. Narrator также считает ориентирами `header` и `footer`.
+From a screen reader's point of view, landmarks are the `main`, `aside`, `nav` and `article` elements — the main content of the page, supplementary content, navigation and articles. Narrator also counts `header` and `footer` as landmarks.
 
-Чтобы увидеть какие ориентиры нашёл скринридер, выполните команды:
+To see which landmarks the screen reader found, run the commands:
 
-* Narrator: `ЭД + F5`
-* VoiceOver: откройте ротор с `VO + U` и стрелками пролистайте до раздела с ориентирами
+* Narrator: `NR + F5`
+* VoiceOver: open the rotor with `VO + U` and scroll with the arrows to the landmarks section
 
-Предположим, разработчик не знал об этих тегах либо решил, что без разницы какие использовать. Получится такое:
+Suppose the developer didn't know about these tags or decided it didn't matter which ones to use. You'd get something like this:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-rotor-landmarks.png"
-  alt="Плохая версия: в роторе нет ориентиров"
+  alt="Bad version: no landmarks in the rotor"
   loading="lazy"
   width="500"
 />
 
-Скринридер не обнаружил на странице никаких осмысленных элементов. Проблема та же, что и с заголовками: если ротор не показывает ориентир, пользователь не сможет быстро перейти к нужному разделу, а то и вовсе не узнает о его существовании.
+The screen reader found no meaningful elements on the page. The problem is the same as with headings: if the rotor doesn't show a landmark, the user can't quickly jump to the section they need, and may not even learn of its existence.
 
-А вот так будут выглядеть ориентиры, если использовать теги по назначению:
+And here's what landmarks look like when tags are used as intended:
 
 <img
   src="/assets/img/articles/inaccessibility/good-rotor-landmarks.png"
-  alt="Хорошая версия: в роторе показаны главный раздел, дополнительный и навигация"
+  alt="Good version: the rotor shows the main section, a complementary one and navigation"
   loading="lazy"
   width="500"
 />
 
-Не всё переведено, но, по крайней мере, можно примерно понять, что есть на странице, и перейти к нужному элементу.
+Not everything is translated, but at least you can roughly understand what's on the page and jump to the element you need.
 
-Описание навигаций сделано с помощью `aria-label`. Это позволит отличать элементы навигации друг от друга, если их несколько на странице и у них разное содержимое.
+The navigation descriptions are made with `aria-label`. This lets you tell navigation elements apart when there are several of them on the page with different content.
 
-Элемент `main` позволит пользователю скринридера сразу перейти к основному содержимому страницы, минуя шапку и верхнее меню. Вам ничего специально не нужно для этого делать, кроме как использовать правильный тег.
+The `main` element lets a screen reader user jump straight to the main content of the page, skipping the header and the top menu. You don't need to do anything special for this except use the right tag.
 
-<h3 id="forms">Формы</h3>
+<h3 id="forms">Forms</h3>
 
-Формы используются на веб-страницах для самых разных целей. Скринридеры умеют читать элементы форм, и, если всё сделано правильно, пользователь сможет заполнить форму даже не видя её глазами.
+Forms are used on web pages for all kinds of purposes. Screen readers can read form elements, and if everything is done properly, a user can fill out a form without even seeing it.
 
-Сможет купить билет, оформить документы или сделать заказ в интернет-магазине — при условии, что разработчик не поленился и сделал всё как надо. А если поленился, что тогда?
+They can buy a ticket, file paperwork, or place an order in an online store — provided the developer wasn't lazy and did everything right. And if they were lazy, what then?
 
-Чтобы увидеть какие элементы формы нашёл скринридер, выполните команды:
+To see which form elements the screen reader found, run the commands:
 
-* Narrator: `ЭД + F5`, затем в нижнем меню выберите Поля формы
-* VoiceOver: откройте ротор с `VO + U` и стрелками пролистайте до раздела с элементами управления
+* Narrator: `NR + F5`, then choose Form fields in the bottom menu
+* VoiceOver: open the rotor with `VO + U` and scroll with the arrows to the form controls section
 
-Откроем ротор на странице с [плохом примером](https://yoksel.github.io/a11y-demo/bad.html):
+Let's open the rotor on the [bad example](https://yoksel.github.io/a11y-demo/bad.html) page:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-rotor-lost-inputs.png"
-  alt="Плохая версия: в роторе нет части инпутов"
+  alt="Bad version: some inputs are missing from the rotor"
   loading="lazy"
   width="500"
 />
 
-Скринридер нашел несколько радиокнопок и чекбокс без описаний. Что делают все эти инпуты — совершенно непонятно.
+The screen reader found a few radio buttons and a checkbox with no descriptions. What all these inputs do is completely unclear.
 
-Иногда на странице с [плохом примером](https://yoksel.github.io/a11y-demo/bad.html) скринридер может показывать в качестве лейблов ближайший текст, но это поведение нестабильно. Кроме того, скринридер может подставлять не тот текст. Если перемещаясь по странице несколько раз открыть ротор, можно поймать разные варианты подписей к инпутам.
+Sometimes on the [bad example](https://yoksel.github.io/a11y-demo/bad.html) page the screen reader may show the nearest text as labels, but this behavior is unstable. On top of that, the screen reader may substitute the wrong text. If you open the rotor several times while moving around the page, you can catch different variants of input labels.
 
-А вот как выглядит форма на самом деле:
+And here's what the form actually looks like:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-form.png"
-  alt="Cкриншот формы"
+  alt="Screenshot of the form"
   loading="lazy"
   width="600"
 />
 
-В роторе потерялась половина инпутов и кнопка «Заказать», у оставшихся нет подписей.
+Half of the inputs and the "Order" button are missing from the rotor, and the remaining ones have no labels.
 
-В [плохом примере](https://yoksel.github.io/a11y-demo/bad.html) можно увидеть несколько распространенных ошибок:
+In the [bad example](https://yoksel.github.io/a11y-demo/bad.html) you can see several common mistakes:
 
-* инпуты скрыты с помощью `display: none` (в группе **Сорт**)
-* у инпутов нет лейблов (в группе **Вес одной упаковки**)
-* в лейблах нет текста (в выборе цвета)
-* `div` вместо `button` у кнопки отправки формы
+* inputs hidden with `display: none` (in the **Variety** group)
+* inputs have no labels (in the **Weight per package** group)
+* labels have no text (in the color picker)
+* `div` instead of `button` on the form submit button
 
 <h4>display: none</h4>
 
-Во-первых, скрытие инпутов с помощью `display: none` убирает их со страницы полностью — и визуально, и для скринридеров. Пользователь скринридера не сможет попасть на них никаким образом. На скрине ротора выше видно, что там представлены только радиокнопки с выбором веса и цвета, а чекбоксов с сортами просто нет. Если читать страницу сверху вниз, скринридер честно прочитает подписи к чекбоксам, но сами чекбоксы для него отсутствуют полностью.
+First, hiding inputs with `display: none` removes them from the page completely — both visually and for screen readers. A screen reader user has no way to reach them. In the rotor screenshot above you can see that only the radio buttons for choosing weight and color are shown, and the variety checkboxes are simply absent. When reading the page top to bottom, the screen reader will dutifully read the checkbox labels, but the checkboxes themselves are completely absent for it.
 
-Во-вторых, использование `display: none` создает проблемы при навигации с клавиатуры, потому что лишает возможности попасть на эти инпуты переходя по табу. С точки зрения браузера их вообще нет на странице, поэтому переход по табу просто проигнорирует эту группу инпутов. Зрячие пользователи всё ещё могут выбирать чекбоксы кликая по лейблам, но с помощью `Tab` это сделать не получится, придётся кликать вручную.
+Second, using `display: none` creates problems for keyboard navigation, because it makes it impossible to reach those inputs by tabbing. From the browser's point of view they aren't on the page at all, so tab navigation will simply ignore that group of inputs. Sighted users can still choose the checkboxes by clicking the labels, but you can't do it with `Tab`; you'd have to click manually.
 
-Чтобы скрыть инпуты, сохранив их доступными для скринридеров и навигации с клавиатуры, используйте класс `.visually-hidden`. Так они будут доступны для всех пользователей.
+To hide inputs while keeping them available to screen readers and keyboard navigation, use the `.visually-hidden` class. That way they stay available to all users.
 
-<h4>Лейблы для инпутов</h4>
+<h4>Labels for inputs</h4>
 
-Отсутствие лейблов также является серьёзной проблемой. Инпуты доступны для скринридера, к ним можно перейти, но что они делают — совершенно непонятно:
+Missing labels are also a serious problem. The inputs are available to the screen reader, you can move to them, but what they do is completely unclear:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-no-label.png"
-  alt="Плохая версия: у инпута нет лейбла"
+  alt="Bad version: the input has no label"
   loading="lazy"
   width="500"
 />
 
-Пользователь может попытаться ориентироваться по окружающему тексту, но так можно запутаться что за чем идёт и выбрать не тот инпут, к которому относится текст. Чтобы избежать путаницы, имеет смысл всегда всем инпутам привязывать лейблы с текстовым описанием.
+The user can try to orient themselves by the surrounding text, but it's easy to get confused about what follows what and to pick the wrong input for the text. To avoid confusion, it makes sense to always tie labels with a text description to all inputs.
 
-Лейблы делают форму удобнее и для зрячих пользователей: когда есть лейблы, можно кликнуть по тексту лейбла, а не целиться по инпуту. Сравнить такое поведение можно в [плохом примере](https://yoksel.github.io/a11y-demo/bad.html): чтобы выбрать сорт, достаточно кликнуть по тексту, чтобы выбрать вес — придётся целиться по радиокнопке, что очень неудобно.
+Labels also make the form more convenient for sighted users: when labels exist, you can click the label text instead of aiming at the input. You can compare this behavior in the [bad example](https://yoksel.github.io/a11y-demo/bad.html): to choose a variety, clicking the text is enough, but to choose the weight you have to aim at the radio button, which is very inconvenient.
 
-Привязать лейбл к инпуту можно через атрибут `for`:
+You can tie a label to an input with the `for` attribute:
 
 ```html
 <label
@@ -338,10 +338,9 @@ links:
   type="checkbox"
   id="input-1"
   value="product-1"
->
 ```
 
-Или вот так, вложив инпут в лейбл:
+Or like this, nesting the input inside the label:
 
 ```html
 <label>
@@ -362,78 +361,78 @@ links:
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Оба способа работают одинаково, так что без разницы какой выбирать. Главное — не забывать добавлять лейблы для всех инпутов на странице.
+Both ways work the same, so it doesn't matter which one you choose. The main thing is not to forget to add labels for all inputs on the page.
 
-<h4>Лейблы без текста</h4>
+<h4>Labels without text</h4>
 
-Даже если лейблы есть, и они привязаны к инпутам, отсутствие в них текста делает их совершенно бесполезными для пользователей скринридеров. Как мы видели на скрине выше, в роторе такие инпуты будут показаны без описаний, а если перейти непосредственно к инпуту, скринридер покажет это:
+Even if labels exist and are tied to inputs, the absence of text in them makes them completely useless for screen reader users. As we saw in the screenshot above, such inputs will be shown in the rotor without descriptions, and if you move directly to the input, the screen reader will show this:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-no-label-text.png"
-  alt="Плохая версия: у инпута нет лейбла"
+  alt="Bad version: the input has no label"
   loading="lazy"
   width="500"
 />
 
-А так как рядом нет совсем никакого текста, у пользователя скринридера не будет никаких шансов понять что ему предлагается тут выбрать.
+And since there is no text nearby at all, a screen reader user has no chance of understanding what they are being offered to choose here.
 
-Если обычным пользователям не нужен в лейблах видимый текст, его можно добавить только для скринридеров: заверните текстовое содержимое лейбла в `span` c классом `.visually-hidden`.
+If regular users don't need visible text in the labels, it can be added only for screen readers: wrap the label's text content in a `span` with the `.visually-hidden` class.
 
-<h4>Div вместо Button</h4>
+<h4>Div instead of Button</h4>
 
-Последняя проблема — див вместо кнопки. Визуально никакой разницы, и по поведению тоже — по клику на «Заказать» происходит отправка формы, но для скринридера разница будет значительной: `div` — не интерактивный элемент, поэтому его не будет в роторе:
+The last problem is a div instead of a button. Visually there's no difference, and behaviorally either — clicking "Order" submits the form, but for a screen reader the difference is significant: a `div` is not an interactive element, so it won't be in the rotor:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-rotor-lost-inputs.png"
-  alt="Плохая версия: в роторе нет части инпутов"
+  alt="Bad version: some inputs are missing from the rotor"
   loading="lazy"
   width="500"
 />
 
-Если просто читать страницу сверху вниз, кнопка будет озвучена как обычный текст:
+When simply reading the page top to bottom, the button will be announced as plain text:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-form-submit.png"
-  alt="Плохая версия: кнопка озвучивается как простой текст"
+  alt="Bad version: the button is announced as plain text"
   loading="lazy"
   width="500"
 />
 
-И на неё нельзя будет попасть по табу. Даже если пользователь скринридера умудрится заполнить форму, он просто не сможет её отправить.
+And you can't tab to it. Even if a screen reader user manages to fill out the form, they simply won't be able to submit it.
 
-Можно добавить диву атрибуты, чтобы браузер начал считать его кнопкой, но воспроизвести полноценное поведение обычной кнопки будет сложно, да и зачем, если можно сразу взять `button`?
+You can add attributes to a div so the browser starts treating it as a button, but reproducing the full behavior of a regular button would be hard, and why bother when you can just take a `button`?
 
 <img
   src="/assets/img/articles/inaccessibility/good-form-submit.png"
-  alt="Хорошая версия: кнопка озвучивается как кнопка"
+  alt="Good version: the button is announced as a button"
   loading="lazy"
   width="500"
 />
 
-Скринридер распознает кнопку как интерактивный элемент и озвучит это, покажет её в роторе, на неё можно будет перейти по табу, а нажав `Enter` или `Пробел` — отправить форму.
+The screen reader recognizes the button as an interactive element and announces that, shows it in the rotor, you can tab to it, and pressing `Enter` or `Space` submits the form.
 
-Если вам где-то на странице нужна кнопка — просто используйте `button`. Если по клику на элемент происходит переход на другую страницу — используйте ссылку. Даже если по макету ссылка выглядит как кнопка, возьмите ссылку и стилизуйте её под кнопку с помощью CSS. Если вам требуется интерактивный элемент — это в любом случае это не `span` и не `div`, используйте более подходящие теги.
+If you need a button somewhere on the page — just use `button`. If clicking an element navigates to another page — use a link. Even if the design shows the link as a button, take a link and style it as a button with CSS. If you need an interactive element — in any case it's not a `span` and not a `div`; use more appropriate tags.
 
-Таким образом, чтобы сделать инпуты доступными, нужно использовать теги по назначению, не скрывать их с `display: none` и не забывать про текстовые описания.
+So, to make inputs accessible you need to use tags as intended, not hide them with `display: none`, and not forget text descriptions.
 
-Для сравнения посмотрим на содержимое ротора на странице с [хорошим примером](https://yoksel.github.io/a11y-demo/good.html):
+For comparison, let's look at the rotor contents on the [good example](https://yoksel.github.io/a11y-demo/good.html) page:
 
 <img
   src="/assets/img/articles/inaccessibility/good-rotor-inputs.png"
-  alt="Хорошая версия: в роторе отображаются все инпуты"
+  alt="Good version: all inputs are displayed in the rotor"
   loading="lazy"
   width="500"
 />
 
-В роторе видны все инпуты с описаниями и все состояния, есть текстовое поле и кнопка отправки формы. Уже очень неплохо, но кое-чего не хватает: непонятно что именно предлагается добавить в заказ и к чему относится выбор цветов.
+The rotor shows all inputs with descriptions and all states, there is a text field and a form submit button. Already pretty good, but something is missing: it's unclear what exactly is being offered to add to the order and what the color choice relates to.
 
-Для вёрстки форм есть ещё пара тегов, которые не показываются в роторе, но они важны для правильного ориентирования в форме:
+For marking up forms there are a couple more tags that aren't shown in the rotor, but they matter for proper orientation within the form:
 
-<h4>Fieldset и Legend</h4>
+<h4>Fieldset and Legend</h4>
 
-Когда инпутов мало, в принципе, даже по списку инпутов в роторе можно понять какие варианты выбора есть. Но формы могут быть очень разными и очень сложными, и тогда будет полезно группировать инпуты, а больших формах это совершенно необходимо.
+When there are few inputs, in principle you can understand the available choices even from the list of inputs in the rotor. But forms can be very different and very complex, and then grouping inputs is useful; in large forms it's absolutely necessary.
 
-Для группировки инпутов есть тег `fieldset`, а для именования группы — `legend`. Их использование выглядит примерно так:
+For grouping inputs there is the `fieldset` tag, and for naming the group — `legend`. Using them looks something like this:
 
 ```html
 <fieldset>
@@ -466,289 +465,289 @@ links:
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-У `fieldset` и `legend` могут быть проблемы со стилизацией в разных браузерах, но это совершенно не повод от них отказываться, все проблемы [решаемы](https://yoksel.github.io/bad-practices/forms-markup/), а отсутствие в форме `fieldset` и `legend` может создать сложности пользователям скринридеров.
+`fieldset` and `legend` can have styling problems in different browsers, but that's no reason at all to abandon them; all the problems are [solvable](https://yoksel.github.io/bad-practices/forms-markup/), while the absence of `fieldset` and `legend` in a form can create difficulties for screen reader users.
 
-Что будет, если не использовать их вообще? Это можно проверить на странице с [плохим примером](https://yoksel.github.io/a11y-demo/bad.html). Поля не будут явно сгруппированы, а имя группы прочитается как обычный текст:
+What happens if you don't use them at all? You can check this on the [bad example](https://yoksel.github.io/a11y-demo/bad.html) page. The fields won't be explicitly grouped, and the group name will be read as plain text:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-form-group-name.png"
-  alt="Плохая версия: непонятно к чему относится текст"
+  alt="Bad version: it's unclear what the text relates to"
   loading="lazy"
   width="500"
 />
 
-Если перед набором инпутов совсем не будет текста, у пользователя скринридера не будет совершенно никакой информации о том, что и зачем ему нужно сделать с этими инпутами. Если пролистать все инпуты, скринридер сразу перейдёт к следующему элементу формы никак не обозначив, что это была группа.
+If there is no text at all before a set of inputs, a screen reader user gets absolutely no information about what they need to do with these inputs and why. If you scroll through all the inputs, the screen reader will move straight to the next form element without indicating in any way that this was a group.
 
-Скринридер не умеет делать такие выводы просто на основании того, что мы положили рядом несколько инпутов и текст. Чтобы помочь ему правильно понимать структуру формы, нужно использовать соответствующие теги.
+A screen reader can't draw such conclusions simply from the fact that we placed several inputs and a text next to each other. To help it understand the form structure correctly, you need to use the appropriate tags.
 
-Что увидит скринридер в форме c `fieldset` и `legend`, можно проверить на странице с [хорошим примером](https://yoksel.github.io/a11y-demo/good.html). Скринридер находит группу и сообщает её название:
+What a screen reader sees in a form with `fieldset` and `legend` can be checked on the [good example](https://yoksel.github.io/a11y-demo/good.html) page. The screen reader finds the group and announces its name:
 
 <img
   src="/assets/img/articles/inaccessibility/good-form-group.png"
-  alt="Хорошая версия: скринридер видит группу инпутов"
+  alt="Good version: the screen reader sees the input group"
   loading="lazy"
   width="500"
 />
 
-Озвучивает, что сейчас мы находимся внутри группы:
+It announces that we are currently inside a group:
 
 <img
   src="/assets/img/articles/inaccessibility/good-form-group-position.png"
-  alt="Хорошая версия: скринридер говорит, что мы внутри группы"
+  alt="Good version: the screen reader says we are inside a group"
   loading="lazy"
   width="500"
 />
 
-А когда мы выходим из группы, скринридер явно сообщает какую именно группу мы покидаем:
+And when we leave the group, the screen reader explicitly reports which group we are leaving:
 
 <img
   src="/assets/img/articles/inaccessibility/good-form-group-end.png"
-  alt="Хорошая версия: скринридер видит группу инпутов"
+  alt="Good version: the screen reader sees the input group"
   loading="lazy"
   width="500"
 />
 
-Использование `fieldset` и `legend` помогает не только оценить размеры формы, понять, сколько полей нужно заполнить для решения своей задачи, но и уравнивает возможности пользователей. Зрячие увидят заголовок группы и рамки, ограничивающие группы полей и инпутов, пользователи скринридеров — услышат информацию о группе и инпутах внутри неё.
+Using `fieldset` and `legend` not only helps gauge the size of a form and understand how many fields need to be filled to complete your task, but also evens out users' capabilities. Sighted users will see the group title and the borders around groups of fields and inputs; screen reader users will hear information about the group and the inputs inside it.
 
-Если форма на сайте сверстана правильно, пользователь скринридера сможет купить билет, отправить письмо или оформить заказ не имея ни малейшего представления как выглядит форма на странице.
+If a form on a site is marked up correctly, a screen reader user can buy a ticket, send a letter, or place an order without having the slightest idea what the form looks like on the page.
 
-Narrator не озвучивает явно группы (или я не нашла где это настроить), но без `fieldset` он неправильно определяет количество инпутов в группе: например, считает выбор цветов и веса упаковки одной группой. Если `fieldset` есть, при выборе инпутов Narrator озвучивает название группы, заданное в `legend`.
+Narrator doesn't announce groups explicitly (or I didn't find where to turn that on), but without `fieldset` it miscounts the inputs in a group: for example, it counts the color choice and the package weight as one group. When `fieldset` is present, Narrator announces the group name set in `legend` when you select inputs.
 
-`fieldset` позволяет группировать только инпуты, но на страницах часто можно встретить и другой сгруппированный контент — картинки в галерее, ссылки в навигации, шаги в туториалах. Для этих целей можно использовать списки. Как к ним относятся скринридеры?
+`fieldset` can only group inputs, but pages often have other grouped content — pictures in a gallery, links in navigation, steps in tutorials. For these purposes you can use lists. How do screen readers treat them?
 
-<h3>Списки</h3>
+<h3>Lists</h3>
 
-Списки верстаются с помощью `ol`, `ul` или `dl`. Смысл списка — объединение однотипных элементов.
+Lists are marked up with `ol`, `ul` or `dl`. The point of a list is to unite similar elements.
 
-В страницах с примерами много списков, например, в рецептах это ингредиенты и процесс:
+The example pages have many lists; in recipes, for instance, these are the ingredients and the process:
 
 <img
   src="/assets/img/articles/inaccessibility/compot.png"
-  alt="Скриншот рецепта компота"
+  alt="Screenshot of a compote recipe"
   loading="lazy"
   width="350"
 />
 
-Попробуем прочитать верхний список на странице с [плохим примером](https://yoksel.github.io/a11y-demo/bad.html), там он вместо `ol` и `li` свёрстан дивами:
+Let's try reading the top list on the [bad example](https://yoksel.github.io/a11y-demo/bad.html) page, where it's marked up with divs instead of `ol` and `li`:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-list-item.png"
-  alt="Плохая версия: без правильных тегов скринридер не понимает, что это список"
+  alt="Bad version: without proper tags the screen reader doesn't understand it's a list"
   loading="lazy"
   width="500"
 />
 
-Скринридер будет просто читать текст сверху вниз никак не связывая элементы друг с другом.
+The screen reader will simply read the text top to bottom without linking the elements to each other.
 
-Сравним с [хорошим примером](https://yoksel.github.io/a11y-demo/good.html). Скринридер сразу озвучит список и сообщит сколько в нём элементов:
+Compare with the [good example](https://yoksel.github.io/a11y-demo/good.html). The screen reader immediately announces the list and reports how many items it has:
 
 <img
   src="/assets/img/articles/inaccessibility/good-list.png"
-  alt="Хорошая версия: скринридер обнаружил список"
+  alt="Good version: the screen reader detected a list"
   loading="lazy"
   width="500"
 />
 
-Для каждого пункта списка он зачитает всё текстовое содержимое, то есть не только ингредиент, но и его количество, а также покажет в каком месте списка мы находимся:
+For each list item it reads all the text content, that is, not only the ingredient but also its amount, and also shows where in the list we are:
 
 <img
   src="/assets/img/articles/inaccessibility/good-list-item.png"
-  alt="Хорошая версия: озвучивается всё содержимое пункта списка"
+  alt="Good version: the entire list item content is announced"
   loading="lazy"
   width="500"
 />
 
-И озвучит выход из списка:
+And it announces leaving the list:
 
 <img
   src="/assets/img/articles/inaccessibility/good-list-end.png"
-  alt="Хорошая версия: выход из списка"
+  alt="Good version: leaving the list"
   loading="lazy"
   width="500"
 />
 
-Для нумерованного списка, у которого не скрыта нумерация, может показать номер позиции или озвучить буллет:
+For a numbered list whose numbering is not hidden, it may show the position number or announce the bullet:
 
 <img
   src="/assets/img/articles/inaccessibility/good-list-numeric-item.png"
-  alt="Хорошая версия: для списка с нумерацией озвучивается номер позиции"
+  alt="Good version: for a numbered list the position number is announced"
   loading="lazy"
   width="500"
 />
 
-Это поведение может различаться для разных браузеров.
+This behavior may differ between browsers.
 
-Когда мы видим список чего-либо на странице, мы можем понять длинный он или короткий, увидеть, в каком месте списка находится нужный нам элемент. В случае с рецептом это поможет оценить его сложность и понять сколько шагов осталось до финиша, если мы таки начали варить компот.
+When we see a list of something on a page, we can tell whether it's long or short, and see where in the list the element we need is. In the case of a recipe, this helps estimate its complexity and understand how many steps are left before the finish, if we did start cooking the compote.
 
-Если мы используем для вёрстки списков правильные теги, пользователи скринридера смогут получить ту же информацию просто прослушав рецепт. Если же верстать списки дивами, для пользователей скринридера они окажутся простынёй бессвязного текста. Чтобы сделать списки доступными, используйте правильные теги.
+If we use the right tags for marking up lists, screen reader users can get the same information simply by listening to the recipe. But if lists are marked up with divs, for screen reader users they turn into a sheet of disconnected text. To make lists accessible, use the right tags.
 
-Ещё скринридер умеет озвучивать ссылки и картинки.
+Screen readers can also announce links and pictures.
 
-<h3 id="links">Ссылки</h3>
+<h3 id="links">Links</h3>
 
-Как посмотреть какие ссылки нашёл скринридер:
+How to see which links the screen reader found:
 
-* Narrator: `ЭД + F7`
-* VoiceOver: откройте ротор с `VO + U` и стрелками пролистайте до раздела со ссылками
+* Narrator: `NR + F7`
+* VoiceOver: open the rotor with `VO + U` and scroll with the arrows to the links section
 
-Ротор показывает все ссылки на странице, какие ему удалось найти:
+The rotor shows all the links on the page that it managed to find:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-rotor-links.png"
-  alt="Плохая версия: в роторе в списке ссылок нет части ссылок"
+  alt="Bad version: some links are missing from the rotor's link list"
   loading="lazy"
   width="500"
 />
 
-Пользуясь таким списком можно, например, на сайте с новостями прочитать все ссылки на статьи и сразу перейти в нужную.
+With such a list you can, for example, read all the article links on a news site and jump straight to the one you need.
 
-Но это скрин со страницы с [плохом примером](https://yoksel.github.io/a11y-demo/bad.html), и если сопоставить его с содержимым страницы, можно заметить, что части ссылок нет. Например, нет крайних ссылок из нижней навигации:
+But this is a screenshot from the [bad example](https://yoksel.github.io/a11y-demo/bad.html) page, and if you match it against the page content, you can notice that some links are missing. For example, the last links from the bottom navigation are absent:
 
 <img
   src="/assets/img/articles/inaccessibility/footer-nav.png"
-  alt="Скриншот нижней навигации"
+  alt="Screenshot of the bottom navigation"
   loading="lazy"
   width="500"
 />
 
-Если попытаться прочитать непосредственно отсутствующие ссылки, скринридер покажет такое:
+If you try to read the missing links directly, the screen reader will show something like this:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-footer-links-top.png"
-  alt="Плохая версия: вместо текста ссылки «Наверх» показывается часть адреса"
+  alt="Bad version: instead of the 'Back to top' link text, part of the address is shown"
   loading="lazy"
   width="500"
 />
 
-Это ссылка «Наверх».
+This is the "Back to top" link.
 
 <img
   src="/assets/img/articles/inaccessibility/bad-footer-links-demo.png"
-  alt="Плохая версия: вместо текста ссылки на репозиторий показывается часть адреса"
+  alt="Bad version: instead of the repository link text, part of the address is shown"
   loading="lazy"
   width="500"
 />
 
-А это — ссылка на репозиторий.
+And this is the link to the repository.
 
-Если в ссылке нет текста, её не будет в роторе. И даже перейдя на саму ссылку, пользователь скринридера сможет получить информацию только из адреса ссылки, что в случае ссылки «Наверх», как мы видим, не работает — там покажется текущая страница вместо `#top`.
+If a link has no text, it won't be in the rotor. And even after moving to the link itself, a screen reader user can only get information from the link's address, which in the case of a "Back to top" link, as we can see, doesn't work — it will show the current page instead of `#top`.
 
-Narrator в роторе показывает все ссылки, но ссылки без текста будут в виде полного адреса.
+Narrator shows all links in the rotor, but links without text appear as full addresses.
 
-Для решения проблемы достаточно добавить в ссылки текст. В [хорошем примере](https://yoksel.github.io/a11y-demo/good.html) для ссылки «Наверх» это сделано спаном с классом `.visually-hidden`, для ссылки на репозиторий — атрибутом `aria-label`.
+To solve the problem it's enough to add text to the links. In the [good example](https://yoksel.github.io/a11y-demo/good.html) this is done for the "Back to top" link with a span with the `.visually-hidden` class, and for the repository link — with an `aria-label` attribute.
 
-Оба способа работают, ссылки отображаются в роторе:
+Both ways work, and the links are displayed in the rotor:
 
 <img
   src="/assets/img/articles/inaccessibility/good-rotor-links.png"
-  alt="Хорошая версия: в роторе видны все ссылки"
+  alt="Good version: all links are visible in the rotor"
   loading="lazy"
   width="500"
 />
 
-Способ с `.visually-hidden` мне нравится немного больше, потому что такая ссылка будет видна если не будет стилей, содержимое `aria-label` в этом случае не отобразится.
+I like the `.visually-hidden` way a bit more, because such a link will be visible if styles fail to load; the `aria-label` content won't be displayed in that case.
 
-Ещё раз: если по клику на элемент происходит действие на текущей странице либо отправка формы — используйте `button`. Если клик по элементу уводит на другую страницу — это ссылка. Конечно, можно навешать событий на див и сделать вид, что он ссылка или кнопка, но для пользователей скринридеров такие элементы с высокой степенью вероятности могут оказаться недоступными, используйте правильные теги.
+Once again: if clicking an element performs an action on the current page or submits a form — use `button`. If clicking an element takes you to another page — it's a link. Of course, you can hang events on a div and pretend it's a link or a button, but for screen reader users such elements will most likely turn out to be inaccessible; use the right tags.
 
-<h3 id="images">Картинки</h3>
+<h3 id="images">Images</h3>
 
-Как посмотреть какие картинки доступны для скринридера:
+How to see which images are available to the screen reader:
 
-* Narrator: `ЭД + F5`, в выпадушке выберите «Все», в этом списке будет всё, что нашёл скринридер, в том числе и картинки. Отдельного раздела с ними нет
-* VoiceOver: откройте ротор с `VO + U` и стрелками пролистайте до раздела с картинками
+* Narrator: `NR + F5`, choose "All" in the dropdown; this list contains everything the screen reader found, including images. There is no separate section for them
+* VoiceOver: open the rotor with `VO + U` and scroll with the arrows to the images section
 
-В качестве описания картинок скринридер использует содержимое атрибута `alt`. Картинки, у которых есть описание, отобразятся в роторе:
+As image descriptions the screen reader uses the contents of the `alt` attribute. Images that have a description will be displayed in the rotor:
 
 <img
   src="/assets/img/articles/inaccessibility/good-rotor-image.png"
-  alt="Хорошая версия: в роторе видна картинка с alt"
+  alt="Good version: an image with an alt is visible in the rotor"
   loading="lazy"
   width="500"
 />
 
-И будут озвучены при последовательном чтении страницы:
+And will be announced during sequential reading of the page:
 
 <img
   src="/assets/img/articles/inaccessibility/good-image.png"
-  alt="Хорошая версия: скринридер читает картинку и описание"
+  alt="Good version: the screen reader reads the image and its description"
   loading="lazy"
   width="500"
 />
 
-Эти скрины сделаны в [хорошем примере](https://yoksel.github.io/a11y-demo/good.html). В [плохом](https://yoksel.github.io/a11y-demo/bad.html), как обычно, всё сломано: у картинки нет атрибута `alt`.
+These screenshots were made in the [good example](https://yoksel.github.io/a11y-demo/good.html). In the [bad one](https://yoksel.github.io/a11y-demo/bad.html), as usual, everything is broken: the image has no `alt` attribute.
 
-Firefox просто скажет что это картинка без каких-либо описаний и дополнений, а вот хром не только сообщит, что у картинки нет описания, но и предложит открыть контекстное меню, чтобы его получить:
+Firefox will simply say it's an image without any descriptions or additions, while Chrome will not only report that the image has no description, but will also offer to open the context menu to get one:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-image.png"
-  alt="Плохая версия: скринридер предлагает открыть контекстное меню"
+  alt="Bad version: the screen reader offers to open the context menu"
   loading="lazy"
   width="500"
 />
 
-А в нём будет предложено получить описание из Google, такая опция есть только при запущенном VoiceOver. Полученное описание появится в том же попапе:
+And there it will offer to get a description from Google; this option exists only when VoiceOver is running. The received description will appear in the same popup:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-image-desc-from-google.png"
-  alt="Плохая версия: описание картинки, полученное из Google"
+  alt="Bad version: the image description obtained from Google"
   loading="lazy"
   width="500"
 />
 
-Описание на английском, но это всё же лучше, чем ничего.
+The description is in English, but that's still better than nothing.
 
-Narrator также предлагает получить описание картинки, только от Microsoft, нажав `ЭД + Ctrl + D`. Таким же образом можно получить заголовок страницы по ссылке. Как и в VoiceOver, полученный текст не переводится на язык документа.
+Narrator also offers to get an image description, only from Microsoft, by pressing `NR + Ctrl + D`. The same way you can get the title of a linked page. As in VoiceOver, the received text is not translated into the document's language.
 
-Отсутствие `alt` является ошибкой (и это покажет [валидатор](https://validator.w3.org/nu/#textarea)), потому что `alt` обязательный атрибут, он должен быть у всех картинок на странице.
+A missing `alt` is an error (and the [validator](https://validator.w3.org/nu/#textarea) will show it), because `alt` is a required attribute; every image on the page must have one.
 
-Если картинка несёт чисто декоративные функции, лучше всего её вставить через CSS, но если такой возможности нет — добавьте ей пустой `alt`. Это будет означать, что картинка не содержит полезной информации и вставлена исключительно для красоты. Скринридеры такие изображения полностью игнорируют и не показывают ни в роторе, ни при последовательном чтении страницы.
+If an image serves purely decorative purposes, it's best to insert it via CSS, but if that's not possible — give it an empty `alt`. This will mean the image contains no useful information and is inserted purely for decoration. Screen readers completely ignore such images and don't show them either in the rotor or during sequential page reading.
 
-Для всех остальных картинок постарайтесь добавлять осмысленный `alt`. Лучше всего, чтобы там было именно описание изображения, а не куски из окружающего текста, тогда `alt` действительно будет полезен.
+For all other images, try to add a meaningful `alt`. It's best for it to be an actual description of the image rather than chunks of the surrounding text; then the `alt` will truly be useful.
 
-<h2 id="conclusion">Выводы</h2>
+<h2 id="conclusion">Conclusions</h2>
 
-Иногда нам лень верстать семантично и использовать правильные теги, потому что ну какая разница, добавим стили и всё будет выглядеть как надо, но для пользователей скринридеров плохая разметка может стать серьёзной проблемой. Семантичная разметка позволит таким пользователям правильно услышать страницу и воспользоваться сайтом для решения своих задач.
+Sometimes we're too lazy to mark up semantically and use the right tags, because what difference does it make — add styles and everything will look right. But for screen reader users, bad markup can become a serious problem. Semantic markup will let such users hear the page correctly and use the site for their tasks.
 
-Тема доступности — большая и сложная. Помимо семантической разметки она также включает в себя использование контрастных цветовых схем, упрощение текстов для улучшения восприятия, правильную разметку всплывающих окон и меню и многое другое. Но даже не погружаясь глубоко в эту тему, можно сделать достаточно много просто используя теги по назначению.
+Accessibility is a big and complex topic. Besides semantic markup it also includes using contrasting color schemes, simplifying texts for better perception, proper markup of popups and menus, and much more. But even without diving deep into this topic, you can do quite a lot simply by using tags as intended.
 
-Так что если у вас возникала мысль «зачем нам столько разных тегов?» — в том числе, вот за этим, они помогают программам экранного доступа правильно озвучивать страницу. А кроме того, используя теги по назначению, гораздо удобнее верстать. Например, вот так выглядит в коде конец страницы в [плохом примере](https://yoksel.github.io/a11y-demo/bad.html) и в [хорошем](https://yoksel.github.io/a11y-demo/good.html):
+So if you've ever had the thought "why do we need so many different tags?" — this is partly why: they help screen readers announce the page correctly. And besides, using tags as intended makes markup much more convenient. For example, here's what the end of the page looks like in code in the [bad example](https://yoksel.github.io/a11y-demo/bad.html) and in the [good one](https://yoksel.github.io/a11y-demo/good.html):
 
 <img
   src="/assets/img/articles/inaccessibility/bad-tags.png"
-  alt="Плохая версия: одинаковые закрывающие теги в конце страницы"
+  alt="Bad version: identical closing tags at the end of the page"
   loading="lazy"
   width="275"
 />
 <img
   src="/assets/img/articles/inaccessibility/good-tags.png"
-  alt="Хорошая версия: разнообразные закрывающие теги в конце страницы"
+  alt="Good version: varied closing tags at the end of the page"
   loading="lazy"
   width="275"
 />
 
-В хорошем примере сразу видно где какой тег закрылся, в плохом же можно понять только то, что закрылся див, открытый где-то выше. Если в каком-то месте потеряется закрывающий див или наоборот, заведётся лишний открывающий — страница развалится, а если все теги выглядят одинаково — такую ошибку легко сделать просто по невнимательности.
+In the good example you can immediately see which tag closed where; in the bad one you can only tell that a div opened somewhere above has closed. If a closing div gets lost somewhere, or an extra opening one appears — the page falls apart, and if all tags look the same, such a mistake is easy to make simply through carelessness.
 
-[validator.w3.org/nu/](https://validator.w3.org/nu/) поможет обнаружить потерявшиеся теги, а использование разнообразных тегов снизит риск возникновения такой проблемы.
+[validator.w3.org/nu/](https://validator.w3.org/nu/) will help find lost tags, and using varied tags reduces the risk of such a problem.
 
-Кстати, самый простой способ увидеть структуру страницы (и косвенно оценить доступность) — это посмотреть на неё без стилей. Например, вот так выглядит на разных версиях раздел с рецептами:
+By the way, the simplest way to see the structure of a page (and indirectly assess its accessibility) is to look at it without styles. For example, here's what the recipes section looks like in the different versions:
 
 <img
   src="/assets/img/articles/inaccessibility/bad-no-styles.png"
-  alt="Плохая версия без стилей выглядит как простыня текста"
+  alt="The bad version without styles looks like a sheet of text"
   loading="lazy"
   width="320"
 />
 <img
   src="/assets/img/articles/inaccessibility/good-no-styles.png"
-  alt="Хорошая версия без стилей сохраняет структуру"
+  alt="The good version without styles keeps its structure"
   loading="lazy"
   width="320"
 />
 
-[Плохая версия](https://yoksel.github.io/a11y-demo/bad.html) без стилей похожа на поток сознания, в то время как [хорошую](https://yoksel.github.io/a11y-demo/good.html) всё ещё можно без проблем прочитать.
+The [bad version](https://yoksel.github.io/a11y-demo/bad.html) without styles looks like a stream of consciousness, while the [good one](https://yoksel.github.io/a11y-demo/good.html) can still be read without problems.
 
-Надеюсь, статья поможет вам внимательней относиться к тегам и лучше понимать почему это важно.
+I hope this article helps you treat tags more carefully and better understand why it matters.
 
-Увидеть больше рекомендаций по разметке с примерами кода можно на [Веблайнд](https://weblind.ru/). Почитать про доступность — [в блоге Веб-стандартов](https://web-standards.ru/articles/tags/a11y/).
+You can see more markup recommendations with code examples at [Weblind](https://weblind.ru/). You can read about accessibility [in the Web Standards blog](https://web-standards.ru/articles/tags/a11y/).
 
-**Upd. от 9.09.2020:** как заскринить попапы скринридера? Это нетривиальная задача, потому что при нажатии хоткеев фокус читалки уходит на новое действие. Содержимое попапа с текущим текстом меняется, ротор мгновенно закрывается. Я использовала Monosnap, чтобы записать видео работы со скринридером, сохраняла его в GIF с частотой 1-3 кадра в секунду (чтобы в итоговом файле было как можно меньше одинаковых кадров) и потом из этой гифки в фотошопе вырезала нужный попап. Чтобы содержимое страницы не просвечивалось под попапом, контент можно скрыть с помощью `opacity: 0` либо сделать внизу страницы большую белую область и размещать её под попапом прокручивая страницу.
+**Upd. from 9/9/2020:** how do you screenshot screen reader popups? It's a nontrivial task, because pressing hotkeys moves the reader's focus to a new action. The popup content with the current text changes, and the rotor closes instantly. I used Monosnap to record video of working with the screen reader, saved it as a GIF at 1-3 frames per second (so the final file had as few identical frames as possible), and then cut the needed popup out of that GIF in Photoshop. To keep the page content from showing through under the popup, you can hide the content with `opacity: 0` or make a big white area at the bottom of the page and place it under the popup by scrolling the page.
