@@ -1,71 +1,71 @@
 ---
-title: Css-селекторы
+title: CSS selectors
 
-description: Справочник по селекторам.
+description: Selector Reference.
 tags: [selectors]
 
 links:
 - href: /specifity/
-  text: Сколько весят селекторы?
+  text: How much do selectors weigh?
 - href: /pages/css-selectors
-  text: CSS-селекторы одной таблицей
+  text: CSS selectors in one table
 ---
 
-В CSS есть достаточно способов обратиться к нужным элементам. <br/>
-В каждой новой спецификацией CSS добавлялось что-то новое, и теперь у нас есть много самых разных селекторов. <!--more-->Кроме того, различие в спецификациях можно использовать, например, чтобы спрятать стили от старых браузеров.
+There are plenty of ways to access the elements you need in CSS. <br/>
+Each new CSS specification has added something new, and now we have many different selectors. <!--more-->In addition, the difference in specifications can be used, for example, to hide styles from older browsers.
 
-Спецификацию можно найти тут: <a href="http://www.w3.org/TR/css3-selectors/#selectors">w3.org/TR/css3-selectors</a>.
+The specification can be found here: <a href="http://www.w3.org/TR/css3-selectors/#selectors">w3.org/TR/css3-selectors</a>.
 
-Селекторы делятся на несколько видов:
+Selectors are divided into several types:
 
 <ul>
-  <li>по типу (<code>H1</code>, <code>TD</code>, <code>HR</code>...);</li>
-  <li>универсальный селектор — <code>*</code> — обозначает элемент любого типа;</li>
-  <li>селекторы атрибутов (<code>[data-name]</code>, <code>[data-name$="hidden"]</code>);</li>
-  <li>селекторы по классу (<code>.main</code>, <code>.header__nav</code>);</li>
-  <li>селекторы по ID (<code>#form</code>, <code>#submit</code>);</li>
-  <li>псевдо-классы:
+  <li>by type (<code>H1</code>, <code>TD</code>, <code>HR</code>...);</li>
+  <li>universal selector - <code>*</code> - denotes an element of any type;</li>
+  <li>attribute selectors (<code>[data-name]</code>, <code>[data-name$="hidden"]</code>);</li>
+  <li>selectors by class (<code>.main</code>, <code>.header__nav</code>);</li>
+  <li>selectors by ID (<code>#form</code>, <code>#submit</code>);</li>
+  <li>pseudo-classes:
 
   <ul>
-    <li>динамические (<code>:hover</code> и т.д.);</li>
-    <li>селектор цели (<code>:target</code>);</li>
-    <li>селектор по языку (<code>:lang(en)</code>);</li>
-    <li>состояния элементов интерфейса (<code>:enabled</code>, <code>:checked</code>...);</li>
-    <li>структурные псевдоклассы (<code>:root</code>, <code>:nth-child</code>);</li>
-    <li>псевдокласс отрицания (<code>:not(P)</code>).</li>
+    <li>dynamic (<code>:hover</code>, etc.);</li>
+    <li>target selector (<code>:target</code>);</li>
+    <li>language selector (<code>:lang(en)</code>);</li>
+    <li>states of interface elements (<code>:enabled</code>, <code>:checked</code>...);</li>
+    <li>structural pseudo-classes (<code>:root</code>, <code>:nth-child</code>);</li>
+    <li>negation pseudo-class (<code>:not(P)</code>).</li>
   </ul>
 
   </li>
-  <li>псевдоэлементы (<code>:before</code>, <code>:first-line</code>);</li>
-  <li>комбинаторы (<code>DIV SPAN</code>, <code>P + H1</code>);</li>
+  <li>pseudo-elements (<code>:before</code>, <code>:first-line</code>);</li>
+  <li>combinators (<code>DIV SPAN</code>, <code>P + H1</code>);</li>
 </ul>
 
-Селекторы ниже сгруппированы по спецификациям. Это поможет нам понять какие из них работают везде (из CSS1), какие работают почти везде (из CSS2), а какие кое-где могут и не работать.
+The selectors below are grouped by specification. This will help us understand which ones work everywhere (from CSS1), which ones work almost everywhere (from CSS2), and which ones may not work in some places.
 
-<h2>Селекторы из CSS1</h2>
+<h2>Selectors from CSS1</h2>
 
-Самые простые и хорошо всем знакомые:
+The simplest and most familiar to everyone:
 
 <ul>
-	<li>обращение к элементу по тегу (<code>BODY</code>, <code>A</code>, <code>TABLE</code> и т.д.);</li>
-	<li> по ID (<code>#main</code>);</li>
-	<li> по классу (<code>.header-image</code>);</li>
-	<li> обращение к потомку через родителя (<code>UL A</code>, <code>.sidebar .widget</code>);</li>
-	<li> состояния ссылок <code>A:link</code>, <code>A:visited</code>, <code>A:hover</code>;</li>
-	<li> псевдоэлемент для первой строки текста — <code>P::first-line</code>;</li>
-	<li> псевдоэлемент для первого символа в тексте — <code>P::first-letter</code>.</li>
+	<li>referring to an element by tag (<code>BODY</code>, <code>A</code>, <code>TABLE</code>, etc.);</li>
+	<li> by ID (<code>#main</code>);</li>
+	<li> by class (<code>.header-image</code>);</li>
+	<li> accessing a child through the parent (<code>UL A</code>, <code>.sidebar .widget</code>);</li>
+	<li> link states <code>A:link</code>, <code>A:visited</code>, <code>A:hover</code>;</li>
+	<li> pseudo-element for the first line of text - <code>P::first-line</code>;</li>
+	<li> pseudo-element for the first character in the text - <code>P::first-letter</code>.</li>
 </ul>
-Не густо : )
+Not too much :)
 
-<h2>Селекторы из CSS2</h2>
+<h2>CSS2 selectors</h2>
 
-В этой спецификации добавилось много интересного:
+This specification adds a lot of interesting things:
 
 <ul>
-<li id="asteriks" data-name="*"><p><code>*</code> — универсальный селектор. Например, <code>* {margin: 0; }</code> уберет отступы у всех элементов на странице.</p></li>
-<li id="has-attr" data-name="E[foo]"><p><code>E[foo]</code> — элементы с заданым атрибутом. </p>
+<li id="asteriks" data-name="*"><p><code>*</code> is a universal selector. For example, <code>* {margin: 0; }</code> will remove indentation from all elements on the page.</p></li>
+<li id="has-attr" data-name="E[foo]"><p><code>E[foo]</code> - elements with a given attribute. </p>
 
-<p>Например, код:</p>
+<p>For example, code:</p>
 
 
 ```css
@@ -74,12 +74,12 @@ P[data-content] {
 }
 ```
 
-<p>выберет только абзацы, у которых есть атрибут <b>data-content</b>:</p>
+<p>will only select paragraphs that have the <b>data-content</b> attribute:</p>
 
 <iframe class="live-snippet" style="height: 280px" src="../assets/demo/css-selectors/demo_1.html?output"></iframe>
 </li>
 
-<li id="has-attr-val" data-name="E[foo='bar']"><p><code>E[foo="bar"]</code> — элементы, у которых атрибут имеет заданное значение.</p>
+<li id="has-attr-val" data-name="E[foo='bar']"><p><code>E[foo="bar"]</code> - elements whose attribute has a specified value.</p>
 
 
 ```css
@@ -91,7 +91,7 @@ P[data-content="hello"] {
 <iframe class="live-snippet" style="height: 280px" src="../assets/demo/css-selectors/demo_2.html?output"></iframe>
 </li>
 
-<li id="has-attr-val-wtsp" data-name="E[foo~='bar']"><p><code>E[foo~="bar"]</code> — элемент, который имеет атрибут со списком значений, разделенных пробелом, одно из которых равно заданному.</p>
+<li id="has-attr-val-wtsp" data-name="E[foo~='bar']"><p><code>E[foo~="bar"]</code> is an element that has an attribute with a list of values, separated by space, one of which is equal to the specified one.</p>
 
 
 ```css
@@ -103,7 +103,7 @@ P[data-content~="hello"] {
 <iframe class="live-snippet" style="height: 280px" src="../assets/demo/css-selectors/demo_3.html?output"></iframe>
 </li>
 
-<li id="has-attr-val-hpsp" data-name="E[foo|='bar']"><p><code>E[foo|="bar"]</code> — элемент, который имеет атрибут со списком значений, разделенных дефисом, который начинается с заданного.</p>
+<li id="has-attr-val-hpsp" data-name="E[foo|='bar']"><p><code>E[foo|="bar"]</code> is an element that has an attribute with a list of values, separated by a hyphen, that begins with the given one.</p>
 
 
 ```css
@@ -115,7 +115,7 @@ P[data-content|="hello"] {
 <iframe class="live-snippet" style="height: 280px" src="../assets/demo/css-selectors/demo_4.html?output"></iframe>
 </li>
 
-<li id="first-child" data-name="E:first-child"><p><code>E:first-child</code> — псевдокласс, обращающийся к первому элементу из нескольких внутри родителя.</p>
+<li id="first-child" data-name="E:first-child"><p><code>E:first-child</code> is a pseudo-class that accesses the first element of several within the parent.</p>
 
 
 ```css
@@ -126,14 +126,14 @@ P:first-child {
 
 <iframe class="live-snippet" style="height: 480px" src="../assets/demo/css-selectors/demo_5.html?output"></iframe>
 
-<p>Селектор выбирает первый элемент только если он соответствует заданному тегу или классу и только если он является самым первым потомком родителя.</p>
+<p>The selector selects the first element only if it matches the given tag or class and only if it is the very first child of the parent.</p>
 
-<p>Для выбора первого элемента из списка дочерних элементов определенного типа существует другой селектор — <code>:first-of-type</code>, добавленный в CSS3.</p>
+<p>To select the first element from a list of children of a particular type, there is another selector - <code>:first-of-type</code>, added to CSS3.</p>
 </li>
 
-<li id="lang" data-name="E:lang(fr)"><p><code>E:lang(fr)</code> — выбирает элементы на заданном языке. Язык элемента может быть получен из HTTP-заголовков, отдаваемых сервером, из <code>meta</code>-тега, заданного в <code>head</code>, либо если у элемента задан атрибут <code>lang</code></p>
+<li id="lang" data-name="E:lang(fr)"><p><code>E:lang(fr)</code> - selects elements in the specified language. The element's language can be obtained from the HTTP headers sent by the server, from the <code>meta</code> tag specified in the <code>head</code>, or if the element has the <code>lang</code></p> attribute set
 
-<p>Например, этот код добавит малиновый фон всем элементам, для которых язык определен как русский:</p>
+<p>For example, this code will add a raspberry background to all elements for which the language is defined as Russian:</p>
 
 
 ```css
@@ -144,13 +144,13 @@ P:lang(ru) {
 
 <iframe class="live-snippet" style="height: 280px" src="../assets/demo/css-selectors/demo_6.html?output"></iframe></li>
 
-<li id="before" data-name="E::before"><p><code>E::before</code> — генерируемый контент перед заданным элементом.</p></li>
-<li id="after" data-name="E::after"><p><code>E::after</code> — генерируемый контент после элемента.</p>
+<li id="before" data-name="E::before"><p><code>E::before</code> - generated content before the given element.</p></li>
+<li id="after" data-name="E::after"><p><code>E::after</code> - generated content after the element.</p>
 
 <iframe class="live-snippet" style="height: 200px" src="../assets/demo/css-selectors/demo_7.html?output"></iframe>
 </li>
 
-<li id="child" data-name="E > F"><p><code>E > F</code> — выбирает элемент, только если он является прямым потомком родителя (ни во что больше не вложен).</p>
+<li id="child" data-name="E > F"><p><code>E > F</code> - selects an element only if it is a direct child of its parent (not nested within anything else).</p>
 
 
 ```css
@@ -163,7 +163,7 @@ DIV > A {
 <iframe class="live-snippet" style="height: 320px" src="../assets/demo/css-selectors/demo_8.html?output"></iframe>
 </li>
 
-<li id="next" data-name="E + F"><p><code>E + F</code> — выбирает второй заданный элемент, который следует непосредственно после первого.</p>
+<li id="next" data-name="E + F"><p><code>E + F</code> - selects the second specified element that immediately follows the first.</p>
 
 
 ```css
@@ -177,5 +177,4 @@ P + H3 {
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/css-selectors/demo_9.html?output"></iframe>
 </li>
 </ul>
-<b>Продолжение:</b> <a href="/css-selectors-part2/">Css-селекторы, часть 2</a>.
-
+<b>Continuation:</b> <a href="/css-selectors-part2/">Css selectors, part 2</a>.
