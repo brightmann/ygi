@@ -1,11 +1,11 @@
 ---
-title: Адаптивное видео с помощью встроенных математических функций CSS
+title: Adaptive video using built-in CSS mathematical functions
 
 image: //yoksel.github.io/assets/img/articles/adaptive-video-with-css-math/preview.jpg
 
 tags: [css-math]
 
-description: Как можно при ресайзе подогнать видео по высоте без дополнительных обёрток и JS?
+description: How can I resize a video to fit the height without additional wrappers and JS?
 
 links:
 - href: https://drafts.csswg.org/css-sizing-4/#ratios
@@ -27,18 +27,18 @@ links:
 - href: https://css-tricks.com/when-sass-and-new-css-features-collide/
   text: 'When Sass and New CSS Features Collide'
 - href: /size-units/#relative-units
-  text: Единицы размеров в CSS
+  text: Size units in CSS
 - href: /css-math
-  text: Математические функции в CSS
+  text: Mathematical functions in CSS
 ---
 
-Когда я в твиттере спросила для чего могут быть нужны в CSS [типизированные значения атрибутов](https://www.w3.org/TR/css-values-3/#attr-notation), Вадим Макеев [предположил](https://twitter.com/pepelsbey/status/1304036385599508480), что это было бы очень удобно для адаптивных картинок.
+When I asked on Twitter what [typed attribute values](https://www.w3.org/TR/css-values-3/#attr-notation) could be needed for in CSS, Vadim Makeev [suggested](https://twitter.com/pepelsbey/status/1304036385599508480) that it would be very convenient for responsive images.
 
-Но я подумала, что картинки как-то [умеют](https://codepen.io/yoksel/pen/wvGNrro) при ресайзе изменять высоту, сохраняя пропорции, а вот фреймы — совсем нет. При этом на адаптивных сайтах важно иметь возможность подгонять под ширину окна любой контент, и видео тоже. Что тут можно сделать?<!--more-->
+But I thought that images somehow [can](https://codepen.io/yoksel/pen/wvGNrro) change their height when resized while keeping their proportions, but frames can't do that at all. At the same time, on responsive websites, it's important to be able to adjust any content, including videos, to the width of the window. What can be done about this?<!--more-->
 
-Для решения этой задачи существуют [разные способы](https://css-tricks.com/fluid-width-video/): дополнительная обёртка с паддингом или варианты с JS, но простого изящного решения на чистом CSS до сих пор нет. В черновиках W3C для этих целей есть свойство [aspect-ratio](https://drafts.csswg.org/css-sizing-4/#ratios), подробнее про него можно почитать в статье [Designing An Aspect Ratio Unit For CSS](https://www.smashingmagazine.com/2019/03/aspect-ratio-unit-css/), но на данный момент оно [не поддерживается](https://caniuse.com/mdn-css_properties_aspect-ratio) ни одним браузером ([демо для потестить](https://codepen.io/yoksel/pen/WNwPEoV)).
+There are [different ways](https://css-tricks.com/fluid-width-video/) to solve this problem: an additional wrapper with padding or options with JS, but there is still no simple, elegant solution using pure CSS. In the W3C drafts, there is the [aspect-ratio](https://drafts.csswg.org/css-sizing-4/#ratios) property for these purposes. You can read more about it in the article [Designing An Aspect Ratio Unit For CSS](https://www.smashingmagazine.com/2019/03/aspect-ratio-unit-css/), but at the moment it is [not supported](https://caniuse.com/mdn-css_properties_aspect-ratio) by any browser ([demo to test](https://codepen.io/yoksel/pen/WNwPEoV)).
 
-Пока копалась в [математических функциях](/css-math), пришло в голову, что `aspect-ratio` можно попробовать воспроизвести с помощью этих функций и кастомных свойств. Крис Койер [предлагал](https://css-tricks.com/fluid-width-video/) использовать кастомные свойства и `calc()` для вычисления паддинга в способе с обёрткой:
+While delving into [mathematical functions](/css-math), it occurred to me that `aspect-ratio` could be attempted to be recreated using these functions and custom properties. Chris Coyier [suggested](https://css-tricks.com/fluid-width-video/) using custom properties and `calc()` to calculate padding in the wrapper method:
 
 ```html
 <div class="videoWrapper" style="--aspect-ratio: 3 / 4;">
@@ -53,11 +53,11 @@ links:
 }
 ```
 
-Но что если получать соотношения сторон из ширины и высоты, а потом на основе этого динамически вычислять высоту самого фрейма?
+But what if we get the aspect ratio from the width and height and then dynamically calculate the height of the frame itself based on that?
 
-Мне потребовалось некоторое время, чтобы понять как написать работающий код. Одной из проблем было то, что, если поделить друг на друга значения с одинаковыми единицами измерения, `calc()` возвращает `0`, а не соотношение. Следовательно, чтобы получить соотношение сторон, нужно использовать именно числа без единиц измерения.
+It took me some time to figure out how to write working code. One of the problems was that if you divide values with the same units of measurement by each other, `calc()` returns `0` instead of a ratio. Therefore, to obtain the aspect ratio, you need to use numbers without units of measurement.
 
-После этого всё стало просто: в атрибутах элемента, который нужно ресайзить, в кастомных свойствах указываются размеры элемента без единиц измерения:
+After that, everything became simple: in the attributes of the element to be resized, the custom properties specify the dimensions of the element without units of measurement:
 
 ```html
 <iframe
@@ -68,7 +68,7 @@ links:
 ></iframe>
 ```
 
-А в CSS добавляется немного математики с использованием этих свойств:
+And a bit of math is added to CSS using these properties:
 
 ```css
 .video {
@@ -93,14 +93,14 @@ links:
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script></div>
 
-Посжимайте демо, чтобы увидеть как это работает, или откройте в [отдельной вкладке](https://codepen.io/yoksel/pen/oNxmgYq?editors=0100) и попробуйте там.
+Compress the demo to see how it works, or open it in [a separate tab](https://codepen.io/yoksel/pen/oNxmgYq?editors=0100) and try it there.
 
-Когда фрейм упрётся в края окна и начнёт сужаться вместе с ним, ширина фрейма будет равна ширине вьюпорта (`100vw`), следовательно, её можно использовать для вычисления высоты. Полученная таким образом высота окажется меньше исходной, и в `min()` выберется именно она. При растягивании окна высота, вычисленная на основе ширины вьюпорта, станет больше исходной высоты фрейма, поэтому в `min()` выиграет исходная высота, и фрейм не будет тянуться за пределы исходной высоты.
+When the frame reaches the edges of the window and starts to shrink with it, the width of the frame will be equal to the width of the viewport (`100vw`), so it can be used to calculate the height. The height obtained in this way will be less than the original one, and it will be selected in `min()`. When the window is stretched, the height calculated based on the viewport width will become greater than the original frame height. Therefore, the original height will be selected in `min()`, and the frame will not stretch beyond the original height.
 
-Возможно, не для всех случаев ширина фрейма будет равна ширине окна, и в некоторых случаях может потребоваться поменять `100vw` на другое значение. Например, в демо ширина видео будет `calc(100vw - 2rem)`, но в рассчётах это не учтено, а поправлять я не стала, чтобы не усложнять понимание логики в `min()`.
+The frame width may not always be equal to the window width, and in some cases, it may be necessary to change `100vw` to a different value. For example, in the demo, the width of the video will be `calc(100vw - 2rem)`, but this is not taken into account in the calculations, and I didn't correct it so as not to complicate the understanding of the logic in `min()`.
 
-Также следует помнить, что при использовании препроцессоров они попытаются вычислить `min()` внутри себя, но не смогут этого сделать из-за несовместимых единиц. Почитать о проблеме можно в статье Аны Тюдор [When Sass and New CSS Features Collide](https://css-tricks.com/when-sass-and-new-css-features-collide/). Чтобы SCSS проигнорировал `min()`, название функции достаточно написать с заглавной буквы: `Min(...)` (как сделано в коде демо), а в Less — обернуть кавычками: `~"min(...)"`.
+It should also be noted that when using preprocessors, they will try to calculate `min()` internally, but will not be able to do so due to incompatible units. You can read about the problem in Ana Tudor's article [When Sass and New CSS Features Collide](https://css-tricks.com/when-sass-and-new-css-features-collide/). For SCSS to ignore `min()`, it is enough to capitalize the function name: `Min(...)` (as done in the demo code). In Less, it should be enclosed in quotation marks: `~"min(...)"`.
 
-Было бы здорово не дублировать размеры в кастомных свойствах, а брать из атрибутов, но в данный момент это не поддерживается [ни одним браузером](https://caniuse.com/mdn-css_types_attr_type-or-unit), хотя в том же [aspect-ratio](https://drafts.csswg.org/css-sizing-4/#ratios) предполагается использовать именно значения размеров из атрибутов ширины и высоты.
+It would be great not to duplicate the dimensions in custom properties, but to take them from the attributes. However, at the moment, this is not supported [by any browser](https://caniuse.com/mdn-css_types_attr_type-or-unit), although [aspect-ratio](https://drafts.csswg.org/css-sizing-4/#ratios) is supposed to use the dimension values from the width and height attributes.
 
-Однажды наступит светлое завтра, и у нас появятся `aspect-ratio` и умная функция `attr()`. Но уже сейчас можно рассчитывать соотношения сторон фреймов и видеороликов, используя кастомные свойства и встроенные в CSS математических функции, они работают в [большинстве современных браузеров](https://caniuse.com/css-math-functions). Для поддержки старых браузеров всё-таки придётся воспользоваться способом с паддингом или JS.
+One day, a bright future will dawn, and we'll have `aspect-ratio` and the smart `attr()` function. But even now, you can calculate the aspect ratios of frames and videos using custom properties and mathematical functions built into CSS. They work in [most modern browsers](https://caniuse.com/css-math-functions). To support older browsers, you'll still have to use the padding or JS method.
