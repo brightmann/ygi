@@ -1,30 +1,30 @@
 ---
-title: 'Фон под строчками: добавляем поля'
+title: 'Background under the lines: adding fields'
 
 tags: [text, box-shadow]
 
-description: 'Проблема: если задать фон строчным элементам, получается вот так...'
+description: 'Problem: if you set a background to inline elements, it looks like this...'
 
 links:
 - href: /box-shadow
   text: Box shadow
 ---
 
-Проблема: если задать фон строчным элементам, получается вот так<!--more-->:
+Problem: if you set a background to inline elements, it looks like this<!--more-->:
 
 <iframe class="live-snippet" style="height: 250px" src="../assets/demo/fon-pod-strochkami-dobavlyaem-polya/demo_1.html?output"></iframe>
 
-Пробуем <code>padding</code>, отступы добавились только в начале и в конце строки
+Trying <code>padding</code>, padding was added only at the beginning and end of the line
 
 <iframe class="live-snippet" style="height: 250px" src="../assets/demo/fon-pod-strochkami-dobavlyaem-polya/demo_2.html?output"></iframe>
 
-Аналогичная ситуация с <code>border</code>:
+A similar situation with <code>border</code>:
 
 <iframe class="live-snippet" style="height: 250px" src="../assets/demo/fon-pod-strochkami-dobavlyaem-polya/demo_3.html?output"></iframe>
 
-Прекрасное решение было найдено здесь: <strong><a href="https://codepen.io/davatron5000/pen/HGjuv">codepen.io/davatron5000/pen/HGjuv</a></strong>.
+An excellent solution was found here: <strong><a href="https://codepen.io/davatron5000/pen/HGjuv">codepen.io/davatron5000/pen/HGjuv</a></strong>.
 
-Суть состоит в добавлении тени. Тень добавляется к любому краю строки, даже если это не конец строки, а перенос.
+The point is to add shadow. The shadow is added to any edge of the line, even if it is not the end of the line, but a break.
 
 <iframe class="live-snippet" style="height: 250px" src="../assets/demo/fon-pod-strochkami-dobavlyaem-polya/demo_4.html?output"></iframe>
 
@@ -34,10 +34,10 @@ box-shadow: -20px 0 yellowgreen,
              20px 0 yellowgreen;
 ```
 
-Тень не влияет на размер и положение элемента, поэтому дополнительно надо добавить <code>padding</code> родителю.
+The shadow does not affect the size and position of the element, so you also need to add <code>padding</code> to the parent.
 
-Результат:
+Result:
 
 <iframe class="live-snippet" style="height: 250px" src="../assets/demo/fon-pod-strochkami-dobavlyaem-polya/demo_5.html?output"></iframe>
 
-Отличное решение и симпатичный эффект.
+Great solution and nice effect.
