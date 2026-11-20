@@ -1,35 +1,35 @@
 ---
-title: Контекст наложения
+title: Overlay context
 tags: [layout]
 
-description: Если с помощью z-index изменять порядок наложения элементов друг на друга, в некоторых случаях могут возникать проблемы из-за свойств, создающих новый контекст наложения.
+description: If you use z-index to change the stacking order of elements, problems may occur in some cases due to properties that create a new stacking context.
 ---
-Если с помощью <code>z-index</code> изменять порядок наложения элементов друг на друга, в некоторых случаях могут возникать проблемы из-за свойств, создающих новый контекст наложения.<!--more-->
+If you use <code>z-index</code> to change the stacking order of elements, problems may occur in some cases due to properties that create a new stacking context.<!--more-->
 
-Свойства, создающие контекст{{ excerpt_separator }}:
-— <code>opacity</code> со значением меньше 1,
-— <code>transform</code>,
-— <code>perspective</code>,
-— <code>filter</code>.
+Properties that create context{{ excerpt_separator }}:
+— <code>opacity</code> with a value less than 1,
+- <code>transform</code>,
+- <code>perspective</code>,
+- <code>filter</code>.
 
-В качестве подопытного кролика возьмем такую конструкцию:
+Let's take the following design as a guinea pig:
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/kontekst-nalozheniya/demo_1.html?output"></iframe>
 
-По умолчанию голубой элемент накладывается на красный, но я задала красному элементу <code>z-index: 10;</code>, чтобы видеть действие свойств, создающих контекст.
+By default, the blue element overlaps the red element, but I gave the red element <code>z-index: 10;</code> to see the effect of the context-creating properties.
 
-Теперь зададим родителю первого элемента одно из вышеперечисленных свойств, например:  <code>opacity: .99</code>:
+Now let's set the parent of the first element to one of the above properties, for example: <code>opacity: .99</code>:
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/kontekst-nalozheniya/demo_2.html?output"></iframe>
 
-Первый элемент получил свой контекст наложения, и теперь <code>z-index</code> будет рассчитываться внутри него.
+The first element has received its overlay context, and now <code>z-index</code> will be calculated within it.
 
-Здесь видно, что красный элемент перекрывает зеленый, потому что у красного задан высокий <code>z-index</code>, при этом весь левый элемент перекрывается правым, несмотря на высокое значение <code>z-index</code> у красного элемента:
+Here you can see that the red element overlaps the green element because the red element has a high <code>z-index</code>, and the entire left element overlaps the right element, despite the red element having a high <code>z-index</code> value:
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/kontekst-nalozheniya/demo_3.html?output"></iframe>
 
-Можно попробовать это обойти, добавив <code>z-index</code> самому родителю, но в этом случае родительский элемент будет перекрывать всё содержимое второго элемента, что не всегда может быть нужно:
+You can try to get around this by adding <code>z-index</code> to the parent itself, but in this case the parent element will overlap the entire content of the second element, which may not always be necessary:
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/kontekst-nalozheniya/demo_4.html?output"></iframe>
 
-Кроме того, частое использование <code>z-index</code> может затруднить дальнейшую отладку и поддержку кода.
+Additionally, frequent use of <code>z-index</code> can make it difficult to further debug and maintain your code.
