@@ -1,58 +1,53 @@
 ---
-title: SVG плюс Angular минус Firefox
+title: SVG plus Angular minus Firefox
 
 tags: [svg, firefox]
 
 image: https://img-fotki.yandex.ru/get/15538/5091629.a3/0_86805_56cc8e5e_orig
-description: SVG удивительная технология, не в последнюю очередь благодаря своим оригинальным подводным камням. Парочка свежих проблем была обнаружена при взаимодействии SVG с Angular, причем они возникали только в Firefox.
+description: SVG is an amazing technology, not least thanks to its original pitfalls. A couple of fresh problems were discovered in the interaction of SVG with Angular, and they occurred only in Firefox.
 
 ---
 
-SVG удивительная технология, не в последнюю очередь благодаря своим оригинальным подводным камням. Если вы начали работать с SVG — скучно точно не будет.
+SVG is an amazing technology, not least thanks to its original pitfalls. If you've started working with SVG, you definitely won't be bored.
 
-Парочка свежих проблем была обнаружена при взаимодействии SVG с Angular, причем они возникали только в Firefox. Я решила описать проблемы и их решения здесь: себе на память, другим на пользу.<!--more-->
+A couple of fresh problems were discovered in the interaction of SVG with Angular, and they occurred only in Firefox. I decided to describe the problems and their solutions here: as a note to myself, and for the benefit of others.<!--more-->
 
-<h2>Проблема № 1.</h2>
+<h2>Problem # 1.</h2>
 
-Дано: SVG-иконки, подключаемые через <code>use</code> в нужные места страницы. Конструкция работает как часы во всех современных браузерах, но тут приходит Angular и меняет <a href="http://www.w3.org/TR/html-markup/base.html"><code>base</code></a>. Во всех браузерах всё работает, кроме Firefox: в нем иконки исчезают, но только в случае, если ссылка в <code>base</code> не совпадает с адресом текущей страницы.
+Given: SVG icons inserted via <code>use</code> in the needed places on the page. The construct works like clockwork in all modern browsers, but then Angular comes along and changes <a href="http://www.w3.org/TR/html-markup/base.html"><code>base</code></a>. In all browsers everything works, except Firefox: in it the icons disappear, but only if the link in <code>base</code> doesn't match the current page's address.
 
-Про это даже есть <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=652991">баг</a> от 2011 года, но проблема до сих пор существует.
+There's even a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=652991">bug</a> about this from 2011, but the problem still exists.
 
-Демо (смотреть в Firefox):
+Demo (view in Firefox):
 
 <iframe class="frame--border" src="../assets/demo/svg-in-firefox/svg-no-base.html" style="width: 100%; height: 370px">
 </iframe>
-<a href="../assets/demo/svg-in-firefox/svg-no-base.html">Ссылка на демо</a>
+<a href="../assets/demo/svg-in-firefox/svg-no-base.html">Link to the demo</a>
 
-<i>Оба кружка находятся внутри одного SVG, по нажатию на кнопку он полностью копируется. Голубой кружок слева — просто фигура, чтобы видеть, что в SVG вообще что-то есть. Красный кружок справа — символ, вставленный через <code>use</code>. Символ объявлен выше внутри того же SVG.</i>
+<i>Both circles are inside one SVG; on a button click it's copied entirely. The blue circle on the left is just a shape, so you can see that the SVG has something in it at all. The red circle on the right is a symbol inserted via <code>use</code>. The symbol is declared above inside the same SVG.</i>
 
-Решение: если добавить тегу SVG атрибут <code>xml:base</code> и в нем задать URL текущей страницы, иконки начинают работать вне зависимости от ссылки в <code>base</code>.
+Solution: if you add the <code>xml:base</code> attribute to the SVG tag and set the current page's URL in it, the icons start working regardless of the link in <code>base</code>.
 
-Проверьте в Firefox:
+Check in Firefox:
 
 <iframe class="frame--border" src="../assets/demo/svg-in-firefox/svg-has-base.html" style="width: 100%; height: 370px"></iframe>
 
-<a href="../assets/demo/svg-in-firefox/svg-has-base.html">Ссылка на демо</a>
+<a href="../assets/demo/svg-in-firefox/svg-has-base.html">Link to the demo</a>
 
-<h2>Проблема № 2.</h2>
+<h2>Problem # 2.</h2>
 
-Иконки, отрисовываемые внутри <code>ng-repeat</code>, могут не отображаться на странице. Код корректный, он есть на странице, но в <code>use</code> ничего нет, хотя тот же код, вынесенный из <code>ng-repeat</code>, прекрасно работает.
+Icons rendered inside <code>ng-repeat</code> may not display on the page. The code is correct, it's on the page, but there's nothing in <code>use</code>, although the same code taken out of <code>ng-repeat</code> works perfectly.
 
-Решение:
+Solution:
 
-1. Взять содержимое атрибута <code>xlink:href</code> элемента <code>use</code>.
-2. Очистить <code>xlink:href</code>.
-3. Вставить в <code>xlink:href</code> старое значение.
+1. Take the contents of the <code>xlink:href</code> attribute of the <code>use</code> element.
+2. Clear <code>xlink:href</code>.
+3. Insert the old value into <code>xlink:href</code>.
 
-После этого иконки начинают отображаться.
+After this the icons start displaying.
 
-Способ странный, но он работает.
+The approach is strange, but it works.
 
-По правде сказать, оба решения выглядят не очень изящно, и всем было бы гораздо проще, если бы SVG в Firefox просто вел себя как в других браузерах, но вот нет.
+To tell the truth, both solutions look not very elegant, and everything would be much simpler if SVG in Firefox just behaved like in other browsers, but no.
 
-Если вы знаете более красивые способы решить эти проблемы, расскажите мне о них, пожалуйста.
-
-
-
-
-
+If you know prettier ways to solve these problems, please tell me about them.
