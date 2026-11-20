@@ -1,25 +1,24 @@
 ---
-title: "Игра Го на CSS: ещё одна попытка"
+title: "The game Go in CSS: another attempt"
 
 tags: [experiments]
 
 image: //img-fotki.yandex.ru/get/9826/5091629.9a/0_7ec70_55aed3e8_L.png
-description: Кажется, мне удалось сделать более удачное решение задачи про игру Го. Теперь цвета камней меняются по очереди, а вверху доски показывается цвет следующего камня.
+description: It seems I managed to make a better solution for the game Go task. Now the stone colors change in turn, and the top of the board shows the color of the next stone.
 
 links:
 - href: /go-and-css/
-  text: Попытка сделать игру Го на CSS
+  text: An attempt to make the game Go in CSS
 ---
 
 
-Кажется, мне удалось сделать более удачное решение <a href="/go-and-css/">задачи</a> про игру Го.
+It seems I managed to make a better solution for the <a href="/go-and-css/">task</a> of the game Go.
 
-По сравнению с предыдущей версией, цвета камней меняются по очереди, а вверху доски показывается цвет следующего камня.<!--more-->
+Compared to the previous version, the stone colors change in turn, and the top of the board shows the color of the next stone.<!--more-->
 
-Правда, не получится убрать с доски захваченные камни, но это я пока даже не знаю как сделать. И ещё сделано допущение, что на выставленные камни не будут кликать второй раз. Сейчас можно поставить один камень поверх другого, и после этого играть уже не получится : )
+Though you won't be able to remove captured stones from the board — I don't even know how to do that yet. And there's an assumption that placed stones won't be clicked a second time. Right now you can place one stone on top of another, and after that you can't play anymore : )
 
-Собственно, игра:
+So, the game:
 
 <p data-height="600" data-theme-id="0" data-slug-hash="prBFv" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/prBFv'>Game "Go"</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
-
