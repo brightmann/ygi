@@ -6,7 +6,7 @@ const ArticleDate = ({ date, className }: { date: string; className?: string }) 
       dateTime={date}
       className={className}
     >
-      <FadedText>{date.split('-').reverse().join('/')}</FadedText>
+      <FadedText>{date.slice(0, 10).split('-').reverse().join('/')}</FadedText>
     </time>
   );
 };
