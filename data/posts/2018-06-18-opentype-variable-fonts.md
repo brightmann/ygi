@@ -1,15 +1,15 @@
 ---
-title: Вариативные шрифты
+title: Variable fonts
 image: '//yoksel.github.io/assets/img/previews/variable-fonts.png'
-description: 'Вариативные шрифты — это новая страница в веб-типографике. Они уже достаточно хорошо поддерживаются браузерами, так что можно заняться изучением их возможностей и подготовиться к использованию в реальной жизни.'
+description: "Variable fonts are a new page in web typography. Browser support is already fairly good, so it's time to explore their capabilities and get ready to use them in real life."
 
 tags: ['fonts']
 
 links:
 - href: https://blog.typekit.com/2016/09/14/variable-fonts-a-new-kind-of-font-for-flexible-design/
-  text: Variable fonts, a new kind of font for flexible design (анонс от Adobe)
+  text: Variable fonts, a new kind of font for flexible design (announcement from Adobe)
 - href: https://opensource.googleblog.com/2016/09/introducing-opentype-font-variations.html
-  text: Introducing OpenType Font Variations (анонс от Google)
+  text: Introducing OpenType Font Variations (announcement from Google)
 - href: https://medium.com/variable-fonts/https-medium-com-tiro-introducing-opentype-variable-fonts-12ba6cd2369
   text: Introducing OpenType Variable Fonts
 - href: https://developers.google.com/web/fundamentals/design-and-ux/typography/variable-fonts/
@@ -40,34 +40,34 @@ links:
   text: wakamaifondue.com
 ---
 
-Вариативные (или настраиваемые) шрифты — это, без преувеличения, новая страница в веб-типографике. Настраиваемые шрифты стали возможны благодаря совместным усилиям компаний Microsoft, Apple, Adobe и Google. Концепция была впервые представлена в сентябре 2016 года, вместе с релизом <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/">OpenType 1.8</a>.<!--more--> На самом деле, работы в этом направлении велись ещё в 90-х, но только широкое использование шрифтов в вебе дало этой идее вторую жизнь и бурное развитие.
+Variable (or adjustable) fonts are, without exaggeration, a new page in web typography. Adjustable fonts became possible thanks to the joint efforts of Microsoft, Apple, Adobe and Google. The concept was first presented in September 2016, together with the release of <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/">OpenType 1.8</a>.<!--more--> In fact, work in this direction was already underway in the 90s, but only the wide use of fonts on the web gave this idea a second life and rapid development.
 
-На момент написания статьи вариативные шрифты уже достаточно хорошо поддерживаются приложениями (Photoshop, Illustrator) и <a href="https://caniuse.com/#feat=variable-fonts">браузерами</a> (Chrome, Edge, Safari, в Firefox пока за флагом и только на MacOS), а кроме того, выложено несколько свободно распространяемых демо-версий, следовательно, уже можно заняться изучением возможностей таких шрифтов и подготовиться к их использованию в реальной жизни.
+At the time of writing, variable fonts are already fairly well supported by applications (Photoshop, Illustrator) and <a href="https://caniuse.com/#feat=variable-fonts">browsers</a> (Chrome, Edge, Safari; in Firefox still behind a flag and only on MacOS), and besides that, several freely distributed demo versions have been published, so you can already start exploring the capabilities of such fonts and prepare to use them in real life.
 
-Вариативные шрифты — это расширение формата OpenType, которое позволяет хранить все варианты начертаний в одном файле, а для переключения между ними использовать не только фиксированные шаги, но и промежуточные значения. Например, вместо привычных значений жирности вроде <code>100</code>, <code>400</code>, <code>700</code> можно будет задать <code>75</code> или <code>650</code>, и так же гибко можно настроить ширину символа от самого сжатого до самого широкого задав любое значение в предопределённом диапазоне, и всё это без загрузки дополнительных файлов:
+Variable fonts are an extension of the OpenType format that lets you store all variants of typefaces in a single file and switch between them using not only fixed steps but intermediate values as well. For example, instead of the usual weight values like <code>100</code>, <code>400</code>, <code>700</code> you could set <code>75</code> or <code>650</code>, and just as flexibly adjust the character width from the most condensed to the widest by setting any value within a predefined range — and all of this without loading additional files:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="pKwOWz" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Variable fonts variations" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/pKwOWz/">Variable fonts variations</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-Шрифт: <a href="https://github.com/Monotype/Monotype_prototype_variable_fonts/tree/master/KairosSans">KairosSans</a>
+Font: <a href="https://github.com/Monotype/Monotype_prototype_variable_fonts/tree/master/KairosSans">KairosSans</a>
 
-Возможности нового формата решают сразу две проблемы: во-первых, снимаются ограничения на количество доступных начертаний: они больше не требуют отдельных файлов, а количество сочетаний ограничивается только настройками шрифта и фантазией разработчика. Во-вторых, для получения любого количества разных начертаний на страницу достаточно будет подключить всего один файл, что позволит сэкономить трафик и быстрее показывать страницы пользователю.
+The new format's capabilities solve two problems at once: first, the limits on the number of available typefaces are lifted — they no longer require separate files, and the number of combinations is limited only by the font's settings and the developer's imagination. Second, to get any number of different typefaces on a page, a single file is enough, which saves traffic and shows pages to the user faster.
 
-Настройками шрифта можно управлять с помощью CSS.
+The font's settings can be controlled with CSS.
 
-<h2 id="properties-levels">Высокоуровневые и низкоуровневые CSS-свойства</h2>
+<h2 id="properties-levels">High-level and low-level CSS properties</h2>
 
-Низкоуровневые — это <code>font-variation-settings</code> и <code>font-feature-settings</code>. Их значения состоят из списка пар имён и значений, перечисленных через запятую.
+The low-level ones are <code>font-variation-settings</code> and <code>font-feature-settings</code>. Their values consist of a comma-separated list of name-value pairs.
 
-Пример кода:
+Code example:
 
 ```css
 font-variation-settings: "wght" 1, "wdth" 200, "ital" 1, "opsz" 100;
 font-feature-settings: "liga" on, "zero" on;
 ```
 
-Высокоуровневые — это, например, <code>font-optical-sizing</code>, <code>font-variant-ligatures</code> и <code>font-variant-numeric</code>.
+The high-level ones are, for example, <code>font-optical-sizing</code>, <code>font-variant-ligatures</code> and <code>font-variant-numeric</code>.
 
-Пример кода:
+Code example:
 
 ```css
 font-optical-sizing: 100; /* = font-variation-settings: "opsz" 100; */
@@ -75,16 +75,16 @@ font-variant-ligatures: common-ligatures; /* = font-feature-settings: "liga" on;
 font-variant-numeric: slashed-zero; /* = font-feature-settings: "zero" on; */
 ```
 
-Высокоуровневые свойства удобнее, но поддержка браузерами оставляет желать лучшего, в то время как низкоуровневыми уже вполне можно пользоваться.
+High-level properties are more convenient, but browser support leaves much to be desired, while the low-level ones are already quite usable.
 
-Для каждого низкоуровневого свойства есть наборы предопределённых настроек, но при создании шрифта есть возможность добавить свои, что позволяет автору добавить в шрифт любое количество кастомных вариаций и фич.
+For each low-level property there are sets of predefined settings, but when creating a font it's possible to add your own, which lets the author add any number of custom variations and features to the font.
 
-Доступные настройки шрифта можно воспринимать как API: можно управлять только теми, которые предопределил разработчик. Если какие-то настройки не предусмотрены, ими управлять нельзя. Следовательно, чтобы полноценно пользоваться шрифтом, нужно точно знать какие возможности в нём есть. Для определения свойств шрифта удобно использовать вот эти сервисы:
+The available font settings can be thought of as an API: you can only control the ones the font developer predefined. If some settings aren't provided, you can't control them. Consequently, to use a font to its fullest, you need to know exactly what capabilities it has. For discovering a font's properties these services are convenient:
 
-* <a href="https://fontdrop.info/">fontdrop.info</a> — покажет все возможности шрифта и позволит поиграться с ними вживую. Не поддерживает WOFF2.
-* <a href="https://wakamaifondue.com/">wakamaifondue.com</a> — покажет возможности, живые примеры и предложит CSS. Так как он пытается показать примеры для всех настроек шрифта, на шрифтах с кучей символов и настроек страница может ощутимо тормозить. Поддерживает WOFF2.
+* <a href="https://fontdrop.info/">fontdrop.info</a> — shows all of a font's capabilities and lets you play with them live. Doesn't support WOFF2.
+* <a href="https://wakamaifondue.com/">wakamaifondue.com</a> — shows capabilities, live examples and suggests CSS. Since it tries to show examples for every font setting, the page can get noticeably sluggish on fonts with a heap of characters and settings. Supports WOFF2.
 
-Для экспериментов можно воспользоваться шрифтами, выложенными в открытый доступ:
+For experiments you can use fonts published in the open:
 
 * <a href="https://github.com/adobe-fonts/adobe-variable-font-prototype/releases">Adobe Variable Font Prototype</a>
 * <a href="https://github.com/google/fonts/tree/master/ofl/amstelvaralpha">AmstelvarAlpha</a>
@@ -99,204 +99,202 @@ font-variant-numeric: slashed-zero; /* = font-feature-settings: "zero" on; */
 
 <h2 id="variation-settings">font-variation-settings</h2>
 
-<a href="https://www.w3.org/TR/css-fonts-4/#font-variation-settings-def">Спецификация</a>
+<a href="https://www.w3.org/TR/css-fonts-4/#font-variation-settings-def">Specification</a>
 
-Свойство позволяет управлять вариациями шрифта, задавать как отрисовывается глиф (наклон, толщина линий, ширина символа). Исключение составляет <code>ital</code>, при котором могут заменяться глифы.
+The property lets you control font variations, defining how a glyph is rendered (slant, line thickness, character width). The exception is <code>ital</code>, where glyphs can be substituted.
 
-В значении свойства через запятую перечисляются названия вариаций и значения для них. Названия вариаций в кавычках, названия кастомных вариаций пишутся капсом.
+In the property value, variation names and their values are listed comma-separated. Variation names are in quotes; custom variation names are written in caps.
 
-Авторы шрифтов сами определяют диапазон доступных значений. Если задать непредусмотренное значение, оно округлится до ближайшего подходящего.
+Font authors define the range of available values themselves. If you set an unsupported value, it will be rounded to the nearest suitable one.
 
-Значение по умолчанию: <code>normal</code> (шрифт выглядит как обычно, настройки не применяются).
+Default value: <code>normal</code> (the font looks as usual, settings are not applied).
 
-Предопределённые вариации:
+Predefined variations:
 
-<code>ital</code> — курсив.
+<code>ital</code> — italic.
 
-Пример кода:
+Code example:
 
 
 ```css
 font-variation-settings: "ital" 1;
 ```
 
-Демо:
+Demo:
 
 <p data-height="350" data-theme-id="4974" data-slug-hash="aKLXWW" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="aKLXWW" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/aKLXWW/">aKLXWW</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-Шрифт: <a href="https://www.monotype.com/fonts/variable-fonts/">FF Meta Variable</a>
+Font: <a href="https://www.monotype.com/fonts/variable-fonts/">FF Meta Variable</a>
 
-Так как в курсиве глифы выглядят иначе, плавный переход от одного к другому затруднителен, поэтому здесь можно только включить или выключить свойство, задав <code>1</code> или <code>0</code>.
+Since glyphs look different in italic, a smooth transition from one to the other is difficult, so here you can only turn the property on or off by setting <code>1</code> or <code>0</code>.
 
-Также в этом демо можно увидеть как огругляются неподдерживаемые значения. Можно задать, например, <code>"ital" 0.5</code>, и оно приведётся к единице, а все меньшие значения — к нулю.
+In this demo you can also see how unsupported values get rounded. You can set, for example, <code>"ital" 0.5</code>, and it will be rounded up to one, while all smaller values are rounded down to zero.
 
-<code>slnt</code> — наклон.
+<code>slnt</code> — slant.
 
-Пример кода:
+Code example:
 
 
 ```css
 font-variation-settings: "slnt" 1;
 ```
 
-Демо:
+Demo:
 
 <p data-height="350" data-theme-id="4974" data-slug-hash="OExqpy" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Font Variation: Slant" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/OExqpy/">Font Variation: Slant</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-Шрифт: <a href="https://github.com/Monotype/Monotype_prototype_variable_fonts/tree/master/KairosSans">KairosSans</a>
+Font: <a href="https://github.com/Monotype/Monotype_prototype_variable_fonts/tree/master/KairosSans">KairosSans</a>
 
-По идее, <code>slnt</code> — это наклон, а не курсив, то есть глифы не меняются, но в некоторых шрифтах такое поведение демонстрирует <code>ital</code>. Для демо был выбран <b>KairosSans</b>, в котором <code>ital</code> ведёт себя как <code>slnt</code>.
+In theory, <code>slnt</code> is a slant, not an italic, meaning the glyphs don't change, but in some fonts it's <code>ital</code> that shows this behavior. For the demo, <b>KairosSans</b> was chosen, in which <code>ital</code> behaves like <code>slnt</code>.
 
-В отличие от <code>ital</code>, наклон может изменяться плавно.
+Unlike <code>ital</code>, slant can change smoothly.
 
-<code>opsz</code> — оптический размер.
+<code>opsz</code> — optical size.
 
-Пример кода:
+Code example:
 
 
 ```css
 font-variation-settings: "optz" 10;
 ```
 
-Демо:
+Demo:
 
 <p data-height="350" data-theme-id="4974" data-slug-hash="bKoJbr" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Font Variation: Optical size" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/bKoJbr/">Font Variation: Optical size</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-Шрифт: <a href="https://github.com/google/fonts/tree/master/ofl/amstelvaralpha">AmstelvarAlpha</a>
+Font: <a href="https://github.com/google/fonts/tree/master/ofl/amstelvaralpha">AmstelvarAlpha</a>
 
-Параметр управляет толщиной тонких линий, их отображение может быть критически важным для читабельности при малых размерах шрифта:
+This parameter controls the thickness of thin lines; their rendering can be critically important for readability at small font sizes:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="oyGOWb" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Font Variation: Optical size for small font-size" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/oyGOWb/">Font Variation: Optical size for small font-size</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Здесь хорошо видно, что для обычного текста лучше задавать значение <code>opsz</code> поменьше, а для заголовков можно задать и побольше, потому что на крупных размерах шрифта тонкие линии будут видны в любом случае.
+Here you can clearly see that for body text it's better to set a smaller <code>opsz</code> value, while for headings a larger one works, because at large font sizes thin lines will be visible anyway.
 
-<code>wdth</code> — ширина
+<code>wdth</code> — width
 
-Пример кода:
+Code example:
 
 
 ```css
 font-variation-settings: "wdth" 150;
 ```
 
-Демо:
+Demo:
 
 <p data-height="350" data-theme-id="4974" data-slug-hash="gKGJjE" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Font Variation: Width" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/gKGJjE/">Font Variation: Width</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-Шрифт: <a href="http://koe.berlin/variablefont/">Gingham</a>
+Font: <a href="http://koe.berlin/variablefont/">Gingham</a>
 
-В отличие от простой трансформации, при изменении ширины вертикальные линии сохраняют свою толщину, соотношения линий остаются прежними, и шрифт не выглядит искажённым:
+Unlike a plain transform, when the width changes the vertical lines keep their thickness, the line ratios stay the same, and the font doesn't look distorted:
 
 <p data-height="450" data-theme-id="4974" data-slug-hash="qKPGgo" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Font Variation Width vs Transform Scale" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/qKPGgo/">Font Variation Width vs Transform Scale</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Управление шириной глифа доступно во многих шрифтах.
+Control over glyph width is available in many fonts.
 
-<code>wght</code> — вес
+<code>wght</code> — weight
 
-Пример кода:
+Code example:
 
 
 ```css
 font-variation-settings: "wght" 900;
 ```
 
-Демо:
+Demo:
 
 <p data-height="378" data-theme-id="4974" data-slug-hash="KeXjZv" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Font Variation: Weight" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/KeXjZv/">Font Variation: Weight</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-Шрифт: <a href="https://www.monotype.com/fonts/variable-fonts/">FF Meta Variable</a>
+Font: <a href="https://www.monotype.com/fonts/variable-fonts/">FF Meta Variable</a>
 
-Ещё одна настройка, которая встречается во многих шрифтах. Она позволяет не только обойтись одним файлом для любых вариантов жирности, но также гибко управлять её значением.
+Another setting found in many fonts. It not only lets you get by with a single file for any weight variants, but also control its value flexibly.
 
-Полный список предопределённых вариаций можно найти в <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/dvaraxisreg#registered-axis-tags">спецификации OpenType</a>, там же есть подробное описание каждой из них.
+The full list of predefined variations can be found in the <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/dvaraxisreg#registered-axis-tags">OpenType specification</a>, along with a detailed description of each.
 
-Как уже упоминалось выше, при разработке шрифта авторам не обязательно ограничиваться только вариациями из спецификации, они могут добавлять свои, что позволяет делать много интересного.
+As already mentioned above, when developing a font authors don't have to limit themselves to only the variations from the specification; they can add their own, which makes a lot of interesting things possible.
 
-Например, у шрифта <a href="https://github.com/TypeNetwork/Decovar">Decovar</a> есть целых 15 настроек, из которых только одна стандартная — управление весом линий, в итоге из одного шрифта можно извлечь огромное количество вариантов:
+For example, the <a href="https://github.com/TypeNetwork/Decovar">Decovar</a> font has a whole 15 settings, of which only one is standard — line weight control — so a single font yields a huge number of variants:
 
 <p data-height="379" data-theme-id="4974" data-slug-hash="WyZVQd" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Decovar is beautiful ❤️" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/WyZVQd/">Decovar is beautiful ❤️</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-
-В этом случае каждый отдельный стиль текста может задаваться набором значений:
 
 
 ```css
 font-variation-settings: "BLDA" 913.8, "BLDB" 162.8, "SKLB" 1000;
 ```
 
-Обратите внимание, что названия кастомных меток пишутся капсом.
+Note that custom tag names are written in caps.
 
-А у <a href="https://www.fontfabric.com/slovic/">Slovic</a> — всего одна настройка, но она позволяет плавно переключаться между предустановленными стилями:
+And <a href="https://www.fontfabric.com/slovic/">Slovic</a> has just one setting, but it lets you smoothly switch between the preset styles:
 
 <p data-height="350" data-theme-id="4974" data-slug-hash="KeXjbZ" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Font Custom Variation: Style" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/KeXjbZ/">Font Custom Variation: Style</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Значения вариаций можно <a href="https://codepen.io/yoksel/full/jKaaPq/">анимировать</a>.
+Variation values can be <a href="https://codepen.io/yoksel/full/jKaaPq/">animated</a>.
 
 <h2 id="feature-settings">font-feature-settings</h2>
 
-<a href="https://www.w3.org/TR/css-fonts-3/#propdef-font-feature-settings">Спецификация</a>
+<a href="https://www.w3.org/TR/css-fonts-3/#propdef-font-feature-settings">Specification</a>
 
-Эта настройка позволяет включить или выключить некоторые возможности шрифта, например, лигатуры или отображение цифр в старом стиле:
+This setting lets you turn some of a font's capabilities on or off, for example ligatures or old-style numerals:
 
 <p data-height="500" data-theme-id="4974" data-slug-hash="wXPBqp" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Font Feature Settings" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/wXPBqp/">Font Feature Settings</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Фичи из демо:
+The features from the demo:
 
-* <code>liga</code> — лигатуры (когда для удобочитаемости два символа отображаются как один)
-* <code>smcp</code> — отображение строчных как маленьких заглавных
-* <code>frac</code> — отображение дробей
-* <code>onum</code> — цифры в старом стиле
-* <code>zero</code> — перечеркнутый ноль
+* <code>liga</code> — ligatures (when two characters are displayed as one for readability)
+* <code>smcp</code> — lowercase displayed as small capitals
+* <code>frac</code> — fraction display
+* <code>onum</code> — old-style numerals
+* <code>zero</code> — slashed zero
 
-Если фичу нужно включить, достаточно её имени, например:
+If a feature needs to be turned on, its name alone is enough, for example:
 
 
 ```css
 font-feature-settings: "smcp", "onum";
 ```
 
-Хотя запись типа <code>"smcp" on</code> помогает лучше понять что происходит в коде.
+Although a form like <code>"smcp" on</code> helps better understand what's happening in the code.
 
-Если же нужно выключить, обязательно добавлять <code>off</code>:
+If you need to turn it off, be sure to add <code>off</code>:
 
 
 ```css
 font-feature-settings: "smcp" off, "onum" off;
 ```
 
-Некоторые фичи включены по умолчанию, например, разные виды лигатур: <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/features_ae#a-nameclig-idcligatag-clig" title="Contextual Ligatures">clig</a>, <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/features_ko#a-nameliga-idligaatag-liga" title="Standard Ligatures">liga</a> и <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/features_pt#tag-rlig" title="Required Ligatures">rlig</a>. Подробнее можно почитать в <a href="https://www.w3.org/TR/css-fonts-3/#default-features">спецификации</a>.
+Some features are on by default, for example various kinds of ligatures: <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/features_ae#a-nameclig-idcligatag-clig" title="Contextual Ligatures">clig</a>, <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/features_ko#a-nameliga-idligaatag-liga" title="Standard Ligatures">liga</a> and <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/features_pt#tag-rlig" title="Required Ligatures">rlig</a>. You can read more in the <a href="https://www.w3.org/TR/css-fonts-3/#default-features">specification</a>.
 
-Здесь приведено лишь небольшое количество возможностей, полный список с подробными описаниями есть в <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/featurelist">спецификации OpenType</a>.
+Only a small number of capabilities are shown here; the full list with detailed descriptions is in the <a href="https://docs.microsoft.com/ru-ru/typography/opentype/spec/featurelist">OpenType specification</a>.
 
-Много примеров с кодом можно найти здесь: <a href="https://www.typotheque.com/articles/opentype_features_in_css">OpenType features in CSS</a>.
+Many examples with code can be found here: <a href="https://www.typotheque.com/articles/opentype_features_in_css">OpenType features in CSS</a>.
 
-Как уже говорилось выше, <code>font-feature-settings</code> — это низкоуровневая настройка. Спецификация рекомендует, по возможности, использовать высокоуровневые варианты, например:
+As mentioned above, <code>font-feature-settings</code> is a low-level setting. The specification recommends using high-level variants whenever possible, for example:
 
-* <code>font-variant-ligatures</code> для управления лигатурами (<a href="https://www.w3.org/TR/css-fonts-3/#font-variant-ligatures-prop">спецификация</a>)
-* <code>font-variant-caps</code> для приведения строчных к заглавным (<a href="https://www.w3.org/TR/css-fonts-3/#font-variant-caps-prop">спецификация</a>)
-* <code>font-variant-numeric</code> для управления отображением цифр (<a href="https://www.w3.org/TR/css-fonts-3/#font-variant-numeric-prop">спецификация</a>)
+* <code>font-variant-ligatures</code> for controlling ligatures (<a href="https://www.w3.org/TR/css-fonts-3/#font-variant-ligatures-prop">specification</a>)
+* <code>font-variant-caps</code> for converting lowercase to capitals (<a href="https://www.w3.org/TR/css-fonts-3/#font-variant-caps-prop">specification</a>)
+* <code>font-variant-numeric</code> for controlling numeral display (<a href="https://www.w3.org/TR/css-fonts-3/#font-variant-numeric-prop">specification</a>)
 
-Больше вариантов можно найти в разделе спецификации <a href="https://www.w3.org/TR/css-fonts-3/#font-rend-props">Font Feature Properties</a>.
+More options can be found in the specification's <a href="https://www.w3.org/TR/css-fonts-3/#font-rend-props">Font Feature Properties</a> section.
 
-<code>font-feature-settings</code> может использоваться для получения более или менее радикального варианта шрифта:
+<code>font-feature-settings</code> can be used to get a more or less radical variant of a font:
 
 <p data-height="350" data-theme-id="4974" data-slug-hash="oyoEzw" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Slovic with variations & features" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/oyoEzw/">Slovic with variations & features</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Ещё интереснее распорядился фичами автор шрифта <a href="http://home.dootype.com/dt-jakob-variable-concept">dT Jakob Variable Concept</a>: он сделал не только вариативный шрифт, но и слоёный, и стиль для каждого из слоёв включается с помощью лигатур:
+The author of the <a href="http://home.dootype.com/dt-jakob-variable-concept">dT Jakob Variable Concept</a> font used the features in an even more interesting way: he made not only a variable font but a layered one too, and the style for each layer is switched on with ligatures:
 
 <p data-height="350" data-theme-id="4974" data-slug-hash="dKZdRV" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="dKZdRV" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/dKZdRV/">dKZdRV</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Не уверена, что это правильное использование лигатур, но вариант, безусловно, интересный.
+I'm not sure this is a proper use of ligatures, but the variant is certainly interesting.
 
-<h2 id="usage">Использование в реальной жизни</h2>
+<h2 id="usage">Using them in real life</h2>
 
-В данный момент не все браузеры поддерживают управление вариативными шрифтами, поэтому помимо настраиваемого шрифта на страницу придётся подключать обычные. Это <a href="https://medium.com/clear-left-thinking/how-to-use-variable-fonts-in-the-real-world-e6d73065a604">предлагается</a> делать следующим образом:
+At the moment not all browsers support controlling variable fonts, so besides the adjustable font you'll have to include the regular ones on the page. It's <a href="https://medium.com/clear-left-thinking/how-to-use-variable-fonts-in-the-real-world-e6d73065a604">suggested</a> to do it the following way:
 
 
 ```css
@@ -321,7 +319,7 @@ font-feature-settings: "smcp" off, "onum" off;
 }
 ```
 
-Затем с помощью <code>@supports</code> определяется поддержка настроек браузерами и задаётся нужный шрифт:
+Then <code>@supports</code> detects browser support for the settings and applies the right font:
 
 
 ```css
@@ -336,7 +334,6 @@ html {
 }
 ```
 
-Настраиваемые шрифты — тема богатая, и заниматься ею можно до бесконечности. По моим ощущениям, описанные в статье вопросы — только верхушка айсберга.
+Adjustable fonts are a rich topic, and you can dig into it endlessly. From my perspective, the questions covered in this article are just the tip of the iceberg.
 
-Я совсем недавно начала погружаться в тему, так что могла допустить ошибки и неточности. Сообщите мне о них, пожалуйста, если найдутся.
-
+I only recently started diving into the topic, so I may have made mistakes and inaccuracies. Please let me know about them if you find any.
