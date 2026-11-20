@@ -1,24 +1,23 @@
 ---
-title: Маски и эффекты
+title: Masks and effects
 
 tags: [experiments]
 ---
 
-Имитация масок с помощью теней. <!--more-->
+Imitation of masks using shadows. <!--more-->
 
-Сразу же следует уточнить, что это не то <a href="http://www.w3.org/TR/css-masking/">прекрасное будущее</a>, в которое уже можно заглянуть одним глазком в, например, Chrome Canary, включив специальный флаг. Это лишь попытка сделать вид, что у нас таки есть маски. Возможно, кому-то эти опыты окажутся полезными.
+It should be clarified right away that this is not the <a href="http://www.w3.org/TR/css-masking/">bright future</a> that you can already get a glimpse of in, for example, Chrome Canary by enabling a special flag. This is just an attempt to pretend that we do have masks. Perhaps these experiments will be useful to someone.
 
-Круглая маска:
+Masked Circle
 
 <iframe class="live-snippet" style="height: 380px" src="../assets/demo/maski-i-effekty/demo_1.html?css"></iframe>
 
-Восьмигранная:
+Octagonal
 
 <iframe class="live-snippet" style="height: 380px" src="../assets/demo/maski-i-effekty/demo_2.html?css"></iframe>
 
-Шестигранная:
+Hex.
 
 <iframe class="live-snippet" style="height: 380px" src="../assets/demo/maski-i-effekty/demo_3.html?css"></iframe>
 
-Эти маски не являются масками в прямом смысле этого слова и подходят для использования только на однотонном фоне
-
+These masks are not masks in the literal sense of the word and are only suitable for use on a solid-color background.
