@@ -1,10 +1,10 @@
 ---
-title: Странности обводки в SVG
+title: SVG stroke oddities
 
 tags: [svg]
 
 image: //img-fotki.yandex.ru/get/6741/5091629.a1/0_84606_4e6f483e_orig
-description: Веселые приключения SVG-свойства stroke-width, а также несколько странный способ сделать кроссбраузерную анимацию масок.
+description: Fun adventures of the SVG stroke-width property, as well as a somewhat strange way to make cross-browser animation of masks.
 
 links:
 - href: http://www.w3.org/TR/SVG/masking.html
@@ -12,25 +12,25 @@ links:
 - href: http://www.w3.org/TR/SVG/painting.html#StrokeProperties
   text: Stroke Properties
 - href: /css-and-svg-masks/
-  text: CSS и SVG маски
+  text: CSS and SVG masks
 - href: /svg-shapes/
-  text: SVG-фигуры и трансформации
+  text: SVG Shapes and Transformations
 ---
 
-Экспериментируя с SVG можно обнаружить много странных моментов. Получить странное при манипуляциях с масштабированием ещё как-то ожидаемо, но внезапно сюрпризы преподнесло свойство <code>stroke-width</code>.
+Experimenting with SVG you can find many strange things. Getting strange things when manipulating with scaling is still somewhat expected, but suddenly the <code>stroke-width</code> property brought surprises.
 
 <!--more-->
 
-<code>stroke-width</code> задает тощину обводки для фигуры. Если в HTML рамка отрисовывается от внешнего края внутрь фигуры и увеличивает её размеры (что можно исправить с помощью <code>box-sizing</code>), то в SVG обводка ведет себя иначе: во-первых, она не растягивает фигуру, во-вторых она отрисовывается и внутрь, и наружу относительно внешнего края фигуры.
+<code>stroke-width</code> sets the stroke width for the shape. If in HTML the frame is drawn from the outer edge into the shape and increases its size (which can be corrected using <code>box-sizing</code>), then in SVG the outline behaves differently: firstly, it does not stretch the shape, and secondly, it is drawn both inward and outward relative to the outer edge of the shape.
 
-Чтобы увидеть как это работает, возьмем пару простых фигур:
+To see how this works, let's take a couple of simple shapes:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="rKpFk" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/rKpFk/'>rKpFk</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Круг с диаметром 60px, квадрат — 60х60px.
+A circle with a diameter of 60px, a square - 60x60px.
 
-С помощью CSS добавим фигурам рамку:
+Using CSS, add a frame to the shapes:
 
 ```css
 stroke: yellowgreen;
@@ -38,34 +38,34 @@ stroke-width: 30;
 stroke-opacity: .5;
 ```
 
-Рамка зеленого цвета, толщиной 30 пикселей. Чтобы видеть как она накладывается на фигуру, рамке задана полупрозрачность (<code>stroke-opacity: .5</code>).
+The frame is green, 30 pixels thick. To see how it overlaps the shape, the frame is set to semi-transparent (<code>stroke-opacity: .5</code>).
 
-Результат:
+Result:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="omKIc" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/omKIc/'>omKIc</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Очевидно, что рамка отрисовывается от внешнего края фигуры в обоих направлениях: и внутрь, и наружу.
-<!-- Ширина фигуры с рамкой теперь равна 90px: 60px изначальной ширины + толщина рамки разделенная на 2 (потому что половина рамки рисуется внутрь) * 2 (рамка добавляется с двух сторон). То есть 60 + 30 / 2 * 2. -->
+Obviously, the frame is drawn from the outer edge of the figure in both directions: both inward and outward.
+<!-- The width of the shape with the border is now 90px: 60px original width + the thickness of the border divided by 2 (because half of the border is drawn inward) * 2 (the border is added on both sides). That is, 60 + 30 / 2 * 2. -->
 
-Обычная рамка ведет себя довольно понятно и предсказуемо, но самое интересное начинается, если задать рамку, превышающую ширину фигуры больше чем в два раза. Чем больше разница — тем интересней результат.
-Чтобы было хорошо видно, я задала рамку равную трехкратному значению ширины (60 * 3 = 180):
+A regular frame behaves quite clearly and predictably, but the fun begins if you specify a frame that is more than twice the width of the figure. The greater the difference, the more interesting the result.
+To make it clearly visible, I set the frame to three times the width (60 * 3 = 180):
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="AkaKc" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/AkaKc/'>AkaKc</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-У квадрата с рамкой всё в порядке, а вот с кружком происходит нечто странное: если толщина обводки больше чем в два-три раза превышает ширину фигуры, между кружком и рамкой образуются белые поля, а толщина рамки уменьшается.
+The square with the frame is fine, but something strange happens with the circle: if the thickness of the outline is more than two or three times the width of the figure, white fields form between the circle and the frame, and the thickness of the frame decreases.
 
-Чем больше разница между значениями, тем больше белые поля и тем тоньше рамка (радиус 10, толщина обводки — 200):
+The greater the difference between the values, the larger the white margins and the thinner the frame (radius 10, stroke thickness 200):
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="FLrqa" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/FLrqa/'>SVG: r=10 + stroke-width=150</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Совсем не то, что хотелось бы получить.
+Not at all what I would like to receive.
 
-Ещё более интересный результат получается, если добавить свойство <code>stroke-dasharray</code>.
+An even more interesting result is obtained if you add the <code>stroke-dasharray</code> property.
 
-Код рамки:
+Frame code:
 
 ```css
 stroke-width: 180;
@@ -74,20 +74,20 @@ stroke-opacity: .5;
 stroke-dasharray: 5;
 ```
 
-Результат:
+Result:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="vDpqg" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/vDpqg/'>vDpqg</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Выглядит так, как будто рамка доходит до середины фигуры и продолжает отрисовываться оттуда.
+It looks as if the frame reaches the middle of the figure and continues to be drawn from there.
 
-Всё это как бы намекает нам, что толщина рамки не должна быть больше двухкратного значения ширины или диаметра фигуры, хотя можно поступить и наоборот: задавать очень большие значения и получать интересные варианты лучей.
+All this seems to hint to us that the thickness of the frame should not be more than twice the width or diameter of the figure, although you can do the opposite: set very large values ​​and get interesting ray options.
 
-Думаю, редко кому придет в голову задавать обводке запредельные значения ширины, но я обнаружила эту странность в поведении, когда хотела сделать именно это: взять маленький кружок и задать ему большую рамку, чтобы увеличить таким образом его размер.
+I think it’s rare for anyone to think of giving a stroke an exorbitant width, but I discovered this strange behavior when I wanted to do just that: take a small circle and give it a large border, thereby increasing its size.
 
-Зачем это может быть нужно?
+Why might this be necessary?
 
-Предположим, есть круглая маска и картинка под ней:
+Suppose there is a round mask and a picture under it:
 
 ```html
 <svg>
@@ -107,7 +107,7 @@ stroke-dasharray: 5;
 <p data-height="400" data-theme-id="4974" data-slug-hash="mpvhb" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/mpvhb/'>mpvhb</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Я хочу анимировать маску, чтобы она пропорционально растягивалась и сужалась относительно центра картинки. Первым делом в голову, конечно, приходит <code>transform</code>. Код анимации:
+I want to animate the mask so that it expands and contracts proportionally relative to the center of the image. The first thing that comes to mind, of course, is <code>transform</code>. Animation code:
 
 ```css
 @keyframes scale {
@@ -117,7 +117,7 @@ stroke-dasharray: 5;
 }
 ```
 
-Подключаем анимацию:
+Connecting animation:
 
 ```css
 .c-mask-circle {
@@ -129,13 +129,13 @@ stroke-dasharray: 5;
 <p data-height="400" data-theme-id="4974" data-slug-hash="dKrft" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/dKrft/'>dKrft</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Так как центр трансформаций в SVG находится в левом верхнем углу области отрисовки, фигура движется совсем не так, как хотелось бы. Задаем центр трансформаций, который нужен нам:
+Since the center of the transformation in SVG is in the upper left corner of the rendering area, the shape does not move at all as we would like. We set the transformation center that we need:
 
 ```css
 transform-origin: 100px 100px;
 ```
 
-И всё вместе:
+And all together:
 
 ```css
 .c-mask-circle {
@@ -151,27 +151,27 @@ transform-origin: 100px 100px;
 }
 ```
 
-Результат:
+Result:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="fKqAI" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/fKqAI/'>fKqAI</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-В Chrome анимация будет работать как задумано: маска увеличивается от центра и затем уменьшается в обратном направлении. В Firefox она не будет работать вообще: Firefox не анимирует трансформации внутри масок.
+In Chrome, the animation will work as intended, with the mask growing from the center and then decreasing in the opposite direction. It won't work in Firefox at all: Firefox doesn't animate transformations inside masks.
 
-Способ с трансформацией не работает. Какие ещё варианты есть? Вот как раз в этом случае можно попробовать анимировать толщину обводки.
+The transformation method doesn't work. What other options are there? In this case, you can try to animate the thickness of the stroke.
 
-Почему это сработает?
+Why will this work?
 
-Небольшое лирическое отступление: в отличие от <code>clipPath</code>, который обрезает фигуру по векторному контуру, игнорируя заливки и обводки контура, в работе маски принимает участие всё её графическое содержимое.
+A small lyrical digression: unlike <code>clipPath</code>, which crops a shape along a vector path, ignoring the fills and strokes of the path, all of its graphic contents take part in the operation of the mask.
 
-Для примера возьмем кружок c обводкой и используем его в <code>mask</code> и <code>clipPath</code>:
+For example, let's take a circle with a stroke and use it in <code>mask</code> and <code>clipPath</code>:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="ouLIh" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/ouLIh/'>ouLIh</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Для фигур внутри <code>clipPath</code> можно было бы попробовать анимировать <code>transform</code>, но они тоже не анимируются в Firefox. Таким образом, в нашем распоряжении остаются только маски и манипуляции с обводками. Конец лирического отступления.
+For shapes inside <code>clipPath</code>, you could try animating <code>transform</code>, but they don't animate in Firefox either. Thus, we only have masks and stroke manipulations at our disposal. End of lyrical digression.
 
-Используя обводки, пробую повторить поведение маски, пропорционально увеличивающейся относительно центра. Для этих целей я беру маску с маленьким кружком внутри:
+Using strokes, I try to repeat the behavior of the mask, increasing proportionally relative to the center. For these purposes, I take a mask with a small circle inside:
 
 ```html
 <mask id="mask">
@@ -180,7 +180,7 @@ transform-origin: 100px 100px;
 </mask>
 ```
 
-Задаю ей белую заливку и добавляю обводку:
+I give it a white fill and add a stroke:
 
 ```css
 .c-mask-circle {
@@ -190,7 +190,7 @@ transform-origin: 100px 100px;
 }
 ```
 
-Добавляю анимацию толщины обводки:
+Adding stroke thickness animation:
 
 ```css
 @keyframes stroke-width {
@@ -200,7 +200,7 @@ transform-origin: 100px 100px;
 }
 ```
 
-Весь итоговый код:
+All final code:
 
 ```css
 .c-mask-circle {
@@ -217,30 +217,30 @@ transform-origin: 100px 100px;
 }
 ```
 
-Результат:
+Result:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="oebyE" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/oebyE/'>oebyE</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-В отличие от способа с <code>transform</code>, обводка замечательно анимируется в Firefox, и это можно было бы использовать, если бы не ограничение на толщину обводки, описанное выше.
+Unlike the <code>transform</code> method, the stroke animates beautifully in Firefox, and this could be used if not for the stroke thickness limitation described above.
 
-Таким образом, с одной стороны, задавать толстую рамку для маленького элемента кажется странной идеей, с другой — это можно было бы использовать в практических целях, так что жаль, что <code>stroke-width</code> отрисовывается не так как хотелось бы.
+So, on the one hand, setting a thick border for a small element seems like a strange idea, on the other hand, this could be used for practical purposes, so it’s a pity that <code>stroke-width</code> is not rendered as we would like.
 
-Некоторой пикантности добавляет тот факт, что как раз в Firefox анимация обводки в маске дает именно желаемый результат: маска увеличивается от центра к краям без каких-либо зазоров между фигурой и обводкой — фигура получается цельная.
+What adds some piquancy is the fact that in Firefox, the stroke animation in a mask gives exactly the desired result: the mask grows from the center to the edges without any gaps between the figure and the stroke - the figure turns out to be solid.
 
-Ещё интереснее ведет себя Safari: в нем фигура маски цельная, а результат применения маски к картинке — с зазорами.
+Safari behaves even more interestingly: in it the mask figure is solid, but the result of applying the mask to the picture has gaps.
 
-Таким образом, при желании получить анимированую маску, можно сочетать анимацию <code>transform</code> для Хрома (и других webkittens) с анимацией <code>stroke-width</code> для Firefox, например: так:
+Thus, if you want to get an animated mask, you can combine the <code>transform</code> animation for Chrome (and other webkittens) with the <code>stroke-width</code> animation for Firefox, for example: like this:
 
 <p data-height="420" data-theme-id="4974" data-slug-hash="LBIfx" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/LBIfx/'>Animated mask for Firefox and webkittens</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Способ странный, но это работает.
+The method is strange, but it works.
 
-Правда, обе анимации не будут работать в IE, потому что он вообще не поддерживает анимации в SVG.
+However, both animations will not work in IE, because it does not support animations in SVG at all.
 
-Анимируя <code>stroke-width</code> в маске можно делать разные другие интересные штуки, но это уже тема для отдельного поста.
+By animating <code>stroke-width</code> in a mask, you can do various other interesting things, but this is a topic for a separate post.
 
-Версии браузеров на момент написания поста: Chrome 36, Firefox 31, Safari 7, Opera 23, IE 11.
+Browser versions at the time of writing: Chrome 36, Firefox 31, Safari 7, Opera 23, IE 11.
 
-Картинка с пионами <a href="http://www.colourlovers.com/pattern/2693008/Amethyst_peonies">отсюда</a>.
+Picture with peonies <a href="http://www.colourlovers.com/pattern/2693008/Amethyst_peonies">from here</a>.
