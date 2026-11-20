@@ -1,12 +1,12 @@
 ---
-title: Сколько весят селекторы?
+title: How much do selectors weigh?
 
 tags: [selectors]
 
 customCSS: 'specifity.css'
 
 image: //img-fotki.yandex.ru/get/9797/5091629.9a/0_7ec6f_cda36757_M.png
-description: Все CSS-селекторы имеют свой вес, который определяет как взаимодействуют одинаковые свойства, заданные в разных местах кода одному и тому же элементу.
+description: All CSS selectors have their own weight, which determines how the same properties set in different places in the code on the same element interact.
 
 links:
 - href: http://css-tricks.com/specifics-on-css-specificity/
@@ -14,16 +14,16 @@ links:
 - href: http://coding.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/
   text: 'CSS Specificity: Things You Should Know'
 - href: http://cssspecificity.com/
-  text: Специфичность в комиксах
+  text: Specificity in comics
 - href: http://www.stuffandnonsense.co.uk/archives/css_specificity_wars.html
-  text: Специфичность на примере "Звёздных войн"
+  text: Specificity using the example of "Star Wars"
 ---
 
-Все CSS-селекторы имеют свой вес, который определяет как взаимодействуют одинаковые свойства, заданные в разных местах кода одному и тому же элементу.<!--more-->
+All CSS selectors have their own weight, which determines how the same properties set in different places in the code on the same element interact.<!--more-->
 
-Иногда это может создавать трудности, когда свойство, объявленное ниже в коде, перекрывается тем, что объявленно выше, потому что селектор первого более специфичен (имеет больший вес).
+This can sometimes create difficulties when a property declared lower in the code overlaps with one declared above because the former's selector is more specific (has more weight).
 
-Вот пример проблемы. Есть див с <code>id="container"</code>, внутри него некоторый текст и список ссылок.
+Here's an example of the problem. There is a div with <code>id="container"</code>, inside it is some text and a list of links.
 
 ```html
 <div id="container">
@@ -36,7 +36,7 @@ links:
 </div>
 ```
 
-Сначала задаём всем ссылкам внутри <code>#container</code> оранжевый фон:
+First, we give all links inside <code>#container</code> an orange background:
 
 ```css
 #container A {
@@ -44,7 +44,7 @@ links:
 }
 ```
 
-А потом, чтобы в списке <code>.list</code> внутри контейнера ссылки имели зелёный фон, ниже дописываем такое:
+And then, so that in the list <code>.list</code> inside the container the links have a green background, we add the following below:
 
 ```css
 .list A {
@@ -52,27 +52,27 @@ links:
 }
 ```
 
-Казалось бы, ссылки в тексте должны получить оранжевый фон, а ссылки в списке — зеленый, но нет:
+It would seem that links in the text should have an orange background, and links in the list should have a green background, but no:
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/specifity/demo_1.html?output"></iframe>
 
-Почему так? Потому, что первый селектор содержит ID и перевешивает второй, то есть:
+Why is this so? Because the first selector contains ID and overrides the second, that is:
 
 <code>#container A</code> <b>&gt;</b> <code>.list A</code>
 
-<h2 id="specifity">Вес селектора</h2>
+<h2 id="specifity">Selector weight</h2>
 
-Специфичность селектора рассчитывается по 4-м позициям:
+The selector specificity is calculated based on 4 positions:
 
 <iframe class="live-snippet" style="height: 220px" src="../assets/demo/specifity/demo_2.html?output"></iframe>
 
-Для каждого из них подсчитывается количество подходящих элементов в селекторе, и это число помещается в соответствующую позицию.
+For each of them, the number of matching elements in the selector is counted and this number is placed in the appropriate position.
 
-<b>Пример:</b>
+<b>Example:</b>
 
 <iframe class="live-snippet" style="height: 500px" src="../assets/demo/specifity/demo_3.html?output"></iframe>
 
-<b>Вес селекторов</b> (по убыванию):
+<b>Selector weight</b> (descending):
 
 <span class="wrapper-with-dottes"><code>style=""</code></span><code class="specifity"><b>1</b>,0,0,0</code>
 
@@ -86,35 +86,35 @@ links:
 
 <span class="wrapper-with-dottes"><code>\*</code></span><code class="specifity">0,0,0,0</code>
 
-У стилей, заданных в атрибуте <code>style</code>, на первой позиции будет единица — <code class="specifity"><b>1</b>,0,0,0</code>. Это самая высокая специфичность, которая перевешивает свойства, заданные другими способами.
+Styles specified in the <code>style</code> attribute will have a unit in the first position - <code class="specifity"><b>1</b>,0,0,0</code>. This is the highest specificity, which outweighs properties specified by other methods.
 
-Переопределить стили, заданные в <code>style</code>, можно дописав <code>!important</code> к значению свойства в таблице стилей.
+You can override the styles specified in <code>style</code> by adding <code>!important</code> to the property value in the style sheet.
 
-Обратный вариант — универсальный селектор <code>\*</code>, он не имеет веса: <code class="specifity">0,0,0,0</code>.
+The opposite option is the universal selector <code>\*</code>, it has no weight: <code class="specifity">0,0,0,0</code>.
 
-<b>Примеры:</b>
+<b>Examples:</b>
 
-<span class="wrapper-with-dottes"><code>LI</code></span><code class="specifity">0,0,0,<b>1</b></code> — селектор по тегу
+<span class="wrapper-with-dottes"><code>LI</code></span><code class="specifity">0,0,0,<b>1</b></code> - selector by tag
 
-<span class="wrapper-with-dottes"><code>UL LI</code></span><code class="specifity">0,0,0,<b>2</b></code> — селектор c двумя тегами весит больше, чем с одним.
+<span class="wrapper-with-dottes"><code>UL LI</code></span><code class="specifity">0,0,0,<b>2</b></code> - a selector with two tags weighs more than with one.
 
-<span class="wrapper-with-dottes"><code>.orange</code></span><code class="specifity">0,0,<b>1</b>,0</code> — селектор с классом весит больше, чем селектор с тегом.
+<span class="wrapper-with-dottes"><code>.orange</code></span><code class="specifity">0,0,<b>1</b>,0</code> - a selector with a class weighs more than a selector with a tag.
 
-<span class="wrapper-with-dottes"><code>.orange A SPAN</code></span><code class="specifity">0,0,<b>1</b>,<b>2</b></code> — селектор перевесит предыдущий, потому что помимо класса содержит два тега.
+<span class="wrapper-with-dottes"><code>.orange A SPAN</code></span><code class="specifity">0,0,<b>1</b>,<b>2</b></code> - the selector will outweigh the previous one, because in addition to the class it contains two tags.
 
-<span class="wrapper-with-dottes"><code>#page .orange</code></span><code class="specifity">0,<b>1</b>,<b>1</b>,0</code> — селектор с ID перевесит всё, кроме inline-стилей.
+<span class="wrapper-with-dottes"><code>#page .orange</code></span><code class="specifity">0,<b>1</b>,<b>1</b>,0</code> - the ID selector will override everything except inline styles.
 
-Теперь сравним селекторы из исходного примера:
+Now let's compare the selectors from the original example:
 
 <span class="wrapper-with-dottes"><code>#container A</code></span><code class="specifity">0,<b>1</b>,0,<b>1</b></code>
 
 <span class="wrapper-with-dottes"><code>.list A</code></span><code class="specifity">0,0,<b>1</b>,<b>1</b></code>
 
-<code class="specifity">0,<b>1</b>,0,<b>1</b></code> <b>&gt;</b> <code class="specifity">0,0,<b>1</b>,<b>1</b></code>  — хорошо видно, что селектор с ID весит больше, чем селектор с классом, поэтому все ссылки имеют оранжевый фон, хотя ниже в коде им задан зеленый.
+<code class="specifity">0,<b>1</b>,0,<b>1</b></code> <b>></b> <code class="specifity">0,0,<b>1</b>,<b>1</b></code> - you can clearly see that the selector with ID weighs more than the selector with class, so all links have an orange background, although they are set to green below in the code.
 
-<h2 id="solutions">Варианты решений</h2>
+<h2 id="solutions">Solution options</h2>
 
-<b>1.</b> Добавить <code>!important</code>
+<b>1.</b> Add <code>!important</code>
 
 ```css
 #container A {
@@ -126,14 +126,14 @@ links:
 }
 ```
 
-Ссылки получат зеленый фон, быстро и легко.
-Но это плохой способ, потому что код запутывается ещё больше.
-Со временем для переопределения <code>!important</code> в одном месте может потребоваться добавить его в других местах. Иерархичность начнет работать не сверху низ и от общего к частному, а как попало. В конце-концов поддерживать такой код будет весьма проблематично.
+Links will get a green background, quickly and easily.
+But this is a bad way, because the code becomes even more confusing.
+Over time, overriding <code>!important</code> in one place may require adding it in other places. Hierarchy will begin to work not from top to bottom and from general to specific, but at random. In the end, maintaining such code will be very problematic.
 
-В общих случаях использовать <code>!important</code> не рекомендуется, но может пригодиться, если нужно, чтобы часто используемый блок на всех страницах выглядел одинаково, независимо от окружения.
-В любом случае нужно всегда четко понимать зачем вы его используете.
+In general, using <code>!important</code> is not recommended, but it can be useful if you want a frequently used block to look the same on all pages, regardless of the environment.
+In any case, you should always clearly understand why you are using it.
 
-<b>2.</b> Следующий очевидный способ — добавить <code>#container</code> ко второму селектору, чтобы увеличить его вес:
+<b>2.</b> The next obvious way is to add <code>#container</code> to the second selector to increase its weight:
 
 ```css
 #container A {
@@ -145,30 +145,30 @@ links:
 }
 ```
 
-Это тоже сработает, но решение так себе: удлиняется цепочка селекторов (что может отразиться на скорости отрисовки страницы) и ухудшается читаемость кода.
-Так тоже делать не стоит.
+This will also work, but the solution is so-so: the chain of selectors is lengthened (which can affect the page rendering speed) and the readability of the code deteriorates.
+You shouldn't do that either.
 
-1-й и 2-й способ могут использоваться, если у вас нет доступа к разметке, а в ней нет нужных классов.
-Если же вы можете редактировать разметку либо классы у элементов таки есть — используйте последний способ, самый правильный:
+Methods 1 and 2 can be used if you do not have access to the markup and it does not contain the necessary classes.
+If you can edit the markup or the elements do have classes, use the last method, the most correct:
 
-<b>3.</b> Просто не используйте в стилях селекторы с ID, используйте классы.
+<b>3.</b> Just don't use ID selectors in styles, use classes.
 
-Посмотрим на разницу между <code>#container</code> и с <code>.container</code>:
+Let's look at the difference between <code>#container</code> and <code>.container</code>:
 
-<span class="wrapper-with-dottes"><code>#container A</code></span><code class="specifity">0,<b>1</b>,0,<b>1</b></code> — селектор с ID перевешивает всё вне зависимости от своего расположения в коде.
+<span class="wrapper-with-dottes"><code>#container A</code></span><code class="specifity">0,<b>1</b>,0,<b>1</b></code> - the selector with ID overrides everything, regardless of its location in the code.
 
-Заменим в разметке страницы <code>id</code> на <code>class</code>:
+Let's replace <code>id</code> in the page markup with <code>class</code>:
 
-<span class="wrapper-with-dottes"><code>.container A</code></span><code class="specifity">0,0,<b>1</b>,<b>1</b></code> — селектор с классом весит меньше, он менее специфичен.
+<span class="wrapper-with-dottes"><code>.container A</code></span><code class="specifity">0,0,<b>1</b>,<b>1</b></code> - a selector with a class weighs less, it is less specific.
 
-Селектор ссылок в списке весит столько же:
+The link selector in the list weighs the same:
 
 <span class="wrapper-with-dottes"><code>.list A</code></span><code class="specifity">0,0,<b>1</b>,<b>1</b></code>
 
-Это означает, что при равном весе селекторов применятся стили, объявленные ниже в коде.
-То есть достаточно будет просто написать стили, следуя от общего к частному, сверху вниз.
+This means that if the selector weights are equal, the styles declared below in the code will be applied.
+That is, it will be enough to simply write styles, going from general to specific, from top to bottom.
 
-В итоге разметка может быть такой:
+As a result, the markup could look like this:
 
 ```html
 <div class="container">
@@ -182,7 +182,7 @@ links:
 
 ```
 
-А стили — такими:
+And the styles are like this:
 
 
 ```css
@@ -195,14 +195,14 @@ links:
 }
 ```
 
-И код работает так, как ожидается:
+And the code works as expected:
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/specifity/demo_4.html?output"></iframe>
 
-<i>Если <code>id</code> в вашей разметке уже используется в Js, логичнее будет добавить элементу класс и перевесить стили на него. Если же <code>id</code> участвует только в разметке — лучше заменить его на <code>class</code>.</i>
+<i>If <code>id</code> in your markup is already used in Js, it would be more logical to add a class to the element and override the styles on it. If <code>id</code> is only used in markup, it is better to replace it with <code>class</code>.</i>
 
-В качестве общих рекомендаций так же следует упомянуть, что нужно как можно меньше использовать селекторы по тегу и как можно больше — селекторы по классу. Это поможет избежать проблем при повторном использовании блоков сайта, а при использовании "умных" классов — может значительно сократить цепочки селекторов, увеличить читабельность кода и скорость отрисовки страницы.
+As general recommendations, it should also be mentioned that you need to use tag selectors as little as possible and class selectors as much as possible. This will help avoid problems when reusing site blocks, and when using “smart” classes, it can significantly shorten selector chains, increase code readability and page rendering speed.
 
-Спецификации:
+Specifications:
 * <a href="http://www.w3.org/TR/CSS2/cascade.html#specificity">w3.org/TR/CSS2/cascade.html#specificity</a>
 * <a href="http://www.w3.org/TR/css3-selectors/#specificity">w3.org/TR/css3-selectors/#specificity</a>
