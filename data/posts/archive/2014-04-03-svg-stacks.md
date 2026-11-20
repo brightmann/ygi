@@ -1,10 +1,10 @@
 ---
-title: "SVG-стеки"
+title: "SVG stacks"
 
 tags: [svg]
 
 image: "//img-fotki.yandex.ru/get/9809/5091629.9d/0_80720_8dc116f0_L.png"
-description: "Стеки — это ещё один способ организации SVG. Как спрайт, только лучше — как если бы мы могли использовать use в CSS. К сожалению, способ очень неравномерно поддерживается современными браузерами."
+description: "Stacks are another way of organizing SVG. Like a sprite, only better — as if we could use use in CSS. Unfortunately, the method is very unevenly supported by modern browsers."
 links:
 - href: "http://simurai.com/blog/2012/04/02/svg-stacks/"
   text: SVG Stacks
@@ -14,21 +14,21 @@ links:
   text: Better SVG Sprites With Fragment Identifiers
 ---
 
-Стеки — это ещё один способ организации SVG. Как спрайт, только лучше — как если бы мы могли использовать <code>use</code> в CSS.
+Stacks are another way of organizing SVG. Like a sprite, only better — as if we could use <code>use</code> in CSS.
 
-К сожалению, способ очень неравномерно поддерживается современными браузерами. <!--more-->
+Unfortunately, the method is very unevenly supported by modern browsers. <!--more-->
 
-Метод был предложен тут: <a href="http://simurai.com/blog/2012/04/02/svg-stacks/">simurai.com/blog/2012/04/02/svg-stacks/</a> 2 года назад. Ниже, собственно, мой вольный пересказ: объяснение принципа и демо для тестов.
+The method was proposed here: <a href="http://simurai.com/blog/2012/04/02/svg-stacks/">simurai.com/blog/2012/04/02/svg-stacks/</a> 2 years ago. Below is my loose retelling: an explanation of the principle and demos for testing.
 
-В чем состоит способ?
+What does the method consist of?
 
-Допустим, у нас есть SVG-спрайт. Чтобы показать нужный кусочек картинки мы двигаем его с помощью <code>background-position</code>. Чем больше спрайт, тем утомительней задавать для каждой картинки свое положение фона. Конечно, можно автоматизировать процесс, но что если бы можно было просто внутри файла сложить картинки стопкой, скрыть их все и показывать нужную картинку, обратившись к ней по ID?
+Suppose we have an SVG sprite. To show the needed piece of the picture we move it with <code>background-position</code>. The bigger the sprite, the more tiresome it is to set its own background position for each picture. Of course, the process can be automated, but what if we could simply stack the pictures inside the file, hide them all, and show the needed picture by referring to it by ID?
 
-Например, есть два квадратика, один поверх другого, зеленый сверху:
+For example, there are two squares, one on top of the other, the green one on top:
 
 <svg width="200" height="200" viewbox="0 0 200 200"><g id="svg-no"><rect fill="#FF4646" width="200" height="200" rx="8"/><text id="No." font-family="Palatino" font-size="90" fill="#fff"><tspan x="28" y="130">No.</tspan></text></g><g id="svg-yes"><rect fill="#a2d529" width="200" height="200" rx="8"/><text id="Yes!" font-family="Palatino" font-size="90" fill="#fff"><tspan x="18" y="130">Yes!</tspan></text></g></svg>
 
-Примерный код:
+Approximate code:
 
 ```html
 <svg width="150" height="150">
@@ -41,7 +41,7 @@ links:
 </svg>
 ```
 
-По умолчанию должен показываться нижний элемент (красный), так что добавим CSS:
+By default the bottom element (the red one) should be shown, so let's add CSS:
 
 
 ```css
@@ -50,30 +50,30 @@ links:
 
 <svg width="200" height="200" viewbox="0 0 200 200"><style>.hidden { display: none; } :target { display: block; }</style><g><rect fill="#FF4646" width="200" height="200" rx="8"/><text id="No." font-family="Palatino" font-size="90" fill="#fff"><tspan x="28" y="130">No.</tspan></text></g><g class="hidden"><rect fill="#a2d529" width="200" height="200" rx="8"/><text id="Yes!" font-family="Palatino" font-size="90" fill="#fff"><tspan x="18" y="130">Yes!</tspan></text></g></svg>
 
-А теперь воспользуемся селектором <code>:target</code>, чтобы показать только нужный:
+And now let's use the <code>:target</code> selector to show only the one we need:
 
 
 ```css
 :target { display: block; }
 ```
 
-Добавим в адрес страницы ID элемента (<code>#yes</code>) <a href="#yes">Клик!</a> и мы видим зеленый квадратик:
+Let's add the element's ID (<code>#yes</code>) to the page address <a href="#yes">Click!</a> and we see the green square:
 
 <svg width="200" height="200" viewbox="0 0 200 200"><style>.hidden { display: none; } :target { display: block; }</style><g id="no"><rect fill="#FF4646" width="200" height="200" rx="8"/><text id="No." font-family="Palatino" font-size="90" fill="#fff"><tspan x="28" y="130">No.</tspan></text></g><g id="yes" class="hidden"><rect fill="#a2d529" width="200" height="200" rx="8"/><text id="Yes!" font-family="Palatino" font-size="90" fill="#fff"><tspan x="18" y="130">Yes!</tspan></text></g></svg>
 
-Аналогично можно поиграться запрашивая файл по прямой ссылке: <a href="https://yoksel.github.io/assets/img/svg/yes-no.svg">без ID</a> и <a href="https://yoksel.github.io/assets/img/svg/yes-no.svg#yes">с ID</a>
+Similarly, you can play around requesting the file by direct link: <a href="https://yoksel.github.io/assets/img/svg/yes-no.svg">without ID</a> and <a href="https://yoksel.github.io/assets/img/svg/yes-no.svg#yes">with ID</a>
 
-Отлично работает!
+Works great!
 
-А что если попробовать разные способы вставки, например <code>embed</code>, <code>img</code> или <code>background-image</code>?
+What if we try different ways of embedding, for example <code>embed</code>, <code>img</code> or <code>background-image</code>?
 
-Я сделала демо c разными способами, чтобы это проверить: <a href="https://codepen.io/yoksel/full/KDpqu/">https://codepen.io/yoksel/full/KDpqu/</a>.
+I made a demo with different ways to check this: <a href="https://codepen.io/yoksel/full/KDpqu/">https://codepen.io/yoksel/full/KDpqu/</a>.
 
-И вот тут обнаруживается интересное:
+And here's where something interesting is discovered:
 
-- вставка через <code>embed</code> и <code>iframe</code> работает во всех браузерах;
-- вставка через <code>img</code> и <code>background-image</code> — в IE9+, Firefox и старой Опере (только <code>img</code>), и совсем не работает в вебкитах.
+- embedding via <code>embed</code> and <code>iframe</code> works in all browsers;
+- embedding via <code>img</code> and <code>background-image</code> — in IE9+, Firefox and old Opera (only <code>img</code>), and doesn't work at all in Webkits.
 
-Отсутствие поддержки ID для <code>background-image</code> в вебкитах означает, что стеками пользоваться пока нельзя.
+The lack of ID support for <code>background-image</code> in Webkits means stacks can't be used yet.
 
-Мне очень нравится идея и изящество SVG-стеков, и я надеюсь, что однажды мы сможем использовать их во всех браузерах без ограничений.
+I really like the idea and elegance of SVG stacks, and I hope that one day we'll be able to use them in all browsers without limitations.
