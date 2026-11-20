@@ -1,41 +1,41 @@
 ---
-title: Стрелки с помощью свойства border
+title: Arrows using the border property
 
 tags: [borders, draw-on-css]
 
-description: С помощью border можно легко делать стрелочки разного размера и в разных направлениях.
+description: Using border you can easily make arrows of different sizes and in different directions.
 ---
 
-С помощью <code>border</code> можно легко делать стрелочки разного размера и в разных направлениях.
+Using <code>border</code> you can easily make arrows of different sizes and in different directions.
 
-Чтобы понять общий принцип, возьмем див нулевого размера, сделаем ему толстую рамку и раскрасим её в разные цвета: <!--more-->
+To understand the general principle, let's take a zero-size div, give it a thick frame and color it in different colors: <!--more-->
 
 <iframe class="live-snippet" style="height: 250px" src="../assets/demo/strelki-s-pomoshh-yu-svojstva-border/demo_1.html?css"></iframe>
 
-Теперь достаточно задать <code>transparent</code> вместо цветов, которые не нужны, и обнулить <code>border</code> напротив нужного уголка, чтобы он не влиял на ширину фигуры:
+Now it’s enough to set <code>transparent</code> instead of colors that are not needed, and reset <code>border</code> opposite the desired corner so that it does not affect the width of the shape:
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/strelki-s-pomoshh-yu-svojstva-border/demo_2.html?css"></iframe>
 
-Обнулив <code>border</code> не с одной стороны, а с двух, можно получить вот такие уголки:
+By resetting <code>border</code> not on one side, but on both sides, you can get the following corners:
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/strelki-s-pomoshh-yu-svojstva-border/demo_3.html?css"></iframe>
 
-Аналогичный эффект можно получить, задав цвет двум сторонам, находящимся рядом:
+A similar effect can be achieved by assigning a color to two adjacent sides:
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/strelki-s-pomoshh-yu-svojstva-border/demo_4.html?css"></iframe>
 
-При этом в середине длинной стороны может быть небольшая неровность, в отличие от первого способа.
+In this case, there may be a slight unevenness in the middle of the long side, unlike the first method.
 
-А если задать цвет с трёх сторон, получатся флажки : )
+And if you set the color on three sides, you get flags :)
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/strelki-s-pomoshh-yu-svojstva-border/demo_5.html?output"></iframe>
 
-Но вернемся к стрелкам. Сочетая <code>border</code> и псевдоэлементы можно получить вот такие варианты:
+But let's get back to the arrows. By combining <code>border</code> and pseudo-elements you can get the following options:
 
 <iframe class="live-snippet" style="height: 450px" src="../assets/demo/strelki-s-pomoshh-yu-svojstva-border/demo_6.html?output"></iframe>
 
-Большим преимуществом способа является отсутствие изображений, что позволяет в любой момент изменить цвет и размер стрелки.
+The big advantage of this method is the absence of images, which allows you to change the color and size of the arrow at any time.
 
-А ещё таким способом легко делать ленточки:
+This is also an easy way to make ribbons:
 
 <iframe class="live-snippet" style="height: 200px" src="../assets/demo/strelki-s-pomoshh-yu-svojstva-border/demo_7.html?output"></iframe>
