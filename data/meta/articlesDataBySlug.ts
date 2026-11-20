@@ -255,6 +255,10 @@ export const postsDataBySlug = {
   "/css-math": {
     "date": "2020-09-26",
     "fullSlug": "2020-09-26-css-math.md"
+  },
+  "/test": {
+    "date": "2026-11-19",
+    "fullSlug": "2026-11-19-test.md"
   }
 };
 
