@@ -1,17 +1,17 @@
 ---
-title: Поддержка @font-face
+title: "@font-face support"
 
 tags: [fonts]
 
 image: //img-fotki.yandex.ru/get/9488/5091629.9d/0_82d8a_f3c1d233_orig.png
-description: Известно, что кастомные шрифты могут работать неожиданным образом. Если они не поддерживаются браузером или устройством, вместо символов может появиться всё что угодно. В идеале — не будет ничего, но могут быть и другие варианты, вплоть до цветных иконок непредсказуемого содержания.
+description: It's known that custom fonts can work in unexpected ways. If they aren't supported by the browser or device, anything at all may appear instead of the symbols. Ideally there would be nothing, but other variants are possible, up to colorful icons of unpredictable content.
 ---
 
-Продолжая интересоваться разными способами сделать иконки, решила поискать что-нибудь про поддержку @font-face на мобильных устройствах.
+Continuing to explore different ways of making icons, I decided to look for something about @font-face support on mobile devices.
 
-Известно, что кастомные шрифты могут работать неожиданным образом. Если они не поддерживаются браузером или устройством, вместо символов может появиться всё что угодно. В идеале — не будет ничего, но могут быть и другие варианты, вплоть до <a href="http://cdn.css-tricks.com/wp-content/uploads/2014/03/icon-font-fail.png">цветных иконок непредсказуемого содержания</a>. <!--more-->
+It's known that custom fonts can work in unexpected ways. If they aren't supported by the browser or device, anything at all may appear instead of the symbols. Ideally there would be nothing, but other variants are possible, up to <a href="http://cdn.css-tricks.com/wp-content/uploads/2014/03/icon-font-fail.png">colorful icons of unpredictable content</a>. <!--more-->
 
-Увидеть как выглядит неработающий шрифт, можно, например, в Опере Мини:
+You can see what a non-working font looks like in Opera Mini, for example:
 
 <figure style="display: inline-block;">
     <figcaption>Chrome</figcaption>
@@ -22,22 +22,20 @@ description: Известно, что кастомные шрифты могут
 </figure>
 
 
-На каких девайсах могут быть сюрпризы с отображением шрифтов? Каков процент устройств не поддерживает кастомные шрифты?
+On which devices might there be surprises with font rendering? What percentage of devices don't support custom fonts?
 
-Короткий ответ:
+Short answer:
 
 <img src="//img-fotki.yandex.ru/get/9488/5091629.9d/0_82d8a_f3c1d233_orig.png" width="500" height="376" border="0" title="@font-face support" alt="@font-face support"/>
 
-Картинка взята из этой презентации: <a href="https://docs.google.com/presentation/d/1n4NyG4uPRjAA8zn_pSQ_Ket0RhcWC6QlZ6LMjKeECo0/edit#slide=id.g178014302_047">@font-face for icons? Compatibility research</a>
+The image is taken from this presentation: <a href="https://docs.google.com/presentation/d/1n4NyG4uPRjAA8zn_pSQ_Ket0RhcWC6QlZ6LMjKeECo0/edit#slide=id.g178014302_047">@font-face for icons? Compatibility research</a>
 
-Статья про тестирование поддержки @font-face: <a href="http://blog.kaelig.fr/post/33373448491/testing-font-face-support-on-mobile-and-tablet">Testing @font-face Support on Mobile and Tablet</a>
+Article about testing @font-face support: <a href="http://blog.kaelig.fr/post/33373448491/testing-font-face-support-on-mobile-and-tablet">Testing @font-face Support on Mobile and Tablet</a>
 
-Можно сделать вывод, что если иконки должны быть одинаковыми на всех устройствах — шрифт лучше не использовать, более подходящим вариантом будет SVG.
+One can conclude that if icons must look the same on all devices — it's better not to use a font; SVG would be a more suitable option.
 
-Ещё пара полезных статей на тему выбора между SVG и шрифтом:
+A couple more useful articles on choosing between SVG and a font:
 
 <a href="http://ianfeather.co.uk/ten-reasons-we-switched-from-an-icon-font-to-svg/">Ten reasons we switched from an icon font to SVG</a>
 
 <a href="http://css-tricks.com/icon-fonts-vs-svg/">Inline SVG vs Icon Fonts</a>
-
-
