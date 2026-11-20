@@ -10,7 +10,7 @@ links:
 - href: http://pauginer.com/post/36614680636/invisible-gradient-technique
   text: "The invisible gradient technique: Cross-browser support for SVG (with image fallback) using CSS"
 - href: /svg-in-ie8
-  text: Rakes on pure SVG
+  text: Pitfalls of pure SVG
 - href: https://www.npmjs.org/package/svg_fallback
   text: svg_fallback (plugin)
 - href: /grunt-plugin
