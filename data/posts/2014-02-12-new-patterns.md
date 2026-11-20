@@ -1,46 +1,46 @@
 ---
-title: Свежие CSS-паттерны
+title: Fresh CSS Patterns
 
 tags: [gradients, experiments, patterns, draw-on-css]
 
 image: //img-fotki.yandex.ru/get/9322/5091629.9b/0_7efbf_83aa6b97_L.png
-description: 'Неожиданно увлеклась темой CSS-паттернов и сделала несколько новых. Меня интересовало: можно ли сделать плавные волны и спирали, получится ли имитировать узор из цветной бумаги и как сделать почтовую марку не используя изображения.'
+description: 'I suddenly became interested in the topic of CSS patterns and made several new ones. I was interested in whether it was possible to make smooth waves and spirals, whether it would be possible to imitate a pattern from colored paper, and how to make a postage stamp without using images.'
 ---
 
-Неожиданно увлеклась темой CSS-паттернов и сделала несколько новых.
-Меня интересовало: можно ли сделать плавные волны и спирали, получится ли имитировать узор из цветной бумаги и как сделать почтовую марку не используя изображения.<!--more-->
+I suddenly became interested in the topic of CSS patterns and made several new ones.
+I was interested in: is it possible to make smooth waves and spirals, will it be possible to imitate a pattern from colored paper, and how to make a postage stamp without using images.<!--more-->
 
-Надо сказать, что без SCSS эти паттерны были бы практически невозможны, так что Codepen с препроцессорами открыл для меня новые горизонты.
+I must say that without SCSS these patterns would have been practically impossible, so Codepen with preprocessors opened new horizons for me.
 
-При создании паттернов ни одной картинки не пострадало.
+No pictures were harmed during the creation of the patterns.
 
-<b>Волны</b>. Рюшки тоже сделаны градиентом!
+<b>Waves</b>. The ruffles are also made with a gradient!
 
 <p data-height="350" data-theme-id="0" data-slug-hash="mgakB" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/mgakB'>Thinking of Sea</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-<b>Сложный паттерн</b> из кучи деталек. По-моему, не пригоден для реальной жизни:
+<b>Complex pattern</b> from a bunch of details. In my opinion, not suitable for real life:
 
 <p data-height="350" data-theme-id="0" data-slug-hash="dezAt" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/dezAt'>Css Pattern</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Удивительно, но с помощью градиентов можно делать <b>завитки</b>. Я уже пробовала их делать <a href="/gipnoshtuki/">другими способами</a>, получалось так себе, а тут полноценные красивые спирали. Не верю своим глазам : )
+Surprisingly, you can create <b>swirls</b> using gradients. I already tried to make them <a href="/gipnoshtuki/">other ways</a>, it turned out so-so, but here are full-fledged beautiful spirals. I can't believe my eyes :)
 
 <p data-height="350" data-theme-id="0" data-slug-hash="mEakp" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/mEakp'>Frosty Spirals</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-<b>Цветная бумага:</b>
+<b>Colored paper:</b>
 
 <p data-height="350" data-theme-id="0" data-slug-hash="iAerl" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/iAerl'>Colored paper</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-<b>Почтовая марка</b>, края которой сделаны теми же градиентами. По сути — обратный вариант рюшек. Удивительно просто и изящно.
-Пробовала делать с <code>border-image</code>, но с градиентами ничего полезного не вышло.
-Картинки+<code>border-image</code> должны сработать, я не пробовала, потому что моей целью были градиенты.
-Плюс градиентов в данном случае состоит в том, что можно без проблем менять цвет и размер фигурной рамки, хотя для этого потребуется исходник в Sass.
-По-моему, здорово получилось:
+<b>Postage stamp</b>, the edges of which are made with the same gradients. In fact, it’s the reverse version of ruffles. Surprisingly simple and elegant.
+I tried to do it with <code>border-image</code>, but nothing useful came out with gradients.
+Pictures+<code>border-image</code> should work, I didn't try it because my goal was gradients.
+The advantage of gradients in this case is that you can easily change the color and size of the curly frame, although this will require a source code in Sass.
+I think it turned out great:
 
 <p data-height="350" data-theme-id="0" data-slug-hash="GLsfA" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/GLsfA'>Postage stamp</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Градиенты невероятны, рекомендую познакомиться с ними поближе, если ещё не.
+The gradients are incredible, I recommend getting to know them better if you haven't already.
