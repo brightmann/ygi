@@ -1,36 +1,36 @@
 ---
-title: Анимированные SVG-маски
+title: Animated SVG masks
 
 tags: [svg, animation, patterns]
 
 image: //img-fotki.yandex.ru/get/6733/5091629.a1/0_84885_3d02703a_orig
-description: В прошлой статье я рассматривала странности SVG-обводки, а также возможность сделать анимированные маски. Так как трансформации в масках не анимируются в Firefox (31-я версия на момент написания статьи), я продолжила эксперименты с обводками.
+description: In the last article, I looked at the weirdness of SVG strokes, as well as the ability to make animated masks. Since transformations in masks do not animate in Firefox (version 31 at the time of writing), I continued experimenting with strokes.
 
 links:
 - href: /css-animation/
   text: Css Animation
 - href: /css-and-svg-masks/
-  text: CSS и SVG маски
+  text: CSS and SVG masks
 - href: /svg-stroke/
-  text: Странности обводки в SVG
+  text: SVG stroke oddities
 - href: /pages/svg-links/
-  text: 'SVG: полезные ссылки'
+  text: 'SVG: useful links'
 ---
 
-В <a href="/svg-stroke">прошлой статье</a> я рассматривала странности SVG-обводки, а также возможность сделать анимированные маски.
+In <a href="/svg-stroke">last article</a> I looked at the weirdness of SVG strokes, as well as the possibility of making animated masks.
 
-Так как трансформации в масках не анимируются в Firefox (31-я версия на момент написания статьи), я продолжила эксперименты с обводками. <!--more-->
+Since transformations in masks do not animate in Firefox (version 31 at the time of writing), I continued experimenting with strokes. <!--more-->
 
-<div class="post__warning">В посте много демо с анимацией, страница может подтормаживать на слабых устройствах.</div>
+<div class="post__warning">The post contains a lot of demos with animation, the page may slow down on weak devices.</div>
 
-Обводками можно в какой-то степени имитировать трансформации в масках, и, таким образом, получить много разных интересных эффектов.
+With strokes you can to some extent imitate transformations in masks, and thus get many different interesting effects.
 
-Пример простой маски:
+Example of a simple mask:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="hatEx" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/hatEx/'>hatEx</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Как она устроена?
+How is it structured?
 
 SVG:
 
@@ -41,9 +41,9 @@ SVG:
 </mask>
 ```
 
-Внутри две линии. Я не использовала <code>path</code>, потому что ему нельзя задать координаты в процентах.
+There are two lines inside. I didn't use <code>path</code> because it can't be given percentage coordinates.
 
-CSS для линий:
+CSS for lines:
 
 ```css
 $mask-time: 7s;
@@ -61,58 +61,58 @@ $mask-time: 7s;
 }
 ```
 
-В исходном состоянии линии не видны, потому что <code>stroke-width: 0</code>. Для того, чтобы обводки в процессе анимации служили видимой областью маски, им задан белый цвет <code>stroke: #FFF</code>. Также задана анимация, которая увеличивает толщину рамки до 300.
+In the initial state, the lines are not visible because <code>stroke-width: 0</code>. In order for the strokes to serve as the visible area of ​​the mask during the animation, they are given a white color <code>stroke: #FFF</code>. An animation is also set that increases the frame thickness to 300.
 
-Если вытащить маску наружу, она будет выглядеть вот так:
+If you pull the mask out, it will look like this:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="CbDFK" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/CbDFK/'>CbDFK</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Отображается только то, что попадает под белые области. Линии увеличиваются за счет обводки и показывают содержимое под собой.
+Only what falls under the white areas is displayed. The lines are enlarged by the stroke and show the content below them.
 
-Маска применяется к фигуре с помощью атрибута <code>mask="url(#m-line)"</code> или через CSS: <code>mask: url(#m-line);</code>
+A mask is applied to a shape using the <code>mask="url(#m-line)"</code> attribute or via CSS: <code>mask: url(#m-line);</code>
 
-Понимая принцип работы такой маски, можно сделать много других вариантов.
+Understanding the principle of operation of such a mask, you can make many other options.
 
-Простое разворачивание из центра:
+Simple unfolding from the center:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="sktnE" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/sktnE/'>Simple animated mask in SVG</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-И под углом:
+And at an angle:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="IBxJt" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/IBxJt/'>Simple animated mask in SVG</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Использование паттернов позволяет делать узорные маски.
+Using patterns allows you to make patterned masks.
 
-Клеточки:
+Cells:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="xAybm" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/xAybm/'>Simple animated mask in SVG</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Ромбики:
+Diamonds:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="cHFJw" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/cHFJw/'>Simple animated mask in SVG</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Паттерны позволяют добиться интересного результата минимумом фигур, но ещё интереснее можно сделать, если задать несколько фигур внутри маски и анимировать их по отдельности.
+Patterns allow you to achieve an interesting result with a minimum of shapes, but you can make it even more interesting if you define several shapes inside a mask and animate them separately.
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="dCFrG" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/dCFrG/'>Simple animated mask in SVG (shutter)</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-При этом пути в маске вовсе не обязательно должны быть прямыми линиями:
+In this case, the paths in the mask do not necessarily have to be straight lines:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="cxkDi" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/cxkDi/'>Simple animated mask in SVG (wavy shutter)</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Да и вообще, необязательно это должны быть линии:
+And in general, these do not necessarily have to be lines:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="HvLzE" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/HvLzE/'>Simple animated mask in SVG (wavy shutter)</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Помимо преимуществ, анимированные SVG-маски имеют некоторые проблемы. Связаны они не столько с масками, сколько с анимацией. Во-первых, анимации SVG-элементов не поддерживаются в IE. Вторая проблема — производительность. Насколько мне известно, на данный момент анимации SVG-элементов не оптимизируются браузерами, поэтому имеет смысл анимированный SVG применять умеренно и аккуратно.
+Besides the benefits, animated SVG masks have some problems. They are connected not so much with masks, but with animation. First, SVG element animations are not supported in IE. The second problem is performance. As far as I know, SVG element animations are not currently optimized by browsers, so it makes sense to use animated SVG sparingly and carefully.
 
-Мне не приходилось использовать подобные маски в практических целях, но предполагаю, что с их помощью можно будет делать эффектные слайдеры и фотогалереи.
+I have not had to use such masks for practical purposes, but I assume that with their help it will be possible to create spectacular sliders and photo galleries.
 
-Паттерны <a href="http://www.colourlovers.com/lover/yoksel">отсюда</a>.
+Patterns <a href="http://www.colourlovers.com/lover/yoksel">from here</a>.
