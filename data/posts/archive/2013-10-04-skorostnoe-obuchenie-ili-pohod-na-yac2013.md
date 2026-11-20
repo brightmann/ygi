@@ -1,60 +1,60 @@
 ---
-title: Скоростное обучение или поход на YAC2013
+title: Speed learning or a trip to YAC2013
 
 tags: [fonts]
 ---
 
-2 октября прошла конференция <a href="http://tech.yandex.ru/events/yac/2013/">Yet another Conference 2013</a> от Яндекса. Было много интересного, но самое яркое впечатление оставил <a href="https://github.com/yandex-cs/yac2013">конкурс по ускорению отрисовки страницы</a>.<!--more-->
+On October 2nd, Yandex held the <a href="http://tech.yandex.ru/events/yac/2013/">Yet another Conference 2013</a>. There was a lot of interesting stuff, but the brightest impression was left by <a href="https://github.com/yandex-cs/yac2013">the page-rendering speed contest</a>.<!--more-->
 
-Задание было забористое, с подковырками. На выполнение около суток.
-Помимо совершенно очевидных вещей в нём было несколько хорошо спрятанных секретов. Некоторые из них заставили поломать голову в процессе решения задачи, некоторые не отпускали и на следующий день :&nbsp;)
+The task was tricky, with catches. About a day to complete it.
+Besides completely obvious things, it had several well-hidden secrets. Some of them made you rack your brain while solving the task, some didn't let go even the next day :&nbsp;)
 
-Одно из таких — оптимизация шрифтов.
+One of those was font optimization.
 
-Клонируем себе проект, открываем папочку со шрифтами и видим там слонов:
+We clone the project, open the folder with fonts and see elephants there:
 
 <img src="//img-fotki.yandex.ru/get/9358/5091629.98/0_7b9a4_f69346d4_L.png" alt="Font Elefants" />
 
-Это шрифт PT Sans, который можно скачать бесплатно, например, прямо с сайта производителя: <a href="http://www.paratype.ru/public/">paratype.ru/public/</a>. Там же предлагается вместо скачивания шрифта подключить его через <a href="http://www.google.com/fonts">google.com/fonts</a>.
+This is the PT Sans font, which can be downloaded for free, for example right from the manufacturer's site: <a href="http://www.paratype.ru/public/">paratype.ru/public/</a>. They also offer connecting the font via <a href="http://www.google.com/fonts">google.com/fonts</a> instead of downloading it.
 
-Простейшая оптимизация заключается в отключении неиспользуемого шрифта. В файле подключается 4 шрифта, и один из них не используется (PT Sans Narrow Bold).
+The simplest optimization consists of disabling the unused font. The file includes 4 fonts, and one of them is not used (PT Sans Narrow Bold).
 
-А вот дальше начинается самое интересное. На <a href="http://www.paratype.ru/public/">paratype.ru</a> написано, что:
+And here's where the most interesting part begins. On <a href="http://www.paratype.ru/public/">paratype.ru</a> it says that:
 
-<blockquote>ПТ Санс, ПТ Сериф и ПТ Моно поддерживают обширный список языков Евразии на латинской и кириллической основе. <...>
+<blockquote>PT Sans, PT Serif and PT Mono support an extensive list of Eurasian languages based on Latin and Cyrillic scripts. <...>
 
-Важной особенностью шрифтов является поддержка всех официальных и большинства титульных языков народов и народностей РФ, которые приведены ниже. </blockquote>
+An important feature of the fonts is support for all official and most titular languages of the peoples and ethnic groups of the Russian Federation, which are listed below. </blockquote>
 
-И ниже список из 54-х языков. Таким образом, просто подключая шрифт как есть, мы за компанию получаем кучу символов, которые врядли нам когда-нибудь потребуются.
+And below is a list of 54 languages. This way, by simply including the font as is, we get a heap of characters along with it that we'll hardly ever need.
 
-И вот теперь самое время воспользоваться <a href="http://www.google.com/fonts">google.com/fonts</a>.
+And now is the perfect time to use <a href="http://www.google.com/fonts">google.com/fonts</a>.
 
-Находим там PT Sans, выбираем обычный и жирный шрифт (наклонный в задании не используется), выбираем кириллицу, получаем код и скачиваем файлы по ссылкам, чтобы оценить вес.
+Find PT Sans there, choose the regular and bold fonts (the italic is not used in the task), choose Cyrillic, get the code and download the files via the links to estimate the weight.
 
-На выходе два файла названные абракадаброй и весом 127 и 137кб (против 224 и 238кб).
-Уже лучше, но и это не предел.
+At the output: two files named with gibberish, weighing 127 and 137kb (versus 224 and 238kb).
+Already better, but that's not the limit either.
 
-В разделе выбора языков есть ссылка <a href="https://developers.google.com/fonts/docs/getting_started#Subsets">Read more on how to use subsets</a>. На странице по ссылке содержится ценный совет: чтобы использовать только нужный набор символов, его можно задать в URL через параметр text:
+In the language selection section there's a link <a href="https://developers.google.com/fonts/docs/getting_started#Subsets">Read more on how to use subsets</a>. The page at the link contains valuable advice: to use only the needed set of characters, you can specify it in the URL via the text parameter:
 
 <em>http://fonts.googleapis.com/css?family=Inconsolata<strong>&text=Hello</strong></em>
 
-Параметр subset в этом случае задавать не нужно.
+The subset parameter doesn't need to be set in this case.
 
-<strong>Результат:</strong> PT Sans Bold весит всего 7.6kb. Он используется только в заголовке, и символов для него нужно совсем немного. 7.6 против 238 килобайт!
+<strong>Result:</strong> PT Sans Bold weighs only 7.6kb. It's used only in the heading, and very few characters are needed for it. 7.6 versus 238 kilobytes!
 
-Аналогично делаем для нежирного начертания, в параметр text вводим все кириллические символы, латиницу и цифры. В итоге получаем файл весом около 15-ти килобайт. 15 вместо 224kb!
+Similarly for the non-bold typeface: we enter all the Cyrillic characters, Latin and digits into the text parameter. In the end we get a file weighing about 15 kilobytes. 15 instead of 224kb!
 
-Отличный выигрыш в производительности и весе страницы дает этот простой как лом способ, жаль, что я не смогла им воспользоваться на конкурсе.
+This simple-as-a-crowbar method gives an excellent win in performance and page weight; a pity I couldn't use it in the contest.
 
-Если бы шрифта не было на гугле, пришлось бы воспользоваться редактором шрифта, а это уже совсем другая история.
+If the font hadn't been on Google, I'd have had to use a font editor, and that's a whole other story.
 
-Спасибо Яндексу за интересный конкурс, благодаря ему мы за очень короткое время узнали много нового, не только про шрифты. Надеемся, что будут другие, не менее увлекательные и полезные, и, желательно, не по ночам : )
+Thanks to Yandex for the interesting contest; thanks to it we learned a lot of new things in a very short time, not only about fonts. We hope there will be others, no less fascinating and useful, and preferably not at night : )
 
-<strong>Ссылки по теме:</strong>
+<strong>Links on the topic:</strong>
 <a href="http://habrahabr.ru/post/130172/">habrahabr.ru/post/130172/</a>
 
-<strong>Видео по теме:</strong>
-отличный ролик про оптимизацию шрифта на <a href="http://www.fontsquirrel.com/">белке-шрифтелке</a>.
-Для конкурса этот способ не подошел, потому что сайт не захотел закачивать PT Sans, аргументируя это просьбой правообладателей. При этом сам шрифт можно свободно скачать с сайта, а вот модифицировать его — нет.
+<strong>Video on the topic:</strong>
+an excellent clip about font optimization on the <a href="http://www.fontsquirrel.com/">font squirrel</a>.
+This method didn't suit the contest, because the site refused to accept PT Sans, citing the copyright holders' request. At the same time, the font itself can be freely downloaded from the site, but modifying it is not allowed.
 
 <iframe width="640" height="480" src="//www.youtube.com/embed/G5ZmSVK7CHo" frameborder="0" allowfullscreen></iframe>
