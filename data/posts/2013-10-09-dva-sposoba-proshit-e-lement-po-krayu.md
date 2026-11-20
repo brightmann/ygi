@@ -1,11 +1,11 @@
 ---
-title: Два способа "прошить" элемент по краю
+title: Two ways to “stitch” an element along the edge
 
 tags: [borders, pseudo-elements, draw-on-css]
 
-description: Есть два способа сделать эффект, как будто элемент прострочили на швейной машинке —  используя псевдоэлементы и с помощью outline.
+description: There are two ways to create the effect as if an element was stitched on a sewing machine - using pseudo-elements and using outline.
 ---
-Есть два способа сделать эффект, как будто элемент прострочили на швейной машинке: используя псевдоэлементы и с помощью <code>outline</code>.<!--more-->
+There are two ways to make the effect as if the element was stitched on a sewing machine: using pseudo-elements and using <code>outline</code>.<!--more-->
 
 <h2>Outline</h2>
 
@@ -16,22 +16,22 @@ outline-offset: -15px;
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/dva-sposoba-proshit-e-lement-po-krayu/demo_1.html?output"></iframe>
 
-<strong>Плюс:</strong>
-- не требует дополнительных элементов.
+<strong>Plus:</strong>
+- does not require additional elements.
 
-<strong>Минус:</strong>
-- не воспринимает <code>border-radius</code>, следовательно, способ не походит для элементов со скругленными углами.
+<strong>Minus:</strong>
+- does not accept <code>border-radius</code>, therefore, the method is not suitable for elements with rounded corners.
 
-Кроме того, свойство своеобразно ведет себя в Firefox: <code>outline</code> реагирует на размеры и положение тени.
+In addition, the property behaves differently in Firefox: <code>outline</code> reacts to the size and position of the shadow.
 
 <img src="//img-fotki.yandex.ru/get/9090/5091629.98/0_7ba5b_a045ee5f_orig.png">
 
-<h2>Псевдо-элементы</h2>
+<h2>Pseudo-elements</h2>
 
-Во-первых, нам потребуется обертка для текста, чтобы потом слой с текстом можно было поднять выше псевдоэлемента с рамкой.
-Во-вторых, общей обертке и контейнеру с текстом надо будет задать <code>position: relative;</code>.
+First, we need a wrapper for the text so that the text layer can then be raised above the border pseudo-element.
+Secondly, the general wrapper and the text container will need to be set to <code>position: relative;</code>.
 
-После этого создаем псевдоэлемент и рисуем рамку:
+After that, we create a pseudo-element and draw a frame:
 
 
 ```css
@@ -48,12 +48,12 @@ outline-offset: -15px;
       }
 ```
 
-Результат:
+Result:
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/dva-sposoba-proshit-e-lement-po-krayu/demo_2.html?output"></iframe>
 
-<strong>Плюс:</strong>
-- может иметь скругленные углы.
+<strong>Plus:</strong>
+- may have rounded corners.
 
-<strong>Минус:</strong>
-- требует дополнительную разметку и больше кода
+<strong>Minus:</strong>
+- requires additional markup and more code
