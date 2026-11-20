@@ -1,0 +1,36 @@
+.pagination {
+  margin: 2rem 0;
+  padding: 2rem 0;
+  border: 1px solid #DDD;
+  border-width: 1px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  @media ( width <= 1000px ) {
+    padding: 1rem 0;
+  }
+}
+
+.pagination__pages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination__page {
+  display: inline-block;
+  padding: .25rem .6rem;
+  text-decoration: none;
+
+  &--current {
+    border: 1px solid #DDD;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+}
