@@ -1,33 +1,33 @@
 ---
-title: Css Animation
+title: CSS Animation
 
 tags: [animation]
 
-description: Анимация позволяет оживлять элементы страницы. Можно управлять длительностью анимации, повторением, направлением, типом движения и шагами. Анимировать можно любые элементы, в том числе псевдо-элементы.
+description: Animation allows you to bring page elements to life. You can control animation duration, repetition, direction, movement type, and steps. You can animate any elements, including pseudo-elements.
 
 links:
 - href: /pages/svojstva-animation
-  text: Свойства Animation одной таблицей
+  text: Animation properties in one table
 - href: /3d-and-gradients/
-  text: СSS-градиенты и 3D
+  text: CSS gradients and 3D
 ---
 
-<section>Свойство <code>animation</code> позволяет анимировать элементы страницы.
+<section>The <code>animation</code> property allows you to animate page elements.
 
-Можно управлять длительностью анимации, повторением, направлением, типом движения и шагами.
-Анимировать можно любые элементы, в том числе псевдо-элементы.<!--more-->
+You can control animation duration, repetition, direction, movement type, and steps.
+You can animate any elements, including pseudo-elements.<!--more-->
 
-Обязательное условие — наличие конкретных значений. Свойства со значением <code>auto</code> не анимируются.
+A prerequisite is the presence of specific values. Properties with the value <code>auto</code> are not animated.
 
-Спецификация: <a href="http://www.w3.org/TR/css3-animations/">w3.org/TR/css3-animations</a>
+Specification: <a href="http://www.w3.org/TR/css3-animations/">w3.org/TR/css3-animations</a>
 
-<i>Сафари в настоящее время не поддерживает анимацию псевдоэлементов, для просмотра записи воспользуйтесь другими браузерами</i>
+<i>Safari does not currently support animation of pseudo-elements, please use other browsers to view the recording</i>
 
-Пример Css-анимации:
+CSS animation example:
 
 <iframe class="live-snippet" style="height: 400px" src="../assets/demo/css-animation/demo_1.html?output"></iframe>
 
-Пример кода анимации:
+Example animation code:
 
 ```css
 @keyframes move {
@@ -43,7 +43,7 @@ links:
 }
 ```
 
-Подключение анимации:
+Connecting animation:
 
 ```css
 .sun {
@@ -51,156 +51,156 @@ links:
 }
 ```
 
-<code>move</code> — имя анимации
+<code>move</code> - animation name
 
-<code>15s</code> — длительность
+<code>15s</code> - duration
 
-<code>infinite</code> — бесконечное повторение
+<code>infinite</code> - endless repetition
 
-<code>linear</code> — тип движения
+<code>linear</code> - type of movement
 
 </section><section id="keyframes" data-name="@keyframes"><h2>@keyframes</h2>
-Сама анимация задается внутри блока <code>@keyframes</code>.
-После <code>@keyframes</code> задается имя анимации, а потом внутри фигурных скобок — её шаги.
+The animation itself is set inside the <code>@keyframes</code> block.
+After <code>@keyframes</code> the name of the animation is specified, and then its steps are specified inside the curly braces.
 
-Шаги можно задавать через проценты или с помощью ключевых слов <code>from</code> и <code>to</code>.
-При этом в шагах можно менять тип анимации (<code>animation-timing-function</code>):
+Steps can be specified using percentages or using the <code>from</code> and <code>to</code> keywords.
+In this case, you can change the animation type in steps (<code>animation-timing-function</code>):
 
 <iframe class="live-snippet" style="height: 240px" src="../assets/demo/css-animation/demo_2.html?output"></iframe>
 
 </section><section id="animation-name" data-name="animation-name"><h2>Animation-name</h2>
-Используется для задания имени анимации.
+Used to set the name of the animation.
 
-Возможные значения: одно или несколько имен анимации.
-Значение по умолчанию: нет.
+Possible values: one or more animation names.
+Default value: none.
 
-<code>animation-name: move;</code> — одна анимация.
+<code>animation-name: move;</code> - one animation.
 
-<code>animation-name: move, sun-color;</code> — две анимации, имена задаются через запятую.
+<code>animation-name: move, sun-color;</code> - two animations, names separated by commas.
 
 </section><section id="animation-duration" data-name="animation-duration"><h2>Animation-duration</h2>
-Длительностью анимации управляет свойство <code>animation-duration</code>.
+The duration of the animation is controlled by the <code>animation-duration</code> property.
 
-Возможные значения: время в секундах (s) или миллисекундах (ms).
-В случае нескольких анимаций время для каждой из них можно задать через запятую.
-Исходное значение — 0s.
+Possible values: time in seconds (s) or milliseconds (ms).
+In the case of several animations, the time for each of them can be specified separated by commas.
+The initial value is 0s.
 
 </section><section id="animation-timing-function" data-name="animation-timing-function"><h2>Animation-timing-function</h2>
-Свойство определяет тип анимации.
+The property defines the animation type.
 
-Возможные значения:
+Possible values:
 
-<strong>Плавная анимация</strong>
+<strong>Smooth animation</strong>
 
-<code>ease</code> — скольжение (значение по умолчанию)
+<code>ease</code> - sliding (default)
 
-<code>linear</code> — ровное движение
+<code>linear</code> - smooth movement
 
-<code>ease-in</code> — ускорение к концу
+<code>ease-in</code> - acceleration towards the end
 
-<code>ease-out</code> — ускорение в начале
+<code>ease-out</code> - acceleration at the beginning
 
-<code>ease-in-out</code> — более плавное скольжение, чем <code>ease</code>
+<code>ease-in-out</code> - smoother sliding than <code>ease</code>
 
 <iframe class="live-snippet" style="height: 500px" src="../assets/demo/css-animation/demo_3.html?output"></iframe>
 
-<code>cubic-bezier(число,число,число,число)</code> позволяет задавать сложный тип анимации. Значения удобно подбирать на <a href="http://cubic-bezier.com/">cubic-bezier.com</a>.
+<code>cubic-bezier(number,number,number,number)</code> allows you to specify a complex animation type. It is convenient to select values ​​at <a href="http://cubic-bezier.com/">cubic-bezier.com</a>.
 
 <code>cubic-bezier(.24,1.49,.29,-0.48);</code>
 
 <iframe class="live-snippet" style="height: 250px" src="../assets/demo/css-animation/demo_4.html?output"></iframe>
 
-<strong>Пошаговая анимация</strong>
+<strong>Step-by-step animation</strong>
 
-<code>step-start</code> и <code>step-end</code> — позволяют задать пошаговую анимацию, обязательно задавать конкретные шаги. При этом с
+<code>step-start</code> and <code>step-end</code> - allow you to set step-by-step animation, be sure to set specific steps. At the same time, with
 
-<code>step-start</code> изменения происходят в начале шага, а с
+<code>step-start</code> changes occur at the beginning of the step, and with
 
-<code>step-end</code> — в конце.
+<code>step-end</code> - at the end.
 
-<code>step-end</code>. Если выставить <code>step-start</code>, счетчик будет начинаться с единиц.
+<code>step-end</code>. If you set <code>step-start</code>, the counter will start from ones.
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/css-animation/demo_5.html?output"></iframe>
 
-<code>steps(число)</code> — позволяет задать количество шагов, за которые будет выполнена анимация, при этом можно задать только последний шаг без необходимости указывать промежуточные.
+<code>steps(number)</code> - allows you to set the number of steps in which the animation will be performed, while you can set only the last step without the need to specify intermediate ones.
 
 <code>steps(60)</code>
 
 <iframe class="live-snippet" style="height: 300px" src="../assets/demo/css-animation/demo_6.html?output"></iframe>
 
 </section><section id="animation-iteration-count" data-name="animation-iteration-count"><h2>Animation-iteration-count</h2>
-Управляет повторением анимации.
-Значение по умолчанию: 1 (анимация проигрывается один раз).
+Controls the repetition of the animation.
+Default value: 1 (animation plays once).
 
-Возможные значения:
+Possible values:
 
-число — сколько раз проиграть анимацию.
-<code>infinite</code> — бесконечное повторение.
+number - how many times to play the animation.
+<code>infinite</code> - endless repetition.
 
 </section><section id="animation-direction" data-name="animation-direction"><h2>Animation-direction</h2>
-Отвечает за направление анимации.
+Responsible for the direction of animation.
 
-Возможные значения:
+Possible values:
 
-<code>normal</code> — анимация проигрывается в обычном направлении, с начала и до конца.
+<code>normal</code> - the animation is played in the normal direction, from beginning to end.
 
-<code>reverse</code> — анимация проигрывается в обратном направлении, то есть с конца.
+<code>reverse</code> - the animation is played in the opposite direction, that is, from the end.
 
-<code>alternate</code> — анимация проигрывается с начала и до конца, а затем в обратном направлении.
+<code>alternate</code> - the animation is played from beginning to end, and then in the opposite direction.
 
-<code>alternate-reverse</code> — анимация проигрывается с конца до начала, а затем в обратном направлении.
+<code>alternate-reverse</code> - the animation is played from the end to the beginning, and then in the opposite direction.
 
 <iframe class="live-snippet" style="height: 420px" src="../assets/demo/css-animation/demo_7.html?output"></iframe>
 
 </section><section id="animation-play-state" data-name="animation-play-state"><h2>Animation-play-state</h2>
-Управляет остановкой и проигрыванием анимации.
+Controls the stopping and playing of the animation.
 
-Возможные значения:
+Possible values:
 
-<code>running</code> — анимация проигрывается (значение по умолчанию).
+<code>running</code> - animation is played (default value).
 
-<code>paused</code> — анимация застывает на первом шаге.
+<code>paused</code> - the animation freezes at the first step.
 
-Управлять шагом, где будет остановка, не получается, но можно останавливать анимацию по <code>:hover</code>:
+It is not possible to control the step where the stop will be, but you can stop the animation using <code>:hover</code>:
 
 <iframe class="live-snippet" style="height: 200px" src="../assets/demo/css-animation/demo_8.html?output"></iframe>
 
 </section><section id="animation-delay" data-name="animation-delay"><h2>Animation-delay</h2>
-С помощью <code>animation-delay</code> можно задавать задержку анимации перед началом воспроизведения.
+You can use <code>animation-delay</code> to delay the animation before it starts playing.
 
-Возможные значения: время в секундах (s) или миллисекундах (ms).
-Значения могут быть отрицательными.
-В случае нескольких анимаций время для каждой из них можно задать через запятую.
-Исходное значение — 0s.
+Possible values: time in seconds (s) or milliseconds (ms).
+Values ​​can be negative.
+In the case of several animations, the time for each of them can be specified separated by commas.
+The initial value is 0s.
 
 <iframe class="live-snippet" style="height: 330px" src="../assets/demo/css-animation/demo_9.html?output"></iframe>
 
 </section>
 <section id="animation-fill-mode" data-name="animation-fill-mode"><h2>Animation-fill-mode</h2>
-Свойство определяет будет ли анимация воздействовать на элемент вне времени воспроизведения анимации.
+The property determines whether the animation will affect the element outside of the animation's playback time.
 
-Возможные значения:
+Possible values:
 
-<code>none</code> — анимация воздействует на элемент только во время воспроизведения, по окончании элемент возвращается в исходное состояние.
+<code>none</code> - the animation affects the element only during playback; upon completion, the element returns to its original state.
 
-<code>forwards</code> — анимация воздействует на элемент по окончании воспроизведения.
+<code>forwards</code> - the animation affects the element after playback ends.
 
-<code>backwards</code> — анимация воздействует на элемент до начала воспроизведения.
+<code>backwards</code> - the animation affects the element before playback begins.
 
-<code>both</code> — анимация воздействует на элемент и до начала, и после окончания воспроизведения.
+<code>both</code> - animation affects the element both before and after playback ends.
 
-Чтобы увидеть как <code>backwards</code> и <code>both</code> работают до начала воспроизведения анимации, задана задержка <code>animation-delay: 3s;</code>. Так же для этого имеет смысл открыть пример в новом окне.
+To see how <code>backwards</code> and <code>both</code> work before the animation starts playing, set the delay <code>animation-delay: 3s;</code>. It also makes sense to open the example in a new window.
 
 <iframe class="live-snippet" style="height: 420px" src="../assets/demo/css-animation/demo_10.html?output"></iframe>
 
-Все эти свойства можно записать с помощью короткой записи, например:
+All these properties can be written using a short notation, for example:
 
 
 ```css
 animation: timing 5s infinite alternate;
 ```
 
-Обязательные значения — имя анимации и длительность.
-Первое временное значение считается длительностью воспроизведения, второе — задержкой.
+Required values ​​are animation name and duration.
+The first time value is considered the playback duration, the second - the delay.
 
 </section>
