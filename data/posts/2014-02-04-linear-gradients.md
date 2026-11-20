@@ -1,32 +1,32 @@
 ---
-title: "Линейные градиенты"
+title: "Linear Gradients"
 
 tags: [gradients, draw-on-css]
 
 image: //img-fotki.yandex.ru/get/9760/5091629.9b/0_7ee9b_73c4e981_XL.png
-description: 'CSS-градиенты позволяют сделать фон из двух и более цветов, плавно переходящих из одного в другой. Они могут быть использованы везде, где используются картинки: в фонах, в качестве буллетов списков, они могут быть заданы в content или border-image.'
+description: 'CSS gradients allow you to create a background of two or more colors that smoothly transition from one to another. They can be used anywhere images are used: in backgrounds, as list bullets, they can be set in content or border-image.'
 
 links:
 - href: http://www.colorzilla.com/gradient-editor/
   text: Ultimate CSS Gradient Generator
 - href: http://www.webdirections.org/resources/lea-verou-mastering-css3-gradients/
-  text: Презентация про градиенты от Lea Verou
+  text: Presentation about gradients by Lea Verou
 - href: http://leaverou.github.io/css-colors/
   text: leaverou.github.io/css-colors
 - href: /tsveta
-  text: Цвета в Css
+  text: Colors in Css
 ---
 
-CSS-градиенты позволяют сделать фон из двух и более цветов, плавно переходящих из одного в другой.
-Они с нами уже достаточно давно, и имеют довольно <a href="http://caniuse.com/#feat=css-gradients">неплохую поддержку браузерами</a>. Большинство современных браузеров понимает их без префиксов, для IE9 и старше есть <a href="http://msdn.microsoft.com/en-us/library/ms532997(v=vs.85).aspx">Gradient Filter</a>, также для IE9 можно использовать SVG.
+CSS gradients allow you to create a background of two or more colors that smoothly transition from one to another.
+They have been with us for quite a long time, and have quite <a href="http://caniuse.com/#feat=css-gradients">good browser support</a>. Most modern browsers understand them without prefixes; for IE9 and older there is <a href="http://msdn.microsoft.com/en-us/library/ms532997(v=vs.85).aspx">Gradient Filter</a>, and for IE9 you can use SVG.
 
-Спецификация: <a href="http://www.w3.org/TR/css3-images/#gradients">w3.org/TR/css3-images/#gradients</a>.<!--more-->
+Specification: <a href="http://www.w3.org/TR/css3-images/#gradients">w3.org/TR/css3-images/#gradients</a>.<!--more-->
 
-Градиенты могут быть использованы везде, где используются картинки: в фонах, в качестве буллетов списков, они могут быть заданы в <code>content</code> или <code>border-image</code>.
+Gradients can be used anywhere images are used: in backgrounds, as list bullets, they can be specified in <code>content</code> or <code>border-image</code>.
 
 <h2 id="linear-gradient">linear-gradient</h2>
 
-Линейные градиенты достаточно просты в использовании. Для самого элементарного градиента достаточно задать начальный и конечный цвета:
+Linear gradients are quite easy to use. For the most basic gradient, just set the start and end colors:
 
 ```css
 background: linear-gradient(orangered, gold);
@@ -34,32 +34,32 @@ background: linear-gradient(orangered, gold);
 
 <iframe class="live-snippet" style="height: 200px" src="../assets/demo/linear-gradients/demo_1.html?output"></iframe>
 
-Цветов может быть любое количество больше двух.
-Также можно управлять направлением градиента и границами (точками остановки) цветов.
+There can be any number of colors more than two.
+You can also control the direction of the gradient and the boundaries (stopping points) of the colors.
 
-<h2 id="angle">Угол или направление градиента</h2>
+<h2 id="angle">Angle or direction of the gradient</h2>
 
-Направление можно задавать градусами или ключевыми словами.
+The direction can be specified in degrees or keywords.
 
-<b>В градусах:</b> от 0 до 360, например <code>270deg</code>.
+<b>In degrees:</b> from 0 to 360, for example <code>270deg</code>.
 
-<b>Ключевыми словами:</b>
+<b>Key words:</b>
 
 <code>to top</code> = <code>0deg</code>;
 
 <code>to right</code> = <code>90deg</code>;
 
-<code>to bottom</code> = <code>180deg</code> — значение по умолчанию;
+<code>to bottom</code> = <code>180deg</code> - default value;
 
 <code>to left</code> = <code>270deg</code>.
 
-Ключевые слова можно сочетать между собой, чтобы получить диагональный градиент, например <code>to top left</code>.
+Keywords can be combined to create a diagonal gradient, such as <code>to top left</code>.
 
-Ниже можно увидеть как работают разные направления в растяжке от сиреневого до желтого:
+Below you can see how different directions work in stretching from lilac to yellow:
 
 <iframe class="live-snippet" style="height: 500px" src="../assets/demo/linear-gradients/demo_2.html?output"></iframe>
 
-Вот код самого первого квадрата, для примера:
+Here is the code for the very first square, for example:
 
 ```css
 .top-left {
@@ -67,34 +67,34 @@ background: linear-gradient(orangered, gold);
 }
 ```
 
-Следует помнить, что <code>to top right</code> не то же самое, что <code>45deg</code>. Цвета градиента располагаются перпендикулярно линии направления градиента. При <code>to top right</code> линия идет из нижнего левого в верхний правый угол, при <code>45deg</code> — располагается строго под этим углом независимо от размеров фигуры.
+Keep in mind that <code>to top right</code> is not the same as <code>45deg</code>. The gradient colors are perpendicular to the gradient direction line. With <code>to top right</code> the line goes from the lower left to the upper right corner, with <code>45deg</code> - it is located strictly at this angle, regardless of the size of the figure.
 
-Разница хорошо видна на прямоугольных фигурах:
+The difference is clearly visible in rectangular figures:
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/linear-gradients/demo_3.html?output"></iframe>
 
-<h2 id="stop-color">Управление положением цветов</h2>
+<h2 id="stop-color">Color position control</h2>
 
-Значения точек остановки для цветов градиента задаются в единицах или в процентах и могут быть больше 100% и меньше 0%.
+Breakpoint values ​​for gradient colors are specified in units or percentages and can be greater than 100% or less than 0%.
 
-Примеры задания значений в <code>%</code>, в <code>em</code> и значения, выходящие за границы элемента:
+Examples of setting values ​​in <code>%</code>, in <code>em</code> and values ​​that go beyond the boundaries of the element:
 
 <iframe class="live-snippet" style="height: 400px" src="../assets/demo/linear-gradients/demo_4.html?output"></iframe>
 
-Чем ближе находятся точки остановки соседних цветов, тем четче будет граница между ними. Таким образом можно легко делать полосатые фоны:
+The closer the stopping points of neighboring colors are, the clearer the boundary between them will be. This way you can easily make striped backgrounds:
 
 <iframe class="live-snippet" style="height: 450px" src="../assets/demo/linear-gradients/demo_5.html?output"></iframe>
 
-Так можно сделать, например, фон под боковую колонку, растянутый на всю высоту родительского элемента:
+This is how you can create, for example, a background for a side column, stretched to the entire height of the parent element:
 
 <iframe class="live-snippet" style="height: 500px" src="../assets/demo/linear-gradients/demo_6.html?output"></iframe>
 
-Полоски на фоне сайдбара — ещё один градиент, состоящий из чередования полной прозрачности и белого цвета с прозрачностью 30%.
-Градиенты с полупрозрачными цветами удобны тем, что их можно наложить поверх фона любого цвета.
+The stripes on the sidebar background are another gradient consisting of alternating full transparency and white with 30% transparency.
+Gradients with translucent colors are convenient because they can be applied over a background of any color.
 
-Градиент в примере задан сложным длинным кодом, потому что полоски должны располагаться только над фоном для сайдбара. Если не пытаться сделать всё фоном для одного блока, можно было бы решить задачу с помощью псевдоэлемента.
+The gradient in the example is set in complex, long code because the stripes should only be placed above the background for the sidebar. If you don't try to make everything the background for one block, you could solve the problem using a pseudo-element.
 
-При отсутствии ограничений код может быть гораздо короче:
+If there are no restrictions, the code can be much shorter:
 
 ```css
 .light {
@@ -112,25 +112,25 @@ background: linear-gradient(orangered, gold);
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/linear-gradients/demo_7.html?output"></iframe>
 
-В первой строчке задаем фоновый цвет элемента, тип и направление (цвет и направление можно опустить), во второй — определяем цвета градиента и границу между ними, в третьей — задаем положение и размер получившегося изображения. Самая важная часть — размер. По умолчанию фон повторяется, поэтому получившийся паттерн заполнит собой фон элемента.
-Очень легко и понятно : )
+In the first line we set the background color of the element, type and direction (the color and direction can be omitted), in the second line we define the colors of the gradient and the border between them, in the third we set the position and size of the resulting image. The most important part is the size. By default, the background is repeated, so the resulting pattern will fill the background of the element.
+Very easy and understandable :)
 
-Вся запись может быть сделана в одну строчку, но для читабельности удобнее писать в несколько, особенно для сложных градиентов.
+The entire entry can be made in one line, but for readability it is more convenient to write in several, especially for complex gradients.
 
-Также важно знать, что ключевое слово <code>transparent</code> означает прозрачный черный, а не прозрачный белый, поэтому при его использовании в Firefox можно получить вот такую неприятность:
+It's also important to know that the <code>transparent</code> keyword means transparent black, not transparent white, so if you use it in Firefox you might end up with something like this:
 
 <a href="http://jsbin.com/OvOwEma/2/edit"><img src="//img-fotki.yandex.ru/get/9749/5091629.9b/0_7ee9a_ced3963c_XL.png" alt="Gradient dirt"></a>
-Действующий пример (смотреть в Firefox): <a href="http://jsbin.com/OvOwEma/2/edit">jsbin.com/OvOwEma/2/edit</a>.
+Working example (view in Firefox): <a href="http://jsbin.com/OvOwEma/2/edit">jsbin.com/OvOwEma/2/edit</a>.
 
-Чтобы этого избежать, используйте полностью прозрачные цвета нужного оттенка, например, белый: <code>rgba(255, 255, 255, 0)</code> или черный <code>rgba(0, 0, 0, 0)</code>. Про разные способы задавать цвета можно почитать <a href="/tsveta">здесь</a>.
+To avoid this, use completely transparent colors of the desired shade, for example, white: <code>rgba(255, 255, 255, 0)</code> or black <code>rgba(0, 0, 0, 0)</code>. You can read about different ways to set colors <a href="/tsveta">here</a>.
 
-Чтобы узнать rgb-нотацию конкретного цвета, можно воспользоваться <b><a href="http://leaverou.github.io/css-colors/">leaverou.github.io/css-colors</a></b>, инструментом от <a href="http://lea.verou.me/">Lea Verou</a>.
+To find out the rgb notation of a specific color, you can use <b><a href="http://leaverou.github.io/css-colors/">leaverou.github.io/css-colors</a></b>, a tool from <a href="http://lea.verou.me/">Lea Verou</a>.
 
 <h2 id="repeating-linear-gradient">repeating-linear-gradient</h2>
 
-Помимо обычного <code>linear-gradient</code> можно сделать <code>repeating-linear-gradient</code> — повторяющийся градиент
+In addition to the usual <code>linear-gradient</code>, you can make a <code>repeating-linear-gradient</code> - a repeating gradient
 
-Примерный код:
+Example code:
 
 ```css
 background: repeating-linear-gradient(
@@ -141,16 +141,16 @@ background: repeating-linear-gradient(
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/linear-gradients/demo_8.html?output"></iframe>
 
-К сожалению, повторяющиеся градиенты ведут себя как попало и подойдут только для узоров, которым не важна точность. Если нужна аккуратность, используйте <code>linear-gradient</code> в сочетании с <code>background-size</code> и <code>background-repeat</code>.
+Unfortunately, repeating gradients behave haphazardly and are only suitable for patterns that don't care about precision. If you need precision, use <code>linear-gradient</code> in combination with <code>background-size</code> and <code>background-repeat</code>.
 
-<b>Upd. от 3.07.20:</b> в данный момент повторяющиеся градиенты корректно отрисоваются в большинстве браузеров, и ими можно свободно пользоваться.
+<b>Upd. from 07/03/20:</b>At the moment, repeating gradients will be rendered correctly in most browsers, and you can freely use them.
 
-<h2 id="pitfalls">Ограничения</h2>
+<h2 id="pitfalls">Restrictions</h2>
 
-Градиенты имеют такое же ограничение, что и <code>box-shadow</code>: им нельзя задавать отдельно цвета или направление. Это приводит к дублированию кода и острой потребности воспользоваться препроцессорами в случае создания сложных градиентов.
+Gradients have the same limitation as <code>box-shadow</code>: they cannot be given individual colors or direction. This leads to code duplication and an urgent need to use preprocessors when creating complex gradients.
 
-Другое ограничение состоит в том, что градиенты не анимируются, что, впрочем, <a href="/animation-for-gradients">можно до какой-то степени обойти</a>.
+Another limitation is that gradients are not animated, which <a href="/animation-for-gradients">can be worked around to some extent</a>.
 
-Для быстрого создания кроссбраузерных градиентов есть очень удобный инструмент: <b><a href="http://colorzilla.com/gradient-editor/">colorzilla.com/gradient-editor/</a></b>. Помимо кода для современных браузеров, он предложит код для старых IE и SVG для 9-го.
+There is a very convenient tool for quickly creating cross-browser gradients: <b><a href="http://colorzilla.com/gradient-editor/">colorzilla.com/gradient-editor/</a></b>. In addition to code for modern browsers, it will offer code for older IE and SVG for 9th.
 
-В сочетании с базовыми возможностями управления фоновыми картинками градиенты дают широчайшие возможности для создания фонов разной степени сложности совершенно без использования изображений. Градиентами можно делать сложные и интересные паттерны, но это уже совсем другая тема.
+Combined with basic background image controls, gradients give you the most flexibility to create backgrounds of varying degrees of complexity without using images at all. You can use gradients to create complex and interesting patterns, but that’s a completely different topic.
