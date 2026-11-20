@@ -1,8 +1,8 @@
 ---
-title: Мыльные пузыри на SVG
+title: Soap bubbles in SVG
 
 image: https://img-fotki.yandex.ru/get/59115/5091629.a4/0_90850_bd3003bc_orig
-description: 'Пузыри у меня получились почти случайно, когда я экспериментировала с SVG-градиентами.'
+description: 'The bubbles came to me almost by accident, while I was experimenting with SVG gradients.'
 
 tags: [svg, gradients, masks]
 
@@ -10,16 +10,16 @@ include: /assets/img/svg/bubble.svg
 customCSS: bubble.css
 ---
 
-Честно говоря, пузыри у меня получились почти случайно, когда мне потребовалось как следует изучить градиенты и я экспериментировала с их возможностями. И я сама до сих пор не очень понимаю, как так получилось, используя только SVG — векторный формат, — сделать такой невесомый мыльный пузырь. <!--more-->
+Honestly, the bubbles happened almost by accident, when I needed to properly study gradients and started experimenting with what they can do. And I still don't quite understand how it turned out possible, using only SVG — a vector format — to make such a weightless soap bubble. <!--more-->
 
 <p data-height="500" data-theme-id="4974" data-slug-hash="EyZgLo" data-default-tab="result" data-user="yoksel" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/EyZgLo/">SVG Bubbles</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-На самом деле, если разобраться, тут нет ничего сложного, а вся магия заключается в использовании масок в сочетании с градиентами.
+In fact, if you break it down, there's nothing complicated here, and all the magic lies in using masks in combination with gradients.
 
-<i>Подробно про устройство SVG-масок можно почитать <a href="/svg-masks/">здесь</a>, а про градиенты — <a href="/svg-gradients/">вот здесь</a>.</i>
+<i>You can read in detail about how SVG masks work <a href="/svg-masks/">here</a>, and about gradients — <a href="/svg-gradients/">right here</a>.</i>
 
-Разберём пузырь на слои (от нижнего слоя к верхнему):
+Let's break the bubble into layers (from the bottom layer to the top):
 
 <div class="bubbles-group gray-stripes-bg items-5">
 <svg class="svg" viewBox="0 0 200 200" width="150" height="150">
@@ -41,9 +41,9 @@ customCSS: bubble.css
 </svg>
 </div>
 
-Пузырь состоит из пяти слоёв, каждый из которых является фигурой c градиентом, некоторые из них — ещё и с масками (внутри которых тоже градиенты).
+The bubble consists of five layers, each of which is a shape with a gradient; some of them also have masks (which contain gradients too).
 
-Важно: всё содержимое пузыря находится внутри тега <code>svg</code>:
+Important: all of the bubble's content sits inside the <code>svg</code> tag:
 
 ```html
 <svg viewBox="0 0 200 200" width="150" height="150">
@@ -51,13 +51,13 @@ customCSS: bubble.css
 </svg>
 ```
 
-Также обратите внимание на обязательный атрибут <code>viewBox</code>: он нужен затем, чтобы при изменении размеров изображения внутренняя система координат ресайзилась вместе с ним, и элементы не расползались кто куда, а оставались на своих местах. Особенно это важно для координат, которые не могут быть заданы в процентах.
+Also note the required <code>viewBox</code> attribute: it's needed so that when the image is resized the internal coordinate system resizes along with it, and elements don't scatter all over but stay in their places. This is especially important for coordinates that can't be given in percentages.
 
-В примерах тег <code>svg</code> будет опущен, но не забудьте его добавить, если будете использовать примеры кода из статьи.
+In the examples the <code>svg</code> tag will be omitted, but don't forget to add it if you use the code examples from the article.
 
-<h2 id="colored-layer">Разноцветный слой</h2>
+<h2 id="colored-layer">The colorful layer</h2>
 
-Начнём с самого главного (и самого верхнего) слоя, он имитирует поверхность пузыря с радужными разводами:
+Let's start with the most important (and topmost) layer; it imitates the bubble's surface with rainbow swirls:
 
 <svg class="svg gray-stripes-bg" viewBox="0 0 200 200" width="150" height="150">
   <circle r="50%" cx="50%" cy="50%"
@@ -65,16 +65,16 @@ customCSS: bubble.css
   mask="url(#mask--colors-transparency)"></circle>
 </svg>
 
-По сути, к фигуре применены два градиента, один из них внутри маски. Эта конструкция позволяет получить фигуру с линейным градиентом и с радиальной прозрачностью одновременно.
+Essentially, two gradients are applied to the shape, one of them inside a mask. This construction gives you a shape with a linear gradient and radial transparency at the same time.
 
-<h3>Как сделать:</h3>
+<h3>How to make it:</h3>
 
 <ol class="layer-steps-list">
 <li>
-<h4>Создаём фигуру с разноцветным градиентом</h4>
+<h4>We create a shape with a colorful gradient</h4>
 
 <p>
-  Пишем градиент:
+  We write the gradient:
 </p>
 
 ```html
@@ -96,7 +96,7 @@ customCSS: bubble.css
     ></rect>
 </svg>
 
-<p>Применяем его к фигуре:</p>
+<p>We apply it to a shape:</p>
 
 ```html
 <circle r="50%" cx="50%" cy="50%"
@@ -112,13 +112,13 @@ customCSS: bubble.css
     ></circle>
 </svg>
 
-<p>Получается разноцветная основа, которой не хватает лёгкости и прозрачности.</p>
+<p>We get a colorful base that lacks lightness and transparency.</p>
 </li>
 
 <li>
-<h4>Добавляем прозрачность</h4>
+<h4>We add transparency</h4>
 
-<p>Для этого воспользуемся радиальным градиентом с черными и белыми оттенками разной степени прозрачности (значения подбирались опытным путём):</p>
+<p>For this we'll use a radial gradient with black and white shades of different degrees of transparency (the values were chosen by trial and error):</p>
 
 ```html
 <radialGradient id="gradient--colors-transparency">
@@ -140,7 +140,7 @@ viewBox="0 0 200 200" width="150" height="150">
     ></rect>
 </svg>
 
-<p>Чтобы прозрачность выглядела более естественно, нужно немного сместить центр градиента, для этого воспользуемся атрибутами <code>fx</code> и <code>fy</code>:</p>
+<p>To make the transparency look more natural, we need to slightly shift the gradient's center; for this we'll use the <code>fx</code> and <code>fy</code> attributes:</p>
 
 ```html
 <radialGradient id="gradient--colors-transparency"
@@ -158,7 +158,7 @@ viewBox="0 0 200 200" width="150" height="150">
 </radialGradient>
 ```
 
-<p>Вот что получилось:</p>
+<p>Here's what we get:</p>
 
 <svg class="svg gray-stripes-bg"
 viewBox="0 0 200 200" width="150" height="150">
@@ -167,7 +167,7 @@ viewBox="0 0 200 200" width="150" height="150">
     ></rect>
 </svg>
 
-<p>Теперь делаем маску. В <code>mask</code> кладётся прямоугольник, в качестве заливки используется свежесозданный градиент:</p>
+<p>Now we make the mask. A rectangle goes into the <code>mask</code>, and the freshly created gradient is used as its fill:</p>
 
 ```html
 <mask id="mask--colors-transparency">
@@ -176,7 +176,7 @@ viewBox="0 0 200 200" width="150" height="150">
 </mask>
 ```
 
-<p>Затем добавляем маску к фигуре с разноцветной заливкой:</p>
+<p>Then we add the mask to the shape with the colorful fill:</p>
 
 ```html
 <circle r="50%" cx="50%" cy="50%"
@@ -185,7 +185,7 @@ viewBox="0 0 200 200" width="150" height="150">
 </circle>
 ```
 
-<p>Результат:</p>
+<p>The result:</p>
 
 <svg class="svg gray-stripes-bg"
   viewBox="0 0 200 200" width="150" height="150">
@@ -198,7 +198,7 @@ viewBox="0 0 200 200" width="150" height="150">
 </li>
 </ol>
 
-<p>Весь код разноцветного слоя:</p>
+<p>The full code of the colorful layer:</p>
 
 ```html
 <!-- Разноцветный градиент -->
@@ -241,13 +241,13 @@ viewBox="0 0 200 200" width="150" height="150">
 </circle>
 ```
 
-Получилась полупрозрачная радужная поверхность, пока ещё не очень похожая на мыльный пузырь.
+We get a semi-transparent rainbow surface, still not very soap-bubble-like.
 
-Погуглив картинки по запросу <a href="https://www.google.ru/search?q=soap+bubbles+vector&newwindow=1&biw=1246&bih=617&tbm=isch&tbo=u&source=univ&sa=X&ved=0ahUKEwjG27zPq8HOAhXjB5oKHWNvA_MQsAQIGg#newwindow=1&tbm=isch&q=soap+bubble&imgrc=R2pNfXjZcboCdM%3A">soap bubble</a>, я подумала, что пузырю можно добавить внутренние отражения вверху и внизу.
+After googling images for <a href="https://www.google.ru/search?q=soap+bubbles+vector&newwindow=1&biw=1246&bih=617&tbm=isch&tbo=u&source=univ&sa=X&ved=0ahUKEwjG27zPq8HOAhXjB5oKHWNvA_MQsAQIGg#newwindow=1&tbm=isch&q=soap+bubble&imgrc=R2pNfXjZcboCdM%3A">soap bubble</a>, I thought the bubble could use inner reflections at the top and bottom.
 
-<h2 id="reflections">Отражения</h2>
+<h2 id="reflections">Reflections</h2>
 
-В качестве отражений я использовала две фигуры с однотонной заливкой и маской, добавляющей фигурам прозрачность.
+For the reflections I used two shapes with a solid fill and a mask that adds transparency to them.
 
 <div class="bubbles-group gray-stripes-bg items-2">
 <svg class="svg" viewBox="0 0 200 200" width="150" height="150">
@@ -267,13 +267,13 @@ viewBox="0 0 200 200" width="150" height="150">
 </svg>
 </div>
 
-Прозрачность сделана маской, хотя, теоретически, можно было бы обойтись одними градиентами. Но мне хотелось, чтобы отражения были одинаковыми, а кроме того, использование в маске только белого и чёрного цветов позволяет получить более управляемые градиенты.
+The transparency is made with a mask, although theoretically it could have been done with gradients alone. But I wanted the reflections to be identical, and besides, using only white and black in the mask gives you more controllable gradients.
 
-<h3>Как сделать:</h3>
+<h3>How to make it:</h3>
 
 <ol class="layer-steps-list">
 <li>
-<h4>Создаём фигуры с однотонной заливкой</h4>
+<h4>We create shapes with a solid fill</h4>
 
 ```html
 <circle r="50%" cx="50%" cy="50%"
@@ -303,9 +303,9 @@ viewBox="0 0 200 200" width="150" height="150">
 </li>
 
 <li>
-<h4>Добавляем прозрачность с помощью масок</h4>
+<h4>We add transparency with masks</h4>
 
-<p>В этом градиенте так же используются белый и чёрный разной степени прозрачности, а центральный цвет сдвинут вверх с помощью атрибута <code>fy</code>:</p>
+<p>This gradient also uses white and black at different degrees of transparency, and the center color is shifted upward with the <code>fy</code> attribute:</p>
 
 ```html
 <radialGradient id="gradient--bw-light"
@@ -327,7 +327,7 @@ viewBox="0 0 200 200" width="150" height="150">
     ></rect>
 </svg>
 
-<p>Используя этот градиент, создадим две маски: для верхнего отражения и для нижнего. В маске для верхнего отражения используется тот же градиент, но прямоугольник с градиентом перевёрнут кверх ногами.</p>
+<p>Using this gradient, let's create two masks: for the top reflection and for the bottom one. The mask for the top reflection uses the same gradient, but the rectangle with the gradient is turned upside down.</p>
 
 ```html
 <!-- Маска для нижнего отражения -->
@@ -344,7 +344,7 @@ viewBox="0 0 200 200" width="150" height="150">
 </mask>
 ```
 
-<p>Добавляем маски к фигурам с заливкой:</p>
+<p>We add the masks to the filled shapes:</p>
 
 ```html
 <!-- Нижнее отражение -->
@@ -360,7 +360,7 @@ viewBox="0 0 200 200" width="150" height="150">
 </circle>
 ```
 
-<p>Результат:</p>
+<p>The result:</p>
 
 <div class="bubbles-group gray-stripes-bg items-2">
 <svg class="svg" viewBox="0 0 200 200" width="150" height="150">
@@ -383,7 +383,7 @@ viewBox="0 0 200 200" width="150" height="150">
 
 </ol>
 
-Весь код слоя с отражениями:
+The full code of the reflections layer:
 
 ```html
 <!-- Градиент для прозрачности -->
@@ -424,7 +424,7 @@ viewBox="0 0 200 200" width="150" height="150">
 </circle>
 ```
 
-Объединим слои. Отражения внутренние, поэтому слои с ними располагаются под разноцветным слоем:
+Let's combine the layers. The reflections are inner, so their layers go under the colorful layer:
 
 <svg class="svg gray-stripes-bg"
   viewBox="0 0 200 200" width="150" height="150">
@@ -433,11 +433,11 @@ viewBox="0 0 200 200" width="150" height="150">
   <use xlink:href="#colors"/>
 </svg>
 
-Пузырь стал более многоцветным, но сейчас его поверхность выглядит матовой. Чтобы сделать её блестящей, нужно добавить блики.
+The bubble became more colorful, but right now its surface looks matte. To make it glossy, we need to add highlights.
 
-<h2 id="flares">Блики</h2>
+<h2 id="flares">Highlights</h2>
 
-Они сделаны двумя эллипсами с градиентной заливкой:
+They're made of two ellipses with gradient fills:
 
 <div class="bubbles-group gray-stripes-bg items-2">
 <svg class="svg" viewBox="0 0 200 200" width="150" height="150">
@@ -451,15 +451,15 @@ viewBox="0 0 200 200" width="150" height="150">
 </svg>
 </div>
 
-<i>Контурная обводка показывает границы пузыря.</i>
+<i>The outline stroke shows the bubble's boundaries.</i>
 
-<h3>Как сделать:</h3>
+<h3>How to make it:</h3>
 
 <ol class="layer-steps-list">
 <li>
-<h4>Создаём градиент</h4>
+<h4>We create the gradient</h4>
 
-<p>Он состоит из оттенков белого разной степени прозрачности, центральный цвет сдвинут к верхнему краю:</p>
+<p>It consists of white shades of different degrees of transparency, with the center color shifted toward the top edge:</p>
 
 ```html
 <radialGradient id="gradient--spot"
@@ -481,9 +481,9 @@ viewBox="0 0 200 200" width="150" height="150">
 </li>
 
 <li>
-<h4>Рисуем эллипсы</h4>
+<h4>We draw the ellipses</h4>
 
-<p>Один располагаем вверху слева, другой — внизу справа, добавляем градиентную заливку:</p>
+<p>We place one at the top left, the other at the bottom right, and add the gradient fill:</p>
 
 ```html
 <!-- Верхний блик -->
@@ -515,13 +515,13 @@ viewBox="0 0 200 200" width="150" height="150">
 </svg>
 </div>
 
-<p>Так как радиальный градиент применили к эллипсам, он сплющился, чтобы уместиться в фигуре целиком.</p>
+<p>Since the radial gradient is applied to ellipses, it got squashed to fit the shape entirely.</p>
 </li>
 
 <li>
-<h4>Добавляем трансформации</h4>
+<h4>We add transformations</h4>
 
-<p>Чтобы блики визуально находились на поверхности пузыря, их надо немного повернуть:</p>
+<p>To make the highlights visually sit on the bubble's surface, they need to be rotated a bit:</p>
 
 ```html
 <!-- Верхний блик -->
@@ -537,7 +537,7 @@ viewBox="0 0 200 200" width="150" height="150">
 </ellipse>
 ```
 
-<p>Результат:</p>
+<p>The result:</p>
 
 <div class="bubbles-group gray-stripes-bg items-2">
 <svg class="svg" viewBox="0 0 200 200" width="150" height="150">
@@ -561,7 +561,7 @@ viewBox="0 0 200 200" width="150" height="150">
 </li>
 </ol>
 
-<p>Весь код слоя с бликами:</p>
+<p>The full code of the highlights layer:</p>
 
 ```html
 <!-- Градиент блика -->
@@ -587,17 +587,17 @@ viewBox="0 0 200 200" width="150" height="150">
 </ellipse>
 ```
 
-<h2 id="final">Финальная сборка</h2>
+<h2 id="final">Final assembly</h2>
 
-Теперь можно собрать весь код в финальную версию. В примерах я объединяла в группы разные компоненты одного слоя, но если теперь просто свалить весь код в одну кучу, во-первых, получится неверная последовательность слоёв, а во-вторых, таким кодом будет просто неудобно пользоваться.
+Now we can assemble all the code into the final version. In the examples I grouped the different components of one layer together, but if we now just dump all the code in one pile, first of all we'd get the wrong layer order, and second, such code would simply be inconvenient to use.
 
-При этом код содержит два типа элементов, и можно удобно сгруппировать элементы по типу. Первый тип — это простые фигуры (в нашем случае — круги и эллипсы), именно они являются видимыми слоями, из которых в итоге получается пузырь. Второй тип — это элементы, которые не отображаются на странице, но влияют на внешний вид отображаемых фигур: это маски и градиенты.
+The code contains two types of elements, and it's convenient to group them by type. The first type is plain shapes (in our case, circles and ellipses) — these are the visible layers that make up the bubble. The second type is elements that aren't displayed on the page but affect the appearance of the displayed shapes: masks and gradients.
 
-Неотображаемые элементы будет удобно положить в <code>defs</code> — это такой элемент, специально предназначенный для хранения переиспользуемых штук. Ни сам элемент, ни его содержимое не отображаются на странице.
+The non-displayed elements are conveniently placed in <code>defs</code> — an element meant specifically for storing reusable things. Neither the element itself nor its content is displayed on the page.
 
-Отображаемые элементы следует расположить после <code>defs</code>. При этом нужно обратить внимание на порядок слоёв и помнить, что чем ниже слой в коде, тем ближе он к зрителю, то есть самым первым к коде должен быть нижний блик, а самым верхним — слой с разноцветным градиентом.
+The displayed elements should be placed after <code>defs</code>. Pay attention to the layer order and remember that the lower a layer is in the code, the closer it is to the viewer; that is, the bottom highlight should come first in the code, and the layer with the colorful gradient last.
 
-Примерный код (маски и градиенты опущены, полный код есть ниже):
+Approximate code (masks and gradients omitted; the full code is below):
 
 ```html
 <svg viewBox="0 0 200 200" width="150" height="150">
@@ -638,19 +638,19 @@ viewBox="0 0 200 200" width="150" height="150">
 </svg>
 ```
 
-И весь пузырь целиком:
+And the whole bubble complete:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="grEWZw" data-default-tab="html,result" data-user="yoksel" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/grEWZw/">grEWZw</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-Обратите внимание, что белые блики выглядят цветными. Так как нижний блик как бы отражается от внутренней поверхности пузыря, и относительно зрителя расположен на самой дальней его стенке, в слоях он находится глубже всех, в самом низу (и первым в коде).
+Notice that the white highlights look colorful. Since the bottom highlight is, as it were, reflected off the bubble's inner surface and, relative to the viewer, sits on its farthest wall, in the layer stack it's the deepest of all, at the very bottom (and first in the code).
 
-Верхний же блик предполагается на внешней стенке пузыря, ближайшей к зрителю, но чтобы и его тоже немного привести в соответствие по цветам, он был размещён не самым верхним слоем, а под слоем с радужными разводами.
+The top highlight is supposed to be on the bubble's outer wall, closest to the viewer, but to bring its colors somewhat in line too, it was placed not as the topmost layer but under the layer with the rainbow swirls.
 
-<h2>Заключение</h2>
+<h2>Conclusion</h2>
 
-Используя сочетание масок и градиентов можно сделать векторный мыльный пузырь. Преимущество вектора перед растром состоит в том, что его можно сколько угодно растягивать и сжимать без потери качества, а кроме того, цвета такого пузыря можно анимировать.
+Using a combination of masks and gradients you can make a vector soap bubble. Vector's advantage over raster is that it can be stretched and shrunk as much as you like without quality loss, and besides, the colors of such a bubble can be animated.
 
-Я думаю, что это не самое точное изображение мыльного пузыря, но фотореализм и не был моей целью — мне хотелось узнать насколько сложными могут быть градиенты и какую пользу можно извлечь из сочетания градиентов и масок. Результаты впечатляют, и я уверена, что используя вышеописанные способы, разработчики с богатой фантазией могут сделать много интересного.
+I don't think this is the most accurate depiction of a soap bubble, but photorealism wasn't my goal — I wanted to find out how complex gradients can be and what benefit can be extracted from combining gradients and masks. The results are impressive, and I'm sure that, using the methods described above, developers with rich imagination can make a lot of interesting things.
 
-Также, если у вас на примете есть интересные демо с использованием SVG-градиентов, поделитесь ссылками в комментариях.
+Also, if you have interesting demos using SVG gradients in mind, share the links in the comments.
