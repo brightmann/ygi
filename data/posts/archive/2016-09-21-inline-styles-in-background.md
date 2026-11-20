@@ -1,8 +1,8 @@
 ---
-title: Инлайновые стили в background-image
+title: Inline styles in background-image
 
 image: https://img-fotki.yandex.ru/get/41743/5091629.a4/0_90dda_849784af_orig
-description: 'Игралась с кодами, обнаружила удивительное: оказывается, внутри CSS-свойства background можно использовать другие CSS-свойства, например, box-shadow, outline, transform и даже ещё один background!'
+description: 'While playing with code, I discovered something surprising: it turns out that inside the CSS background property you can use other CSS properties, for example box-shadow, outline, transform and even another background!'
 
 tags: [svg, gradients, box-shadow, experiments, transform]
 
@@ -11,24 +11,24 @@ links:
    url: https://r.va.gg/2012/05/data-uri-svg.html
  - name: 'Optimizing SVGs in data URIs'
    url: https://codepen.io/tigt/post/optimizing-svgs-in-data-uris
- - name: URL-encoder для SVG
+ - name: URL-encoder for SVG
    url: https://yoksel.github.io/url-encoder/ru
  - name: Background tricks with SVG, Box shadows and CSS Gradients
    url: https://codepen.io/collection/DyJRrY/2/
 ---
 
-Игралась с кодами, обнаружила удивительное: оказывается, внутри CSS-свойства <code>background</code> можно использовать другие CSS-свойства, например, <code>box-shadow</code>, <code>outline</code>, <code>transform</code> и даже ещё один <code>background</code>.<!--more-->
+While playing with code, I discovered something surprising: it turns out that inside the CSS <code>background</code> property you can use other CSS properties, for example <code>box-shadow</code>, <code>outline</code>, <code>transform</code> and even another <code>background</code>.<!--more-->
 
-Очевидно, что мы не можем просто взять и засунуть одно CSS-свойство в другое: тени и трансформации должны применяться к элементу. В качестве фона мы можем использовать цвета, градиенты и картинки, но не только: ещё в качестве фона можно использовать SVG, причём не только в виде ссылки на внешний файл, — также код SVG-элемента можно вставить непосредственно в CSS, это делается вот такой конструкцией: <code>background-image: url("data:image/svg+xml,...");</code>.
+Obviously, we can't just take and stuff one CSS property into another: shadows and transforms have to be applied to an element. As a background we can use colors, gradients and images, but not only that: SVG can also be used as a background, and not only as a link to an external file — the code of an SVG element can be inserted directly into CSS, which is done with this construct: <code>background-image: url("data:image/svg+xml,...");</code>.
 
-SVG можно вставить в CSS прямо как есть, но такой код не будет работать в IE. Однако если его <a href="https://yoksel.github.io/url-encoder/ru">заэскейпить</a>, код будет работать во всех браузерах включая IE9.
+SVG can be inserted into CSS just as it is, but such code won't work in IE. However, if you <a href="https://yoksel.github.io/url-encoder/ru">escape it</a>, the code will work in all browsers including IE9.
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="ammZbr" data-default-tab="css,result" data-user="yoksel" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/ammZbr/">(encoded svg)</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-И вот теперь если этому <code>svg</code> внутри <code>background</code> задать какие-нибудь стили в атрибуте <code>style</code>, они будут работать! Можно использовать обычные стили для HTML-элементов, то есть рамки (в том числе <code>border-image</code>), тени, фоны (включая CSS-градиенты) и даже трансформации!
+And now if you set some styles in the <code>style</code> attribute of this <code>svg</code> inside the <code>background</code>, they will work! You can use ordinary styles for HTML elements, that is borders (including <code>border-image</code>), shadows, backgrounds (including CSS gradients) and even transforms!
 
-Например, можно взять такой код:
+For example, you can take this code:
 
 ```html
 <svg xmlns='http://www.w3.org/2000/svg'
@@ -42,14 +42,14 @@ SVG можно вставить в CSS прямо как есть, но тако
 </svg>
 ```
 
-заэскейпить его и использовать как фон, при это все инлайновые стили сохранятся:
+escape it and use it as a background, and all the inline styles will be preserved:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="BLQjoW" data-default-tab="css,result" data-user="yoksel" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/BLQjoW/">(encoded svg with inline styles)</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-Жёлтый кружочек — это <code>circle</code> внутри <code>svg</code>, всё остальное — инлайновые стили: градиент, тень и трансформации.
+The yellow circle is a <code>circle</code> inside the <code>svg</code>; everything else is inline styles: a gradient, a shadow and transforms.
 
-На самом деле, чтобы воспользоваться инлайновыйми стилями, нужен только элемент <code>svg</code>, его содержимое не играет роли и может отсутствовать:
+Actually, to use inline styles you only need the <code>svg</code> element; its contents don't matter and can be absent:
 
 ```html
 <svg xmlns='http://www.w3.org/2000/svg'
@@ -62,22 +62,22 @@ SVG можно вставить в CSS прямо как есть, но тако
     ><!-- тут ничего нет --></svg>
 ```
 
-И всё равно всё будет работать:
+And everything will still work:
 
 <p data-height="400" data-theme-id="4974" data-slug-hash="WGoKAv" data-default-tab="css,result" data-user="yoksel" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/WGoKAv/">(encoded svg with inline styles)</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-<h2>Кроссбраузерность</h2>
+<h2>Cross-browser compatibility</h2>
 
-Интересно, что такие стили работают во всех современных браузерах, но у каждого свои представления о том, как это должно выглядеть в итоге:
+Interestingly, these styles work in all modern browsers, but each has its own idea of what it should look like in the end:
 
 <figure class="figure figure--text-on-right">
 <img src="../assets/img/articles/inline-styles-in-bg/chrome.png" alt="Chrome">
 
 <figcaption>
   <h3>Chrome</h3>
-  <p>Тени, трансформации и градиенты работают, градиент поворачивается вместе с фигурой. Пустые места в углах плитки фона заполняются градиентом.</p>
-  <p><code>transform-origin</code> по умолчанию находится в точке <code>0, 0</code>.</p>
+  <p>Shadows, transforms and gradients work; the gradient rotates together with the shape. Empty places in the corners of the background tile are filled with the gradient.</p>
+  <p><code>transform-origin</code> is at the point <code>0, 0</code> by default.</p>
 </figcaption>
 </figure>
 
@@ -86,8 +86,8 @@ SVG можно вставить в CSS прямо как есть, но тако
 
 <figcaption>
     <h3>Firefox</h3>
-    <p>Тени, трансформации и градиенты работают, но тень поворачивается вместе с фигурой, а градиент — нет.</p>
-    <p><code>transform-origin</code> по умолчанию находится в точке <code>0, 0</code>.</p>
+    <p>Shadows, transforms and gradients work, but the shadow rotates together with the shape, while the gradient doesn't.</p>
+    <p><code>transform-origin</code> is at the point <code>0, 0</code> by default.</p>
 </figcaption>
 </figure>
 
@@ -96,8 +96,8 @@ SVG можно вставить в CSS прямо как есть, но тако
 
 <figcaption>
     <h3>Safari</h3>
-    <p>Тени, трансформации и градиенты работают, градиент поворачивается вместе с фигурой. Пустые места в углах плитки фона ничем не заполняются.</p>
-    <p><code>transform-origin</code> по умолчанию находится в точке <code>0, 0</code>.</p>
+    <p>Shadows, transforms and gradients work; the gradient rotates together with the shape. Empty places in the corners of the background tile are not filled with anything.</p>
+    <p><code>transform-origin</code> is at the point <code>0, 0</code> by default.</p>
 </figcaption>
 </figure>
 
@@ -105,28 +105,28 @@ SVG можно вставить в CSS прямо как есть, но тако
 <img src="../assets/img/articles/inline-styles-in-bg/ie.png" alt="IE11">
 <figcaption>
 <h3>IE11</h3>
-<p>Трансформации и градиенты работают, тени — нет. Градиент поворачивается вместе с фигурой. Пустые места в углах плитки фона не заполняются.</p>
+<p>Transforms and gradients work, shadows don't. The gradient rotates together with the shape. Empty places in the corners of the background tile are not filled.</p>
 
-<p><code>transform-origin</code> по умолчанию находится в точке <code>50%, 50%</code>.</p>
+<p><code>transform-origin</code> is at the point <code>50%, 50%</code> by default.</p>
 
-<p>В отличие от остальных браузеров, здесь не работает <code>transform-origin</code>, заданный в процентах, — при этом ломается весь фон. Также, если фигуре задать <code>border</code>, отобразится только он, а градиенты и тени пропадут.</p>
+<p>Unlike the other browsers, <code>transform-origin</code> specified in percentages doesn't work here — and the whole background breaks. Also, if you give the shape a <code>border</code>, only it will be displayed, while gradients and shadows disappear.</p>
 </figcaption>
 </figure>
 
-С одной стороны, инлайновые стили в фоне везде отображаются по-разному, с другой — это настолько странная конструкция, что непонятно почему она вообще работает.
+On the one hand, inline styles in backgrounds render differently everywhere; on the other hand, it's such a strange construct that it's unclear why it works at all.
 
-Стили в фонах открывают широчайшие возможности для экспериментов и заодно позволяют помечтать о разных возможностях, которых сейчас в фонах нет, но очень хочется, чтобы были.
+Styles in backgrounds open up vast opportunities for experiments and also let you dream about various features that backgrounds don't have now but that you really wish they did.
 
-Например, если делать паттерны с помощью градиентов, иногда хочется просто взять и повернуть плитку фона, например, на 45 градусов, чтобы получилась чешуя:
+For example, when making patterns with gradients, sometimes you want to simply take and rotate a background tile, say by 45 degrees, to get scales:
 
 <figure>
 <p data-height="350" data-theme-id="4974" data-slug-hash="gwrKzJ" data-default-tab="result" data-user="yoksel" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/gwrKzJ/">[Chrome, Opera] SVG  + CSS gradient + Box Shadow</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
 
-<figcaption>(Нормально отображается только в Chrome и Opera)</figcaption>
+<figcaption>(Displays properly only in Chrome and Opera)</figcaption>
 </figure>
 
-Ещё один вариант чешуи:
+Another variant of scales:
 
 <figure>
 <p data-height="350" data-theme-id="4974" data-slug-hash="amkjXg" data-default-tab="result" data-user="yoksel" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/amkjXg/">SVG  + CSS gradient</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
@@ -135,7 +135,7 @@ SVG можно вставить в CSS прямо как есть, но тако
 <figcaption>(Chrome, Opera)</figcaption>
 </figure>
 
-Или вот хочется сделать сложный фон из нескольких градиентов и повернуть всю группу сразу (в данном случае такой группой является полупрозрачный трёхцветный градиент):
+Or, say, you want to make a complex background from several gradients and rotate the whole group at once (in this case such a group is a semi-transparent three-color gradient):
 
 <figure>
 <p data-height="420" data-theme-id="4974" data-slug-hash="RGRRvo" data-default-tab="result" data-user="yoksel" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/RGRRvo/">Animated pattern: SVG  + CSS gradient</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
@@ -144,7 +144,7 @@ SVG можно вставить в CSS прямо как есть, но тако
 <figcaption>(Chrome, Opera)</figcaption>
 </figure>
 
-Или, например, хочется изменить размер фона, но так, чтобы какие-то линии сохранили свой размер. <code>box-shadow</code> при ресайзе <code>background-size</code> именно так и работает:
+Or, for example, you want to change the size of the background, but in such a way that some lines keep their size. <code>box-shadow</code> works exactly like that when <code>background-size</code> is resized:
 
 <figure>
 <p data-height="400" data-theme-id="0" data-slug-hash="ORNqdx" data-default-tab="result" data-user="yoksel" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/ORNqdx/">Animated pattern for HTML element without gradients</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
@@ -153,7 +153,7 @@ SVG можно вставить в CSS прямо как есть, но тако
 <figcaption>(Chrome, Opera, Firefox, Safari)</figcaption>
 </figure>
 
-Ресайзится только плитка фона, размер теней не меняется. Из этого можно сделать, например, калейдоскопический паттерн:
+Only the background tile is resized; the size of the shadows doesn't change. From this you can make, for example, a kaleidoscopic pattern:
 
 <figure>
 <p data-height="430" data-theme-id="4974" data-slug-hash="QKNPjJ" data-default-tab="result" data-user="yoksel" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/QKNPjJ/">Animated pattern without gradients: + transform!</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
@@ -162,7 +162,7 @@ SVG можно вставить в CSS прямо как есть, но тако
 <figcaption>(Chrome, Opera, Firefox, Safari)</figcaption>
 </figure>
 
-Используя <code>border-image</code> c градиентами можно делать совсем уж замысловатые штуки:
+Using <code>border-image</code> with gradients you can make quite intricate things:
 
 <figure>
 <p data-height="350" data-theme-id="0" data-slug-hash="amkLvw" data-default-tab="result" data-user="yoksel" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/amkLvw/">Border-image inside background-image</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
@@ -171,10 +171,10 @@ SVG можно вставить в CSS прямо как есть, но тако
 <figcaption>(Chrome, Opera, Firefox, Safari)</figcaption>
 </figure>
 
-Играться можно до бесконечности.
+You can play endlessly.
 
-Я не знаю как это знание можно пристроить к делу, но меня так поразила эта находка, что я решила о ней рассказать. И я до сих пор под впечатлением от того, что в <code>background-image</code> можно использовать трансформации и <code>border-image</code>, хотя практической пользы в этом, наверное, никакой.
+I don't know how this knowledge can be put to use, but this finding struck me so much that I decided to tell about it. And I'm still impressed that transforms and <code>border-image</code> can be used inside <code>background-image</code>, although there's probably no practical use in it.
 
-Если у вас есть идеи куда это можно применить, поделитесь.
+If you have ideas where this could be applied, share them.
 
-Все мои эксперименты с инлайновыми стилями можно увидеть <a href="https://codepen.io/collection/DyJRrY/">в этой коллекции</a> (смотреть лучше в Хроме и Опере).
+All my experiments with inline styles can be seen <a href="https://codepen.io/collection/DyJRrY/">in this collection</a> (best viewed in Chrome and Opera).
