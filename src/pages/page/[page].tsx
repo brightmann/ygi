@@ -7,10 +7,27 @@ import Layout from '../../components/molecules/Layout';
 import ArticlesCardsList from '../../components/molecules/ArticlesCardsList';
 import Pagination from '../../components/molecules/Pagination';
 import { ArticleWithDate } from '../../components/molecules/ArticleCard';
-import Link from '../../components/atoms/Link';
+
+const getAllPosts = async () => {
+  const posts = (await getAllArticles(
+    ['title', 'slug', 'order', 'excerpt', 'date'],
+    'post',
+  )) as ArticleWithDate[];
+
+  const archivedPosts = (await getAllArticles(
+    ['title', 'slug', 'order', 'excerpt', 'date'],
+    'archive',
+  )) as ArticleWithDate[];
+
+  return [...posts, ...archivedPosts].sort((a, b) => {
+    const aTime = a.date ? new Date(a.date).getTime() : 0;
+    const bTime = b.date ? new Date(b.date).getTime() : 0;
+    return bTime - aTime;
+  });
+};
 
 export const getStaticPaths = (async () => {
-  const posts = await getAllArticles(['title', 'slug'], 'post');
+  const posts = await getAllPosts();
   const totalPages = getTotalPages(posts.length);
   const paths = [];
 
@@ -24,18 +41,15 @@ export const getStaticPaths = (async () => {
 export const getStaticProps = (async ({ params }) => {
   const currentPage = Number(params?.page) || 1;
 
-  const posts = (await getAllArticles(
-    ['title', 'slug', 'order', 'excerpt', 'date'],
-    'post',
-  )) as ArticleWithDate[];
+  const allPosts = await getAllPosts();
 
   const pages = (await getAllArticles(
     ['title', 'slug', 'order', 'excerpt', 'date'],
     'page',
   )) as ArticleWithDate[];
 
-  const totalPages = getTotalPages(posts.length);
-  const pagePosts = posts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
+  const totalPages = getTotalPages(allPosts.length);
+  const pagePosts = allPosts.slice((currentPage - 1) * POSTS_PER_PAGE, currentPage * POSTS_PER_PAGE);
 
   return { props: { posts: pagePosts, pages, currentPage, totalPages } };
 }) satisfies GetStaticProps<{
@@ -57,10 +71,6 @@ export default function Page({ posts, pages, currentPage, totalPages }: InferGet
         currentPage={currentPage}
         totalPages={totalPages}
       />
-
-      <p>
-        <Link href="/archive">Архив</Link>
-      </p>
     </Layout>
   );
 }
