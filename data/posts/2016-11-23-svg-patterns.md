@@ -1,8 +1,8 @@
 ---
-title: SVG-паттерны
+title: SVG patterns
 
 image: https://img-fotki.yandex.ru/get/198569/5091629.a4/0_91d26_40a60240_orig
-description: 'pattern — это элемент, который можно использовать в качеcтве заливки или обводки. Содержимое паттерна может быть самым разным: фигуры, символы, текст или растровые изображения — в любых сочетаниях.'
+description: 'pattern is an element that can be used as a fill or a stroke. A pattern can contain all kinds of content: shapes, symbols, text or raster images — in any combination.'
 
 tags: [svg, patterns]
 
@@ -10,13 +10,13 @@ links:
 - href: http://www.w3.org/TR/SVG/pservers.html#Patterns
   text: Patterns
 - href: https://codepen.io/collection/AyaLRg
-  text: Коллекция демо с SVG-паттернами
+  text: A collection of SVG pattern demos
 ---
 
-<code>pattern</code> — это элемент, который можно использовать в качеcтве заливки или обводки. Содержимое паттерна может быть самым разным: фигуры, символы, текст или растровые изображения — в любых сочетаниях.
+<code>pattern</code> is an element that can be used as a fill or a stroke. A pattern can contain all kinds of content: shapes, symbols, text or raster images — in any combination.
 <!--more-->
 
-Самый простой пример кода выглядит вот так:
+The simplest code example looks like this:
 
 ```html
 <pattern id="pattern"
@@ -25,9 +25,9 @@ links:
 </pattern>
 ```
 
-Помимо <code>id</code>, без которого не получится применить паттерн к элементу, обязательно нужно указывать ширину и высоту паттерна, потому что по умолчанию их значения равны нулю (и паттерн не отобразится).
+Besides <code>id</code>, without which the pattern can't be applied to an element, you must specify the pattern's width and height, because by default both values equal zero (and the pattern won't be displayed).
 
-Добавим в паттерн какое-нибудь содержимое, например, вот такой кружок:
+Let's add some content to the pattern, for example this circle:
 
 <svg class="svg" width="300" height="200">
   <circle r="30%" cx="50%" cy="50%"
@@ -42,14 +42,14 @@ links:
 </pattern>
 ```
 
-Сам по себе паттерн не отображается на странице. Чтобы увидеть паттерн в действии, его нужно применить к фигуре, это можно сделать, например, с помощью атрибута <code>fill</code>:
+A pattern on its own is not displayed on the page. To see the pattern in action, you need to apply it to a shape; this can be done, for example, with the <code>fill</code> attribute:
 
 ```html
 <polygon fill="url(#pattern)"
   points="85,0 170,61 137,161 32,161 0,61"/>
 ```
 
-Либо то же самое через CSS:
+Or the same via CSS:
 
 ```css
 polygon {
@@ -57,137 +57,137 @@ polygon {
 }
 ```
 
-Результат:
+The result:
 
 <p data-height="380" data-theme-id="4974" data-slug-hash="WoNQpZ" data-default-tab="html,result" data-user="yoksel" data-embed-version="2" data-pen-title="WoNQpZ" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/WoNQpZ/">WoNQpZ</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-<i>В основном примерах будут показываться паттерны в качестве заливки, но их так же можно использовать <a href="https://codepen.io/yoksel/pen/ZBeNLQ">в обводках</a>, тогда паттерн нужно задавать в свойстве <code>stroke</code>.</i>
+<i>The main examples will show patterns used as fills, but they can also be used <a href="https://codepen.io/yoksel/pen/ZBeNLQ">in strokes</a>, in which case the pattern is set in the <code>stroke</code> property.</i>
 
-Мы видим, что круг с координатами центра <code>50% 50%</code> находится посередине SVG-изображения, а не посередине фигуры с паттерном, также очевидно, что радиус <code>30%</code> рассчитывается относительно всего изображения, а не относительно фигуры, которой задана заливка. Такое поведение не всегда будет желаемым, и его можно менять с помощью атрибутов, которые будут описаны ниже.
+We can see that the circle with center coordinates <code>50% 50%</code> sits in the middle of the SVG image, not in the middle of the shape with the pattern; it's also obvious that the radius <code>30%</code> is calculated relative to the whole image, not relative to the shape being filled. This behavior is not always desirable, and it can be changed with the attributes described below.
 
-Это самый простой вариант паттерна, он подойдёт если нужно, например, сделать просто заливку картинкой:
+This is the simplest pattern variant; it works when you need, for example, to simply fill a shape with an image:
 
 <p data-height="380" data-theme-id="4974" data-slug-hash="ObJOLM" data-default-tab="html,result" data-user="yoksel" data-embed-version="2" data-pen-title="ObJOLM" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/ObJOLM/">ObJOLM</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Для более сложных случаев нужно как следует разобраться с остальными свойствами паттерна.
+For more complex cases you need to properly understand the pattern's other properties.
 
 <h2 id="pattern-units">patternUnits</h2>
 
-Этот атрибут задаёт систему координат для внешних размеров паттерна, то есть влияет на атрибуты <code>x</code>, <code>y</code>, <code>width</code> и <code>height</code>.
+This attribute sets the coordinate system for the pattern's outer dimensions, that is, it affects the <code>x</code>, <code>y</code>, <code>width</code> and <code>height</code> attributes.
 
-Возможные значения:
+Possible values:
 
-<code>userSpaceOnUse</code> — используется система координат родительского SVG-элемента. Если выбрано это значение, размеры и координаты можно задавать как в процентах, так и в единицах текущей системы координат;
+<code>userSpaceOnUse</code> — the coordinate system of the parent SVG element is used. With this value, sizes and coordinates can be set both in percentages and in units of the current coordinate system;
 
-<code>objectBoundingBox</code> — используется система координат элемента, к которому применяется паттерн. Если выбрано это значение, размеры и координаты можно задавать в процентах или в значениях от 0.0 до 1.0.
+<code>objectBoundingBox</code> — the coordinate system of the element the pattern is applied to is used. With this value, sizes and coordinates can be set in percentages or in values from 0.0 to 1.0.
 
-По умолчанию <code>patternUnits</code> использует значение <code>objectBoundingBox</code>.
+By default <code>patternUnits</code> uses the value <code>objectBoundingBox</code>.
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="ORKNMy" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="patternUnits and pattern sizes" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/ORKNMy/">patternUnits and pattern sizes</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 <h2 id="pattern-content-units">patternContentUnits</h2>
 
-<code>patternContentUnits</code> определяет систему координат для содержимого паттерна. <strong>Важно:</strong> если паттерну задан <code>viewBox</code>, этот атрибут работать не будет.
+<code>patternContentUnits</code> defines the coordinate system for the pattern's content. <strong>Important:</strong> if the pattern is given a <code>viewBox</code>, this attribute won't work.
 
-Возможные значения:
+Possible values:
 
-<code>userSpaceOnUse</code> — используется система координат родительского SVG-элемента. Если выбрано это значение, размеры и координаты можно задавать как в процентах, так и в единицах текущей системы координат;
+<code>userSpaceOnUse</code> — the coordinate system of the parent SVG element is used. With this value, sizes and coordinates can be set both in percentages and in units of the current coordinate system;
 
-<code>objectBoundingBox</code> — используется система координат элемента, к которому применяется паттерн. Если выбрано это значение, размеры и координаты можно задавать только в числах от 0.0 до 1.0. Процентные значения здесь использовать не получится, потому что они очень странно себя ведут (<a href="https://codepen.io/yoksel/details/yVyJxj#comment-id-162085">подробнее можно почитать тут</a>).
+<code>objectBoundingBox</code> — the coordinate system of the element the pattern is applied to is used. With this value, sizes and coordinates can only be set in numbers from 0.0 to 1.0. Percentage values won't work here, because they behave very strangely (<a href="https://codepen.io/yoksel/details/yVyJxj#comment-id-162085">you can read more about it here</a>).
 
-По умолчанию <code>patternContentUnits</code> использует значение <code>userSpaceOnUse</code>.
+By default <code>patternContentUnits</code> uses the value <code>userSpaceOnUse</code>.
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="zoxYjy" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="patternContentUnits and pattern content" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/zoxYjy/">patternContentUnits and pattern content</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 <h2 id="pattern-transform">patternTransform</h2>
 
-Атрибут позволяет добавить трансформацию паттерну.
+This attribute lets you add a transformation to the pattern.
 
-По умолчанию в SVG центр трансформации  (<code>transform-origin</code>) находится в левом верхнем углу SVG-элемента. Для вращения (<code>rotate</code>) можно вместе с углом поворота задать и центр трансформации, это выглядит примерно так:
+By default in SVG the transform origin (<code>transform-origin</code>) sits in the top left corner of the SVG element. For rotation (<code>rotate</code>) you can set the transform origin along with the rotation angle; it looks roughly like this:
 
 ```html
 patternTransform="rotate(45, 250, 150)"
 ```
 
-Первое число — угол поворота, второе и третье — координаты центра вращения.
+The first number is the rotation angle, the second and third are the coordinates of the rotation center.
 
-В этом коде координаты заданы в единицах текущей системы координат, это будет работать с <code>patternUnits="userSpaceOnUse"</code>. При использовании <code>patternUnits="objectBoundingBox"</code> координаты нужно задавать в относительных значениях в диапазоне от 0.0 до 1.0, код трансформации в этом случае должен быть таким:
+In this code the coordinates are given in units of the current coordinate system; this will work with <code>patternUnits="userSpaceOnUse"</code>. When using <code>patternUnits="objectBoundingBox"</code>, coordinates must be given in relative values in the range from 0.0 to 1.0, and the transform code in that case should look like this:
 
 ```html
 patternTransform="rotate(45, .5, .5)"
 ```
 
-Это должно работать, но не работает, как можно увидеть в демо ниже (потаскайте ползунок):
+This should work, but it doesn't, as you can see in the demo below (drag the slider):
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="bBdMJK" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="patternTransform (and bug with transform-origin)" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/bBdMJK/">patternTransform (and bug with transform-origin)</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-<a href="https://codepen.io/yoksel/full/mOJaOE">Эксперименты показали</a>, что координаты центра трансформации в этом случае, как и при <code>patternUnits="userSpaceOnUse"</code>, могут быть заданы в единицах текущей системы координат. Это будет работать, хотя и не должно.
+<a href="https://codepen.io/yoksel/full/mOJaOE">Experiments showed</a> that in this case the transform origin coordinates, just as with <code>patternUnits="userSpaceOnUse"</code>, can be given in units of the current coordinate system. It will work, although it shouldn't.
 
-Учитывая такое странное поведение, я бы рекомендовала не  использовать <code>patternTransform</code> вместе с  <code>patternUnits="objectBoundingBox"</code>.
+Given this strange behavior, I would recommend not using <code>patternTransform</code> together with <code>patternUnits="objectBoundingBox"</code>.
 
 <h2 id="x-y">x, y</h2>
 
-Атрибуты позволяют задать положение плитки паттерна относительно верхнего левого угла:
+These attributes let you set the position of the pattern tile relative to the top left corner:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="NbxxZX" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="patternUnits and pattern coordinates (x & y)" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/NbxxZX/">patternUnits and pattern coordinates (x & y)</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 <h2 id="width-height">width, height</h2>
 
-Атрибуты определяют размер плитки паттерна, причём без <code>viewBox</code> атрибуты не влияют на размеры содержимого, всё, что не поместилось, просто обрежется:
+These attributes define the size of the pattern tile, and without <code>viewBox</code> they don't affect the size of the content — anything that doesn't fit is simply clipped:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="pNgEGV" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="patternUnits and pattern coordinates (width & height, no viewBox)" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/pNgEGV/">patternUnits and pattern coordinates (width & height, no viewBox)</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Если <code>viewBox</code> задан, содержимое будет подгоняться под размер плитки паттерна, но с сохранением пропорций, заданных <code>viewBox</code>. Если пропорции плитки и содержимого не совпадут, вокруг содержимого останется пустое пространство:
+If <code>viewBox</code> is set, the content will be fitted to the pattern tile size, keeping the proportions set by the <code>viewBox</code>. If the tile's and the content's proportions don't match, empty space remains around the content:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="ObMmRO" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="patternUnits and pattern coordinates (width & height, has viewBox)" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/ObMmRO/">patternUnits and pattern coordinates (width & height, has viewBox)</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Если содержимое должно заполнять плитку целиком, пусть и с искажениями, нужно указать, что сохранять пропорции не требуется, для этого нужно добавить <code>preserveAspectRatio="none"</code>:
+If the content must fill the tile entirely, even with distortion, you need to specify that proportions don't have to be kept; for that, add <code>preserveAspectRatio="none"</code>:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="NbxopY" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="patternUnits and pattern coordinates (width & height, has viewBox + preserveAspectRatio='none')" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/NbxopY/">patternUnits and pattern coordinates (width & height, has viewBox + preserveAspectRatio="none")</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Напомню, что по умолчанию ширина и высота паттерна равны нулю, поэтому размеры обязательно нужно указывать явным образом, иначе паттерн не отобразится.
+As a reminder, by default the pattern's width and height equal zero, so the sizes must be specified explicitly, otherwise the pattern won't be displayed.
 
 <h2>viewBox, preserveAspectRatio</h2>
 
-Если вы с ними не знакомы, в этом разделе будет немного вводной информации.
+If you're not familiar with them, this section gives a bit of background.
 
-Эти атрибуты не являются специфичными для паттернов, они также могут использоваться как для некоторых других элементов внутри родительского SVG, так и для него самого.
+These attributes are not pattern-specific; they can also be used both for some other elements inside the parent SVG and for the SVG element itself.
 
-Содержимое SVG-изображения отрисовывается на бесконечном холсте, и по умолчанию видимая область совпадает с размерами самого SVG-элемента. Если задан <code>viewBox</code>, уже он будет задавать размеры и координаты прямоугольника, определяющего видимую область. Если размеры видимой области, заданные во <code>viewBox</code>, не совпадают с размерами SVG-элемента, видимая область растянется или сожмётся, чтобы вместиться целиком. Также этот атрибут определяет соотношение сторон, которое должно сохраняться при изменении размеров элемента.  Подробнее про <code>viewBox</code> можно почитать в <a href="https://www.w3.org/TR/SVG/coords.html#ViewBoxAttribute">спецификации</a>.
+The contents of an SVG image are drawn on an infinite canvas, and by default the visible area matches the size of the SVG element itself. If a <code>viewBox</code> is set, it defines the size and coordinates of the rectangle that determines the visible area. If the visible area's size set in <code>viewBox</code> doesn't match the SVG element's size, the visible area will stretch or shrink to fit entirely. This attribute also defines the aspect ratio that must be preserved when the element is resized. You can read more about <code>viewBox</code> in the <a href="https://www.w3.org/TR/SVG/coords.html#ViewBoxAttribute">specification</a>.
 
-<code>preserveAspectRatio</code> отвечает за поведение содержимого при изменении размеров родительского элемента, у него для этого есть большой набор разных значений. Значение по умолчанию — <code>xMidYMid meet</code>, то есть содержимое должно помещаться целиком с сохранением пропорций (<code>meet</code>) и выравниваться по центру (<code>xMidYMid</code>). Схожим образом можно управлять поведением фоновых изображений с помощью <code>background-size</code> или поведением одного элемента внутри в другого с помощью <code>object-fit</code>.
-Важно помнить, что <code>preserveAspectRatio</code> не работает без <code>viewBox</code>.
-Узнать больше о значениях <code>preserveAspectRatio</code> можно в  <a href="https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute">спецификации</a>.
+<code>preserveAspectRatio</code> controls how the content behaves when the parent element is resized, and it has a large set of values for that. The default value is <code>xMidYMid meet</code>, meaning the content must fit entirely while keeping its proportions (<code>meet</code>) and be aligned to the center (<code>xMidYMid</code>). Similarly, you can control the behavior of background images with <code>background-size</code> or the behavior of one element inside another with <code>object-fit</code>.
+It's important to remember that <code>preserveAspectRatio</code> doesn't work without <code>viewBox</code>.
+You can learn more about <code>preserveAspectRatio</code> values in the <a href="https://www.w3.org/TR/SVG/coords.html#PreserveAspectRatioAttribute">specification</a>.
 
-При наличии <code>viewBox</code> при ресайзе элемент стремится поместиться в заданную область целиком с сохранением пропорций. Если сохранять пропорции не нужно, задаётся атрибут <code>preserveAspectRatio</code> со значением <code>none</code>.
+With a <code>viewBox</code> set, the element tries to fit entirely into the given area while keeping its proportions when resized. If keeping proportions isn't needed, the <code>preserveAspectRatio</code> attribute is set to <code>none</code>.
 
 <h2 id="xlink-href">xlink:href</h2>
 
-Как и некоторые другие SVG-элементы, паттерны могут наследовать свойства друг друга. Ссылка на паттерн, содержимое и свойства которого нужно унаследовать, задаётся в атрибуте <code>xlink:href</code>.
+Like some other SVG elements, patterns can inherit each other's properties. A reference to the pattern whose content and properties should be inherited is set in the <code>xlink:href</code> attribute.
 
-Из паттерна по ссылке унаследуются все свойства и содержимое, которые не переопределены в текущем паттерне. В примере ниже правый паттерн наследует из левого содержимое и трансформацию:
+All properties and content that are not overridden in the current pattern are inherited from the referenced pattern. In the example below, the right pattern inherits the content and transformation from the left one:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="BQKBgP" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="patternTransform and xlink:href" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/BQKBgP/">patternTransform and xlink:href</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-<h2 id="snippets">Примеры кода</h2>
+<h2 id="snippets">Code examples</h2>
 
-Весь этот набор атрибутов не только позволяет гибко управлять паттерном, но и немного взрывает мозг при попытке их использовать.
+This whole set of attributes not only lets you control the pattern flexibly, but also blows your mind a little when you try to use them.
 
-По моему опыту, самый удобный код получается при одновременном использовании <code>viewBox</code>, <code>width</code> и <code>height</code>. <code>viewBox</code> определяет размер видимой области до применения какого-либо масштабирования, то есть какую часть содержимого паттерна нужно использовать как плитку — это немного похоже на применение инструмента «Crop» в фотошопе. Затем, указав ширину и высоту, можно управлять размером полученной плитки. То есть изначально плитка может быть любого размера, а нужный размер можно настроить потом.
+In my experience, the most convenient code comes from using <code>viewBox</code>, <code>width</code> and <code>height</code> together. <code>viewBox</code> defines the size of the visible area before any scaling is applied, that is, which part of the pattern's content should be used as a tile — it's a bit like using the Crop tool in Photoshop. Then, by specifying width and height, you control the size of the resulting tile. That is, the tile can initially be any size, and the size you need can be adjusted later.
 
-Важный момент: чтобы между плитками не было пустых мест, нужно в <code>width</code> и <code>height</code> сохранять пропорции, указанные во <code>viewBox</code>. Значения размеров при этом не должны зависеть от размеров фигуры или SVG-элемента, следовательно, нужно добавить ещё один необходимый атрибут — <code>patternUnits</code> со значением <code>userSpaceOnUse</code> (то есть нужно использовать систему координат всего SVG-элемента).
+An important point: so that there are no gaps between tiles, <code>width</code> and <code>height</code> must keep the proportions set in <code>viewBox</code>. The size values shouldn't depend on the size of the shape or the SVG element, so you need one more required attribute — <code>patternUnits</code> with the value <code>userSpaceOnUse</code> (that is, you need to use the coordinate system of the whole SVG element).
 
-Пример кода:
+Code example:
 
 ```html
 <pattern id="pattern"
@@ -198,23 +198,23 @@ patternTransform="rotate(45, .5, .5)"
 </pattern>
 ```
 
-Результат:
+The result:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="yVVWoM" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="patternUnits and pattern coordinates (width & height, has viewBox)" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/yVVWoM/">patternUnits and pattern coordinates (width & height, has viewBox)</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Изменяем размеры паттерна, он послушно масштабируется. При этом размеры фигуры на паттерн не влияют:
+We change the pattern sizes and it obediently scales. The shape's size doesn't affect the pattern:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="YpNvjB" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="width, height & viewBox + resize shape" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/YpNvjB/">width, height & viewBox + resize shape</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Для своих экспериментов я обычно выбираю этот вариант, с ним удобнее работать.
+For my experiments I usually choose this variant; it's more convenient to work with.
 
-А что если паттерн должен реагировать на изменение размеров элемента?
+But what if the pattern should react to changes in the element's size?
 
-<b>Вариант 1.</b> Нужно задать атрибуту <code>patternContentUnits</code> значение <code>objectBoundingBox</code>. То есть внутри паттерна система координат должна строиться относительно элемента, к которому применён паттерн.
+<b>Option 1.</b> You need to set <code>patternContentUnits</code> to <code>objectBoundingBox</code>. That is, inside the pattern the coordinate system should be built relative to the element the pattern is applied to.
 
-Пример кода:
+Code example:
 
 ```html
 <pattern id="pattern"
@@ -224,12 +224,12 @@ patternTransform="rotate(45, .5, .5)"
 </pattern>
 ```
 
-Напомню, что при <code>patternContentUnits="objectBoundingBox"</code> размеры и координаты <i>внутри</i> паттерна можно задавать только в числах от 0.0 до 1.0, проценты работать не будут. Так как все размеры содержимого задаются относительно размеров фигуры, тянуться они так же будут вместе с ней, без сохранения пропорций. Это видно на демо:
+As a reminder, with <code>patternContentUnits="objectBoundingBox"</code> the sizes and coordinates <i>inside</i> the pattern can only be set in numbers from 0.0 to 1.0; percentages won't work. Since all the content sizes are set relative to the shape's size, they will stretch together with it, without keeping proportions. You can see this in the demo:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="wogXQK" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="width, height & viewBox + resize shape" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/wogXQK/">width, height & viewBox + resize shape</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-<b>Вариант 2.</b> Он проще и удобнее, потому что содержимое паттерна сохраняет свою систему координат и единицы измерения. При этом способе <code>patternUnits</code> не задаётся, потому что используется значение по умолчанию: <code>objectBoundingBox</code>. Размеры плитки паттерна задаются в процентах или в значениях от 0.0 до 1.0, они будут зависеть от размеров фигуры. Чтобы содержимое паттерна ресайзилось вместе с ним, нужно добавить <code>viewBox</code>, а чтобы оно при этом заполняло всю плитку, хоть и с искажениием пропорций, — <code>preserveAspectRatio="none"</code>:
+<b>Option 2.</b> It's simpler and more convenient, because the pattern's content keeps its own coordinate system and units. With this approach <code>patternUnits</code> is not set, because the default value is used: <code>objectBoundingBox</code>. The pattern tile sizes are set in percentages or in values from 0.0 to 1.0; they will depend on the shape's size. To make the pattern's content resize together with it, you need to add <code>viewBox</code>, and to make it fill the whole tile, even with distorted proportions, add <code>preserveAspectRatio="none"</code>:
 
 ```html
 <pattern id="pattern"
@@ -241,54 +241,54 @@ patternTransform="rotate(45, .5, .5)"
 </pattern>
 ```
 
-Результат:
+The result:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="KaoobK" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="width, height & viewBox + preserveAspectRatio" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/KaoobK/">width, height & viewBox + preserveAspectRatio</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Таким образом можно с минимальными усилиями сделать резиновый паттерн.
+This way you can make a fluid pattern with minimal effort.
 
-<h2 id="examples">Примеры паттернов</h2>
+<h2 id="examples">Pattern examples</h2>
 
-Паттерн с растровой картинкой:
+A pattern with a raster image:
 
 <p data-height="300" data-theme-id="4974" data-slug-hash="eGAxK" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/eGAxK/'>eGAxK</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Паттерн с векторным содержимым:
+A pattern with vector content:
 
 <p data-height="300" data-theme-id="4974" data-slug-hash="nkqdJ" data-default-tab="result" class='codepen'>See the Pen <a href='https://codepen.io/yoksel/pen/nkqdJ/'>SVG pattern</a> by yoksel (<a href='https://codepen.io/yoksel'>@yoksel</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 <script async src="//codepen.io/assets/embed/ei.js"></script>
 
-Паттерн с текстовым содержимым:
+A pattern with text content:
 
 <p data-height="550" data-theme-id="4974" data-slug-hash="WopeZb" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="WopeZb" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/WopeZb/">WopeZb</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Как видите, с помощью паттернов можно залить текст текстом : )
+As you can see, with patterns you can fill text with text : )
 
-Все мои демо с паттернами собраны в <a href="https://codepen.io/collection/AyaLRg/">этой коллекции</a>.
+All my pattern demos are collected in <a href="https://codepen.io/collection/AyaLRg/">this collection</a>.
 
-<h2 id="animation">Анимация</h2>
+<h2 id="animation">Animation</h2>
 
-Содержимое паттернов можно анимировать с помощью CSS и Js. Анимации, сделанные с помощью Javascript, будут работать везде (<a href="https://codepen.io/yoksel/pen/qdbPwd">демо</a>), у CSS-анимаций могут быть проблемы с поддержкой браузерами.
+Pattern content can be animated with CSS and JS. Animations made with Javascript will work everywhere (<a href="https://codepen.io/yoksel/pen/qdbPwd">demo</a>); CSS animations may have browser support problems.
 
-В Firefox внутри паттерна не работают CSS-трансформации (<a href="https://codepen.io/yoksel/pen/ObWKea">вот демо</a>, на котором можно потестить), — не работают и не анимируются, хотя они без проблем работают в Хроме. В некоторых случаях изменение размера фигуры можно имитировать управляя толщиной обводки.
-CSS-анимация заливки и обводки работает почти во всех браузерах, кроме IE (в IE11 не работает, в Edge не смотрела).
+In Firefox, CSS transforms don't work inside a pattern (<a href="https://codepen.io/yoksel/pen/ObWKea">here's a demo</a> to test it) — they neither work nor animate, although they work fine in Chrome. In some cases a shape resize can be imitated by controlling the stroke thickness.
+CSS animation of fill and stroke works in almost all browsers except IE (doesn't work in IE11; I haven't checked Edge).
 
-Примеры можно посмотреть в той же <a href="https://codepen.io/collection/AyaLRg/">коллекции</a>, многие демки содержат анимации.
+You can see examples in the same <a href="https://codepen.io/collection/AyaLRg/">collection</a>; many of the demos contain animations.
 
-<h2 id="usage">Варианты использования</h2>
+<h2 id="usage">Use cases</h2>
 
-В паттерны можно завернуть практически всё что угодно. Их можно использовать не только для потворяющегося фона из обычных картинок, но и для более интересных и сложных штук. Внутри паттернов можно использовать конструкции из градиентов и символов, анимации могут находиться не только внутри паттерна, но и в используемых в нём компонентах, например, в градиентной заливке. Паттерны могут применяться к любым элементам внутри SVG, включая текст:
+You can wrap practically anything in patterns. They can be used not only for repeating backgrounds made of ordinary images, but also for more interesting and complex things. Inside patterns you can use constructions built from gradients and symbols; animations can live not only inside the pattern but also in the components it uses, for example in a gradient fill. Patterns can be applied to any elements inside SVG, including text:
 
 <p data-height="350" data-theme-id="4974" data-slug-hash="MKeVMB" data-default-tab="result" data-user="yoksel" data-embed-version="2" data-pen-title="Animated SVG pattern with GSAP" class="codepen">See the Pen <a href="https://codepen.io/yoksel/pen/MKeVMB/">Animated SVG pattern with GSAP</a> by yoksel (<a href="https://codepen.io/yoksel">@yoksel</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-При этом сам паттерн, как мы видели в одном из предыдущих демо, тоже может содержать текст.
+And the pattern itself, as we saw in one of the previous demos, can also contain text.
 
-Элемент с паттерном может <a href="https://codepen.io/yoksel/pen/WbvwpR">обрезаться маской</a>, либо сам <a href="https://codepen.io/yoksel/pen/hpqbC">находиться внутри маски</a>. Конструкции можно делать совершенно безумные.
+An element with a pattern can be <a href="https://codepen.io/yoksel/pen/WbvwpR">clipped by a mask</a>, or it can itself <a href="https://codepen.io/yoksel/pen/hpqbC">sit inside a mask</a>. The constructions can be absolutely insane.
 
-С паттернами можно сделать много интересного, и, несмотря на некоторые сложности в использовании, они определённо стоят того, чтобы в них разобраться.
+You can do a lot of interesting things with patterns, and despite some difficulty in using them, they're definitely worth figuring out.
 
-PS: Честно говоря, даже несмотря на относительно давнее знакомство с паттернами, они всё ещё вызывают у меня трудности. Тем не менее, если у вас возникнут вопросы, я постараюсь на них ответить.
+PS: Honestly, even despite my relatively long acquaintance with patterns, they still give me trouble. Nevertheless, if you have questions, I'll do my best to answer them.
