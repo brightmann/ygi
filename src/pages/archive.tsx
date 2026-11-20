@@ -9,10 +9,21 @@ import { ArticleWithDate } from '../components/molecules/ArticleCard';
 export const getStaticProps = (async () => {
   const posts = (await getAllArticles(
     ['title', 'slug', 'order', 'excerpt', 'date'],
+    'post',
+  )) as ArticleWithDate[];
+
+  const archivedPosts = (await getAllArticles(
+    ['title', 'slug', 'order', 'excerpt', 'date'],
     'archive',
   )) as ArticleWithDate[];
 
-  return { props: { posts } };
+  const allPosts = [...posts, ...archivedPosts].sort((a, b) => {
+    const aTime = a.date ? new Date(a.date).getTime() : 0;
+    const bTime = b.date ? new Date(b.date).getTime() : 0;
+    return bTime - aTime;
+  });
+
+  return { props: { posts: allPosts } };
 }) satisfies GetStaticProps<{
   posts: ArticleWithDate[];
 }>;
