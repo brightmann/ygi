@@ -1,11 +1,11 @@
 ---
-title: Эти глаза напротив
+title: These eyes are opposite
 
 tags: [experiments, animation, draw-on-css]
 
-description: Рисование на CSS с использованием градиентов и border-radius
+description: Drawing with CSS using gradients and border-radius
 ---
 
-Тени, градиенты, скругленные углы.<!--more-->
+Shadows, gradients, rounded corners.<!--more-->
 
 <iframe class="live-snippet" style="height: 410px" src="../assets/demo/eti-glaza-naprotiv/demo_1.html?output"></iframe>
