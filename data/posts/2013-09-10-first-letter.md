@@ -3,22 +3,22 @@ title: First letter
 
 tags: [text]
 
-description: :first-letter — это псевдоэлемент, представляющий первый символ в тексте.
+description: :first-letter is a pseudo-element representing the first character in the text.
 ---
 
-<code>:first-letter</code> — это псевдоэлемент, представляющий первый символ в тексте.
+<code>:first-letter</code> is a pseudo-element that represents the first character in the text.
 
-Работает только для блочных элементов.
+Only works for block elements.
 
-К <code>:first-letter</code> применяется ограниченное количество свойств:<!--more-->
+A limited number of properties apply to <code>:first-letter</code>:<!--more-->
 
 <ul><li><code>float</code></li>
-<li><code>width</code> (только к элементу c float)</li>
+<li><code>width</code> (only for element with float)</li>
 <li><code>margin</code></li>
 <li><code>padding</code></li>
 <li><code>background</code></li>
 <li><code>border</code></li>
-<li><code>vertical-align</code> (только к элементу без float)</li>
+<li><code>vertical-align</code> (only to element without float)</li>
 <li><code>line-height</code></li>
 <li><code>text-decoration</code></li>
 <li><code>text-transform</code></li>
@@ -27,24 +27,24 @@ description: :first-letter — это псевдоэлемент, предста
 <li><code>font</code> properties</li>
 <li><code>color</code></li></ul>
 
-Пример:
+Example:
 
 <iframe class="live-snippet" style="height: 250px" src="../assets/demo/first-letter/demo_1.html?output"></iframe>
 
-Добавление <code>float</code> "утапливает" букву в текст
+Adding <code>float</code> "sinks" the letter into the text
 
 <iframe class="live-snippet" style="height: 250px" src="../assets/demo/first-letter/demo_2.html?output"></iframe>
 
-<code>:first-letter</code> не срабатывает, если до текста стоит картинка, но работает, если её скрыть c <code>display: none</code>:
+<code>:first-letter</code> does not work if there is a picture before the text, but it works if you hide it with <code>display: none</code>:
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/first-letter/demo_3.html?output"></iframe>
 
-Мне понравился такой вариант оформления <code>:first-letter</code>:
+I liked this design option for <code>:first-letter</code>:
 
 <iframe class="live-snippet" style="height: 250px" src="../assets/demo/first-letter/demo_4.html?output"></iframe>
 
-<code>float</code> позволяет установить для <code>:first-letter</code>  ширину и выравнивание текста по центру.
+<code>float</code> allows you to set the width and center alignment of the <code>:first-letter</code> text.
 
-Можно по-разному оформить первый символ в тексте, но при этом нужно точно знать, что текст не будет начинаться с картинки.
+You can format the first character in the text in different ways, but you need to know for sure that the text will not begin with a picture.
 
-Спецификация: <a href="http://www.w3.org/TR/css3-selectors/#first-letter">w3.org/TR/css3-selectors/#first-letter</a>
+Specification: <a href="http://www.w3.org/TR/css3-selectors/#first-letter">w3.org/TR/css3-selectors/#first-letter</a>
