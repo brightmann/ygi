@@ -1,33 +1,33 @@
 ---
-title: Рисовалка анимированных теней
+title: Drawing animated shadows
 
 tags: [box-shadow, animation, tools, js]
 
 image:
-description: Редактор позволяет рисовать разноцветные анимированные узоры из клеточек. Можно управлять скоростью анимации, размером поля, количеством клеточек и кадров.
+description: The editor allows you to draw multi-colored animated patterns from cells. You can control the animation speed, field size, number of cells and frames.
 
 links:
 - href: /box-shadow/
   text: Box-shadow
 ---
 
-В процессе изучения JS решила написать рисовалку CSS-анимаций на основе <code>box-shadow</code>. Получила море удовольствия и узнала много нового.<!--more-->
+In the process of studying JS, I decided to write a CSS animation drawer based on <code>box-shadow</code>. I had a lot of fun and learned a lot of new things.<!--more-->
 
-В действующем виде можно посмотреть прямо тут:
+You can see it in action right here:
 
 <div style="text-align: center"><iframe src="https://yoksel.github.io/shadowPainter/" frameborder="0" width="700" height="600"></iframe></div>
 
-* на отдельной странице: <a href="https://yoksel.github.io/shadowPainter/">yoksel.github.io/shadowPainter/</a>.
-* проект на гитхабе: <a href="https://github.com/yoksel/shadowPainter">github.com/yoksel/shadowPainter</a>.
+* on a separate page: <a href="https://yoksel.github.io/shadowPainter/">yoksel.github.io/shadowPainter/</a>.
+* project on GitHub: <a href="https://github.com/yoksel/shadowPainter">github.com/yoksel/shadowPainter</a>.
 
-А вот здесь можно посмотреть что получается в итоге: <a href="https://codepen.io/collection/rmoKl">Box-shadows Animations</a>
+And here you can see what happens in the end: <a href="https://codepen.io/collection/rmoKl">Box-shadows Animations</a>
 
-Редактор позволяет рисовать разноцветные анимированные узоры из клеточек. Можно управлять скоростью анимации, размером поля, количеством клеточек и кадров.
+The editor allows you to draw multi-colored animated patterns from cells. You can control the animation speed, field size, number of cells and frames.
 
-Готовую анимацию можно получить в виде кода.
+The finished animation can be obtained in the form of code.
 
-Несмотря на то, что мне хотелось бы добавить ещё пару-тройку разных фич, на данный момент можно считать проект в большей степени готовым (а то допиливать можно до бесконечности).
+Despite the fact that I would like to add a couple more different features, at the moment the project can be considered mostly ready (otherwise it can be added to indefinitely).
 
-<s>Что хотелось бы сделать: выбор из нескольких палитр и возможность рисовать линиями, а не точками, как сейчас, очистку отдельной сцены и/или всех шагов.</s> Done.
+<s>What I would like to do: a choice of several palettes and the ability to draw with lines rather than dots, as now, clearing a single scene and/or all steps.</s> Done.
 
-Хотя я довольно давно знакома с JS и уже писала на нем всякие простые штуки, обычно используя JQuery, до основательного изучения добралась только сейчас, поэтому буду признательна за комментарии по <a href="https://github.com/yoksel/shadowPainter/blob/master/assets/js/script.js">коду</a>, советам по лучшей организации и ссылкам на полезные книги и статьи.
+Although I have been familiar with JS for quite a long time and have already written all sorts of simple things on it, usually using JQuery, I only got around to studying it thoroughly now, so I would be grateful for comments on <a href="https://github.com/yoksel/shadowPainter/blob/master/assets/js/script.js">code</a>, tips on better organization and links to useful books and articles.
