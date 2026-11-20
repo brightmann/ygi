@@ -1,8 +1,8 @@
 ---
-title: Адаптивный Pixel Perfect
+title: Adaptive Pixel Perfect
 
 image: https://img-fotki.yandex.ru/get/195786/5091629.a5/0_9217a_e94cfdc0_orig
-description: "Инструмент для проверки адаптивных страниц на соответствие макетам"
+description: "A tool for checking responsive pages against their design mockups"
 
 tags: [tools]
 
@@ -12,26 +12,26 @@ body_data: "data-has-sticky-point"
 
 links:
 - href: https://github.com/yoksel/pixel-glass-js
-  text: 'Репозиторий проекта'
+  text: 'Project repository'
 - href: https://yoksel.github.io/pixel-glass-js/
-  text: 'Демо страница с макетами'
+  text: 'Demo page with mockups'
 ---
 
-Начну издалека. Не так давно я присоединилась к <a href="https://htmlacademy.ru">HTML Академии</a> в качестве наставника. Помимо того, что наставничество помогает упорядочить свои знания, оно удивительным образом стимулирует разработку разных полезных штук, потому что в процессе появляются интересные задачи, решение которых можно удобно автоматизировать.<!--more-->
+I'll start from afar. Not long ago I joined <a href="https://htmlacademy.ru">HTML Academy</a> as a mentor. Besides the fact that mentoring helps organize your knowledge, it surprisingly stimulates the development of various useful things, because interesting tasks come up in the process whose solutions can be conveniently automated.<!--more-->
 
-Например, так появился <a href="https://yoksel.github.io/html-tree/">генератор HTML-дерева</a>: он позволяет посмотреть структуру документа, обнаружить простые ошибки в БЭМ-классах и проверить дерево заголовков. Полезный инструмент не только для ученика, но и для наставника, регулярно им пользуюсь.
+For example, that's how the <a href="https://yoksel.github.io/html-tree/">HTML tree generator</a> came to be: it lets you view a document's structure, spot simple mistakes in BEM classes and check the heading tree. A useful tool not only for a student but also for a mentor; I use it regularly.
 
-Мой новый проект также появился как решение для задачи, постоянно возникающей в процессе обучения: страницы с адаптивным дизайном нужно проверять на соответствие макетам.
+My new project also appeared as a solution to a task that constantly comes up during learning: pages with responsive design need to be checked against their mockups.
 
-Ниже будет немного текста про поиск решения. Если кому лень читать, <a href="https://yoksel.github.io/pixel-glass-js/">можно сразу пойти поиграться на демо-странице</a>.
+Below is a bit of text about the search for a solution. If you're too lazy to read, <a href="https://yoksel.github.io/pixel-glass-js/">you can go straight to playing on the demo page</a>.
 
-Ученики получают учебный дизайн из трёх страниц, каждая из которых имеет макеты для трёх состояний: мобильный, планшетный и десктопный — всего девять макетов. В процессе вёрстки адаптивной страницы имеет смысл периодически менять размер окна и проверять, что при добавлении стилей для десктопной версии не поломалась, например, мобильная. Как тут лучше всего проверять соответствие макету?
+Students receive a training design of three pages, each of which has mockups for three states: mobile, tablet and desktop — nine mockups in total. While laying out a responsive page, it makes sense to periodically change the window size and check that adding styles for the desktop version didn't break, say, the mobile one. What's the best way to check against the mockup here?
 
-Скриншотилки, которые используются в больших проектах, слишком тяжеловесны для такой задачи, нужно что-то совсем простое, чтобы любой начинающий смог этим воспользоваться.
+Screenshot tools used in big projects are too heavy for this task; something very simple is needed, something any beginner could use.
 
-Первым делом я конечно вспомнила про плагин Pixel Perfect (он как минимум есть для Chrome и Firefox), но он не подходит по ряду причин. Например, загруженные макеты не умеют меняться при переходе между страницами и при изменении окна браузера, а переключать их каждый раз руками довольно быстро надоест. Тем более, что есть медиавыражения, которые прекрасно могут переключать макеты за нас.
+The first thing I remembered, of course, was the Pixel Perfect plugin (it exists at least for Chrome and Firefox), but it doesn't fit for a number of reasons. For example, loaded mockups can't change when navigating between pages or when the browser window is resized, and switching them by hand every time gets annoying pretty fast. Especially since there are media queries, which can perfectly well switch mockups for us.
 
-Моё самое первое решение выглядело вот так:
+My very first solution looked like this:
 
 ```html
 <style>
@@ -55,21 +55,21 @@ links:
 </style>
 ```
 
-Этот код вставляется в <code>&lt;head></code> каждой страницы. В нём задаются нужные медиавыражения, а ссылки на картинки меняются на актуальные макеты для каждой конкретной страницы.
+This code is inserted into the <code>&lt;head></code> of each page. It defines the needed media queries, and the image links are changed to the actual mockups for each specific page.
 
-Макеты меняются при переключении между страницами и при изменении размеров окна, этим уже можно пользоваться, и это достаточно удобно. Макеты лежат прямо под разметкой, за ними не нужно всё время ходить в графический редактор, поэтому даже такая простая конструкция может ощутимо сэкономить время.
+The mockups change when switching between pages and when the window is resized; this is already usable and quite convenient. The mockups sit right under the markup, so you don't have to keep going to the graphics editor for them, and even such a simple construction can noticeably save time.
 
-Но по мере написания стилей на странице появляются свои фоны и картинки, и макеты в нижнем слое становятся не видны. Как быть?
+But as styles are written, the page gets its own backgrounds and images, and the mockups in the bottom layer become invisible. What to do?
 
-Следующим моим решением стало расширение для Хрома, которое на каждой странице создаёт полупрозрачный слой с макетами. При изменении размеров окна макеты меняются с помощью медиавыражений, как и в предыдущем случае. Бонусом было добавлено управление прозрачностью слоя с макетами и возможность включить режим наложения <code>difference</code>, чтобы было легче находить различия.
+My next solution was a Chrome extension that creates a semi-transparent layer with the mockups on every page. When the window is resized, the mockups change via media queries, as in the previous case. As a bonus, controls for the mockup layer's transparency and the ability to enable the <code>difference</code> blend mode were added, to make differences easier to find.
 
-Прекрасная штука получилась. Но работает только в Хроме, ключевые точки для переключения макетов и пути к картинкам нужно задавать в конфигах самого расширения, картинки макетов должны лежать внутри расширения, ну и ещё всякие другие ограничения были. В общем, не универсально, для каждого нового проекта потребуется ручная настройка и это совсем не годится для начинающих.
+It turned out great. But it only works in Chrome, the breakpoints for switching mockups and the image paths must be set in the extension's configs, the mockup images must live inside the extension, and there were various other limitations. In short, not universal; every new project would need manual setup, and that's no good at all for beginners.
 
-Мне хотелось найти какое-то совсем-совсем простое решение, чтобы любой смог бы справиться с настройкой и установкой, и чтобы при этом он хотя бы примерно понимал что он делает.
+I wanted to find a really, really simple solution, one that anyone could handle installing and configuring, while at least roughly understanding what they're doing.
 
-Для сравнения разметки с макетами нужно два слоя: слой с разметкой и слой с макетами. С одной стороны, можно руками вставлять слой с макетами в разметку страницы, с другой, велик риск забыть его там, когда он перестанет быть нужен, так что следующим вариантом стало использование в качестве слоёв существующих элементов страницы.
+Comparing markup with mockups requires two layers: a layer with the markup and a layer with the mockups. On one hand, you could insert the mockup layer into the page's markup by hand; on the other, there's a big risk of forgetting it there when it's no longer needed, so the next variant was to use existing page elements as the layers.
 
-Если макеты задать фоном для <code>&lt;body></code>, при изменении прозрачности <code>&lt;body></code> макеты тоже станут полупрозрачными, поэтому в качестве слоя с макетами лучше использовать элемент <code>&lt;html></code>:
+If the mockups are set as the background for <code>&lt;body></code>, changing <code>&lt;body></code>'s opacity will make the mockups semi-transparent too, so it's better to use the <code>&lt;html></code> element as the mockup layer:
 
 ```html
 <style>
@@ -93,7 +93,7 @@ links:
 </style>
 ```
 
-Как и в предыдущем случае, макеты будут лежать под разметкой, но сейчас если у <code>&lt;body></code> задан фон, их не будет видно. Сделаем слой с разметкой полупрозрачным, добавив <code>opacity</code> для <code>&lt;body></code>:
+As in the previous case, the mockups will lie under the markup, but now if <code>&lt;body></code> has a background, they won't be visible. Let's make the markup layer semi-transparent by adding <code>opacity</code> to <code>&lt;body></code>:
 
 ```html
 <style>
@@ -123,29 +123,29 @@ links:
 </style>
 ```
 
-Этим уже тоже можно как-то пользоваться, но мне в этом решении не хватало удобного управления прозрачностью, поэтому я написала небольшой скрипт, который добавляет на страницу вот такую панель:
+This is also somewhat usable, but this solution lacked convenient transparency controls for me, so I wrote a small script that adds a panel like this to the page:
 
 <div class="sticky-container">
   <div class="sticky-point"></div>
 </div>
 
-Она позволяет управлять прозрачностью <code>&lt;body></code> (в данном случае вместо макетов просто полосатый фон), её можно таскать по странице и можно выключить, если не нужна.
+It lets you control <code>&lt;body></code>'s transparency (in this case the mockups are replaced by a simple striped background); it can be dragged around the page and turned off when not needed.
 
-Расширение для браузера решила не делать, чтобы не ограничивать количество браузеров, в которых это можно использовать.
+I decided not to make a browser extension, so as not to limit the number of browsers where this can be used.
 
-Установка в итоге выглядит вот так:
+The installation ends up looking like this:
 
 <ol class="list list--has-codes">
-<li>Установите пакет в папку с проектом через npm:
+<li>Install the package into your project folder via npm:
 
 ```html
 npm i pixel-glass --save-dev
 ```
 </li>
 
-<li>Положите картинки с макетами в ваш проект в папку <code>img</code> (или в другую папку с картинками внутри проекта).</li>
+<li>Put the mockup images into your project in the <code>img</code> folder (or another images folder inside the project).</li>
 
-<li>Вставьте в <code>&lt;head></code> страницы такой код:
+<li>Insert this code into the page's <code>&lt;head></code>:
 
 ```html
 <!-- Pixel Glass -->
@@ -181,29 +181,29 @@ npm i pixel-glass --save-dev
 <!-- // Pixel Glass -->
 ```
 
-  Отредактируйте его под свой проект: настройте медиавыражения, поменяйте адреса картинок на рабочие.
+  Edit it for your project: adjust the media queries, change the image addresses to working ones.
 </li>
 
-<li>Обновите страницу и пользуйтесь.</li>
+<li>Refresh the page and use it.</li>
 </ol>
 
-По-моему, получился довольно удобный инструмент, но наверняка можно что-то улучшить. Если у вас есть какие-то идеи на этот счёт, напишите мне о них в комментариях. Также мне будет интересно как вы решаете подобные задачи и какие инструменты для этого используете.
+In my opinion, it turned out to be a pretty convenient tool, but surely something can be improved. If you have any ideas on that, write about them in the comments. I'd also be interested to know how you solve such tasks and what tools you use for it.
 
-<b>UPD:</b> библиотека переехала на npm, спасибо всем участникам <a href="https://twitter.com/webstandards_ru/status/819884209674317824">обсуждения</a>.
+<b>UPD:</b> the library moved to npm; thanks to all participants of the <a href="https://twitter.com/webstandards_ru/status/819884209674317824">discussion</a>.
 
 <h2>FAQ</h2>
 
 <ul>
 <li>
-  <b>Зачем в <code>&lt;head></code> такая колбаса кода? Почему бы медиавыражения и пути к картинкам не убрать в конфиг/настройки скрипта?</b>
+  <b>Why is there such a sausage of code in the <code>&lt;head></code>? Why not move the media queries and image paths into the script's config/settings?</b>
 
-  <p>Базовая часть — переключение макетов при изменении размеров окна — легко может быть сделана с помощью медиавыражений, для этого не нужен JavaScript. Такой код любой верстальщик может написать сам, своими руками. <b>Pixel Glass</b> просто делает управление прозрачностью чуть более удобным.</p>
+  <p>The base part — switching mockups when the window is resized — can easily be done with media queries; no JavaScript is needed for that. Any layout developer can write such code themselves, by hand. <b>Pixel Glass</b> simply makes controlling transparency a bit more convenient.</p>
 
-  <p>Роль конфига в данном случае выполняет CSS, и с его настройкой легко справится пользователь любого уровня. Это важно, потому что в первую очередь инструмент предназначается для людей, которые только начинают верстать.</p>
+  <p>In this case CSS plays the role of the config, and any level of user can easily handle setting it up. This matters because the tool is intended first of all for people who are just starting to do layout.</p>
 </li>
 <li>
-  <b>Мне вообще не нравится как вы всё сделали, я бы сделал всё по-другому!</b>
+  <b>I don't like how you did everything at all; I would have done it differently!</b>
 
-  <p>Сделайте : ) Будет здорово, если появятся новые удобные инструменты.</p>
+  <p>Do it : ) It would be great if new convenient tools appeared.</p>
 </li>
 </ul>
