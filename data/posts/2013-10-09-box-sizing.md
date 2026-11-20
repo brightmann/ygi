@@ -3,30 +3,30 @@ title: Box-sizing
 
 tags: [layout]
 
-description: Свойство box-sizing позволяет указать как ведут себя размеры блока при наличии рамок и полей.
+description: The box-sizing property allows you to specify how box sizes behave when there are borders and margins.
 
 links:
 - href: http://www.paulirish.com/2012/box-sizing-border-box-ftw/
   text: '* { Box-sizing: Border-box } FTW'
 ---
 
-Свойство <code>box-sizing</code> позволяет указать как ведут себя размеры блока при наличии рамок и полей.
-Применяются к элементам, у которых заданы размеры.<!--more-->
+The <code>box-sizing</code> property allows you to specify how box sizes behave when there are frames and margins.
+Apply to elements that have specified dimensions.<!--more-->
 
-Спецификация: <a href="http://www.w3.org/TR/css3-ui/#box-sizing">w3.org/TR/css3-ui/#box-sizing</a>
+Specification: <a href="http://www.w3.org/TR/css3-ui/#box-sizing">w3.org/TR/css3-ui/#box-sizing</a>
 
-Возможные значения:
+Possible values:
 
-<code>content-box</code> — отступы и рамки рисуются снаружи блока блока и увеличивают его размеры (значение по умолчанию).
+<code>content-box</code> - padding and borders are drawn outside the box box and increase its size (default).
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/box-sizing/demo_1.html?css"></iframe>
 
 
-<code>padding-box</code> — рамки рисуются снаружи блока блока и увеличивают его размеры, <code>padding</code> отрисовывается внутри элемента и не влияет на размеры. Работал только в Firefox, на ноябрь 2018 уже не поддерживается.
+<code>padding-box</code> - frames are drawn outside the block box and increase its size, <code>padding</code> is drawn inside the element and does not affect the size. Worked only in Firefox, as of November 2018 it is no longer supported.
 
-<code>border-box</code> — элемент сохраняет заданные размеры, отступы и рамки отрисовываются внутрь элемента.
+<code>border-box</code> - the element retains the specified dimensions, padding and frames are drawn inside the element.
 
 <iframe class="live-snippet" style="height: 350px" src="../assets/demo/box-sizing/demo_3.html?css"></iframe>
 
-Свойство довольно широко поддерживается браузерами, в некоторых случаях требуются префиксы.
-Подробнее можно посмотреть на <a href="http://caniuse.com/#feat=css3-boxsizing">caniuse.com/#feat=css3-boxsizing</a>
+The property is quite widely supported by browsers, in some cases prefixes are required.
+More details can be found at <a href="http://caniuse.com/#feat=css3-boxsizing">caniuse.com/#feat=css3-boxsizing</a>
