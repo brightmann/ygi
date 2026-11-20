@@ -8,7 +8,7 @@ description: "In the previous post everyone was a bit puzzled: why not detect th
 
 links:
 - href: /svg-in-ie8
-  text: Rakes on pure SVG
+  text: Pitfalls of pure SVG
 - href: https://www.npmjs.org/package/svg_fallback
   text: svg_fallback (Grunt plugin)
 - href: /grunt-plugin
