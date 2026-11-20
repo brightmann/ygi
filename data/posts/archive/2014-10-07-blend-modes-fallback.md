@@ -26,7 +26,7 @@ links:
 - href: /css-and-svg-masks
   text: CSS and SVG masks
 - href: /svg-in-ie8
-  text: Rakes on pure SVG
+  text: Pitfalls of pure SVG
 
 ---
 Not long ago <a href="https://developer.mozilla.org/en-US/Firefox/Releases/32">Firefox 32</a> enabled support for <code>mix-blend-mode</code>, and <a href="http://www.chromestatus.com/features/5163890719588352">Chrome 37</a> got <a href="http://dev.w3.org/csswg/css-shapes/">CSS shapes</a> — the ability to control the shape along which text wraps around an element. Both technologies look very interesting, so I decided to try them in action, and find out how the page will look in browsers where they are not supported.
