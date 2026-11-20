@@ -13,6 +13,10 @@
   }
 }
 
+.pagination__item {
+  white-space: nowrap;
+}
+
 .pagination__pages {
   display: flex;
   flex-wrap: wrap;
